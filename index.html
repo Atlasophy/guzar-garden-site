@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guzar Garden — Restauracja Uzbecka &amp; Grill Halal, Warszawa</title>
+<meta name="description" content="Guzar Garden — restauracja uzbecka i grill halal przy Parku Skaryszewskim. Plow z kazana, samsa z pieca tandoor, szaszłyki z węgla. Aleja Zieleniecka 6/8, Warszawa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1d1a14;
+  --ink-soft:#4a4438;
+  --cream:#f7f1e4;
+  --cream-2:#efe6d3;
+  --paper:#fffdf8;
+  --clay:#b5502c;
+  --saffron:#d99a2b;
+  --lapis:#1f4d6b;
+  --green:#1e3527;
+  --line:rgba(29,26,20,.14);
+  --serif:'Cormorant Garamond',Cormorant,Garamond,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --shadow:0 18px 50px -22px rgba(29,26,20,.45);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,.display{font-family:var(--serif);font-weight:400;letter-spacing:.01em;line-height:1.1;margin:0}
+.wrap{width:min(1180px,92vw);margin-inline:auto}
+.eyebrow{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--clay);font-weight:500;margin:0 0 .9rem}
+.sec{padding:clamp(4.5rem,9vw,8rem) 0;position:relative}
+.orn{width:120px;height:22px;display:block;margin:1.2rem 0;color:var(--saffron)}
+.orn.center{margin-inline:auto}
+
+/* ---------- nav ---------- */
+header.nav{
+  position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;gap:2rem;
+  padding:1.1rem clamp(1rem,4vw,2.5rem);transition:background .4s ease,box-shadow .4s ease,padding .4s ease;
+}
+header.nav.solid{background:rgba(247,241,228,.93);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding-block:.7rem}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;margin-right:auto}
+.brand .mark{width:34px;height:34px;color:var(--clay);flex:none}
+.brand b{font-family:var(--serif);font-size:1.32rem;font-weight:500;letter-spacing:.06em;line-height:1}
+.brand span{display:block;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft)}
+nav.links{display:flex;gap:1.6rem}
+nav.links a{text-decoration:none;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);padding-bottom:2px;border-bottom:1px solid transparent;transition:.25s}
+nav.links a:hover{color:var(--clay);border-color:var(--clay)}
+nav.links a.ext::after{content:"↗";font-size:.7em;margin-left:.3em;vertical-align:super;opacity:.6}
+.nav-tools{display:flex;align-items:center;gap:.6rem}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:rgba(255,253,248,.6)}
+.lang button{border:0;background:none;cursor:pointer;font:inherit;font-size:.68rem;letter-spacing:.1em;padding:.42rem .58rem;color:var(--ink-soft);transition:.2s}
+.lang button.on{background:var(--ink);color:var(--cream)}
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;cursor:pointer;
+  font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+  padding:.82rem 1.5rem;border-radius:999px;border:1px solid var(--ink);
+  background:var(--ink);color:var(--cream);transition:.3s
+}
+.btn:hover{background:var(--clay);border-color:var(--clay);transform:translateY(-2px)}
+.btn.light{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.btn.light:hover{background:var(--saffron);border-color:var(--saffron);color:var(--ink)}
+.btn.outline{background:transparent;color:var(--cream);border-color:rgba(247,241,228,.4)}
+.btn.outline:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.burger{display:none;border:1px solid var(--line);background:none;border-radius:999px;padding:.5rem .8rem;cursor:pointer;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase}
+
+/* ---------- hero ---------- */
+.hero{
+  min-height:100svh;display:grid;place-items:center;text-align:center;position:relative;
+  padding:8rem 1rem 4rem;overflow:hidden;color:var(--cream);
+  background:
+    radial-gradient(120% 90% at 50% 8%,rgba(217,154,43,.30),transparent 60%),
+    radial-gradient(90% 70% at 15% 100%,rgba(31,77,107,.55),transparent 65%),
+    linear-gradient(165deg,#20301f 0%,#16241d 45%,#2a1a10 100%);
+}
+.hero .tile{position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:screen}
+.hero .vig{position:absolute;inset:0;background:radial-gradient(75% 65% at 50% 45%,transparent 40%,rgba(10,12,9,.72) 100%)}
+.hero-inner{position:relative;z-index:2;max-width:900px}
+.hero h1{font-size:clamp(3.2rem,11vw,7.4rem);letter-spacing:.03em;font-weight:300;line-height:.95;margin:.4rem 0 .1rem}
+.hero h1 em{font-style:italic;color:var(--saffron)}
+.hero .sub{font-size:.78rem;letter-spacing:.36em;text-transform:uppercase;color:rgba(247,241,228,.78);margin:1.4rem 0 0}
+.hero .lede{font-family:var(--serif);font-size:clamp(1.15rem,2.4vw,1.6rem);color:rgba(247,241,228,.9);margin:1.6rem auto 2.4rem;max-width:44ch}
+.hero-cta{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.status{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(247,241,228,.32);border-radius:999px;padding:.42rem 1rem;color:rgba(247,241,228,.9)}
+.dot{width:7px;height:7px;border-radius:50%;background:#7fce8b;box-shadow:0 0 0 4px rgba(127,206,139,.2)}
+.dot.shut{background:#e0765a;box-shadow:0 0 0 4px rgba(224,118,90,.18)}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,241,228,.55)}
+.scroll-hint i{display:block;width:1px;height:34px;background:linear-gradient(rgba(247,241,228,.6),transparent);margin:.6rem auto 0}
+
+/* ---------- marquee ---------- */
+.marquee{background:var(--ink);color:var(--cream);overflow:hidden;padding:.95rem 0;border-block:1px solid rgba(247,241,228,.1)}
+.marquee-track{display:flex;gap:3rem;width:max-content;animation:slide 34s linear infinite}
+.marquee span{font-family:var(--serif);font-size:1.15rem;letter-spacing:.22em;text-transform:uppercase;white-space:nowrap;color:rgba(247,241,228,.82)}
+.marquee span::after{content:"◈";margin-left:3rem;color:var(--saffron)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- about ---------- */
+.about{background:var(--paper)}
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2.5rem,6vw,5rem);align-items:center}
+.about h2{font-size:clamp(2.2rem,4.6vw,3.6rem)}
+.about p{color:var(--ink-soft);max-width:56ch}
+.about .big-first::first-letter{font-family:var(--serif);float:left;font-size:3.6rem;line-height:.86;padding:.15rem .55rem .1rem 0;color:var(--clay)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.stat{background:var(--paper);padding:1.7rem 1.4rem;text-align:center}
+.stat b{display:block;font-family:var(--serif);font-size:2.5rem;line-height:1;color:var(--clay);font-weight:500}
+.stat b.small{font-size:1.9rem;letter-spacing:.02em}
+.stat small{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-top:.5rem}
+
+/* ---------- kuchnia (what uzbek food is) ---------- */
+.kitchen{background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
+.kitchen .tile{position:absolute;inset:0;width:100%;height:100%;opacity:.09}
+.kitchen .wrap{position:relative;z-index:2}
+.kitchen .eyebrow{color:var(--saffron)}
+.kitchen h2{color:var(--cream);font-size:clamp(2.2rem,4.8vw,3.6rem)}
+.kitchen-head{max-width:760px;margin:0 auto 4rem;text-align:center}
+.kitchen-head .lede{font-family:var(--serif);font-size:clamp(1.15rem,2.2vw,1.5rem);color:rgba(247,241,228,.78);margin:1.6rem 0 0}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:rgba(247,241,228,.14);border:1px solid rgba(247,241,228,.14)}
+.pillar{background:var(--ink);padding:2.4rem 1.9rem;position:relative;transition:background .4s ease}
+.pillar:hover{background:#241f18}
+.pillar .num{font-family:var(--serif);font-size:.95rem;letter-spacing:.2em;color:var(--saffron);display:block;margin-bottom:1.4rem}
+.pillar svg{width:46px;height:46px;color:var(--clay);margin-bottom:1.3rem;stroke-width:1.3}
+.pillar h3{font-size:1.75rem;color:var(--cream);margin-bottom:.25rem}
+.pillar .uz{display:block;font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(247,241,228,.45);margin-bottom:1rem}
+.pillar p{font-size:.93rem;color:rgba(247,241,228,.66);margin:0}
+.quote{text-align:center;max-width:720px;margin:4.5rem auto 0}
+.quote p{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3vw,2.1rem);color:var(--cream);line-height:1.35;margin:0}
+.quote span{display:block;font-family:var(--sans);font-style:normal;font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--saffron);margin-top:1.4rem}
+.kitchen-cta{margin-top:3.6rem;display:flex;gap:1.4rem;justify-content:center;align-items:center;flex-wrap:wrap;text-align:center}
+.kitchen-cta small{font-size:.78rem;letter-spacing:.06em;color:rgba(247,241,228,.5)}
+
+/* ---------- venue ---------- */
+.feat{background:var(--paper)}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.f{background:var(--paper);padding:1.9rem 1.5rem;transition:.3s}
+.f:hover{background:var(--cream)}
+.f svg{width:26px;height:26px;color:var(--clay);margin-bottom:.9rem}
+.f b{display:block;font-family:var(--serif);font-size:1.25rem;font-weight:500}
+.f small{color:var(--ink-soft);font-size:.82rem}
+
+/* ---------- location ---------- */
+.loc{background:var(--green);color:var(--cream);position:relative;overflow:hidden}
+.loc .eyebrow{color:var(--saffron)}
+.loc h2{color:var(--cream);font-size:clamp(2.2rem,4.6vw,3.4rem)}
+.loc-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+.info-block+.info-block{margin-top:1.7rem;padding-top:1.7rem;border-top:1px solid rgba(247,241,228,.18)}
+.info-block h4{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--saffron);margin:0 0 .6rem;font-family:var(--sans);font-weight:500}
+.info-block p{margin:0;font-family:var(--serif);font-size:1.3rem;color:var(--cream)}
+.info-block a{text-decoration:none;border-bottom:1px solid rgba(247,241,228,.35)}
+.info-block a:hover{color:var(--saffron);border-color:var(--saffron)}
+.info-block small{display:block;color:rgba(247,241,228,.6);font-size:.82rem;margin-top:.3rem}
+
+/* weekly hours */
+.hours{list-style:none;margin:.4rem 0 0;padding:0}
+.hours li{display:flex;align-items:baseline;gap:.7rem;padding:.42rem 0;font-size:.9rem;color:rgba(247,241,228,.72);border-bottom:1px dashed rgba(247,241,228,.14)}
+.hours li:last-child{border-bottom:0}
+.hours li .day{min-width:9.5em}
+.hours li .dots{flex:1;border-bottom:1px dotted rgba(247,241,228,.22);transform:translateY(-.28em)}
+.hours li .h{font-family:var(--serif);font-size:1.05rem;color:rgba(247,241,228,.9)}
+.hours li.today{color:var(--cream)}
+.hours li.today .day{color:var(--saffron);font-weight:500}
+.hours li.today .h{color:var(--saffron)}
+.hours li.today .day::before{content:"◈";margin-right:.5em;font-size:.7em;color:var(--saffron)}
+
+/* map */
+.mapcard{border:1px solid rgba(247,241,228,.22);background:rgba(18,32,22,.55);padding:.6rem;box-shadow:var(--shadow);position:relative}
+.mapcard::before,.mapcard::after{
+  content:"";position:absolute;width:16px;height:16px;border:1px solid var(--saffron);opacity:.75;pointer-events:none
+}
+.mapcard::before{top:-1px;left:-1px;border-width:1px 0 0 1px}
+.mapcard::after{bottom:-1px;right:-1px;border-width:0 1px 1px 0}
+.map-frame{position:relative;aspect-ratio:4/3;min-height:340px;overflow:hidden;background:#132118}
+.map-frame iframe{
+  width:100%;height:100%;border:0;display:block;
+  filter:grayscale(.32) sepia(.34) saturate(.82) contrast(1.05) brightness(.94);
+  transition:filter .6s ease
+}
+.mapcard:hover .map-frame iframe,.map-frame:focus-within iframe{filter:none}
+.map-frame .sheen{
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(15,25,18,.35),transparent 22%,transparent 78%,rgba(15,25,18,.35));
+  box-shadow:inset 0 0 60px rgba(15,25,18,.45)
+}
+.map-badge{
+  position:absolute;left:1rem;top:1rem;z-index:3;pointer-events:none;
+  background:rgba(20,32,24,.86);backdrop-filter:blur(8px);border:1px solid rgba(217,154,43,.35);
+  padding:.7rem 1rem;max-width:60%
+}
+.map-badge b{display:block;font-family:var(--serif);font-size:1.15rem;color:var(--cream);letter-spacing:.04em}
+.map-badge small{display:block;font-size:.72rem;color:rgba(247,241,228,.65);margin-top:.15rem}
+.map-bar{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;padding:.9rem .4rem .25rem}
+.map-bar .coords{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(247,241,228,.5)}
+.map-bar .acts{margin-left:auto;display:flex;gap:.6rem;flex-wrap:wrap}
+.map-bar .acts a{
+  text-decoration:none;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+  padding:.6rem 1.1rem;border:1px solid rgba(247,241,228,.3);border-radius:999px;transition:.3s;white-space:nowrap
+}
+.map-bar .acts a:hover{background:var(--saffron);border-color:var(--saffron);color:var(--ink)}
+.map-hint{font-size:.68rem;letter-spacing:.1em;color:rgba(247,241,228,.38);padding:.2rem .4rem 0}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:rgba(247,241,228,.72);padding:4.5rem 0 2rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:3rem;border-bottom:1px solid rgba(247,241,228,.14)}
+footer h5{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--saffron);margin:0 0 1rem;font-weight:500}
+footer a{color:rgba(247,241,228,.72);text-decoration:none;transition:.2s}
+footer a:hover{color:var(--saffron)}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.92rem}
+.foot-brand .display{font-size:2rem;color:var(--cream);display:block;letter-spacing:.06em}
+.foot-brand p{font-size:.9rem;max-width:34ch}
+.socials{display:flex;gap:.7rem;margin-top:1.2rem}
+.socials a{width:38px;height:38px;border:1px solid rgba(247,241,228,.22);border-radius:50%;display:grid;place-items:center;transition:.3s}
+.socials a:hover{background:var(--saffron);border-color:var(--saffron);color:var(--ink);transform:translateY(-3px)}
+.socials svg{width:16px;height:16px}
+.colophon{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:1.6rem;font-size:.75rem;color:rgba(247,241,228,.45)}
+.colophon a{color:rgba(247,241,228,.6)}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .about-grid,.loc-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  nav.links{
+    position:fixed;inset:0 0 auto 0;background:var(--cream);flex-direction:column;gap:.2rem;
+    padding:5.5rem 2rem 2rem;box-shadow:var(--shadow);transform:translateY(-110%);transition:transform .45s cubic-bezier(.22,1,.36,1)
+  }
+  nav.links.open{transform:none}
+  nav.links a{font-size:1rem;padding:.7rem 0;border-bottom:1px solid var(--line);width:100%}
+  .burger{display:block}
+  .nav-cta{display:none}
+  .foot-grid{grid-template-columns:1fr}
+  .map-bar .acts{margin-left:0;width:100%}
+  .map-badge{max-width:78%}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ patterns ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <pattern id="suzani" width="120" height="120" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#d99a2b" stroke-width="1.1" opacity=".9">
+        <path d="M60 12 L72 40 L102 40 L78 58 L88 88 L60 70 L32 88 L42 58 L18 40 L48 40 Z"/>
+        <circle cx="60" cy="60" r="26"/><circle cx="60" cy="60" r="6"/>
+        <path d="M0 60 H14 M106 60 H120 M60 0 V8 M60 112 V120"/>
+        <path d="M0 0 L14 14 M120 0 L106 14 M0 120 L14 106 M120 120 L106 106"/>
+      </g>
+    </pattern>
+    <pattern id="suzani-cream" width="120" height="120" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#f7f1e4" stroke-width="1.1" opacity=".9">
+        <path d="M60 12 L72 40 L102 40 L78 58 L88 88 L60 70 L32 88 L42 58 L18 40 L48 40 Z"/>
+        <circle cx="60" cy="60" r="26"/><circle cx="60" cy="60" r="6"/>
+        <path d="M0 60 H14 M106 60 H120 M60 0 V8 M60 112 V120"/>
+        <path d="M0 0 L14 14 M120 0 L106 14 M0 120 L14 106 M120 120 L106 106"/>
+      </g>
+    </pattern>
+  </defs>
+</svg>
+
+<!-- ============ nav ============ -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top">
+    <svg class="mark" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <path d="M24 4 C30 12 38 14 38 24 C38 33 32 40 24 44 C16 40 10 33 10 24 C10 14 18 12 24 4 Z"/>
+      <path d="M24 14 v22 M24 20 c-4 0-7-2-8-5 M24 26 c4 0 7-2 8-5"/>
+    </svg>
+    <span>
+      <b>GUZAR</b>
+      <span data-pl="Garden · Warszawa" data-en="Garden · Warsaw" data-ru="Garden · Варшава">Garden · Warszawa</span>
+    </span>
+  </a>
+  <nav class="links" id="links">
+    <a href="#o-nas" data-pl="O nas" data-en="About" data-ru="О нас">O nas</a>
+    <a href="#kuchnia" data-pl="Kuchnia" data-en="The cuisine" data-ru="Кухня">Kuchnia</a>
+    <a class="ext" href="https://heyzine.com/flip-book/3a78a98031.html" target="_blank" rel="noopener" data-pl="Karta dań" data-en="Menu" data-ru="Меню">Karta dań</a>
+    <a href="#miejsce" data-pl="Miejsce" data-en="The venue" data-ru="Место">Miejsce</a>
+    <a href="#kontakt" data-pl="Kontakt" data-en="Contact" data-ru="Контакты">Kontakt</a>
+  </nav>
+  <div class="nav-tools">
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" class="on" data-lang="pl">PL</button>
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="ru">RU</button>
+    </div>
+    <a class="btn nav-cta" href="tel:+48570088888" data-pl="Rezerwacja" data-en="Book a table" data-ru="Бронь">Rezerwacja</a>
+    <button class="burger" id="burger" aria-label="Menu">Menu</button>
+  </div>
+</header>
+
+<!-- ============ hero ============ -->
+<section class="hero" id="top">
+  <svg class="tile" aria-hidden="true"><rect width="100%" height="100%" fill="url(#suzani)"/></svg>
+  <div class="vig"></div>
+  <div class="hero-inner">
+    <span class="status" id="status"><span class="dot" id="statusDot"></span><span id="statusTxt">—</span></span>
+    <h1>GUZAR <em>Garden</em></h1>
+    <p class="sub" data-pl="Restauracja uzbecka &amp; grill halal · Praga-Południe" data-en="Uzbek restaurant &amp; halal grill · Praga-Południe" data-ru="Узбекский ресторан и халяльный гриль · Прага-Полудне">Restauracja uzbecka &amp; grill halal · Praga-Południe</p>
+    <p class="lede" data-pl="Plow z kazana, manty lepione ręcznie i samsa prosto z pieca tandoor — u bram Parku Skaryszewskiego." data-en="Kazan plov, hand-folded manti and samsa straight from the tandoor — at the gates of Skaryszewski Park." data-ru="Плов из казана, манты ручной лепки и самса прямо из тандыра — у ворот парка Скарышевского.">Plow z kazana, manty lepione ręcznie i samsa prosto z pieca tandoor — u bram Parku Skaryszewskiego.</p>
+    <div class="hero-cta">
+      <a class="btn light" href="https://heyzine.com/flip-book/3a78a98031.html" target="_blank" rel="noopener" data-pl="Zobacz menu" data-en="See the menu" data-ru="Смотреть меню">Zobacz menu</a>
+      <a class="btn outline" href="tel:+48570088888">+48 570 088 888</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><span data-pl="Przewiń" data-en="Scroll" data-ru="Листайте">Przewiń</span><i></i></div>
+</section>
+
+<!-- ============ marquee ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Plow</span><span>Manty</span><span>Samsa</span><span>Lagman</span><span>Szaszłyk</span><span>Tandoor</span><span>Kazan</span><span>Halal</span>
+    <span>Plow</span><span>Manty</span><span>Samsa</span><span>Lagman</span><span>Szaszłyk</span><span>Tandoor</span><span>Kazan</span><span>Halal</span>
+  </div>
+</div>
+
+<!-- ============ about ============ -->
+<section class="sec about" id="o-nas">
+  <div class="wrap about-grid">
+    <div class="rv">
+      <p class="eyebrow" data-pl="Nasza historia" data-en="Our story" data-ru="Наша история">Nasza historia</p>
+      <h2 data-pl="Uzbecka gościnność w sercu Pragi" data-en="Uzbek hospitality in the heart of Praga" data-ru="Узбекское гостеприимство в сердце Праги">Uzbecka gościnność w sercu Pragi</h2>
+      <svg class="orn" viewBox="0 0 120 22" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <path d="M0 11h40M80 11h40"/><path d="M60 3l6 8-6 8-6-8z"/><circle cx="48" cy="11" r="3"/><circle cx="72" cy="11" r="3"/>
+      </svg>
+      <p class="big-first" data-pl="Guzar to po uzbecku miejsce spotkań — plac, na którym zbiega się cała dzielnica. Guzar Garden przenosi ten zwyczaj do Warszawy: duża sala, ogród przy Parku Skaryszewskim, kominek na chłodniejsze wieczory i stoły, przy których siada się na dłużej." data-en="In Uzbek, a guzar is a meeting place — the square where a whole neighbourhood comes together. Guzar Garden brings that habit to Warsaw: a big dining room, a garden by Skaryszewski Park, a fireplace for colder evenings, and tables you settle into for hours." data-ru="Гузар по-узбекски — место встреч, площадь, где сходится весь квартал. Guzar Garden переносит этот обычай в Варшаву: большой зал, сад у парка Скарышевского, камин для прохладных вечеров и столы, за которыми задерживаются надолго.">Guzar to po uzbecku miejsce spotkań — plac, na którym zbiega się cała dzielnica. Guzar Garden przenosi ten zwyczaj do Warszawy: duża sala, ogród przy Parku Skaryszewskim, kominek na chłodniejsze wieczory i stoły, przy których siada się na dłużej.</p>
+      <p data-pl="Gotujemy tak, jak w Samarkandzie i Bucharze: plow dusi się w ciężkim kazanie, samsa piecze się na ściankach tandoora, makaron do lagmanu ciągnie się ręcznie, a mięso — w całości halal — trafia prosto na węgiel. Herbatę podajemy w czajniku, bo posiłek zaczyna się i kończy przy herbacie." data-en="We cook the way Samarkand and Bukhara do: plov simmers in a heavy kazan, samsa bakes on the tandoor wall, lagman noodles are pulled by hand, and the meat — all halal — goes straight over charcoal. Tea arrives in a pot, because a meal begins and ends with tea." data-ru="Мы готовим так, как готовят в Самарканде и Бухаре: плов томится в тяжёлом казане, самса печётся на стенках тандыра, лапшу для лагмана тянут вручную, а мясо — полностью халяль — идёт прямо на угли. Чай подаём в чайнике, ведь трапеза начинается и заканчивается чаем.">Gotujemy tak, jak w Samarkandzie i Bucharze: plow dusi się w ciężkim kazanie, samsa piecze się na ściankach tandoora, makaron do lagmanu ciągnie się ręcznie, a mięso — w całości halal — trafia prosto na węgiel. Herbatę podajemy w czajniku, bo posiłek zaczyna się i kończy przy herbacie.</p>
+    </div>
+    <div class="stats rv">
+      <div class="stat"><b>4.7</b><small data-pl="Ocena Google" data-en="Google rating" data-ru="Оценка Google">Ocena Google</small></div>
+      <div class="stat"><b>2900+</b><small data-pl="Opinii gości" data-en="Guest reviews" data-ru="Отзывов гостей">Opinii gości</small></div>
+      <div class="stat"><b>100%</b><small>Halal</small></div>
+      <div class="stat"><b class="small">9:00 – 24:00</b><small data-pl="Codziennie" data-en="Every day" data-ru="Ежедневно">Codziennie</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ what uzbek food is ============ -->
+<section class="sec kitchen" id="kuchnia">
+  <svg class="tile" aria-hidden="true"><rect width="100%" height="100%" fill="url(#suzani-cream)"/></svg>
+  <div class="wrap">
+    <div class="kitchen-head rv">
+      <p class="eyebrow" data-pl="Kuchnia uzbecka" data-en="Uzbek cuisine" data-ru="Узбекская кухня">Kuchnia uzbecka</p>
+      <h2 data-pl="Czym jest kuchnia uzbecka" data-en="What Uzbek cooking is" data-ru="Что такое узбекская кухня">Czym jest kuchnia uzbecka</h2>
+      <svg class="orn center" viewBox="0 0 120 22" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <path d="M0 11h40M80 11h40"/><path d="M60 3l6 8-6 8-6-8z"/><circle cx="48" cy="11" r="3"/><circle cx="72" cy="11" r="3"/>
+      </svg>
+      <p class="lede" data-pl="Uzbekistan leży na skrzyżowaniu Jedwabnego Szlaku — i takim samym skrzyżowaniem jest jego kuchnia. Perska cierpliwość, turecki ogień, chińskie ciągnione ciasto i step, który nauczył gotować z niewielu składników, ale długo. Je się powoli, z jednego stołu i nigdy w pojedynkę." data-en="Uzbekistan sits at the crossroads of the Silk Road, and its cooking is a crossroads too. Persian patience, Turkic fire, Chinese hand-pulled dough, and a steppe that taught people to cook with few ingredients but plenty of time. You eat slowly, from one shared table, and never alone." data-ru="Узбекистан лежит на перекрёстке Великого шёлкового пути — и его кухня такой же перекрёсток. Персидское терпение, тюркский огонь, китайское тянутое тесто и степь, научившая готовить из немногого, но долго. Едят медленно, за общим столом и никогда в одиночку.">Uzbekistan leży na skrzyżowaniu Jedwabnego Szlaku — i takim samym skrzyżowaniem jest jego kuchnia. Perska cierpliwość, turecki ogień, chińskie ciągnione ciasto i step, który nauczył gotować z niewielu składników, ale długo. Je się powoli, z jednego stołu i nigdy w pojedynkę.</p>
+    </div>
+
+    <div class="pillars rv">
+      <article class="pillar">
+        <span class="num">01</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M8 20h32a16 16 0 0 1-16 16A16 16 0 0 1 8 20Z"/><path d="M4 20h40M14 36l-3 6M34 36l3 6"/><path d="M18 12c0-3 3-3 3-6M27 12c0-3 3-3 3-6"/></svg>
+        <h3 data-pl="Kazan" data-en="Kazan" data-ru="Казан">Kazan</h3>
+        <span class="uz" data-pl="Żeliwny kocioł" data-en="The cast-iron cauldron" data-ru="Чугунный котёл">Żeliwny kocioł</span>
+        <p data-pl="Ciężki kocioł, w którym wszystko dzieje się powoli: ryż pije tłuszcz i przyprawy, mięso mięknie godzinami. Nic się tu nie śpieszy." data-en="A heavy pot where everything happens slowly: rice drinks up the fat and the spice, meat softens for hours. Nothing here is rushed." data-ru="Тяжёлый котёл, где всё происходит медленно: рис впитывает жир и специи, мясо размягчается часами. Здесь ничего не торопят.">Ciężki kocioł, w którym wszystko dzieje się powoli: ryż pije tłuszcz i przyprawy, mięso mięknie godzinami. Nic się tu nie śpieszy.</p>
+      </article>
+
+      <article class="pillar">
+        <span class="num">02</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M14 42V22a10 10 0 0 1 20 0v20Z"/><path d="M10 42h28M18 22h12"/><path d="M24 16c0-4-4-5-4-9M31 16c0-3-3-4-3-7"/></svg>
+        <h3 data-pl="Tandoor" data-en="Tandoor" data-ru="Тандыр">Tandoor</h3>
+        <span class="uz" data-pl="Gliniany piec" data-en="The clay oven" data-ru="Глиняная печь">Gliniany piec</span>
+        <p data-pl="Rozgrzana glina, do której przykleja się ciasto. Chleb i samsa wychodzą z niej chrupiące z wierzchu i miękkie w środku." data-en="Searing clay walls that dough is pressed onto. Bread and samsa come out crisp outside and soft within." data-ru="Раскалённая глина, к которой приклеивают тесто. Лепёшки и самса выходят хрустящими снаружи и мягкими внутри.">Rozgrzana glina, do której przykleja się ciasto. Chleb i samsa wychodzą z niej chrupiące z wierzchu i miękkie w środku.</p>
+      </article>
+
+      <article class="pillar">
+        <span class="num">03</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M6 16h36M6 26h36M6 36h36"/><circle cx="16" cy="16" r="2.5"/><circle cx="28" cy="16" r="2.5"/><circle cx="20" cy="26" r="2.5"/><circle cx="32" cy="26" r="2.5"/><circle cx="16" cy="36" r="2.5"/><circle cx="28" cy="36" r="2.5"/></svg>
+        <h3 data-pl="Ogień" data-en="Fire" data-ru="Огонь">Ogień</h3>
+        <span class="uz" data-pl="Szaszłyk z węgla" data-en="Charcoal skewers" data-ru="Шашлык на углях">Szaszłyk z węgla</span>
+        <p data-pl="Mięso marynowane w cebuli i kminie, nad samym węglem, obracane ręcznie. Prosty gest, którego nie da się przyspieszyć." data-en="Meat marinated in onion and cumin, held right over the coals and turned by hand. A simple gesture you cannot hurry." data-ru="Мясо, маринованное в луке и зире, прямо над углями, переворачивают вручную. Простой жест, который нельзя ускорить.">Mięso marynowane w cebuli i kminie, nad samym węglem, obracane ręcznie. Prosty gest, którego nie da się przyspieszyć.</p>
+      </article>
+
+      <article class="pillar">
+        <span class="num">04</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round"><circle cx="24" cy="24" r="15"/><circle cx="24" cy="24" r="7"/><path d="M24 9v6M24 33v6M9 24h6M33 24h6M13.4 13.4l4.3 4.3M30.3 30.3l4.3 4.3M34.6 13.4l-4.3 4.3M17.7 30.3l-4.3 4.3"/></svg>
+        <h3 data-pl="Dastarchan" data-en="Dastarkhan" data-ru="Дастархан">Dastarchan</h3>
+        <span class="uz" data-pl="Wspólny stół" data-en="The shared table" data-ru="Общий стол">Wspólny stół</span>
+        <p data-pl="Najpierw herbata, potem chleb łamany w dłoniach, a dania stawia się na środku — dla wszystkich naraz. Gość siada tam, skąd widać cały stół." data-en="Tea first, then bread broken by hand, and the dishes set in the middle — for everyone at once. The guest is seated where the whole table is in view." data-ru="Сначала чай, потом хлеб, разломленный руками, а блюда ставят в середину — сразу для всех. Гостя сажают там, откуда виден весь стол.">Najpierw herbata, potem chleb łamany w dłoniach, a dania stawia się na środku — dla wszystkich naraz. Gość siada tam, skąd widać cały stół.</p>
+      </article>
+    </div>
+
+    <div class="quote rv">
+      <p data-pl="„Gościa nie pyta się, czy jest głodny. Stawia się jedzenie na stole.”" data-en="&ldquo;You don't ask a guest whether they're hungry. You put food on the table.&rdquo;" data-ru="«Гостя не спрашивают, голоден ли он. Еду просто ставят на стол.»">„Gościa nie pyta się, czy jest głodny. Stawia się jedzenie na stole.”</p>
+      <span data-pl="Uzbeckie przysłowie" data-en="Uzbek saying" data-ru="Узбекская поговорка">Uzbeckie przysłowie</span>
+    </div>
+
+    <div class="kitchen-cta rv">
+      <a class="btn light" href="https://heyzine.com/flip-book/3a78a98031.html" target="_blank" rel="noopener" data-pl="Zobacz pełną kartę dań" data-en="See the full menu" data-ru="Смотреть полное меню">Zobacz pełną kartę dań</a>
+      <small data-pl="Wszystko halal · chleb i samsa z tandoora · opcje wegetariańskie" data-en="All halal · bread and samsa from the tandoor · vegetarian options" data-ru="Всё халяль · лепёшки и самса из тандыра · вегетарианские блюда">Wszystko halal · chleb i samsa z tandoora · opcje wegetariańskie</small>
+    </div>
+  </div>
+</section>
+
+<!-- ============ venue ============ -->
+<section class="sec feat">
+  <div class="wrap">
+    <p class="eyebrow rv" data-pl="Miejsce" data-en="The venue" data-ru="Место">Miejsce</p>
+    <h2 class="rv" style="font-size:clamp(2rem,4.2vw,3rem);margin-bottom:2.6rem" data-pl="Sala, ogród i miejsce na wielkie stoły" data-en="A hall, a garden and room for long tables" data-ru="Зал, сад и место для больших столов">Sala, ogród i miejsce na wielkie stoły</h2>
+    <div class="feat-grid rv">
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c4 4 7 6 7 10a7 7 0 1 1-14 0c0-4 3-6 7-10Z"/></svg><b data-pl="Ogród" data-en="Garden" data-ru="Сад">Ogród</b><small data-pl="Stoliki na zewnątrz przy Parku Skaryszewskim" data-en="Outdoor tables beside Skaryszewski Park" data-ru="Столики на улице у парка Скарышевского">Stoliki na zewnątrz przy Parku Skaryszewskim</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg><b data-pl="Kominek" data-en="Fireplace" data-ru="Камин">Kominek</b><small data-pl="Ciepła sala na jesienne i zimowe wieczory" data-en="A warm room for autumn and winter evenings" data-ru="Тёплый зал для осенних и зимних вечеров">Ciepła sala na jesienne i zimowe wieczory</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg><b data-pl="Muzyka na żywo" data-en="Live music" data-ru="Живая музыка">Muzyka na żywo</b><small data-pl="Wieczory z muzyką w wybrane dni" data-en="Music nights on selected days" data-ru="Музыкальные вечера по отдельным дням">Wieczory z muzyką w wybrane dni</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg><b data-pl="Imprezy i wesela" data-en="Events &amp; weddings" data-ru="Банкеты и свадьбы">Imprezy i wesela</b><small data-pl="Sala na przyjęcia i duże grupy" data-en="Private room for parties and large groups" data-ru="Зал для торжеств и больших компаний">Sala na przyjęcia i duże grupy</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/><path d="M2 9a15 15 0 0 1 20 0"/></svg><b>Wi-Fi</b><small data-pl="Darmowy internet dla gości" data-en="Free internet for guests" data-ru="Бесплатный интернет для гостей">Darmowy internet dla gości</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9.5 17V7h3a3 3 0 0 1 0 6h-3"/></svg><b data-pl="Parking" data-en="Parking" data-ru="Парковка">Parking</b><small data-pl="Własne miejsca parkingowe dla gości przy restauracji" data-en="Our own guest parking spaces at the restaurant" data-ru="Собственные парковочные места для гостей у ресторана">Własne miejsca parkingowe dla gości przy restauracji</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="4" r="2"/><path d="M10 8v6h6l3 6M10 14l-3 6"/></svg><b data-pl="Dostępność" data-en="Accessible" data-ru="Доступность">Dostępność</b><small data-pl="Wejście i toaleta bez barier" data-en="Step-free entrance and restroom" data-ru="Вход и туалет без барьеров">Wejście i toaleta bez barier</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ location ============ -->
+<section class="sec loc" id="miejsce">
+  <div class="wrap loc-grid">
+    <div class="rv">
+      <p class="eyebrow" data-pl="Jak trafić" data-en="Find us" data-ru="Как добраться">Jak trafić</p>
+      <h2>Aleja Zieleniecka 6/8</h2>
+      <svg class="orn" viewBox="0 0 120 22" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <path d="M0 11h40M80 11h40"/><path d="M60 3l6 8-6 8-6-8z"/><circle cx="48" cy="11" r="3"/><circle cx="72" cy="11" r="3"/>
+      </svg>
+
+      <div class="info-block">
+        <h4 data-pl="Adres" data-en="Address" data-ru="Адрес">Adres</h4>
+        <p>al. Zieleniecka 6/8<br>03-727 Warszawa, Praga-Południe</p>
+        <small data-pl="Przy północnym narożniku Parku Skaryszewskiego, kilka minut od Ronda Waszyngtona." data-en="At the northern corner of Skaryszewski Park, a few minutes from Rondo Waszyngtona." data-ru="У северного угла парка Скарышевского, в нескольких минутах от Rondo Waszyngtona.">Przy północnym narożniku Parku Skaryszewskiego, kilka minut od Ronda Waszyngtona.</small>
+      </div>
+
+      <div class="info-block">
+        <h4 data-pl="Godziny otwarcia" data-en="Opening hours" data-ru="Часы работы">Godziny otwarcia</h4>
+        <ul class="hours" id="hours"></ul>
+        <small data-pl="Śniadania, obiady i kolacje. Kuchnia pracuje do późna." data-en="Breakfast, lunch and dinner. The kitchen runs late." data-ru="Завтраки, обеды и ужины. Кухня работает допоздна.">Śniadania, obiady i kolacje. Kuchnia pracuje do późna.</small>
+      </div>
+
+      <div class="info-block">
+        <h4 data-pl="Dojazd" data-en="Getting here" data-ru="Как доехать">Dojazd</h4>
+        <p data-pl="Metro M2 Stadion Narodowy — 900 m" data-en="Metro M2 Stadion Narodowy — 900 m" data-ru="Метро M2 Stadion Narodowy — 900 м">Metro M2 Stadion Narodowy — 900 m</p>
+        <small data-pl="Tramwaje i autobusy: Rondo Waszyngtona." data-en="Trams and buses: Rondo Waszyngtona." data-ru="Трамваи и автобусы: Rondo Waszyngtona.">Tramwaje i autobusy: Rondo Waszyngtona.</small>
+      </div>
+
+      <div class="info-block">
+        <h4 data-pl="Parking" data-en="Parking" data-ru="Парковка">Parking</h4>
+        <p data-pl="Własny parking dla gości" data-en="Our own guest parking" data-ru="Собственная парковка для гостей">Własny parking dla gości</p>
+        <small data-pl="Miejsca parkingowe przy restauracji — przyjedź samochodem bez szukania miejsca wokół parku." data-en="Parking spaces right at the restaurant — drive over without hunting for a spot around the park." data-ru="Парковочные места прямо у ресторана — приезжайте на машине, не ища место вокруг парка.">Miejsca parkingowe przy restauracji — przyjedź samochodem bez szukania miejsca wokół parku.</small>
+      </div>
+
+      <div class="info-block">
+        <h4 data-pl="Rezerwacje" data-en="Reservations" data-ru="Бронирование">Rezerwacje</h4>
+        <p><a href="tel:+48570088888">+48 570 088 888</a></p>
+        <small data-pl="Rezerwacje telefoniczne — także dla dużych grup." data-en="By phone — large groups welcome." data-ru="Бронирование по телефону — в том числе для больших компаний.">Rezerwacje telefoniczne — także dla dużych grup.</small>
+      </div>
+    </div>
+
+    <div class="rv">
+      <div class="mapcard">
+        <div class="map-frame">
+          <div class="map-badge">
+            <b>Guzar Garden</b>
+            <small data-pl="Restauracja uzbecka &amp; grill halal" data-en="Uzbek restaurant &amp; halal grill" data-ru="Узбекский ресторан и халяльный гриль">Restauracja uzbecka &amp; grill halal</small>
+          </div>
+          <iframe
+            id="gmap"
+            title="Guzar Garden — Google Maps"
+            src="https://maps.google.com/maps?q=Guzar%20Garden%2C%20aleja%20Zieleniecka%206%2F8%2C%2003-727%20Warszawa&amp;z=16&amp;hl=pl&amp;output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+          <div class="sheen"></div>
+        </div>
+        <div class="map-bar">
+          <span class="coords">52.2441° N · 21.0497° E</span>
+          <span class="acts">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Guzar+Garden+aleja+Zieleniecka+6%2F8+03-727+Warszawa" target="_blank" rel="noopener" data-pl="Wyznacz trasę" data-en="Get directions" data-ru="Проложить маршрут">Wyznacz trasę</a>
+            <a href="https://maps.app.goo.gl/3WL53ikiXv6bY1CJ7" target="_blank" rel="noopener" data-pl="Otwórz w Mapach Google" data-en="Open in Google Maps" data-ru="Открыть в Google Картах">Otwórz w Mapach Google</a>
+          </span>
+        </div>
+        <p class="map-hint" data-pl="Najedź na mapę, aby zobaczyć ją w pełnych kolorach." data-en="Hover the map to see it in full colour." data-ru="Наведите курсор на карту, чтобы увидеть её в полном цвете.">Najedź na mapę, aby zobaczyć ją w pełnych kolorach.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ footer ============ -->
+<footer id="kontakt">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="display">GUZAR GARDEN</span>
+        <p data-pl="Restauracja uzbecka &amp; grill halal. Aleja Zieleniecka 6/8, Warszawa." data-en="Uzbek restaurant &amp; halal grill. Aleja Zieleniecka 6/8, Warsaw." data-ru="Узбекский ресторан и халяльный гриль. Aleja Zieleniecka 6/8, Варшава.">Restauracja uzbecka &amp; grill halal. Aleja Zieleniecka 6/8, Warszawa.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/guzar_garden_restauracja/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.facebook.com/p/Guzar-Garden-Restauracja-Uzbecka-Grill-61579770369680/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.5-1.5H17V4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.6v3h2.7v8z"/></svg>
+          </a>
+          <a href="tel:+48570088888" aria-label="Telefon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L16 13l5 2v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4 5.2 2 2 0 0 1 6 3Z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h5 data-pl="Godziny" data-en="Hours" data-ru="Часы работы">Godziny</h5>
+        <ul>
+          <li data-pl="Poniedziałek – Niedziela" data-en="Monday – Sunday" data-ru="Понедельник – Воскресенье">Poniedziałek – Niedziela</li>
+          <li style="color:var(--cream);font-family:var(--serif);font-size:1.3rem">9:00 – 24:00</li>
+          <li data-pl="Śniadania · Obiady · Kolacje" data-en="Breakfast · Lunch · Dinner" data-ru="Завтраки · Обеды · Ужины">Śniadania · Obiady · Kolacje</li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-pl="Kontakt" data-en="Contact" data-ru="Контакты">Kontakt</h5>
+        <ul>
+          <li><a href="tel:+48570088888">+48 570 088 888</a></li>
+          <li><a href="https://maps.app.goo.gl/3WL53ikiXv6bY1CJ7" target="_blank" rel="noopener">al. Zieleniecka 6/8<br>03-727 Warszawa</a></li>
+          <li><a href="https://heyzine.com/flip-book/3a78a98031.html" target="_blank" rel="noopener" data-pl="Karta dań" data-en="Menu" data-ru="Меню">Karta dań</a></li>
+          <li><a href="https://www.instagram.com/guzar_garden_restauracja/" target="_blank" rel="noopener">@guzar_garden_restauracja</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>© <span id="yr">2026</span> Guzar Garden · <span data-pl="Wszelkie prawa zastrzeżone" data-en="All rights reserved" data-ru="Все права защищены">Wszelkie prawa zastrzeżone</span></span>
+      <span data-pl="Projekt koncepcyjny: &lt;a href=&quot;https://atlasophy.co&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Atlasophy&lt;/a&gt;" data-en="Concept design by &lt;a href=&quot;https://atlasophy.co&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Atlasophy&lt;/a&gt;" data-ru="Концепт: &lt;a href=&quot;https://atlasophy.co&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Atlasophy&lt;/a&gt;">Projekt koncepcyjny: <a href="https://atlasophy.co" target="_blank" rel="noopener">Atlasophy</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------------- i18n ---------------- */
+const DAYS={
+  pl:['Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota','Niedziela'],
+  en:['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+  ru:['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье']
+};
+const STATUS={
+  pl:{open:'Otwarte teraz · do 24:00',shut:'Zamknięte · otwieramy o 9:00'},
+  en:{open:'Open now · until midnight',shut:'Closed · we open at 9:00'},
+  ru:{open:'Открыто сейчас · до 24:00',shut:'Закрыто · открываемся в 9:00'}
+};
+const OPEN=9,CLOSE=24,HOURS_TXT='9:00 – 24:00';
+let LANG='pl';
+
+function renderHours(){
+  const todayIdx=(new Date().getDay()+6)%7; // 0 = Monday
+  document.getElementById('hours').innerHTML=DAYS[LANG].map((d,i)=>
+    `<li class="${i===todayIdx?'today':''}"><span class="day">${d}</span><span class="dots"></span><span class="h">${HOURS_TXT}</span></li>`
+  ).join('');
+}
+
+function updateStatus(){
+  const now=new Date(),h=now.getHours()+now.getMinutes()/60,open=h>=OPEN&&h<CLOSE;
+  document.getElementById('statusDot').classList.toggle('shut',!open);
+  document.getElementById('statusTxt').textContent=STATUS[LANG][open?'open':'shut'];
+}
+
+function setLang(l){
+  LANG=l;
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-pl]').forEach(el=>{
+    const v=el.getAttribute('data-'+l);
+    if(v!==null)el.innerHTML=v;
+  });
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+  const map=document.getElementById('gmap');
+  const want=l==='ru'?'ru':(l==='en'?'en':'pl');
+  if(map.src.indexOf('hl='+want)===-1)map.src=map.src.replace(/hl=[a-z]{2}/,'hl='+want);
+  try{localStorage.setItem('gg-lang',l)}catch(e){}
+  renderHours();updateStatus();
+}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+
+let saved=null;try{saved=localStorage.getItem('gg-lang')}catch(e){}
+setLang(saved&&DAYS[saved]?saved:'pl');
+setInterval(updateStatus,60000);
+
+/* ---------------- nav & reveal ---------------- */
+const nav=document.getElementById('nav'),links=document.getElementById('links');
+addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>60),{passive:true});
+document.getElementById('burger').addEventListener('click',()=>links.classList.toggle('open'));
+links.addEventListener('click',e=>{if(e.target.tagName==='A')links.classList.remove('open')});
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
