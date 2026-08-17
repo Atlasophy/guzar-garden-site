@@ -126,22 +126,38 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.9
 </head>
 <body>
 
+<!-- Guzar Garden rosette — the house logo as vector, tiled as the background. -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <pattern id="suz" width="120" height="120" patternUnits="userSpaceOnUse">
-    <g fill="none" stroke="#f7f1e4" stroke-width="1.1" opacity=".9">
-      <path d="M60 12 L72 40 L102 40 L78 58 L88 88 L60 70 L32 88 L42 58 L18 40 L48 40 Z"/>
-      <circle cx="60" cy="60" r="26"/><circle cx="60" cy="60" r="6"/>
-      <path d="M0 60 H14 M106 60 H120 M60 0 V8 M60 112 V120"/>
-      <path d="M0 0 L14 14 M120 0 L106 14 M0 120 L14 106 M120 120 L106 106"/>
-    </g>
+  <path id="gg-petal" stroke="none" d="M50 25C54.4 31.8 56.3 37.2 50 41.6C43.7 37.2 45.6 31.8 50 25Z"/>
+  <path id="gg-curl-r" fill="none" stroke-width="5.6" stroke-linecap="round" stroke-linejoin="round"
+        d="M50 21.5C57.5 13.2 70.2 16.4 72.2 27.1C73.7 35.2 65.4 41.7 59.4 37.9C55.1 35.2 55.7 29.8 59.9 28.9"/>
+  <path id="gg-curl-l" fill="none" stroke-width="5.6" stroke-linecap="round" stroke-linejoin="round"
+        d="M50 21.5C42.5 13.2 29.8 16.4 27.8 27.1C26.3 35.2 34.6 41.7 40.6 37.9C44.9 35.2 44.3 29.8 40.1 28.9"/>
+  <path id="gg-wedge" stroke="none" d="M50 4.4C53.7 4.4 56.5 7.5 56 11.2C53.6 9.7 46.4 9.7 44 11.2C43.5 7.5 46.3 4.4 50 4.4Z"/>
+  <g id="gg-rosette">
+    <circle cx="50" cy="50" r="6.4" stroke="none"/>
+    <use href="#gg-petal"/><use href="#gg-petal" transform="rotate(45 50 50)"/>
+    <use href="#gg-petal" transform="rotate(90 50 50)"/><use href="#gg-petal" transform="rotate(135 50 50)"/>
+    <use href="#gg-petal" transform="rotate(180 50 50)"/><use href="#gg-petal" transform="rotate(225 50 50)"/>
+    <use href="#gg-petal" transform="rotate(270 50 50)"/><use href="#gg-petal" transform="rotate(315 50 50)"/>
+    <use href="#gg-curl-r"/><use href="#gg-curl-l"/>
+    <use href="#gg-curl-r" transform="rotate(90 50 50)"/><use href="#gg-curl-l" transform="rotate(90 50 50)"/>
+    <use href="#gg-curl-r" transform="rotate(180 50 50)"/><use href="#gg-curl-l" transform="rotate(180 50 50)"/>
+    <use href="#gg-curl-r" transform="rotate(270 50 50)"/><use href="#gg-curl-l" transform="rotate(270 50 50)"/>
+    <use href="#gg-wedge" transform="rotate(22.5 50 50)"/><use href="#gg-wedge" transform="rotate(67.5 50 50)"/>
+    <use href="#gg-wedge" transform="rotate(112.5 50 50)"/><use href="#gg-wedge" transform="rotate(157.5 50 50)"/>
+    <use href="#gg-wedge" transform="rotate(202.5 50 50)"/><use href="#gg-wedge" transform="rotate(247.5 50 50)"/>
+    <use href="#gg-wedge" transform="rotate(292.5 50 50)"/><use href="#gg-wedge" transform="rotate(337.5 50 50)"/>
+  </g>
+  <pattern id="rosette-cream" width="72" height="72" patternUnits="userSpaceOnUse">
+    <use href="#gg-rosette" transform="scale(0.72)" fill="#f7f1e4" stroke="#f7f1e4"/>
   </pattern>
 </defs></svg>
 
 <header class="nav">
   <a class="brand" href="index.html">
-    <svg class="mark" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-      <path d="M24 4 C30 12 38 14 38 24 C38 33 32 40 24 44 C16 40 10 33 10 24 C10 14 18 12 24 4 Z"/>
-      <path d="M24 14 v22 M24 20 c-4 0-7-2-8-5 M24 26 c4 0 7-2 8-5"/>
+    <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+      <use href="#gg-rosette" transform="scale(0.48)" fill="currentColor" stroke="currentColor"/>
     </svg>
     <span><b>GUZAR</b><span data-pl="Garden · Warszawa" data-en="Garden · Warsaw" data-ru="Garden · Варшава">Garden · Warszawa</span></span>
   </a>
@@ -157,7 +173,7 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.9
 </header>
 
 <section class="mast">
-  <svg class="tile" aria-hidden="true"><rect width="100%" height="100%" fill="url(#suz)"/></svg>
+  <svg class="tile" aria-hidden="true"><rect width="100%" height="100%" fill="url(#rosette-cream)"/></svg>
   <p class="eyebrow" data-pl="Guzar Garden · Aleja Zieleniecka 6/8" data-en="Guzar Garden · Aleja Zieleniecka 6/8" data-ru="Guzar Garden · Aleja Zieleniecka 6/8">Guzar Garden · Aleja Zieleniecka 6/8</p>
   <h1 data-pl="Karta <em>dań</em>" data-en="The <em>menu</em>" data-ru="<em>Меню</em>">Karta <em>dań</em></h1>
   <p data-pl="Plow z kazana, samsa z pieca tandoor, ręcznie ciągnięty lagman i szaszłyki prosto z węgla. Kuchnia uzbecka, w całości halal." data-en="Kazan plov, samsa from the tandoor, hand-pulled lagman and skewers straight off the charcoal. Uzbek cooking, fully halal." data-ru="Плов из казана, самса из тандыра, лагман ручной вытяжки и шашлыки прямо с углей. Узбекская кухня, полностью халяль.">Plow z kazana, samsa z pieca tandoor, ręcznie ciągnięty lagman i szaszłyki prosto z węgla. Kuchnia uzbecka, w całości halal.</p>
@@ -388,11 +404,58 @@ const SECTIONS=[
 ]}
 ];
 
-let LANG='pl';
-const menuEl=document.getElementById('menu');
-const chipsEl=document.getElementById('chips');
-const emptyEl=document.getElementById('empty');
-let q='';
+/* Search aliases, so a guest can type in their own language and script.
+   Dish names stay in Latin on the card, so "самса" or "skewer" would
+   otherwise find nothing. */
+const SEC_ALIAS={
+ salaty:'salad салат salatka przystawka starter zakuska закуска',
+ zupy:'soup суп zupa broth бульон',
+ dania:'main mains danie основное горячее hot dish',
+ piec:'tandoor тандыр pastry выпечка pieczywo baked',
+ grill:'grill гриль bbq skewer kebab шашлык мангал charcoal',
+ parze:'steamed на пару dumpling dumplings пельмени вареное',
+ zestawy:'set sets сет комбо combo lunch obiad бизнес-ланч',
+ chleb:'bread хлеб лепешка лепёшка non nan patir',
+ dodatki:'side sides гарнир sauce соус dip приправа',
+ desery:'dessert десерт sweet сладкое cake торт пирожное',
+ napoje:'drink drinks напиток напитки soft cold холодные lemoniada',
+ herbaty:'tea чай coffee кофе hot горячие napoje',
+ mocktails:'mocktail моктейль cocktail коктейль bezalkoholowy безалкогольный',
+ specials:'special specials спешл signature фирменный'
+};
+const ITEM_ALIAS={
+ 'Plow':'плов palov pilaf osh ош','Plow samarkandski':'плов самаркандский',
+ 'Czajhana plow':'плов чайхана chaikhana','Kazi':'казы kazy',
+ 'Manty':'манты manti','Manty z szpinakiem':'манты шпинат spinach',
+ 'Gulmanti':'гулманты gulmanti','Chonim':'хоним khonim',
+ 'Samsa':'самса somsa sambusa','Samsa duża':'самса большая big',
+ 'Tomchi samsa':'самса томчи tomchi','Czeburek':'чебурек cheburek',
+ 'Czeburek 3 sery':'чебурек сыр cheese','Czeburek ze szpinakiem':'чебурек шпинат spinach',
+ 'Dolma':'долма dolma','Norin':'норин naryn',
+ 'Lagman uzbecki':'лагман lagman noodles makaron','Lagman smażony':'лагман жареный fried noodles',
+ 'Lagman ujgurski':'лагман уйгурский uyghur',
+ 'Szurpa z wołowiną':'шурпа shurpa','Szurpa z baraniną':'шурпа баранина lamb',
+ 'Mastawa':'мастава mastava','Moszchurda':'мошхурда moshhurda',
+ 'Nuhatszurak':'нухат nohat chickpea ciecierzyca','Zupa „Męska”':'мужской суп',
+ 'Kazan kebab':'казан кебаб kazan','Tabaka':'табака tabaka chicken kurczak',
+ 'Kaszkar dziz':'кашкар kashkar','Czuponcza waguri':'чупончa waguri',
+ 'Karkówka z baraniny':'баранина lamb neck','Befstroganow od „Guzar Garden”':'бефстроганов stroganoff',
+ 'Saj mięsny':'садж saj','Kotlety z wołowiny':'котлеты beef patties',
+ 'Szaszłyk z wołowiną':'шашлык говядина beef skewer','Szaszłyk z baraniny':'шашлык баранина mutton skewer',
+ 'Szaszłyk z jagnięciny':'шашлык ягненок lamb skewer','Lula kebab':'люля кебаб lyulya',
+ 'Filet z kurczaka':'курица chicken','Skrzydełka':'крылышки wings',
+ 'Rulet z wołowiny':'рулет roll','Kotleciki z baraniny':'котлетки баранина',
+ 'Kotleciki jagnięce':'котлетки ягненок','Warzywa na grilu':'овощи vegetables',
+ 'Mix „Guzar Garden”':'микс mix platter ассорти',
+ 'Chleb':'хлеб лепешка non nan','Pół chleba':'полхлеба half','Patir':'патыр patir',
+ 'Katlama patir':'катлама katlama','Chleb „Assorti”':'ассорти assorti',
+ 'Ryż z warzywami':'рис rice','Frytki':'фри fries','Jogurt':'йогурт yoghurt',
+ 'Herbata zielona':'зеленый чай green tea','Herbata czarna':'черный чай black tea',
+ 'Herbata z cytryną':'чай лимон lemon','Herbata taszkentska':'ташкентский чай tashkent',
+ 'Biała kawa':'латте flat white молоко','Ayran':'айран ayran','Woda':'вода water',
+ 'Sok':'сок juice','Napoleon':'наполеон','Sernik':'чизкейк','Medowik':'медовик',
+ 'Karmelowy':'карамель caramel','Spartak':'спартак','Deser dnia':'десерт дня of the day'
+};
 
 const T={
  all:{pl:'Wszystko',en:'Everything',ru:'Всё'},
@@ -400,40 +463,58 @@ const T={
  pos:{pl:'poz.',en:'items',ru:'поз.'}
 };
 
-function renderChips(){
+/* fold diacritics and case so "salatka" finds "sałatka" */
+const fold=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ł/g,'l');
+const attrs=o=>`data-pl="${o.pl}" data-en="${o.en}" data-ru="${o.ru}"`;
+const esc=s=>String(s).replace(/"/g,'&quot;');
+
+let LANG='pl', q='';
+const menuEl=document.getElementById('menu');
+const chipsEl=document.getElementById('chips');
+const emptyEl=document.getElementById('empty');
+
+/* ---- built once; language switching only swaps text, so scroll position,
+        the active chip and an in-progress search all survive ---- */
+function build(){
   chipsEl.innerHTML =
-    `<a class="chip on" href="#" data-jump="top">${T.all[LANG]}</a>` +
-    SECTIONS.map(s=>`<a class="chip" href="#${s.id}" data-jump="${s.id}">${s.t[LANG]}</a>`).join('') +
+    `<a class="chip on" href="#" data-jump="top" ${attrs(T.all)}>${T.all.pl}</a>` +
+    SECTIONS.map(s=>`<a class="chip" href="#${s.id}" data-jump="${s.id}" ${attrs(s.t)}>${s.t.pl}</a>`).join('') +
     `<label class="search">
        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-       <input id="q" type="search" value="${q.replace(/"/g,'&quot;')}" placeholder="${T.search[LANG]}" aria-label="${T.search[LANG]}">
+       <input id="q" type="search" placeholder="${T.search.pl}" aria-label="Search">
      </label>`;
-  chipsEl.querySelectorAll('[data-jump]').forEach(a=>a.addEventListener('click',e=>{
-    chipsEl.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
-    a.classList.add('on');
-    if(a.dataset.jump==='top'){e.preventDefault();scrollTo({top:0,behavior:'smooth'})}
-  }));
-  const qi=document.getElementById('q');
-  qi.addEventListener('input',e=>{q=e.target.value.trim().toLowerCase();filter()});
-}
 
-function renderMenu(){
   menuEl.innerHTML=SECTIONS.map(s=>`
     <section class="sect" id="${s.id}" data-sect>
       <div class="sect-head">
-        <h2>${s.t[LANG]}</h2>
+        <h2 ${attrs(s.t)}>${s.t.pl}</h2>
         <span class="rule"></span>
-        <span class="cnt">${s.items.length} ${T.pos[LANG]}</span>
+        <span class="cnt">${s.items.length} <span ${attrs(T.pos)}>${T.pos.pl}</span></span>
       </div>
       <div class="items">
         ${s.items.map(i=>`
-          <article class="item${i.hl?' hl':''}" data-hay="${(i.n+' '+i.d.pl+' '+i.d.en+' '+i.d.ru).toLowerCase().replace(/"/g,'')}">
+          <article class="item${i.hl?' hl':''}" data-hay="${esc(fold([i.n,i.d.pl,i.d.en,i.d.ru,SEC_ALIAS[s.id]||'',ITEM_ALIAS[i.n]||''].join(' ')))}">
             <span class="n">${i.n}${i.u?` <u>· ${i.u}</u>`:''}</span>
             <span class="p">${i.p}</span>
-            ${i.d[LANG]?`<span class="d">${i.d[LANG]}</span>`:''}
+            <span class="d" ${attrs(i.d)}>${i.d.pl}</span>
           </article>`).join('')}
       </div>
     </section>`).join('');
+
+  // empty descriptions would otherwise leave a blank line
+  document.querySelectorAll('.item .d').forEach(d=>{if(!d.textContent.trim())d.style.display='none'});
+
+  chipsEl.querySelectorAll('[data-jump]').forEach(a=>a.addEventListener('click',e=>{
+    setChip(a);
+    if(a.dataset.jump==='top'){e.preventDefault();scrollTo({top:0,behavior:'smooth'})}
+  }));
+  document.getElementById('q').addEventListener('input',e=>{q=fold(e.target.value.trim());filter()});
+}
+
+function setChip(el){
+  chipsEl.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+  if(el)el.classList.add('on');
+  if(el&&el.offsetLeft)chipsEl.scrollTo({left:el.offsetLeft-80,behavior:'smooth'});
 }
 
 function filter(){
@@ -453,16 +534,32 @@ function setLang(l){
   LANG=l;
   document.documentElement.lang=l;
   document.querySelectorAll('[data-pl]').forEach(el=>{
-    const v=el.getAttribute('data-'+l); if(v!==null)el.innerHTML=v;
+    const v=el.getAttribute('data-'+l);
+    if(v!==null){
+      el.innerHTML=v;
+      if(el.classList.contains('d'))el.style.display=v.trim()?'':'none';
+    }
   });
+  const qi=document.getElementById('q');
+  if(qi){qi.placeholder=T.search[l];qi.setAttribute('aria-label',T.search[l])}
   document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
   try{localStorage.setItem('gg-lang',l)}catch(e){}
-  renderChips();renderMenu();filter();
 }
 document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
 
+build();
 let saved=null;try{saved=localStorage.getItem('gg-lang')}catch(e){}
-setLang(saved&&['pl','en','ru'].includes(saved)?saved:'pl');
+setLang(['pl','en','ru'].includes(saved)?saved:'pl');
+filter();
+
+/* highlight the chip for whichever section you are reading */
+const spy=new IntersectionObserver(es=>{
+  const hit=es.filter(e=>e.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top)[0];
+  if(hit)setChip(chipsEl.querySelector(`[data-jump="${hit.target.id}"]`));
+},{rootMargin:'-150px 0px -70% 0px'});
+document.querySelectorAll('[data-sect]').forEach(s=>spy.observe(s));
+addEventListener('scroll',()=>{if(scrollY<120)setChip(chipsEl.querySelector('[data-jump="top"]'))},{passive:true});
+
 document.getElementById('yr').textContent=new Date().getFullYear();
 </script>
 </body>
