@@ -137,8 +137,9 @@ nav.links a.ext::after{content:"↗";font-size:.7em;margin-left:.3em;vertical-al
 
 /* ---------- venue ---------- */
 .feat{background:var(--paper)}
-.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
-.f{background:var(--paper);padding:1.9rem 1.5rem;transition:.3s}
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.f{background:var(--paper);padding:1.9rem 1.5rem;transition:.3s;display:flex;flex-direction:column}
+.f small{margin-top:auto}
 .f:hover{background:var(--cream)}
 .f svg{width:26px;height:26px;color:var(--clay);margin-bottom:.9rem}
 .f b{display:block;font-family:var(--serif);font-size:1.25rem;font-weight:500}
@@ -227,6 +228,10 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.9
 @media(max-width:900px){
   .about-grid,.loc-grid{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr 1fr}
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+  .feat-grid{grid-template-columns:1fr}
 }
 @media(max-width:1000px){
   nav.links{
@@ -286,7 +291,7 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.9
   <nav class="links" id="links">
     <a href="#o-nas" data-pl="O nas" data-en="About" data-ru="О нас">O nas</a>
     <a href="#kuchnia" data-pl="Kuchnia" data-en="The cuisine" data-ru="Кухня">Kuchnia</a>
-    <a class="ext" href="https://heyzine.com/flip-book/3a78a98031.html" target="_blank" rel="noopener" data-pl="Karta dań" data-en="Menu" data-ru="Меню">Karta dań</a>
+    <a href="menu.html" data-pl="Karta dań" data-en="Menu" data-ru="Меню">Karta dań</a>
     <a href="#miejsce" data-pl="Miejsce" data-en="The venue" data-ru="Место">Miejsce</a>
     <a href="#kontakt" data-pl="Kontakt" data-en="Contact" data-ru="Контакты">Kontakt</a>
   </nav>
@@ -311,7 +316,7 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.9
     <p class="sub" data-pl="Restauracja uzbecka &amp; grill halal · Praga-Południe" data-en="Uzbek restaurant &amp; halal grill · Praga-Południe" data-ru="Узбекский ресторан и халяльный гриль · Прага-Полудне">Restauracja uzbecka &amp; grill halal · Praga-Południe</p>
     <p class="lede" data-pl="Plow z kazana, manty lepione ręcznie i samsa prosto z pieca tandoor — u bram Parku Skaryszewskiego." data-en="Kazan plov, hand-folded manti and samsa straight from the tandoor — at the gates of Skaryszewski Park." data-ru="Плов из казана, манты ручной лепки и самса прямо из тандыра — у ворот парка Скарышевского.">Plow z kazana, manty lepione ręcznie i samsa prosto z pieca tandoor — u bram Parku Skaryszewskiego.</p>
     <div class="hero-cta">
-      <a class="btn light" href="https://heyzine.com/flip-book/3a78a98031.html" target="_blank" rel="noopener" data-pl="Zobacz menu" data-en="See the menu" data-ru="Смотреть меню">Zobacz menu</a>
+      <a class="btn light" href="menu.html" data-pl="Zobacz menu" data-en="See the menu" data-ru="Смотреть меню">Zobacz menu</a>
       <a class="btn outline" href="tel:+48570088888">+48 570 088 888</a>
     </div>
   </div>
@@ -400,7 +405,7 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.9
     </div>
 
     <div class="kitchen-cta rv">
-      <a class="btn light" href="https://heyzine.com/flip-book/3a78a98031.html" target="_blank" rel="noopener" data-pl="Zobacz pełną kartę dań" data-en="See the full menu" data-ru="Смотреть полное меню">Zobacz pełną kartę dań</a>
+      <a class="btn light" href="menu.html" data-pl="Zobacz pełną kartę dań" data-en="See the full menu" data-ru="Смотреть полное меню">Zobacz pełną kartę dań</a>
       <small data-pl="Wszystko halal · chleb i samsa z tandoora · opcje wegetariańskie" data-en="All halal · bread and samsa from the tandoor · vegetarian options" data-ru="Всё халяль · лепёшки и самса из тандыра · вегетарианские блюда">Wszystko halal · chleb i samsa z tandoora · opcje wegetariańskie</small>
     </div>
   </div>
@@ -419,6 +424,7 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.9
       <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/><path d="M2 9a15 15 0 0 1 20 0"/></svg><b>Wi-Fi</b><small data-pl="Darmowy internet dla gości" data-en="Free internet for guests" data-ru="Бесплатный интернет для гостей">Darmowy internet dla gości</small></div>
       <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9.5 17V7h3a3 3 0 0 1 0 6h-3"/></svg><b data-pl="Parking" data-en="Parking" data-ru="Парковка">Parking</b><small data-pl="Własne miejsca parkingowe dla gości przy restauracji" data-en="Our own guest parking spaces at the restaurant" data-ru="Собственные парковочные места для гостей у ресторана">Własne miejsca parkingowe dla gości przy restauracji</small></div>
       <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="4" r="2"/><path d="M10 8v6h6l3 6M10 14l-3 6"/></svg><b data-pl="Dostępność" data-en="Accessible" data-ru="Доступность">Dostępność</b><small data-pl="Wejście i toaleta bez barier" data-en="Step-free entrance and restroom" data-ru="Вход и туалет без барьеров">Wejście i toaleta bez barier</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8h11l3 5v6H5z"/><circle cx="8.5" cy="19" r="1.8"/><circle cx="16" cy="19" r="1.8"/><path d="M9 4c0 1.5-1.5 1.5-1.5 3M13 4c0 1.5-1.5 1.5-1.5 3"/></svg><b data-pl="Na wynos" data-en="Takeaway" data-ru="На вынос">Na wynos</b><small data-pl="Samsa, plow i szaszłyki pakowane na drogę" data-en="Samsa, plov and skewers packed to go" data-ru="Самса, плов и шашлыки с собой">Samsa, plow i szaszłyki pakowane na drogę</small></div>
     </div>
   </div>
 </section>
@@ -525,7 +531,7 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.9
         <ul>
           <li><a href="tel:+48570088888">+48 570 088 888</a></li>
           <li><a href="https://maps.app.goo.gl/3WL53ikiXv6bY1CJ7" target="_blank" rel="noopener">al. Zieleniecka 6/8<br>03-727 Warszawa</a></li>
-          <li><a href="https://heyzine.com/flip-book/3a78a98031.html" target="_blank" rel="noopener" data-pl="Karta dań" data-en="Menu" data-ru="Меню">Karta dań</a></li>
+          <li><a href="menu.html" data-pl="Karta dań" data-en="Menu" data-ru="Меню">Karta dań</a></li>
           <li><a href="https://www.instagram.com/guzar_garden_restauracja/" target="_blank" rel="noopener">@guzar_garden_restauracja</a></li>
         </ul>
       </div>

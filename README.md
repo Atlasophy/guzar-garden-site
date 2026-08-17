@@ -20,8 +20,8 @@ the Cormorant Garamond / Inter webfonts and the Google Maps embed.
 
 | File | |
 |---|---|
-| `index.html` | The whole page — markup, CSS and JS in one file |
-| `menu-data.json` | The restaurant's full menu (57 items with prices), extracted from their flipbook menu. Not used by the page; kept for a future dedicated menu page |
+| `index.html` | Landing page — markup, CSS and JS in one file |
+| `menu.html` | Full menu page — 127 items across 14 sections, transcribed from the restaurant's flipbook card. Data lives in the `SECTIONS` array at the bottom of the file |
 
 ## Features
 
@@ -30,7 +30,7 @@ the Cormorant Garamond / Inter webfonts and the Google Maps embed.
 - **Live open/closed badge** in the hero, computed against the 9:00–24:00 schedule.
 - **Weekly opening hours** with today's row highlighted.
 - **Editorial section on Uzbek cooking** — kazan, tandoor, charcoal, dastarkhan. No prices, by design.
-- **Menu links out** to the restaurant's existing Heyzine flipbook rather than duplicating it on-page.
+- **Separate menu page** (`menu.html`) with sticky category jumps and live search across all three languages. The landing page stays clean and just links to it.
 - **Google Maps embed** with a warm colour treatment that snaps to full colour on hover.
 - Suzani-inspired SVG pattern, scroll reveals, mobile nav, `prefers-reduced-motion` support.
 
@@ -42,7 +42,7 @@ with the restaurant before anything ships:
 - **Rating / review count** (4.7★, 2900+) — scraped from Google/Restaurant Guru; varies by source and date.
 - **Hours** — 9:00–24:00 per Google and Restaurant Guru; Corner lists 08:00.
 - **Phone** — 570 088 888 per Google; Restaurant Guru also lists 734 055 009.
-- **Menu prices** — from the flipbook menu, accurate as of extraction. Re-extract if the card changes.
+- **Menu prices** — transcribed from the flipbook card at `heyzine.com/flip-book/8c9dec8ec8`, read page by page in August 2026. The card is image-only (no text layer), so the Polish was transcribed by eye — worth a proof-read against the printed menu before it ships. English and Russian are our translations.
 
 ## Still to do
 

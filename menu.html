@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karta dań — Guzar Garden, Restauracja Uzbecka &amp; Grill Halal</title>
+<meta name="description" content="Pełna karta dań Guzar Garden — sałaty, zupy, plow, lagman, szaszłyki z węgla, dania na parze, zestawy, desery i bar. Aleja Zieleniecka 6/8, Warszawa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1d1a14;--ink-soft:#4a4438;
+  --cream:#f7f1e4;--cream-2:#efe6d3;--paper:#fffdf8;
+  --clay:#b5502c;--saffron:#d99a2b;--green:#1e3527;--green-2:#28442f;
+  --line:rgba(29,26,20,.14);
+  --serif:'Cormorant Garamond',Cormorant,Garamond,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --shadow:0 18px 50px -22px rgba(29,26,20,.45);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:150px}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05;margin:0}
+.wrap{width:min(1180px,92vw);margin-inline:auto}
+
+/* ---------- nav ---------- */
+header.nav{
+  position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:1.6rem;
+  padding:.9rem clamp(1rem,4vw,2.5rem);
+  background:rgba(247,241,228,.94);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);
+}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;margin-right:auto}
+.brand .mark{width:32px;height:32px;color:var(--clay);flex:none}
+.brand b{font-family:var(--serif);font-size:1.25rem;font-weight:500;letter-spacing:.06em;line-height:1}
+.brand span{display:block;font-size:.56rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-soft)}
+.nav-tools{display:flex;align-items:center;gap:.6rem}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:rgba(255,253,248,.6)}
+.lang button{border:0;background:none;cursor:pointer;font:inherit;font-size:.68rem;letter-spacing:.1em;padding:.4rem .56rem;color:var(--ink-soft);transition:.2s}
+.lang button.on{background:var(--ink);color:var(--cream)}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;cursor:pointer;
+  font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+  padding:.7rem 1.25rem;border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:var(--cream);transition:.3s;white-space:nowrap
+}
+.btn:hover{background:var(--clay);border-color:var(--clay)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--cream)}
+.btn.light{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.btn.light:hover{background:var(--saffron);border-color:var(--saffron)}
+
+/* ---------- masthead ---------- */
+.mast{
+  background:var(--green);color:var(--cream);text-align:center;
+  padding:clamp(3.5rem,8vw,6rem) 1rem clamp(3rem,6vw,4.5rem);position:relative;overflow:hidden
+}
+.mast .tile{position:absolute;inset:0;width:100%;height:100%;opacity:.10}
+.mast>*{position:relative;z-index:2}
+.mast .eyebrow{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--saffron);margin:0 0 1rem}
+.mast h1{font-size:clamp(3rem,10vw,6rem);font-weight:300;letter-spacing:.04em}
+.mast h1 em{font-style:italic;color:var(--saffron)}
+.mast p{max-width:52ch;margin:1.6rem auto 0;font-family:var(--serif);font-size:clamp(1.05rem,2vw,1.35rem);color:rgba(247,241,228,.8)}
+.halal{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.8rem;border:1px solid rgba(217,154,43,.45);border-radius:999px;padding:.45rem 1.1rem;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--saffron)}
+
+/* ---------- toolbar ---------- */
+.toolbar{position:sticky;top:60px;z-index:50;background:var(--cream-2);border-bottom:1px solid var(--line);padding:.8rem 0}
+.toolbar-in{display:flex;gap:.5rem;align-items:center;overflow-x:auto;scrollbar-width:thin;padding-bottom:.15rem}
+.chip{
+  border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);border-radius:999px;
+  padding:.5rem 1rem;cursor:pointer;font:inherit;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  transition:.25s;white-space:nowrap;text-decoration:none
+}
+.chip:hover{border-color:var(--clay);color:var(--clay)}
+.chip.on{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.search{display:flex;align-items:center;gap:.5rem;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:.42rem .9rem;min-width:210px;margin-left:auto}
+.search input{background:none;border:0;outline:0;font:inherit;font-size:.85rem;width:100%;color:var(--ink)}
+.search svg{width:15px;height:15px;color:var(--ink-soft);flex:none}
+
+/* ---------- menu body ---------- */
+main{padding:clamp(2.5rem,6vw,4.5rem) 0 2rem}
+.sect{margin-bottom:clamp(3rem,6vw,4.5rem);scroll-margin-top:150px}
+.sect-head{display:flex;align-items:center;gap:1.2rem;margin-bottom:2rem}
+.sect-head h2{font-size:clamp(2rem,4.5vw,3.1rem);color:var(--green);white-space:nowrap}
+.sect-head .rule{flex:1;height:1px;background:var(--line)}
+.sect-head .cnt{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+.sub{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--clay);margin:2rem 0 .8rem;font-weight:500}
+.items{display:grid;grid-template-columns:1fr 1fr;gap:0 3.2rem}
+.item{display:grid;grid-template-columns:1fr auto;gap:.2rem 1rem;padding:1rem 0;border-bottom:1px dashed var(--line);align-content:start}
+.item .n{font-family:var(--serif);font-size:1.4rem;color:var(--ink);line-height:1.15}
+.item .n u{text-decoration:none;font-size:.72em;letter-spacing:.08em;color:var(--ink-soft)}
+.item .p{font-family:var(--serif);font-size:1.32rem;color:var(--clay);white-space:nowrap;text-align:right}
+.item .p em{display:block;font-family:var(--sans);font-style:normal;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-top:.1rem}
+.item .d{grid-column:1/-1;font-size:.84rem;color:var(--ink-soft);max-width:52ch}
+.item.hl{background:linear-gradient(90deg,rgba(217,154,43,.13),transparent 70%);box-shadow:-14px 0 0 rgba(217,154,43,.13)}
+.item[hidden]{display:none}
+.empty{padding:3rem 0;text-align:center;font-family:var(--serif);font-size:1.5rem;color:var(--ink-soft)}
+
+/* ---------- footnote / footer ---------- */
+.note{
+  background:var(--paper);border:1px solid var(--line);padding:1.6rem 1.8rem;margin-top:1rem;
+  display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;justify-content:space-between
+}
+.note p{margin:0;font-size:.88rem;color:var(--ink-soft);max-width:62ch}
+.note b{color:var(--ink)}
+footer{background:var(--ink);color:rgba(247,241,228,.72);padding:3.5rem 0 2rem;margin-top:4rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(247,241,228,.14)}
+footer h5{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--saffron);margin:0 0 1rem;font-weight:500}
+footer a{color:rgba(247,241,228,.72);text-decoration:none;transition:.2s}
+footer a:hover{color:var(--saffron)}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.9rem}
+.foot-brand span.display{font-family:var(--serif);font-size:1.9rem;color:var(--cream);display:block;letter-spacing:.06em}
+.foot-brand p{font-size:.88rem;max-width:32ch}
+.colophon{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:1.5rem;font-size:.74rem;color:rgba(247,241,228,.45)}
+.colophon a{color:rgba(247,241,228,.6)}
+
+@media(max-width:860px){
+  .items{grid-template-columns:1fr;gap:0}
+  .foot-grid{grid-template-columns:1fr}
+  .brand span{display:none}
+  .toolbar{top:56px}
+  .search{min-width:150px}
+}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.001ms!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <pattern id="suz" width="120" height="120" patternUnits="userSpaceOnUse">
+    <g fill="none" stroke="#f7f1e4" stroke-width="1.1" opacity=".9">
+      <path d="M60 12 L72 40 L102 40 L78 58 L88 88 L60 70 L32 88 L42 58 L18 40 L48 40 Z"/>
+      <circle cx="60" cy="60" r="26"/><circle cx="60" cy="60" r="6"/>
+      <path d="M0 60 H14 M106 60 H120 M60 0 V8 M60 112 V120"/>
+      <path d="M0 0 L14 14 M120 0 L106 14 M0 120 L14 106 M120 120 L106 106"/>
+    </g>
+  </pattern>
+</defs></svg>
+
+<header class="nav">
+  <a class="brand" href="index.html">
+    <svg class="mark" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <path d="M24 4 C30 12 38 14 38 24 C38 33 32 40 24 44 C16 40 10 33 10 24 C10 14 18 12 24 4 Z"/>
+      <path d="M24 14 v22 M24 20 c-4 0-7-2-8-5 M24 26 c4 0 7-2 8-5"/>
+    </svg>
+    <span><b>GUZAR</b><span data-pl="Garden · Warszawa" data-en="Garden · Warsaw" data-ru="Garden · Варшава">Garden · Warszawa</span></span>
+  </a>
+  <div class="nav-tools">
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" class="on" data-lang="pl">PL</button>
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="ru">RU</button>
+    </div>
+    <a class="btn ghost" href="index.html" data-pl="Strona główna" data-en="Home" data-ru="Главная">Strona główna</a>
+    <a class="btn" href="tel:+48570088888" data-pl="Rezerwacja" data-en="Book" data-ru="Бронь">Rezerwacja</a>
+  </div>
+</header>
+
+<section class="mast">
+  <svg class="tile" aria-hidden="true"><rect width="100%" height="100%" fill="url(#suz)"/></svg>
+  <p class="eyebrow" data-pl="Guzar Garden · Aleja Zieleniecka 6/8" data-en="Guzar Garden · Aleja Zieleniecka 6/8" data-ru="Guzar Garden · Aleja Zieleniecka 6/8">Guzar Garden · Aleja Zieleniecka 6/8</p>
+  <h1 data-pl="Karta <em>dań</em>" data-en="The <em>menu</em>" data-ru="<em>Меню</em>">Karta <em>dań</em></h1>
+  <p data-pl="Plow z kazana, samsa z pieca tandoor, ręcznie ciągnięty lagman i szaszłyki prosto z węgla. Kuchnia uzbecka, w całości halal." data-en="Kazan plov, samsa from the tandoor, hand-pulled lagman and skewers straight off the charcoal. Uzbek cooking, fully halal." data-ru="Плов из казана, самса из тандыра, лагман ручной вытяжки и шашлыки прямо с углей. Узбекская кухня, полностью халяль.">Plow z kazana, samsa z pieca tandoor, ręcznie ciągnięty lagman i szaszłyki prosto z węgla. Kuchnia uzbecka, w całości halal.</p>
+  <span class="halal">100% Halal</span>
+</section>
+
+<div class="toolbar">
+  <div class="wrap toolbar-in" id="chips"></div>
+</div>
+
+<main class="wrap">
+  <div id="menu"></div>
+  <p class="empty" id="empty" hidden data-pl="Nic nie znaleźliśmy — spróbuj innej nazwy." data-en="Nothing found — try another name." data-ru="Ничего не найдено — попробуйте другое название.">Nic nie znaleźliśmy — spróbuj innej nazwy.</p>
+
+  <div class="note">
+    <p>
+      <b data-pl="Obsługa:" data-en="Service:" data-ru="Обслуживание:">Obsługa:</b>
+      <span data-pl="dla grup od 6 osób doliczamy 10% obsługi. Ceny w złotych, zawierają VAT. Karta zmienia się sezonowo — pytaj kelnera o dania dnia." data-en="for groups of 6 or more a 10% service charge applies. Prices in złoty, VAT included. The card changes seasonally — ask your waiter about the daily specials." data-ru="для групп от 6 человек добавляется 10% за обслуживание. Цены в злотых, включая НДС. Карта меняется по сезону — спрашивайте у официанта о блюдах дня.">dla grup od 6 osób doliczamy 10% obsługi. Ceny w złotych, zawierają VAT. Karta zmienia się sezonowo — pytaj kelnera o dania dnia.</span>
+    </p>
+    <a class="btn ghost" href="https://heyzine.com/flip-book/8c9dec8ec8.html" target="_blank" rel="noopener" data-pl="Karta w wersji PDF" data-en="Menu as PDF" data-ru="Меню в PDF">Karta w wersji PDF</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="display">GUZAR GARDEN</span>
+        <p data-pl="Restauracja uzbecka &amp; grill halal. Aleja Zieleniecka 6/8, Warszawa." data-en="Uzbek restaurant &amp; halal grill. Aleja Zieleniecka 6/8, Warsaw." data-ru="Узбекский ресторан и халяльный гриль. Aleja Zieleniecka 6/8, Варшава.">Restauracja uzbecka &amp; grill halal. Aleja Zieleniecka 6/8, Warszawa.</p>
+      </div>
+      <div>
+        <h5 data-pl="Godziny" data-en="Hours" data-ru="Часы работы">Godziny</h5>
+        <ul>
+          <li data-pl="Codziennie" data-en="Every day" data-ru="Ежедневно">Codziennie</li>
+          <li style="color:var(--cream);font-family:var(--serif);font-size:1.25rem">9:00 – 24:00</li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-pl="Kontakt" data-en="Contact" data-ru="Контакты">Kontakt</h5>
+        <ul>
+          <li><a href="tel:+48570088888">+48 570 088 888</a></li>
+          <li><a href="https://maps.app.goo.gl/3WL53ikiXv6bY1CJ7" target="_blank" rel="noopener">al. Zieleniecka 6/8, Warszawa</a></li>
+          <li><a href="https://www.instagram.com/guzar_garden_restauracja/" target="_blank" rel="noopener">@guzar_garden_restauracja</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>© <span id="yr">2026</span> Guzar Garden</span>
+      <span data-pl="Projekt koncepcyjny: &lt;a href=&quot;https://atlasophy.co&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Atlasophy&lt;/a&gt;" data-en="Concept design by &lt;a href=&quot;https://atlasophy.co&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Atlasophy&lt;/a&gt;" data-ru="Концепт: &lt;a href=&quot;https://atlasophy.co&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Atlasophy&lt;/a&gt;">Projekt koncepcyjny: <a href="https://atlasophy.co" target="_blank" rel="noopener">Atlasophy</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   Karta dań — Guzar Garden
+   Source: restaurant's own flipbook menu, heyzine.com/flip-book/8c9dec8ec8
+   Polish text is transcribed verbatim from the card; EN/RU are translations.
+   ===================================================================== */
+const SECTIONS=[
+{id:'salaty',t:{pl:'Sałaty',en:'Salads',ru:'Салаты'},items:[
+ {n:'Oliwie z mięsem',p:'29 zł',d:{pl:'ziemniaki, marchewka, jajo przepiórcze, ogórek kiszony, mięso wołowe, groszek zielony, majonez',en:'potato, carrot, quail egg, pickled cucumber, beef, green peas, mayonnaise',ru:'картофель, морковь, перепелиное яйцо, солёный огурец, говядина, зелёный горошек, майонез'}},
+ {n:'Kiszony mix',p:'29 zł',d:{pl:'kimczi, marchewka, ogórek kiszony, pomidor marynowany, papryka kiszona',en:'kimchi, carrot, pickled cucumber, marinated tomato, pickled pepper',ru:'кимчи, морковь, солёный огурец, маринованный помидор, солёный перец'}},
+ {n:'Sałatka z burakami',p:'29 zł',d:{pl:'buraki, mięso wołowe, ziemniaki',en:'beetroot, beef, potato',ru:'свёкла, говядина, картофель'}},
+ {n:'Sałatka grecka',p:'29 zł',d:{pl:'ser feta, ogórek, pomidor cherry, papryka czerwona/zielona/żółta, cebula czerwona, rzodkiewka, sałata rosso, sałata rzymska, olej oliwkowy, sos grecki, crema balsamic, sos pesto',en:'feta, cucumber, cherry tomato, red/green/yellow pepper, red onion, radish, rosso and romaine lettuce, olive oil, Greek dressing, balsamic cream, pesto',ru:'фета, огурец, черри, красный/зелёный/жёлтый перец, красный лук, редис, салат россо и романо, оливковое масло, греческий соус, бальзамик, песто'}},
+ {n:'Kimchi',p:'12.99 zł',d:{pl:'kapusta koreańska, pikantna',en:'Korean cabbage, spicy',ru:'корейская капуста, острая'}},
+ {n:'Cezar',p:'29 zł',d:{pl:'sałata rosso, sałata rzymska, kurczak z grila, pomidor cherry, pieczywo chrupiące, jajo przepiórcze, ser parmeggiano, sos cezar, sos pesto',en:'rosso and romaine lettuce, grilled chicken, cherry tomato, croutons, quail egg, parmesan, Caesar dressing, pesto',ru:'салат россо и романо, курица гриль, черри, гренки, перепелиное яйцо, пармезан, соус цезарь, песто'}},
+ {n:'Sałata wiosna',p:'17 zł',d:{pl:'rzodkiewka, ogórek, pomidor cherry, pietruszka, cebula zielona, koperek, cebula czerwona, jogurt, jajo przepiórcze',en:'radish, cucumber, cherry tomato, parsley, spring onion, dill, red onion, yoghurt, quail egg',ru:'редис, огурец, черри, петрушка, зелёный лук, укроп, красный лук, йогурт, перепелиное яйцо'}},
+ {n:'Marchewka',p:'12.99 zł',d:{pl:'marchewka koreańska',en:'Korean-style carrot',ru:'морковь по-корейски'}},
+ {n:'Kapryz',p:'29 zł',d:{pl:'mięso wołowe, ogórek, ser mozzarella, majonez, kukurydza, kiełbasa',en:'beef, cucumber, mozzarella, mayonnaise, sweetcorn, sausage',ru:'говядина, огурец, моцарелла, майонез, кукуруза, колбаса'}},
+ {n:'Szakarob',p:'8.99 zł',d:{pl:'pomidor, ogórek, cebula, koperek, pietruszka',en:'tomato, cucumber, onion, dill, parsley',ru:'помидор, огурец, лук, укроп, петрушка'}},
+ {n:'Bakłażan rulet',p:'21.99 zł',d:{pl:'bakłażan smażony panierowany z jajkiem, pomidor, czosnek, koperek, sos czosnkowy',en:'egg-battered fried aubergine rolls, tomato, garlic, dill, garlic sauce',ru:'жареные баклажаны в яичном кляре, помидор, чеснок, укроп, чесночный соус'}},
+ {n:'Sałatka „Samarkand”',p:'29 zł',d:{pl:'fasola czerwona, mięso wołowe, cebula czerwona, papryka czerwona, kolendra świeża, sos sojowy, masło oliwkowy, orzech',en:'red beans, beef, red onion, red pepper, fresh coriander, soy sauce, olive oil, walnut',ru:'красная фасоль, говядина, красный лук, красный перец, свежая кинза, соевый соус, оливковое масло, орех'}},
+ {n:'Sałatka „Tashkent”',p:'29 zł',d:{pl:'indyk, mięso wołowe, dajkom, ogórek kiszony, ziemniaki, sałata mix, jaja przepiórcze',en:'turkey, beef, daikon, pickled cucumber, potato, mixed leaves, quail eggs',ru:'индейка, говядина, дайкон, солёный огурец, картофель, микс салата, перепелиные яйца'}},
+ {n:'Chłodna sałatka japońska',p:'29 zł',d:{pl:'pomidor, ogórek, mięso wołowe, kolendra świeża, sos sojowy, masło oliwkowy, sezam, sałata mix, czosnek',en:'tomato, cucumber, beef, fresh coriander, soy sauce, olive oil, sesame, mixed leaves, garlic',ru:'помидор, огурец, говядина, свежая кинза, соевый соус, оливковое масло, кунжут, микс салата, чеснок'}},
+ {n:'Sałatka azjatycka',p:'20.99 zł',d:{pl:'bakłażany chrupiące, pomidor, sos słodko-kwaśny, kolendra świeża, orzech, sezam',en:'crispy aubergine, tomato, sweet-and-sour sauce, fresh coriander, walnut, sesame',ru:'хрустящие баклажаны, помидор, кисло-сладкий соус, свежая кинза, орех, кунжут'}},
+ {n:'Ciepła sałatka japońska',p:'29.99 zł',d:{pl:'mięso wołowe, ogórek, papryka mix, pomidor, cebula zielony, kapusta pekińska, seler, sos sojowy, sezam',en:'beef, cucumber, mixed peppers, tomato, spring onion, Chinese cabbage, celery, soy sauce, sesame',ru:'говядина, огурец, микс перцев, помидор, зелёный лук, пекинская капуста, сельдерей, соевый соус, кунжут'}}
+]},
+
+{id:'zupy',t:{pl:'Zupy',en:'Soups',ru:'Супы'},items:[
+ {n:'Szurpa z wołowiną',p:'21.99 zł',d:{pl:'tradycyjna uzbecka zupa z dużymi kawałkami mięsa, ziemniaki, marchewka',en:'traditional Uzbek soup with large pieces of meat, potato and carrot',ru:'традиционный узбекский суп с крупными кусками мяса, картофелем и морковью'}},
+ {n:'Szurpa z baraniną',p:'23.99 zł',d:{pl:'tradycyjna uzbecka zupa z mięsa baraniego, z ziemniakami, marchewką',en:'traditional Uzbek mutton soup with potato and carrot',ru:'традиционный узбекский суп из баранины с картофелем и морковью'}},
+ {n:'Mastawa',p:'20.99 zł',d:{pl:'zupa z wołowiną, ryżem i warzywami',en:'beef soup with rice and vegetables',ru:'суп с говядиной, рисом и овощами'}},
+ {n:'Moszchurda',p:'21.99 zł',d:{pl:'zupa z wołowiną, ryżu, fasolą mung i jogurtu',en:'beef soup with rice, mung beans and yoghurt',ru:'суп с говядиной, рисом, машем и йогуртом'}},
+ {n:'Zupa z piemieniami i kluskami',p:'26.99 zł',d:{pl:'',en:'dumplings and noodles in broth',ru:'пельмени и лапша в бульоне'}},
+ {n:'Zupa z klopsikami',p:'26.99 zł',d:{pl:'wołowina mielona, jaja, ziemniaki, marchew, rosół',en:'minced beef, egg, potato, carrot, broth',ru:'фарш из говядины, яйцо, картофель, морковь, бульон'}},
+ {n:'Zupa „Męska”',p:'34.99 zł',d:{pl:'mięso wołowe, kazi, konina, ciasto, cebula, rosół',en:'beef, kazi, horse meat, dough, onion, broth',ru:'говядина, казы, конина, тесто, лук, бульон'}}
+]},
+
+{id:'dania',t:{pl:'Dania',en:'Mains',ru:'Основные блюда'},items:[
+ {n:'Plow',u:'450 g',p:'26.99 zł',d:{pl:'aromatyczne danie z ryżu, mięsa i marchewki, gotowane na wolnym ogniu z orientalnymi przyprawami',en:'rice, meat and carrot slow-cooked over a low flame with oriental spices',ru:'рис, мясо и морковь на медленном огне с восточными специями'}},
+ {n:'Plow samarkandski',p:'27.99 zł',d:{pl:'marchewka oraz mięso, pod spodem ryż',en:'carrot and meat, rice underneath',ru:'морковь и мясо, рис снизу'}},
+ {n:'Czajhana plow',p:'30.99 zł',d:{pl:'przygotowywany w stylu domowym – z ryżem, mięsem, marchewką i delikatnymi przyprawami, serwowany jak w prawdziwej uzbeckiej czajchanie',en:'home-style — rice, meat, carrot and gentle spices, served the way a real Uzbek chaikhana does',ru:'по-домашнему — рис, мясо, морковь и мягкие специи, как в настоящей узбекской чайхане'}},
+ {n:'Kazi',u:'dodatek / extra',p:'10 zł',d:{pl:'dodatek do plowu',en:'add to any plov',ru:'добавка к плову'}},
+ {n:'Lagman uzbecki',p:'25.99 zł',d:{pl:'aromatyczne danie z ręcznie robionym makaronem, duszoną wołowiną i warzywami w korzennym bulionie',en:'hand-made noodles with braised beef and vegetables in a spiced broth',ru:'лапша ручной работы с тушёной говядиной и овощами в пряном бульоне'}},
+ {n:'Lagman smażony',p:'29.99 zł',d:{pl:'makaron smażony z mięsem i warzywami na woku w aromatycznych przyprawach',en:'noodles wok-fried with meat, vegetables and aromatic spices',ru:'лапша, обжаренная на воке с мясом, овощами и специями'}},
+ {n:'Lagman ujgurski',p:'29.99 zł',d:{pl:'smażone na woku warzywa i mięso w aromatycznym bulionie, podawane z ręcznie robionym makaronem',en:'wok-fried vegetables and meat in aromatic broth, served with hand-made noodles',ru:'овощи и мясо с вока в ароматном бульоне, подаются с домашней лапшой'}},
+ {n:'Norin',p:'44.99 zł',d:{pl:'konina oraz wołowina, kmin rzymski, ciasto, bulion',en:'horse meat and beef, cumin, dough, broth',ru:'конина и говядина, зира, тесто, бульон'}},
+ {n:'Nuhatszurak',p:'23.99 zł',d:{pl:'zupa z wołowiną i ciecierzycą',en:'beef and chickpea dish',ru:'блюдо из говядины с нутом'}},
+ {n:'Saj mięsny',p:'30.99 zł',d:{pl:'uzbeckie danie z mięsa smażonego na dużej, płaskiej patelni, z dodatkiem warzyw i przypraw',en:'meat seared on a large flat saj pan with vegetables and spices',ru:'мясо, обжаренное на большой плоской сковороде садж, с овощами и специями'}},
+ {n:'Befstroganow od „Guzar Garden”',p:'36.99 zł',d:{pl:'mięso wołowe, tłuczone ziemniaki, sos śmietankowy, pieczarki, cebula, ogórek kiszony',en:'beef, mashed potato, cream sauce, mushrooms, onion, pickled cucumber',ru:'говядина, картофельное пюре, сливочный соус, шампиньоны, лук, солёный огурец'}},
+ {n:'Czuponcza waguri',p:'55.99 zł',d:{pl:'smażona baranina w małych kawałkach, smażona na otwartym ogniu lub w kazanie, po tym paruje się, podawana z ziemniakami',en:'mutton in small pieces seared over open fire or in the kazan, then steamed, served with potatoes',ru:'баранина мелкими кусочками, обжаренная на открытом огне или в казане, затем на пару, с картофелем'}},
+ {n:'Tabaka',p:'28.99 zł',d:{pl:'smażony na chrupiąco kurczak z ziemniakami',en:'crisp-fried chicken with potatoes',ru:'хрустящая жареная курица с картофелем'}},
+ {n:'Kazan kebab',u:'450 g',p:'43.99 zł',d:{pl:'potrawa z mięsa i ziemniaków smażonych w dużym żeliwnym kotle',en:'meat and potatoes fried in a large cast-iron cauldron',ru:'мясо и картофель, жаренные в большом чугунном казане'}},
+ {n:'Kaszkar dziz',p:'44.99 zł',d:{pl:'mięso baranie smażony w głębokim oleju, podawane z ziemniakami',en:'deep-fried mutton served with potatoes',ru:'баранина во фритюре, подаётся с картофелем'}},
+ {n:'Karkówka z baraniny',p:'46.99 zł',d:{pl:'marynowana, pieczona 4 godzin w piecu, gotowana w sosie pomidorowym, podawana z ziemniakami',en:'marinated, oven-roasted for 4 hours, finished in tomato sauce, served with potatoes',ru:'маринованная, 4 часа в печи, доводится в томатном соусе, с картофелем'}},
+ {n:'Kotlety z wołowiny',p:'35 zł',d:{pl:'kotlety z wołowiną, w środku ser mozarella, papryka, bakłażan, pomidor, czosnek, pietruszka, obok ziemniaki oraz sałata',en:'beef patties stuffed with mozzarella, pepper, aubergine, tomato, garlic and parsley, with potatoes and salad',ru:'говяжьи котлеты с моцареллой, перцем, баклажаном, помидором, чесноком и петрушкой, с картофелем и салатом'}},
+ {n:'Dolma',p:'34.99 zł',d:{pl:'mięso wołowe w liściach winogron, obok ziemniaki oraz sałatka',en:'beef in vine leaves, with potatoes and salad',ru:'говядина в виноградных листьях, с картофелем и салатом'}}
+]},
+
+{id:'piec',t:{pl:'Z pieca tandoor',en:'From the tandoor',ru:'Из тандыра'},items:[
+ {n:'Samsa',p:'10.99 zł',d:{pl:'ciasto z wołowiną gotowane w piecu tandoor',en:'beef pastry baked in the tandoor',ru:'тесто с говядиной, запечённое в тандыре'}},
+ {n:'Samsa duża',p:'36.99 zł',d:{pl:'+ ćwierć chleba',en:'+ a quarter loaf of bread',ru:'+ четверть лепёшки'}},
+ {n:'Tomchi samsa',p:'12.99 zł',d:{pl:'ciasto francuskie w formie kropla',en:'puff pastry in a teardrop shape',ru:'слоёное тесто в форме капли'}},
+ {n:'Czeburek',p:'21.99 zł',d:{pl:'chrupiące, smażone na głębokim oleju ciasto z nadzieniem z mielonego mięsa i cebuli',en:'crisp deep-fried pastry filled with minced meat and onion',ru:'хрустящее жареное тесто с фаршем и луком'}},
+ {n:'Czeburek 3 sery',p:'21.99 zł',d:{pl:'mozzarella, parmezan, cheddar',en:'mozzarella, parmesan, cheddar',ru:'моцарелла, пармезан, чеддер'}},
+ {n:'Czeburek ze szpinakiem',p:'21.99 zł',d:{pl:'',en:'with spinach',ru:'со шпинатом'}}
+]},
+
+{id:'grill',t:{pl:'Grill',en:'Charcoal grill',ru:'Гриль'},items:[
+ {n:'Szaszłyk z wołowiną',p:'27.99 zł',d:{pl:'mięso wołowe, cebula, sos pomidorowy',en:'beef, onion, tomato sauce',ru:'говядина, лук, томатный соус'}},
+ {n:'Szaszłyk z baraniny',p:'28.99 zł',d:{pl:'mięso baranie, tłuszcz baranie, cebula, sos pomidorowy',en:'mutton, mutton fat, onion, tomato sauce',ru:'баранина, курдюк, лук, томатный соус'}},
+ {n:'Szaszłyk z jagnięciny',p:'33.99 zł',d:{pl:'mięso jagnięce, tłuszcz jagnięce, cebula, sos pomidorowy',en:'lamb, lamb fat, onion, tomato sauce',ru:'ягнятина, жир ягнёнка, лук, томатный соус'}},
+ {n:'Lula kebab',p:'22.99 zł',d:{pl:'mięso wołowe mielone, cebula, sos pomidorowy',en:'minced beef, onion, tomato sauce',ru:'говяжий фарш, лук, томатный соус'}},
+ {n:'Filet z kurczaka',p:'22.99 zł',d:{pl:'filet z kurczaka, cebula, sos pomidorowy',en:'chicken fillet, onion, tomato sauce',ru:'куриное филе, лук, томатный соус'}},
+ {n:'Skrzydełka',p:'22.99 zł',d:{pl:'skrzydełka z kurczaka, sos pomidorowy',en:'chicken wings, tomato sauce',ru:'куриные крылышки, томатный соус'}},
+ {n:'Rulet z wołowiny',p:'46.99 zł',d:{pl:'mięso wołowe, tłuszcz baranie, cebula, sos pomidorowy',en:'beef, mutton fat, onion, tomato sauce',ru:'говядина, курдюк, лук, томатный соус'}},
+ {n:'Kotleciki z baraniny',p:'49.99 zł',d:{pl:'mięso baranie, sałatka, cebula, sos pomidorowy',en:'mutton chops, salad, onion, tomato sauce',ru:'бараньи котлетки, салат, лук, томатный соус'}},
+ {n:'Kotleciki jagnięce',p:'59.99 zł',d:{pl:'mięso jagnięce, sałatka, cebula, sos pomidorowy',en:'lamb chops, salad, onion, tomato sauce',ru:'котлетки из ягнёнка, салат, лук, томатный соус'}},
+ {n:'Warzywa na grilu',p:'19 zł',d:{pl:'bakłażan, cukinia, kukurydza, papryka mix',en:'aubergine, courgette, sweetcorn, mixed peppers',ru:'баклажан, кабачок, кукуруза, микс перцев'}},
+ {n:'Mix „Guzar Garden”',u:'na 3 osoby / for 3',p:'275 zł',hl:1,d:{pl:'wielki półmisek z grilla — szaszłyki, kotleciki, lula kebab, kurczak i warzywa',en:'a grand grill platter — skewers, chops, lula kebab, chicken and vegetables',ru:'большое блюдо с гриля — шашлыки, котлетки, люля-кебаб, курица и овощи'}}
+]},
+
+{id:'parze',t:{pl:'Dania gotowane na parze',en:'Steamed',ru:'На пару'},items:[
+ {n:'Manty',u:'6 zł / szt',p:'29.99 zł',d:{pl:'gotowane na parze, wołowina w środku',en:'steamed, filled with beef',ru:'на пару, с говядиной'}},
+ {n:'Manty z szpinakiem',p:'29.99 zł',d:{pl:'pierogi z szpinakiem gotowane na parze',en:'steamed spinach dumplings',ru:'манты со шпинатом на пару'}},
+ {n:'Gulmanti',p:'29.99 zł',d:{pl:'ciasto zawijane, w środku mięso wołowe, cebula, przyprawy, gotowane na parze, podawane z jogurtem',en:'rolled dough filled with beef, onion and spices, steamed, served with yoghurt',ru:'завёрнутое тесто с говядиной, луком и специями, на пару, с йогуртом'}},
+ {n:'Chonim',p:'29.99 zł',d:{pl:'ciasto zawijane, w środku mięso wołowe, cebula, ziemniaki, przyprawy, gotowane na parze, podawane z jogurtem',en:'rolled dough filled with beef, onion, potato and spices, steamed, served with yoghurt',ru:'завёрнутое тесто с говядиной, луком, картофелем и специями, на пару, с йогуртом'}}
+]},
+
+{id:'zestawy',t:{pl:'Zestawy',en:'Sets',ru:'Сеты'},items:[
+ {n:'Plow zestaw',p:'34.99 zł',d:{pl:'plow, szakarob, pół chleba, filiżanka herbaty',en:'plov, shakarob salad, half a loaf, a cup of tea',ru:'плов, шакароб, половина лепёшки, чашка чая'}},
+ {n:'Manty zestaw',p:'35.99 zł',d:{pl:'manty, bulion, pół chleba, filiżanka herbaty',en:'manti, broth, half a loaf, a cup of tea',ru:'манты, бульон, половина лепёшки, чашка чая'}},
+ {n:'Samsa zestaw',p:'35.99 zł',d:{pl:'3 sztuki samsy, bulion, filiżanka herbaty',en:'3 samsa, broth, a cup of tea',ru:'3 самсы, бульон, чашка чая'}},
+ {n:'Lagman zestaw',p:'38.99 zł',d:{pl:'lagman smażony, szakarob, pół chleba, filiżanka herbaty',en:'fried lagman, shakarob salad, half a loaf, a cup of tea',ru:'жареный лагман, шакароб, половина лепёшки, чашка чая'}},
+ {n:'Tabaka zestaw',p:'44.99 zł',d:{pl:'tabaka, pół porcji sałaty oliwie, pół chleba, filiżanka herbaty',en:'tabaka chicken, half an Olivier salad, half a loaf, a cup of tea',ru:'табака, полпорции салата оливье, половина лепёшки, чашка чая'}},
+ {n:'Kazan kebab zestaw',p:'51.99 zł',d:{pl:'kazan kebab, szakarob, pół chleba, filiżanka herbaty',en:'kazan kebab, shakarob salad, half a loaf, a cup of tea',ru:'казан-кебаб, шакароб, половина лепёшки, чашка чая'}}
+]},
+
+{id:'chleb',t:{pl:'Chleb',en:'Bread',ru:'Хлеб'},items:[
+ {n:'Chleb',p:'8 zł',d:{pl:'chleb uzbecki z pieca tandoor',en:'Uzbek tandoor bread',ru:'узбекская лепёшка из тандыра'}},
+ {n:'Pół chleba',p:'4 zł',d:{pl:'',en:'half a loaf',ru:'половина лепёшки'}},
+ {n:'Patir',p:'16.99 zł',d:{pl:'tradycyjny chleb w maśle klarowanym',en:'traditional bread made with clarified butter',ru:'традиционная лепёшка на топлёном масле'}},
+ {n:'Katlama patir',p:'12 zł',d:{pl:'ciasto francuskie, w maśle klarowanym',en:'flaky pastry bread with clarified butter',ru:'слоёная лепёшка на топлёном масле'}},
+ {n:'Chleb „Assorti”',p:'17.99 zł',d:{pl:'chleb uzbecki, bagietka, patir, chleb dietetyczny',en:'Uzbek bread, baguette, patir, diet bread',ru:'узбекская лепёшка, багет, патыр, диетический хлеб'}}
+]},
+
+{id:'dodatki',t:{pl:'Dodatki i sosy',en:'Sides &amp; sauces',ru:'Гарниры и соусы'},items:[
+ {n:'Ryż z warzywami',p:'11.99 zł',d:{pl:'',en:'rice with vegetables',ru:'рис с овощами'}},
+ {n:'Frytki',p:'11.99 zł',d:{pl:'',en:'french fries',ru:'картофель фри'}},
+ {n:'Tartar',p:'5 zł',d:{pl:'majonez, koperek, ogórek kiszony, czosnek, woda, śmietana',en:'mayonnaise, dill, pickled cucumber, garlic, water, sour cream',ru:'майонез, укроп, солёный огурец, чеснок, вода, сметана'}},
+ {n:'Czimmiczuri',p:'5 zł',d:{pl:'olej oliwkowy, olej słonecznikowy, pietruszka, cebula czerwona, czosnek, ocet jabłkowy, cytrynka, papryka słodka oraz ostra, cukier',en:'olive and sunflower oil, parsley, red onion, garlic, cider vinegar, lemon, sweet and hot paprika, sugar',ru:'оливковое и подсолнечное масло, петрушка, красный лук, чеснок, яблочный уксус, лимон, сладкая и острая паприка, сахар'}},
+ {n:'Czosnkowy',p:'5 zł',d:{pl:'majonez, jogurt, czosnek, cytrynka, koperek',en:'mayonnaise, yoghurt, garlic, lemon, dill',ru:'майонез, йогурт, чеснок, лимон, укроп'}},
+ {n:'Meksykanski',p:'5 zł',d:{pl:'pomidor, cebula czerwona, sól, kmin rzymski, jalapeño, cukier, olej słonecznikowy, limonka, olej oliwkowy',en:'tomato, red onion, salt, cumin, jalapeño, sugar, sunflower oil, lime, olive oil',ru:'помидор, красный лук, соль, зира, халапеньо, сахар, подсолнечное масло, лайм, оливковое масло'}},
+ {n:'Lazi’',p:'5 zł',d:{pl:'ostry sos w stylu ujgurskim',en:'hot Uyghur-style chilli sauce',ru:'острый соус в уйгурском стиле'}},
+ {n:'Pomidorowy',p:'5 zł',d:{pl:'',en:'tomato sauce',ru:'томатный соус'}},
+ {n:'Jogurt',p:'6 zł',d:{pl:'',en:'plain yoghurt',ru:'натуральный йогурт'}}
+]},
+
+{id:'desery',t:{pl:'Desery',en:'Desserts',ru:'Десерты'},items:[
+ {n:'Napoleon',p:'23.99 zł',d:{pl:'',en:'',ru:''}},
+ {n:'Sernik',p:'23.99 zł',d:{pl:'cheesecake',en:'cheesecake',ru:'чизкейк'}},
+ {n:'Medowik',p:'23.99 zł',d:{pl:'tort miodowy',en:'honey cake',ru:'медовик'}},
+ {n:'Karmelowy',p:'23.99 zł',d:{pl:'',en:'caramel cake',ru:'карамельный торт'}},
+ {n:'Spartak',p:'23.99 zł',d:{pl:'tort czekoladowy',en:'chocolate cake',ru:'шоколадный торт'}},
+ {n:'Deser dnia',p:'—',d:{pl:'pytaj kelnera',en:'ask your waiter',ru:'спросите у официанта'}}
+]},
+
+{id:'napoje',t:{pl:'Napoje zimne',en:'Cold drinks',ru:'Холодные напитки'},items:[
+ {n:'Coca-Cola',p:'8.99 zł',d:{pl:'klasyczna lub zero do wyboru',en:'classic or zero',ru:'классическая или zero'}},
+ {n:'Pepsi',p:'8.99 zł',d:{pl:'',en:'',ru:''}},
+ {n:'Fanta',p:'8.99 zł',d:{pl:'',en:'',ru:''}},
+ {n:'Mirinda',p:'8.99 zł',d:{pl:'',en:'',ru:''}},
+ {n:'Sprite',p:'8.99 zł',d:{pl:'',en:'',ru:''}},
+ {n:'7-UP',p:'8.99 zł',d:{pl:'',en:'',ru:''}},
+ {n:'Fuze tea',p:'8.99 zł',d:{pl:'zielona lub czarna do wyboru',en:'green or black',ru:'зелёный или чёрный'}},
+ {n:'Lipton',p:'8.99 zł',d:{pl:'zielona lub czarna do wyboru',en:'green or black',ru:'зелёный или чёрный'}},
+ {n:'Sok',p:'8.99 zł',d:{pl:'jabłkowy, pomarańczowy, grejpfrutowy',en:'apple, orange, grapefruit',ru:'яблочный, апельсиновый, грейпфрутовый'}},
+ {n:'Ayran',p:'10 zł',d:{pl:'',en:'salted yoghurt drink',ru:'айран'}},
+ {n:'Woda',p:'6.99 zł',d:{pl:'gazowana lub niegazowana do wyboru',en:'sparkling or still',ru:'газированная или негазированная'}},
+ {n:'Natakhtari',p:'11.99 zł',d:{pl:'estragon, gruszka, kremowy, winogrono, cytryna-limonka, feijoa',en:'tarragon, pear, cream, grape, lemon-lime, feijoa',ru:'тархун, груша, сливочный, виноград, лимон-лайм, фейхоа'}},
+ {n:'Borjomi',p:'12 zł',d:{pl:'gruzińska woda mineralna',en:'Georgian mineral water',ru:'грузинская минеральная вода'}}
+]},
+
+{id:'herbaty',t:{pl:'Herbaty i kawa',en:'Tea &amp; coffee',ru:'Чай и кофе'},items:[
+ {n:'Herbata zielona',u:'1 L',p:'8.99 zł',d:{pl:'',en:'green tea',ru:'зелёный чай'}},
+ {n:'Herbata czarna',u:'1 L',p:'8.99 zł',d:{pl:'',en:'black tea',ru:'чёрный чай'}},
+ {n:'Herbata z cytryną',u:'1 L',p:'13.99 zł',d:{pl:'',en:'tea with lemon',ru:'чай с лимоном'}},
+ {n:'Herbata taszkentska',u:'1 L',p:'18.99 zł',hl:1,d:{pl:'',en:'Tashkent-style tea',ru:'ташкентский чай'}},
+ {n:'Espresso',p:'9.99 zł',d:{pl:'',en:'',ru:''}},
+ {n:'Doppio',p:'9.99 zł',d:{pl:'',en:'',ru:''}},
+ {n:'Macchiato',p:'9.99 zł',d:{pl:'',en:'',ru:''}},
+ {n:'Americano',u:'mała / duża',p:'9.99 zł',d:{pl:'',en:'small or large',ru:'маленький или большой'}},
+ {n:'Cappuccino',u:'mała / duża',p:'9.99 zł',d:{pl:'',en:'small or large',ru:'маленький или большой'}},
+ {n:'Biała kawa',u:'mała / duża',p:'9.99 zł',d:{pl:'',en:'small or large',ru:'маленький или большой'}},
+ {n:'Flat White',p:'9.99 zł',d:{pl:'',en:'',ru:''}},
+ {n:'Latte',p:'9.99 zł',d:{pl:'',en:'',ru:''}}
+]},
+
+{id:'mocktails',t:{pl:'Mocktails',en:'Mocktails',ru:'Моктейли'},items:[
+ {n:'Mojito',p:'15 zł',d:{pl:'woda gazowana, mięta, limonka',en:'sparkling water, mint, lime',ru:'газированная вода, мята, лайм'}},
+ {n:'Mojito truskawkowy',p:'16 zł',d:{pl:'woda gazowana, mięta, limonka, syrop truskawkowy',en:'sparkling water, mint, lime, strawberry syrup',ru:'газированная вода, мята, лайм, клубничный сироп'}},
+ {n:'Pina Colada',p:'19 zł',d:{pl:'syrop coconut, syrop bananowy, sok ananasowy, sok pomarańczowy, woda gazowana',en:'coconut syrup, banana syrup, pineapple juice, orange juice, sparkling water',ru:'кокосовый сироп, банановый сироп, ананасовый сок, апельсиновый сок, газированная вода'}},
+ {n:'Green Garden Highball',p:'21 zł',d:{pl:'',en:'',ru:''}},
+ {n:'Baziliko',p:'21 zł',d:{pl:'',en:'',ru:''}},
+ {n:'Apperetivo Spritz',p:'23 zł',d:{pl:'',en:'',ru:''}},
+ {n:'Aperitivo Sour',p:'24 zł',d:{pl:'',en:'',ru:''}},
+ {n:'Hugo Cucumber Spritz',p:'28 zł',d:{pl:'',en:'',ru:''}}
+]},
+
+{id:'specials',t:{pl:'Guzar Specials',en:'Guzar Specials',ru:'Guzar Specials'},items:[
+ {n:'Silk Espresso',p:'14 zł',hl:1,d:{pl:'wschodnia kawa na poranek po długiej podróży — aksamit, ciepło i subtelna nuta odległych przypraw',en:'an eastern coffee for the morning after a long journey — velvet, warmth and a faint note of distant spice',ru:'восточный кофе на утро после долгой дороги — бархат, тепло и лёгкая нота далёких специй'}},
+ {n:'Sultan’s Mary',p:'19 zł',d:{pl:'pikantny i przyprawowy — pomidor z limonką, miodem i pieprzem odsłania głęboki smak z orientalnym ogniem',en:'spicy and savoury — tomato with lime, honey and pepper opens into a deep flavour with an oriental fire',ru:'острый и пряный — помидор с лаймом, мёдом и перцем раскрывается глубоким вкусом с восточным огнём'}},
+ {n:'„Pickle Me Softly”',p:'21 zł',d:{pl:'świeży, zadziorny i pikantny — pietruszka, limonka i szczypta soli nadają pikantny orientalny charakter',en:'fresh, cheeky and piquant — parsley, lime and a pinch of salt give it an oriental edge',ru:'свежий, дерзкий и пикантный — петрушка, лайм и щепотка соли придают восточный характер'}},
+ {n:'Cucumber &amp; Mint Ayran Fizz',p:'23 zł',hl:1,d:{pl:'orzeźwiający łyk koczowniczej oazy — chłód zieleni, lekka sól i aksamit mlecznej fali',en:'a refreshing sip of a nomad oasis — cool green, a light salt and a velvet milky wave',ru:'освежающий глоток кочевого оазиса — прохлада зелени, лёгкая соль и бархат молочной волны'}},
+ {n:'Sharbat Bloom',p:'27 zł',d:{pl:'fiołkowy i lekki — delikatna kwaskowość limonki, miód i kwiatowy aromat w aksamitnej teksturze',en:'violet and light — a delicate lime tartness, honey and floral aroma in a velvet texture',ru:'фиалковый и лёгкий — деликатная кислинка лайма, мёд и цветочный аромат в бархатной текстуре'}},
+ {n:'Uzbekistan Sour',p:'28 zł',d:{pl:'soczysty jak granat na targu w Samarkandzie — wschodnia kwaskowość rozwija się na tle łagodnej miodowej słodyczy',en:'as juicy as a pomegranate at a Samarkand market — an eastern tartness unfolding over gentle honey sweetness',ru:'сочный, как гранат на самаркандском базаре — восточная кислинка на фоне мягкой медовой сладости'}}
+]}
+];
+
+let LANG='pl';
+const menuEl=document.getElementById('menu');
+const chipsEl=document.getElementById('chips');
+const emptyEl=document.getElementById('empty');
+let q='';
+
+const T={
+ all:{pl:'Wszystko',en:'Everything',ru:'Всё'},
+ search:{pl:'Szukaj dania…',en:'Search dishes…',ru:'Поиск блюда…'},
+ pos:{pl:'poz.',en:'items',ru:'поз.'}
+};
+
+function renderChips(){
+  chipsEl.innerHTML =
+    `<a class="chip on" href="#" data-jump="top">${T.all[LANG]}</a>` +
+    SECTIONS.map(s=>`<a class="chip" href="#${s.id}" data-jump="${s.id}">${s.t[LANG]}</a>`).join('') +
+    `<label class="search">
+       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+       <input id="q" type="search" value="${q.replace(/"/g,'&quot;')}" placeholder="${T.search[LANG]}" aria-label="${T.search[LANG]}">
+     </label>`;
+  chipsEl.querySelectorAll('[data-jump]').forEach(a=>a.addEventListener('click',e=>{
+    chipsEl.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+    a.classList.add('on');
+    if(a.dataset.jump==='top'){e.preventDefault();scrollTo({top:0,behavior:'smooth'})}
+  }));
+  const qi=document.getElementById('q');
+  qi.addEventListener('input',e=>{q=e.target.value.trim().toLowerCase();filter()});
+}
+
+function renderMenu(){
+  menuEl.innerHTML=SECTIONS.map(s=>`
+    <section class="sect" id="${s.id}" data-sect>
+      <div class="sect-head">
+        <h2>${s.t[LANG]}</h2>
+        <span class="rule"></span>
+        <span class="cnt">${s.items.length} ${T.pos[LANG]}</span>
+      </div>
+      <div class="items">
+        ${s.items.map(i=>`
+          <article class="item${i.hl?' hl':''}" data-hay="${(i.n+' '+i.d.pl+' '+i.d.en+' '+i.d.ru).toLowerCase().replace(/"/g,'')}">
+            <span class="n">${i.n}${i.u?` <u>· ${i.u}</u>`:''}</span>
+            <span class="p">${i.p}</span>
+            ${i.d[LANG]?`<span class="d">${i.d[LANG]}</span>`:''}
+          </article>`).join('')}
+      </div>
+    </section>`).join('');
+}
+
+function filter(){
+  let total=0;
+  document.querySelectorAll('[data-sect]').forEach(sec=>{
+    let shown=0;
+    sec.querySelectorAll('.item').forEach(it=>{
+      const ok=!q||it.dataset.hay.includes(q);
+      it.hidden=!ok; if(ok)shown++;
+    });
+    sec.hidden=shown===0; total+=shown;
+  });
+  emptyEl.hidden=total>0;
+}
+
+function setLang(l){
+  LANG=l;
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-pl]').forEach(el=>{
+    const v=el.getAttribute('data-'+l); if(v!==null)el.innerHTML=v;
+  });
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+  try{localStorage.setItem('gg-lang',l)}catch(e){}
+  renderChips();renderMenu();filter();
+}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+
+let saved=null;try{saved=localStorage.getItem('gg-lang')}catch(e){}
+setLang(saved&&['pl','en','ru'].includes(saved)?saved:'pl');
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
