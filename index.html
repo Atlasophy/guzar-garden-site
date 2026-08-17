@@ -71,6 +71,19 @@ nav.links a.ext::after{content:"↗";font-size:.7em;margin-left:.3em;vertical-al
 .btn.outline:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
 .burger{display:none;border:1px solid var(--line);background:none;border-radius:999px;padding:.5rem .8rem;cursor:pointer;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase}
 
+/* Until it sticks, the nav floats over the dark hero — invert it so it stays legible */
+header.nav:not(.solid) .brand .mark{color:var(--saffron)}
+header.nav:not(.solid) .brand b{color:var(--cream)}
+header.nav:not(.solid) .brand span{color:rgba(247,241,228,.7)}
+header.nav:not(.solid) nav.links a{color:rgba(247,241,228,.88)}
+header.nav:not(.solid) nav.links a:hover{color:var(--saffron);border-color:var(--saffron)}
+header.nav:not(.solid) .lang{border-color:rgba(247,241,228,.34);background:rgba(12,18,13,.4)}
+header.nav:not(.solid) .lang button{color:rgba(247,241,228,.82)}
+header.nav:not(.solid) .lang button.on{background:var(--cream);color:var(--ink)}
+header.nav:not(.solid) .nav-cta{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+header.nav:not(.solid) .nav-cta:hover{background:var(--saffron);border-color:var(--saffron);color:var(--ink)}
+header.nav:not(.solid) .burger{border-color:rgba(247,241,228,.38);color:var(--cream)}
+
 /* ---------- hero ---------- */
 .hero{
   min-height:100svh;display:grid;place-items:center;text-align:center;position:relative;
@@ -81,7 +94,14 @@ nav.links a.ext::after{content:"↗";font-size:.7em;margin-left:.3em;vertical-al
     linear-gradient(165deg,#20301f 0%,#16241d 45%,#2a1a10 100%);
 }
 .hero .tile{position:absolute;inset:0;width:100%;height:100%;opacity:.28;mix-blend-mode:screen}
-.hero .vig{position:absolute;inset:0;background:radial-gradient(75% 65% at 50% 45%,transparent 40%,rgba(10,12,9,.72) 100%)}
+.hero .vig{
+  position:absolute;inset:0;
+  background:
+    /* soft black scrim directly behind the wordmark and copy */
+    radial-gradient(56% 46% at 50% 52%,rgba(6,8,7,.66) 0%,rgba(6,8,7,.42) 55%,rgba(6,8,7,0) 80%),
+    /* heavier black falloff to the edges */
+    radial-gradient(85% 72% at 50% 45%,rgba(6,8,7,.10) 30%,rgba(6,8,7,.88) 100%);
+}
 .hero-inner{position:relative;z-index:2;max-width:900px}
 .hero h1{font-size:clamp(3.2rem,11vw,7.4rem);letter-spacing:.03em;font-weight:300;line-height:.95;margin:.4rem 0 .1rem}
 .hero h1 em{font-style:italic;color:var(--saffron)}
@@ -240,6 +260,9 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.9
   }
   nav.links.open{transform:none}
   nav.links a{font-size:1rem;padding:.7rem 0;border-bottom:1px solid var(--line);width:100%}
+  /* the mobile panel has a cream background, so links go dark again */
+  header.nav:not(.solid) nav.links a{color:var(--ink-soft)}
+  header.nav:not(.solid) nav.links a:hover{color:var(--clay);border-color:var(--line)}
   .burger{display:block}
   .nav-cta{display:none}
   .foot-grid{grid-template-columns:1fr}
