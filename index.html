@@ -51,7 +51,7 @@ header.nav.solid{background:rgba(247,241,228,.93);backdrop-filter:blur(14px);box
 .brand b{font-family:var(--serif);font-size:1.32rem;font-weight:500;letter-spacing:.06em;line-height:1}
 .brand span{display:block;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft)}
 nav.links{display:flex;gap:1.6rem}
-nav.links a{text-decoration:none;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);padding-bottom:2px;border-bottom:1px solid transparent;transition:.25s}
+nav.links a{text-decoration:none;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--ink-soft);padding-bottom:2px;border-bottom:1px solid transparent;transition:.25s}
 nav.links a:hover{color:var(--clay);border-color:var(--clay)}
 nav.links a.ext::after{content:"↗";font-size:.7em;margin-left:.3em;vertical-align:super;opacity:.6}
 .nav-tools{display:flex;align-items:center;gap:.6rem}
@@ -228,7 +228,7 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.9
   .about-grid,.loc-grid{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr 1fr}
 }
-@media(max-width:720px){
+@media(max-width:1000px){
   nav.links{
     position:fixed;inset:0 0 auto 0;background:var(--cream);flex-direction:column;gap:.2rem;
     padding:5.5rem 2rem 2rem;box-shadow:var(--shadow);transform:translateY(-110%);transition:transform .45s cubic-bezier(.22,1,.36,1)
