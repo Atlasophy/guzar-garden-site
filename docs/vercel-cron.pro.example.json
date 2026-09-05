@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    {
+      "path": "/api/jobs/expire-holds",
+      "schedule": "* * * * *"
+    },
+    {
+      "path": "/api/jobs/process-outbox",
+      "schedule": "* * * * *"
+    },
+    {
+      "path": "/api/jobs/cleanup-images",
+      "schedule": "0 3 * * *"
+    }
+  ]
+}

@@ -1,0 +1,743 @@
+/*
+ * The reservation flow, the confirmation page and the guest's management page.
+ *
+ * Written in the landing page's own language — emerald grounds, cut-square gold
+ * edges, hairline rules instead of boxes, Cormorant for anything that carries
+ * weight — because a guest walks straight here from the hero and the seam
+ * should not show. Everything below inherits the tokens already defined on
+ * `body.theme-emerald` in emerald.css; nothing here redefines a colour.
+ *
+ * Mobile first: the flow is one column and full-width controls by default, and
+ * only spreads out past 760px. Most bookings are made on a phone, usually while
+ * doing something else.
+ */
+
+body.theme-emerald .book {
+  padding: 8.5rem 0 clamp(4rem, 8vw, 7rem);
+  min-height: 100svh;
+  position: relative;
+}
+
+body.theme-emerald .book-head {
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+body.theme-emerald .book-head h1 {
+  font-size: clamp(2.1rem, 5.4vw, 3.4rem);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--ivory);
+}
+
+body.theme-emerald .book-head .lede {
+  margin-top: 0.9rem;
+}
+
+body.theme-emerald .book-phone {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--ivory-faint);
+}
+
+body.theme-emerald .book-phone a {
+  color: var(--gold-hi);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* ---------------- the step rail ---------------- */
+/* Six ruled steps rather than a progress bar: the guest can see the whole shape
+   of the task, and each completed step is a link back to itself. */
+body.theme-emerald .steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+body.theme-emerald .steps li {
+  flex: 1 1 0;
+  min-width: 7.5rem;
+}
+
+body.theme-emerald .steps button,
+body.theme-emerald .steps span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 100%;
+  padding: 0.85rem 0.6rem;
+  border: 0;
+  border-right: 1px solid var(--rule-soft);
+  background: none;
+  font: inherit;
+  text-align: left;
+  color: var(--ivory-faint);
+  cursor: default;
+}
+
+body.theme-emerald .steps li:last-child button,
+body.theme-emerald .steps li:last-child span {
+  border-right: 0;
+}
+
+body.theme-emerald .steps button {
+  cursor: pointer;
+  transition: color 0.35s var(--ease);
+}
+
+body.theme-emerald .steps button:hover {
+  color: var(--gold-hi);
+}
+
+body.theme-emerald .steps small {
+  font-size: 0.54rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+body.theme-emerald .steps b {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+body.theme-emerald .steps .current b {
+  color: var(--gold-hi);
+}
+
+body.theme-emerald .steps .done b {
+  color: var(--ivory);
+}
+
+body.theme-emerald .steps .current {
+  box-shadow: inset 0 -2px 0 var(--gold);
+}
+
+/* ---------------- panels ---------------- */
+body.theme-emerald .panel {
+  border: 1px solid var(--rule-soft);
+  background: rgba(4, 18, 12, 0.5);
+  padding: clamp(1.3rem, 3.4vw, 2.4rem);
+  box-shadow: var(--cut);
+}
+
+body.theme-emerald .panel + .panel {
+  margin-top: 1.2rem;
+}
+
+body.theme-emerald .panel h2 {
+  font-size: clamp(1.35rem, 3vw, 1.9rem);
+  color: var(--ivory);
+  margin-bottom: 0.5rem;
+}
+
+body.theme-emerald .panel .hint {
+  font-size: 0.88rem;
+  color: var(--ivory-faint);
+  margin: 0 0 1.3rem;
+  line-height: 1.6;
+}
+
+/* ---------------- choice chips: party size, date, time ---------------- */
+body.theme-emerald .choices {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(4.6rem, 1fr));
+  gap: 0.55rem;
+}
+
+body.theme-emerald .choices.wide {
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+}
+
+body.theme-emerald .choice {
+  /* 48px minimum: a target you can hit with a thumb on a moving tram. */
+  min-height: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  padding: 0.6rem 0.5rem;
+  border: 1px solid var(--rule-soft);
+  background: transparent;
+  color: var(--ivory-soft);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    border-color 0.3s var(--ease),
+    background 0.3s var(--ease),
+    color 0.3s var(--ease);
+}
+
+body.theme-emerald .choice b {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+body.theme-emerald .choice small {
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+body.theme-emerald .choice:hover:not(:disabled) {
+  border-color: var(--rule-strong);
+  color: var(--gold-hi);
+}
+
+body.theme-emerald .choice[aria-pressed='true'] {
+  background: var(--gold-ribbon);
+  border-color: transparent;
+  color: var(--green-abyss);
+}
+
+body.theme-emerald .choice:disabled {
+  opacity: 0.32;
+  cursor: not-allowed;
+}
+
+/* ---------------- forms ---------------- */
+body.theme-emerald .field {
+  display: block;
+  margin-bottom: 1.15rem;
+}
+
+body.theme-emerald .field > span {
+  display: block;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.45rem;
+}
+
+body.theme-emerald .field input,
+body.theme-emerald .field textarea,
+body.theme-emerald .field select {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--rule-soft);
+  background: rgba(4, 18, 12, 0.62);
+  color: var(--ivory);
+  font: inherit;
+  font-size: 1rem;
+  transition:
+    border-color 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+}
+
+body.theme-emerald .field textarea {
+  min-height: 6rem;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+body.theme-emerald .field input:focus,
+body.theme-emerald .field textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(220, 176, 105, 0.16);
+}
+
+body.theme-emerald .field .note {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--ivory-faint);
+}
+
+/* An error is never colour alone: it has a rule, an icon glyph and a sentence. */
+body.theme-emerald .field.invalid input,
+body.theme-emerald .field.invalid textarea {
+  border-color: #d97a5c;
+}
+
+body.theme-emerald .field .error {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+  font-size: 0.82rem;
+  color: #e8a189;
+}
+
+body.theme-emerald .field .error::before {
+  content: '!';
+  flex: none;
+  width: 1.05rem;
+  height: 1.05rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+body.theme-emerald .field-row {
+  display: grid;
+  gap: 0 1rem;
+  grid-template-columns: 1fr;
+}
+
+body.theme-emerald .check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-bottom: 0.9rem;
+  font-size: 0.92rem;
+  color: var(--ivory-soft);
+  line-height: 1.55;
+  cursor: pointer;
+}
+
+body.theme-emerald .check input {
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.15rem;
+  accent-color: var(--gold);
+}
+
+/* ---------------- messages ---------------- */
+body.theme-emerald .notice {
+  display: flex;
+  gap: 0.8rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--rule-soft);
+  border-left-width: 3px;
+  background: rgba(4, 18, 12, 0.55);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ivory-soft);
+  margin-bottom: 1.2rem;
+}
+
+body.theme-emerald .notice.warn {
+  border-left-color: #d9a05c;
+  color: #f0d5b3;
+}
+
+body.theme-emerald .notice.error {
+  border-left-color: #d97a5c;
+  color: #f0c4b3;
+}
+
+body.theme-emerald .notice.ok {
+  border-left-color: #5fbd8a;
+  color: #cdeadd;
+}
+
+body.theme-emerald .notice b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--ivory);
+  margin-bottom: 0.2rem;
+}
+
+/* ---------------- the hold countdown ---------------- */
+body.theme-emerald .hold-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--rule);
+  background: rgba(4, 18, 12, 0.75);
+  margin-bottom: 1.2rem;
+}
+
+body.theme-emerald .hold-bar .time {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--gold-hi);
+  font-variant-numeric: tabular-nums;
+}
+
+body.theme-emerald .hold-bar.urgent .time {
+  color: #f0b48f;
+}
+
+/* ---------------- floor plan ---------------- */
+body.theme-emerald .floor {
+  position: relative;
+  border: 1px solid var(--rule-soft);
+  background: linear-gradient(160deg, #0c2b1d, #061a11);
+  overflow: hidden;
+}
+
+body.theme-emerald .rendered-floor {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  min-height: 250px;
+  background: #061a11;
+  isolation: isolate;
+}
+
+body.theme-emerald .rendered-floor-image {
+  object-fit: contain;
+  object-position: center;
+  filter: saturate(0.96) contrast(1.03);
+}
+
+body.theme-emerald .rendered-floor-markers {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+body.theme-emerald .floor-marker {
+  --marker-color: #5fbd8a;
+  position: absolute;
+  width: clamp(0.62rem, 1.45vw, 0.9rem);
+  aspect-ratio: 1;
+  padding: 0;
+  border: 1px solid rgba(242, 234, 216, 0.9);
+  border-radius: 50%;
+  background: var(--marker-color);
+  box-shadow:
+    0 0 0 2px rgba(6, 26, 17, 0.72),
+    0 3px 12px rgba(0, 0, 0, 0.5);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  pointer-events: auto;
+  transition:
+    transform 0.18s var(--ease),
+    box-shadow 0.18s var(--ease),
+    background 0.18s var(--ease);
+}
+
+body.theme-emerald .floor-marker:hover:not(:disabled) {
+  z-index: 3;
+  transform: translate(-50%, -50%) scale(1.35);
+  box-shadow:
+    0 0 0 4px rgba(6, 26, 17, 0.82),
+    0 0 18px color-mix(in srgb, var(--marker-color) 72%, transparent);
+}
+
+body.theme-emerald .floor-marker > span {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.45rem);
+  padding: 0.25rem 0.4rem;
+  border: 1px solid var(--rule);
+  background: rgba(4, 18, 12, 0.94);
+  color: var(--ivory);
+  font-size: 0.58rem;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-50%) translateY(0.2rem);
+  transition:
+    opacity 0.18s var(--ease),
+    transform 0.18s var(--ease);
+}
+
+body.theme-emerald .floor-marker:hover > span,
+body.theme-emerald .floor-marker.selected > span {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+body.theme-emerald .floor-marker.selected {
+  --marker-color: var(--gold-hi);
+  border-radius: 0.12rem;
+  transform: translate(-50%, -50%) rotate(45deg) scale(1.2);
+}
+
+body.theme-emerald .floor-marker.selected > span {
+  transform: translateX(-50%) translateY(0) rotate(-45deg);
+}
+
+body.theme-emerald .floor-marker.state-held,
+body.theme-emerald .floor-marker.state-reserved {
+  --marker-color: #8b5f4d;
+}
+
+body.theme-emerald .floor-marker.state-blocked,
+body.theme-emerald .floor-marker.state-area_closed,
+body.theme-emerald .floor-marker.state-inactive {
+  --marker-color: #756d60;
+}
+
+body.theme-emerald .floor-marker.state-too_small,
+body.theme-emerald .floor-marker.state-too_large,
+body.theme-emerald .floor-marker:disabled {
+  --marker-color: rgba(242, 234, 216, 0.3);
+  border-style: dashed;
+  opacity: 0.36;
+  cursor: not-allowed;
+}
+
+body.theme-emerald .floor-canvas {
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  min-height: 300px;
+  max-height: 62vh;
+  display: block;
+  touch-action: none;
+}
+
+body.theme-emerald .floor-loading,
+body.theme-emerald .floor-fallback {
+  padding: 2.4rem 1.4rem;
+  text-align: center;
+  color: var(--ivory-faint);
+  font-size: 0.92rem;
+}
+
+body.theme-emerald .floor-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.2rem;
+  padding: 0.8rem 1rem;
+  border-top: 1px solid var(--rule-soft);
+  font-size: 0.72rem;
+  color: var(--ivory-faint);
+}
+
+body.theme-emerald .floor-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Each state has a shape as well as a colour: a square, a hollow square, a
+   crossed square. Colour alone would fail anyone who cannot separate the
+   emerald from the brass. */
+body.theme-emerald .swatch {
+  width: 0.8rem;
+  height: 0.8rem;
+  flex: none;
+  border: 1px solid currentColor;
+}
+
+body.theme-emerald .swatch.available {
+  background: #5fbd8a;
+  color: #5fbd8a;
+}
+
+body.theme-emerald .swatch.selected {
+  background: var(--gold);
+  color: var(--gold-hi);
+  transform: rotate(45deg);
+}
+
+body.theme-emerald .swatch.reserved {
+  background: repeating-linear-gradient(45deg, #8b5f4d 0 2px, transparent 2px 4px);
+  color: #b98873;
+}
+
+body.theme-emerald .swatch.blocked {
+  background: none;
+  color: #9c8f7a;
+  position: relative;
+}
+
+body.theme-emerald .swatch.blocked::after {
+  content: '×';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
+body.theme-emerald .swatch.ineligible {
+  background: none;
+  color: rgba(242, 234, 216, 0.35);
+  border-style: dashed;
+}
+
+/* ---------------- the accessible table list ----------------
+   Not a fallback. It is the same data as the canvas, always present, always
+   operable, and the canvas mirrors its selection. A keyboard or screen-reader
+   guest completes the booking here without ever touching WebGL. */
+body.theme-emerald .table-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+  padding: 0;
+  list-style: none;
+}
+
+body.theme-emerald .table-list button {
+  width: 100%;
+  min-height: 4.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--rule-soft);
+  background: transparent;
+  color: var(--ivory-soft);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.3s var(--ease),
+    background 0.3s var(--ease);
+}
+
+body.theme-emerald .table-list button:hover:not(:disabled) {
+  border-color: var(--rule-strong);
+}
+
+body.theme-emerald .table-list button[aria-pressed='true'] {
+  border-color: var(--gold);
+  background: rgba(220, 176, 105, 0.12);
+}
+
+body.theme-emerald .table-list button:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+
+body.theme-emerald .table-list .code {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--gold-hi);
+  line-height: 1;
+}
+
+body.theme-emerald .table-list .meta {
+  font-size: 0.72rem;
+  color: var(--ivory-faint);
+}
+
+body.theme-emerald .table-list .state {
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* ---------------- review and confirmation ---------------- */
+body.theme-emerald .summary {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body.theme-emerald .summary li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 0.72rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 0.95rem;
+}
+
+body.theme-emerald .summary li:last-child {
+  border-bottom: 0;
+}
+
+body.theme-emerald .summary dt,
+body.theme-emerald .summary .label {
+  color: var(--ivory-faint);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  flex: none;
+}
+
+body.theme-emerald .summary .value {
+  color: var(--ivory);
+  text-align: right;
+}
+
+body.theme-emerald .code-plate {
+  margin: 1.4rem 0;
+  padding: 1.4rem;
+  text-align: center;
+  border: 1px solid var(--rule);
+  background:
+    radial-gradient(90% 120% at 50% 0, rgba(24, 84, 58, 0.55) 0, transparent 70%), var(--green-3);
+}
+
+body.theme-emerald .code-plate small {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+body.theme-emerald .code-plate b {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 6vw, 2.9rem);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--gold-hi);
+}
+
+body.theme-emerald .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.6rem;
+}
+
+body.theme-emerald .actions .btn {
+  flex: 1 1 12rem;
+}
+
+body.theme-emerald .book .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+body.theme-emerald .book .btn:disabled::before {
+  transform: scaleX(0);
+}
+
+@media (min-width: 760px) {
+  body.theme-emerald .field-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  body.theme-emerald .book-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(19rem, 0.75fr);
+    gap: clamp(1.5rem, 3vw, 2.6rem);
+    align-items: start;
+  }
+
+  body.theme-emerald .book-aside {
+    position: sticky;
+    top: 6.5rem;
+  }
+}
+
+@media (max-width: 560px) {
+  body.theme-emerald .book {
+    padding-top: 7rem;
+  }
+
+  body.theme-emerald .actions .btn {
+    flex: 1 1 100%;
+  }
+
+  body.theme-emerald .steps li {
+    min-width: 33.333%;
+  }
+}

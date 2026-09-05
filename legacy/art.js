@@ -46,9 +46,9 @@
     saffron: '#d99a2b',
     lapis:   '#1f4d6b',
     green:   '#1e3527',
-    red:     '#c0392b',
-    teal:    '#1a7f6b',
-    navy:    '#12333f',
+    red:     '#b62a19',
+    teal:    '#338e75',
+    navy:    '#07365a',
     rice:    '#efd9a8',
     crust:   '#c98a3f'
   };

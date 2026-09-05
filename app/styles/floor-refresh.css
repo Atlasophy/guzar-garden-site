@@ -1,0 +1,211 @@
+body.theme-emerald .floor-plan-layout {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  align-items: start;
+  gap: 1rem;
+  margin-top: 1.7rem;
+}
+body.theme-emerald .rendered-floor-shell {
+  margin: 0;
+  background: #061a11;
+  border-radius: 5px;
+}
+body.theme-emerald .rendered-floor {
+  min-height: 0;
+}
+body.theme-emerald .plan-heading {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--rule-soft);
+  font-family: var(--serif);
+  font-size: 1.35rem;
+}
+body.theme-emerald .plan-zones {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font: 0.65rem var(--sans);
+  color: var(--ivory-soft);
+}
+body.theme-emerald .plan-zones span::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d6bb93;
+  margin-right: 0.4rem;
+}
+body.theme-emerald .plan-zones .garden-key::before {
+  background: #8cb46e;
+}
+body.theme-emerald .plan-garden-label {
+  position: absolute;
+  right: 12%;
+  top: 15%;
+  color: #b3cd97;
+  font-family: var(--serif);
+  font-size: clamp(1rem, 2vw, 1.65rem);
+  border-bottom: 1px solid #668653;
+  padding-bottom: 0.4rem;
+}
+body.theme-emerald .plan-selection-hint {
+  padding: 0.9rem 1.2rem;
+  margin: 0;
+  color: var(--ivory-soft);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--rule-soft);
+  display: flex;
+  justify-content: space-between;
+}
+body.theme-emerald .private-rooms h3 {
+  font: 0.64rem var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  margin: 0.3rem 0 1rem;
+}
+body.theme-emerald .private-room-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0.85rem;
+  margin-bottom: 0.85rem;
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  background: #0c271d;
+  text-decoration: none;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+body.theme-emerald .private-room-card:hover {
+  border-color: var(--gold);
+  background: #13372a;
+}
+body.theme-emerald .private-room-name {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1.1;
+  margin-top: 0.9rem;
+}
+body.theme-emerald .private-room-capacity {
+  font-size: 0.7rem;
+  color: var(--ivory-soft);
+  margin-top: 0.35rem;
+}
+body.theme-emerald .private-room-action {
+  font-size: 0.62rem;
+  color: var(--gold);
+  border-top: 1px solid var(--rule-soft);
+  margin-top: 0.7rem;
+  padding-top: 0.7rem;
+  line-height: 1.5;
+}
+body.theme-emerald .private-room-model {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.3;
+  border-left: 5px solid #a68860;
+  border-top: 7px solid #d4bb93;
+  border-right: 3px solid #7e6849;
+  background: linear-gradient(140deg, #b7a083, #ddcfb3);
+  transform: perspective(400px) rotateX(25deg) rotateZ(-4deg);
+  box-shadow:
+    5px 10px 14px #0006,
+    inset 4px 6px 9px #48341660;
+}
+body.theme-emerald .room-table {
+  position: absolute;
+  inset: 28% 28%;
+  z-index: 2;
+  background: repeating-linear-gradient(92deg, #634831 0 3px, #6e5036 4px 7px);
+  border: 2px solid #ae8955;
+  box-shadow: 3px 6px 3px #0005;
+  border-radius: 3px;
+}
+body.theme-emerald .room-seat {
+  position: absolute;
+  width: 18%;
+  height: 16%;
+  background: #174737;
+  border: 2px solid #32614b;
+  border-radius: 4px;
+  box-shadow: 2px 3px 2px #0005;
+}
+body.theme-emerald .seat-0 {
+  left: 16%;
+  top: 30%;
+}
+body.theme-emerald .seat-1 {
+  right: 16%;
+  top: 30%;
+}
+body.theme-emerald .seat-2 {
+  left: 16%;
+  top: 55%;
+}
+body.theme-emerald .seat-3 {
+  right: 16%;
+  top: 55%;
+}
+body.theme-emerald .seat-4 {
+  left: 42%;
+  top: 15%;
+}
+body.theme-emerald .seat-5 {
+  left: 42%;
+  bottom: 13%;
+}
+@media (max-width: 1100px) and (min-width: 761px) {
+  body.theme-emerald .floor-plan-layout {
+    grid-template-columns: 1fr;
+  }
+  body.theme-emerald .private-rooms {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+  body.theme-emerald .private-rooms h3 {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+  body.theme-emerald .private-room-model {
+    max-width: 110px;
+    align-self: center;
+  }
+}
+@media (max-width: 560px) {
+  body.theme-emerald .floor-plan-layout {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  body.theme-emerald .rendered-floor-shell {
+    width: 100%;
+  }
+  body.theme-emerald .private-rooms {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+  body.theme-emerald .private-rooms h3 {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+  body.theme-emerald .private-room-model {
+    width: 105px;
+    max-width: 100%;
+    align-self: center;
+  }
+  body.theme-emerald .plan-heading {
+    padding: 0.8rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.theme-emerald .private-room-card {
+    transition: none;
+  }
+}
