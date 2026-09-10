@@ -255,6 +255,7 @@ export const ru: Dictionary = {
     email: 'E-mail',
     phone: 'Телефон',
     phoneHint: 'Пришлём SMS с подтверждением.',
+    phoneHintNoSms: 'Подтверждение появится на экране. Мы позвоним, если что-то изменится.',
     specialRequests: 'Пожелания (необязательно)',
     specialRequestsHint: 'Аллергии, детский стул, повод — напишите, и мы подготовим стол.',
     privacyAccept: 'Принимаю политику конфиденциальности',

@@ -270,6 +270,9 @@ export const pl = {
     email: 'E-mail',
     phone: 'Telefon',
     phoneHint: 'Wyślemy SMS z potwierdzeniem.',
+    // Used when the venue has no SMS channel — see isSmsEnabled(). Promises
+    // only what actually happens: the code on screen, and a call if needed.
+    phoneHintNoSms: 'Potwierdzenie zobaczysz na ekranie. Zadzwonimy, gdyby coś się zmieniło.',
     specialRequests: 'Uwagi (opcjonalnie)',
     specialRequestsHint: 'Alergie, wózek dziecięcy, okazja — napisz, a przygotujemy stolik.',
     privacyAccept: 'Akceptuję politykę prywatności',

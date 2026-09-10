@@ -49,6 +49,8 @@ export interface BookingFlowProps {
   initialDate: string;
   maxPartySize: number;
   bookingHorizonDays: number;
+  /** False when the venue has no SMS channel; decided on the server. */
+  smsEnabled?: boolean;
   /** Set by the end-to-end test that exercises the non-WebGL path. */
   disable3D?: boolean;
 }
@@ -57,6 +59,7 @@ export function BookingFlow({
   initialDate,
   maxPartySize,
   bookingHorizonDays,
+  smsEnabled = true,
   disable3D = false,
 }: BookingFlowProps) {
   const router = useRouter();
@@ -611,6 +614,7 @@ export function BookingFlow({
             <h2 id="step-details">{t.detailsHeading}</h2>
             <GuestForm
               defaultValues={guest}
+              smsEnabled={smsEnabled}
               onBack={() => void goTo('table')}
               onSubmit={(values) => {
                 setGuest(values);

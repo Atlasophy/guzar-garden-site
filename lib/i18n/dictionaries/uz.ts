@@ -257,6 +257,7 @@ export const uz: Dictionary = {
     email: 'E-pochta',
     phone: 'Telefon',
     phoneHint: 'Tasdiqlash uchun SMS yuboramiz.',
+    phoneHintNoSms: 'Tasdiq ekranda ko‘rinadi. Biror narsa o‘zgarsa, qo‘ng‘iroq qilamiz.',
     specialRequests: 'Izohlar (ixtiyoriy)',
     specialRequestsHint:
       'Allergiya, bolalar aravachasi, tadbir — yozing, stolni shunga tayyorlaymiz.',
