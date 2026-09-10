@@ -46,7 +46,7 @@ export default async function MenuPage() {
       <>
         <div className="grain" aria-hidden="true" />
         <SiteHeader variant="cream" />
-        <section className="mast">
+        <main className="mast" id="menu-content">
           <div className="wrap">
             <h1>Karta dań</h1>
             <p className="note">
@@ -57,7 +57,7 @@ export default async function MenuPage() {
               <Link href="/">Wróć na stronę główną</Link>
             </p>
           </div>
-        </section>
+        </main>
         <SiteFooter variant="cream" />
       </>
     );
@@ -99,14 +99,24 @@ export default async function MenuPage() {
 
       <SiteHeader variant="cream" />
 
-      <MenuBrowser menu={menu} />
+      {/*
+        The landmark, and the skip link's destination.
+
+        This page had neither. `#menu-content` existed only inside the <noscript>
+        block below, so for every visitor with JavaScript — which is all of them —
+        "Przejdź do karty dań" jumped nowhere, and there was no <main> for a
+        screen reader to navigate to at all. Every other page in the site has one.
+      */}
+      <main id="menu-content">
+        <MenuBrowser menu={menu} />
+      </main>
 
       {/*
         The full menu for a visitor without JavaScript. Same dishes, same
         prices, same order — plain markup instead of the interactive browse.
       */}
       <noscript>
-        <div className="wrap" id="menu-content" style={{ paddingBottom: '4rem' }}>
+        <div className="wrap" style={{ paddingBottom: '4rem' }}>
           {menu.categories.map((category) => (
             <section key={category.slug} id={category.slug} style={{ marginTop: '2.5rem' }}>
               <h2>{localized(category.name, 'pl')}</h2>
