@@ -26,7 +26,8 @@
     "menu:generate-seed": "node scripts/generate-menu-seed.mjs",
     "staff:create-admin": "node scripts/create-admin.mjs",
     "jobs:expire-holds": "node scripts/run-job.mjs expire-holds",
-    "jobs:process-outbox": "node scripts/run-job.mjs process-outbox"
+    "jobs:process-outbox": "node scripts/run-job.mjs process-outbox",
+    "db:backup": "node scripts/db-backup.mjs"
   },
   "dependencies": {
     "@react-three/drei": "10.7.8",

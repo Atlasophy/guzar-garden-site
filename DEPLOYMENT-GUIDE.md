@@ -89,6 +89,47 @@ npm run db:migrate
 after staff begin editing live hours, tables, settings, or menu content because the
 seed represents the original baseline and can overwrite those baseline values.
 
+## Testing on a preview hostname before the domain exists
+
+The `*.vercel.app` address works before DNS does, but it is **not** simply
+production with a different name. Three things behave differently, and only one
+of them takes care of itself.
+
+**Same-origin checks — already handled.** `isSameOrigin()` in
+`lib/security/request.ts` allows both the configured `APP_BASE_URL` origin and
+the `Host` the request actually arrived on, so state-changing requests work on a
+preview host with no configuration change.
+
+**Guest management links — needs configuration.** The link a guest uses to
+reschedule or cancel is built from `APP_BASE_URL`
+(`app/api/reservations/route.ts`, `app/api/staff/reservations/route.ts`). With
+`APP_BASE_URL=https://guzargarden.pl` set on a preview deployment, every test
+booking mints a link pointing at a domain that is not live yet — a dead link,
+stored in the notification row.
+
+So set `APP_BASE_URL` **per environment** in Vercel:
+
+| Vercel environment | `APP_BASE_URL`                                  |
+| ------------------ | ----------------------------------------------- |
+| Production         | `https://guzargarden.pl`                        |
+| Preview            | the preview deployment's own `*.vercel.app` URL |
+
+`metadataBase` and the homepage's schema.org URLs read the same variable, so this
+also stops preview deployments advertising canonical URLs for the real domain.
+
+**Preview mode is not a deployment concern.** `RESERVATION_PREVIEW_MODE` is the
+credential-free local design mode, and `lib/config/env.ts` refuses to boot in
+production when it is enabled, so a production reservation cannot silently run
+against the fake adapter. Do not set it in Vercel at all — in either environment.
+There is a unit test covering this refusal in `tests/unit/env-sms-modes.test.ts`.
+
+**Keep the databases separated.** There is one Supabase project. A preview
+deployment pointed at it writes real rows into the same tables production uses.
+Either accept that (and clean up afterwards, per `docs/operations.md` §3) or
+create a second Supabase project for Preview and give the Preview environment its
+own `NEXT_PUBLIC_SUPABASE_URL`, keys and `DATABASE_URL`. The integration suite
+never touches either: it refuses to run against a `*.supabase.co` host.
+
 ## Domain status
 
 Checked 10 September 2026. Both names are registered in Squarespace under the
@@ -133,8 +174,32 @@ The application needs these authenticated jobs:
 Vercel automatically sends `Authorization: Bearer <CRON_SECRET>` when the project
 has a `CRON_SECRET` environment variable.
 
-**Vercel Hobby (daily-only cron) is sufficient for the initial launch**, because
-neither per-minute job is load-bearing in this configuration:
+**Vercel Hobby is not a valid plan for this project**, and the reason has nothing to
+do with cron. Vercel's own plan documentation states that
+"the Hobby plan restricts users to non-commercial, personal use only"
+(<https://vercel.com/docs/plans/hobby>, checked 10 September 2026, and
+<https://vercel.com/docs/limits/fair-use-guidelines#commercial-usage>). A restaurant
+taking bookings is commercial use. **Guzar Garden needs Vercel Pro** (currently
+$20 per developer seat / month) or another commercial host, regardless of how the
+scheduled jobs are configured.
+
+An earlier revision of this guide claimed Hobby was sufficient for launch. That was
+wrong, and it is recorded here rather than quietly deleted because the reasoning
+behind it — that neither per-minute job is load-bearing — is still true and still
+useful, but it is an argument about correctness, not about licensing.
+
+Vercel's cron limits, for completeness
+(<https://vercel.com/docs/cron-jobs/usage-and-pricing>, checked 10 September 2026):
+
+| Plan  | Minimum interval | Scheduling precision |
+| ----- | ---------------- | -------------------- |
+| Hobby | Once per day     | Per-hour (±59 min)   |
+| Pro   | Once per minute  | Per-minute           |
+
+On Pro, deploy `docs/vercel-cron.pro.example.json` as `vercel.json` to get the
+per-minute schedules.
+
+**What the jobs actually require in the current, SMS-disabled configuration:**
 
 - `expire-holds` is a backstop, not a correctness requirement. `gg_expire_stale_holds`
   is called opportunistically inside the database before every availability read and
@@ -146,13 +211,95 @@ neither per-minute job is load-bearing in this configuration:
 - `process-outbox` has nothing to send while `SMS_PROVIDER=disabled`.
 - `cleanup-images` is daily anyway, which Hobby supports.
 
-This changes the moment Twilio is enabled: `process-outbox` then becomes the thing
-standing between a confirmed booking and the guest's phone, and it needs a
-per-minute scheduler. At that point move to Vercel Pro or another trusted scheduler
-that can call these HTTPS routes with the Bearer header. A ready-to-copy Vercel Pro
-configuration is included at `docs/vercel-cron.pro.example.json`; copy it to the
-project root as `vercel.json` and redeploy only after the project supports
-per-minute schedules.
+So on Pro with SMS disabled, a daily `cleanup-images` is genuinely all that must
+run; the other two are safety nets. The moment Twilio is enabled, `process-outbox`
+becomes the thing standing between a confirmed booking and the guest's phone and
+needs its per-minute schedule.
+
+## Supabase plan
+
+**Supabase Free pauses projects.** Supabase's production checklist states that they
+"may pause applications on the Free Plan that exhibit low activity in a 7-day
+period" (<https://supabase.com/docs/guides/deployment/going-into-prod> and
+<https://supabase.com/docs/guides/platform/free-project-pausing>, checked
+10 September 2026).
+
+**This has already happened to this project once.** The `GuzarGarden` project was
+found paused on 10 September 2026. A paused project also loses its DNS record, so
+the API hostname returns `NXDOMAIN` and looks deleted rather than paused.
+
+For a restaurant taking live bookings that is not acceptable: a paused database
+means the menu, the booking flow and the staff dashboard all stop at once, and only
+somebody with dashboard access can restore it.
+
+Free also has no downloadable database backups and no Point-in-Time Recovery. On
+Pro, projects are not paused for inactivity, and PITR is available as an add-on.
+
+**Recommendation: move the Supabase project to Pro before launch.** This document
+does not purchase or change anything — the decision and the payment are the owner's.
+Until then, treat "the site is completely down" as a plausible weekly event and keep
+the restore procedure in `docs/operations.md` to hand.
+
+## DNS and HTTPS sequence
+
+Do this only after the `*.vercel.app` deployment has been verified end to end.
+
+1. **Re-check the existing DNS first.** It was last checked on 10 September 2026
+   and it will not have stayed still. Do not skip this — the whole point is to
+   know what you are about to replace:
+
+   ```powershell
+   nslookup -type=NS guzargarden.pl 8.8.8.8
+   nslookup -type=MX guzargarden.pl 8.8.8.8
+   nslookup -type=TXT guzargarden.pl 8.8.8.8
+   nslookup -type=A guzargarden.pl 8.8.8.8
+   ```
+
+   On 10 September 2026 this returned nameservers `ns1/ns2.emailverification.info`
+   and **no MX and no TXT records**, which is why switching nameservers was judged
+   safe. **If MX or TXT records now exist, stop** — moving nameservers would break
+   mail or domain verification. Copy them into Squarespace DNS first.
+
+2. Switch `guzargarden.pl` to Squarespace nameservers (Domain → DNS → Domain
+   Nameservers). Until this is done the Squarespace DNS panel is inert.
+3. Add `guzargarden.pl` and `www.guzargarden.pl` in Vercel → Settings → Domains.
+   Make the apex primary.
+4. Copy the exact records Vercel displays into Squarespace DNS. Use Vercel's
+   values; do not reuse the ones in this document.
+5. Wait for Vercel to mark both names valid and for HTTPS certificates to issue.
+6. Verify: `https://guzargarden.pl/menu` shows dishes, `https://www.guzargarden.pl`
+   redirects to the apex, and a booking completes end to end.
+
+`.com` stays out of this sequence entirely. It is suspended, only its registrant
+can clear it, and nothing about launching `.pl` depends on it.
+
+## Rollback
+
+| Symptom                             | Action                                                                                    |
+| ----------------------------------- | ----------------------------------------------------------------------------------------- |
+| Bad code deployed                   | Vercel → Deployments → last good production deploy → **Redeploy**                         |
+| Domain broken, `*.vercel.app` fine  | DNS only — the application is healthy. Fix records, do not redeploy                       |
+| Menu blank / "chwilowo niedostępna" | Check runtime logs for `menu.page_unavailable` / `menu.page_empty`                        |
+| Database unreachable                | Supabase may have paused the project — resume it (`docs/operations.md` §4.1)              |
+| A migration made things worse       | Migrations are forward-only. Write a corrective migration; do **not** edit an applied one |
+
+A code rollback does **not** roll back the database. If a release included a
+migration, decide about the migration separately and explicitly.
+
+## Post-deployment verification
+
+Run against the real deployment, in this order:
+
+1. `/` — homepage renders, signature dishes present (not an empty grid)
+2. `/menu` — **check the absence of** "Karta dań jest chwilowo niedostępna"; 200 is not a health check
+3. All four languages via the PL/EN/RU/UZ switcher
+4. `/reserve` — complete a booking, confirm the code appears, then **cancel it**
+5. The management link from that booking opens and the "keep this link" block appears
+6. `/staff/login` — sign in, see the booking, change its status
+7. Runtime logs — no `menu.*` or `home.*` suppressed-failure events
+8. Mobile viewport — no horizontal scrolling on the homepage, menu or booking flow
+
+Then delete the test booking (`docs/operations.md` §3).
 
 ## How to put it back online later
 
