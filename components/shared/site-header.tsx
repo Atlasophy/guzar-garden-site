@@ -120,6 +120,9 @@ export function SiteHeader({
         <Link href={href('gallery')}>{nav.gallery}</Link>
         <Link href={href('miejsce')}>{nav.venue}</Link>
         <Link href={href('kontakt')}>{nav.contact}</Link>
+        <Link className="staff-login-link" href="/staff/login">
+          {nav.staffLogin}
+        </Link>
         <Link className="btn nav-cta-mobile" href="/reserve">
           <span>{nav.book}</span>
         </Link>

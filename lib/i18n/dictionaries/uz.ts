@@ -22,6 +22,7 @@ export const uz: Dictionary = {
     gallery: 'Galereya',
     venue: 'Makon',
     contact: 'Aloqa',
+    staffLogin: 'Xodimlar kirishi',
     book: 'Bron qilish',
     openMenu: 'Menyu',
     languageGroup: 'Til',
@@ -257,7 +258,7 @@ export const uz: Dictionary = {
     email: 'E-pochta',
     phone: 'Telefon',
     phoneHint: 'Tasdiqlash uchun SMS yuboramiz.',
-    phoneHintNoSms: 'Tasdiq ekranda ko‘rinadi. Biror narsa o‘zgarsa, qo‘ng‘iroq qilamiz.',
+    phoneHintNoSms: 'Tasdiq ekranda ko‘rinadi. Bronni boshqarish havolasini saqlang.',
     specialRequests: 'Izohlar (ixtiyoriy)',
     specialRequestsHint:
       'Allergiya, bolalar aravachasi, tadbir — yozing, stolni shunga tayyorlaymiz.',

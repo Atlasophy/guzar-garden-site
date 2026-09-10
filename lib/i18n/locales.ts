@@ -12,6 +12,7 @@ export const DEFAULT_LOCALE: Locale = 'pl';
 
 /** The key the old static site used. Kept, so a returning guest keeps their language. */
 export const LOCALE_STORAGE_KEY = 'gg-lang';
+export const LOCALE_COOKIE_NAME = 'gg-lang';
 
 export function isLocale(value: unknown): value is Locale {
   return typeof value === 'string' && (LOCALES as readonly string[]).includes(value);

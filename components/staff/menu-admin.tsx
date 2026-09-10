@@ -5,6 +5,10 @@ import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { apiPatch } from '@/lib/api/client';
 import type { MenuCategoryRow, MenuItemRow } from '@/lib/database/types';
+import { formatStaffMessage } from '@/lib/i18n/staff';
+import { localized, pickLocaleColumns } from '@/lib/i18n/fallback';
+import { useLocale } from '@/components/shared/locale-provider';
+import { useStaffDictionary } from './use-staff-dictionary';
 
 export function MenuAdmin({
   items,
@@ -16,6 +20,8 @@ export function MenuAdmin({
   canEdit: boolean;
 }) {
   const router = useRouter();
+  const { locale } = useLocale();
+  const dictionary = useStaffDictionary();
   const [query, setQuery] = useState('');
   const [busy, setBusy] = useState<string | null>(null);
   const categoryById = new Map(categories.map((c) => [c.id, c]));
@@ -39,40 +45,43 @@ export function MenuAdmin({
     <>
       <header className="staff-head">
         <div>
-          <h1>Menu</h1>
+          <h1>{dictionary.menu}</h1>
           <p>
-            {items.length} pozycji · {categories.length} kategorii
+            {formatStaffMessage(dictionary.menuSummary, {
+              items: items.length,
+              categories: categories.length,
+            })}
           </p>
         </div>
         <div className="staff-actions">
           {canEdit ? (
             <Link className="staff-button" href="/staff/menu/items/new">
-              Dodaj danie
+              {dictionary.addDish}
             </Link>
           ) : null}
           <Link className="staff-button secondary" href="/staff/menu/categories">
-            Kategorie
+            {dictionary.categories}
           </Link>
         </div>
       </header>
       <label className="staff-field">
-        <span>Szukaj</span>
+        <span>{dictionary.search}</span>
         <input
           type="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Nazwa lub slug"
+          placeholder={dictionary.searchPlaceholder}
         />
       </label>
       <div className="staff-table-wrap">
         <table className="staff-table">
           <thead>
             <tr>
-              <th>Danie</th>
-              <th>Kategoria</th>
-              <th>Cena</th>
-              <th>Publikacja</th>
-              <th>Dostępność</th>
+              <th>{dictionary.dish}</th>
+              <th>{dictionary.category}</th>
+              <th>{dictionary.price}</th>
+              <th>{dictionary.publication}</th>
+              <th>{dictionary.availability}</th>
               <th></th>
             </tr>
           </thead>
@@ -80,18 +89,25 @@ export function MenuAdmin({
             {visible.map((item) => (
               <tr key={item.id}>
                 <td>
-                  <strong>{item.name_pl}</strong>
+                  <strong>{localized(pickLocaleColumns(item, 'name'), locale)}</strong>
                   <br />
                   <small>
                     {item.slug}
-                    {item.archived_at ? ' · archiwum' : ''}
+                    {item.archived_at ? ` · ${dictionary.archived}` : ''}
                   </small>
                 </td>
-                <td>{categoryById.get(item.category_id)?.name_pl ?? '—'}</td>
+                <td>
+                  {categoryById.has(item.category_id)
+                    ? localized(
+                        pickLocaleColumns(categoryById.get(item.category_id)!, 'name'),
+                        locale,
+                      )
+                    : '—'}
+                </td>
                 <td>{item.price ? `${item.price} ${item.currency}` : '—'}</td>
                 <td>
                   <span className={`badge ${item.is_published ? 'confirmed' : 'cancelled'}`}>
-                    {item.is_published ? 'publiczne' : 'ukryte'}
+                    {item.is_published ? dictionary.public : dictionary.hidden}
                   </span>
                 </td>
                 <td>
@@ -100,17 +116,19 @@ export function MenuAdmin({
                     disabled={busy === item.id}
                     onClick={() => void update(item.id, { isAvailable: !item.is_available })}
                   >
-                    {item.is_available ? 'Dostępne' : 'Wyprzedane'}
+                    {item.is_available ? dictionary.available : dictionary.soldOut}
                   </button>
                 </td>
                 <td>
-                  {canEdit ? <Link href={`/staff/menu/items/${item.id}`}>Edytuj</Link> : null}
+                  {canEdit ? (
+                    <Link href={`/staff/menu/items/${item.id}`}>{dictionary.edit}</Link>
+                  ) : null}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        {!visible.length ? <p className="staff-empty">Brak wyników.</p> : null}
+        {!visible.length ? <p className="staff-empty">{dictionary.noResults}</p> : null}
       </div>
     </>
   );

@@ -124,20 +124,29 @@ function makeHandle(
  * supplied by hand and a paste error is cheap to make and expensive to survive.
  * A hosted Supabase project is never a valid target.
  */
-function assertDisposable(connectionString: string): void {
-  const host = (() => {
-    try {
-      return new URL(connectionString).hostname;
-    } catch {
-      return '';
-    }
-  })();
+export function assertDisposable(connectionString: string): void {
+  let url: URL;
+  try {
+    url = new URL(connectionString);
+  } catch {
+    throw new Error('TEST_DATABASE_URL must be a valid PostgreSQL connection string.');
+  }
+
+  const host = url.hostname;
+  const database = decodeURIComponent(url.pathname.replace(/^\//, ''));
 
   if (/supabase\.(co|com)$/i.test(host) || /\bpooler\.supabase\b/i.test(host)) {
     throw new Error(
       `Refusing to run the integration suite against ${host}. ` +
         'TEST_DATABASE_URL must point at a disposable local database — this suite ' +
         'drops the public schema and truncates every table.',
+    );
+  }
+
+  if (!/(^|[_-])(test|testing|throwaway|disposable)([_-]|$)/i.test(database)) {
+    throw new Error(
+      `Refusing to run the integration suite against database “${database || '(missing)'}”. ` +
+        'Its name must explicitly identify it as test, testing, throwaway or disposable.',
     );
   }
 }

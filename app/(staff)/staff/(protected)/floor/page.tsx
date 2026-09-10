@@ -1,13 +1,18 @@
 import Link from 'next/link';
 import { requireStaff } from '@/lib/auth/staff';
 import { getFloorView } from '@/lib/staff/dashboard';
+import { getServerStaffDictionary } from '@/lib/i18n/staff-server';
+import { floorStateLabel, formatStaffMessage } from '@/lib/i18n/staff';
 
 export default async function StaffFloorPage({
   searchParams,
 }: {
   searchParams: Promise<{ at?: string }>;
 }) {
-  const staff = await requireStaff('/staff/floor');
+  const [staff, dictionary] = await Promise.all([
+    requireStaff('/staff/floor'),
+    getServerStaffDictionary(),
+  ]);
   const query = await searchParams;
   const parsed = query.at ? new Date(query.at) : new Date();
   const at = Number.isNaN(parsed.getTime()) ? new Date() : parsed;
@@ -24,20 +29,20 @@ export default async function StaffFloorPage({
     <>
       <header className="staff-head">
         <div>
-          <h1>Sala</h1>
-          <p>Stan o {floor.localTime}</p>
+          <h1>{dictionary.floor}</h1>
+          <p>{formatStaffMessage(dictionary.floorStateAt, { time: floor.localTime })}</p>
         </div>
         <a className="staff-button secondary" href="/staff/floor">
-          Teraz
+          {dictionary.now}
         </a>
       </header>
-      <div className="floor-map" aria-label="Plan zajętości stolików">
+      <div className="floor-map" aria-label={dictionary.floorMap}>
         {floor.tables.map((t) => {
           const content = (
             <>
               <span>{t.code}</span>
               <small>
-                {t.state}
+                {floorStateLabel(dictionary, t.state)}
                 {t.reservation ? ` · ${t.reservation.guestName}` : ''}
               </small>
             </>

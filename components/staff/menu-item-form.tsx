@@ -4,6 +4,10 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { apiFetch } from '@/lib/api/client';
 import type { MenuCategoryRow, MenuItemRow } from '@/lib/database/types';
+import { formatStaffMessage } from '@/lib/i18n/staff';
+import { useStaffDictionary } from './use-staff-dictionary';
+import { useLocale } from '@/components/shared/locale-provider';
+import { localized, pickLocaleColumns } from '@/lib/i18n/fallback';
 
 type EditableItem = MenuItemRow | null;
 export function MenuItemForm({
@@ -14,6 +18,8 @@ export function MenuItemForm({
   categories: MenuCategoryRow[];
 }) {
   const router = useRouter();
+  const { locale } = useLocale();
+  const dictionary = useStaffDictionary();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [image, setImage] = useState<File | null>(null);
@@ -77,7 +83,7 @@ export function MenuItemForm({
         credentials: 'same-origin',
       });
       if (!response.ok) {
-        setError('Danie zapisano, ale przesłanie zdjęcia nie powiodło się.');
+        setError(dictionary.dishSavedImageFailed);
         setBusy(false);
         return;
       }
@@ -105,45 +111,47 @@ export function MenuItemForm({
       {error ? <div className="staff-notice error">{error}</div> : null}
       <div className="staff-field-row">
         <label className="staff-field">
-          <span>Kategoria</span>
+          <span>{dictionary.category}</span>
           <select name="categoryId" required defaultValue={item?.category_id}>
             {categories
               .filter((c) => !c.archived_at)
               .map((c) => (
                 <option key={c.id} value={c.id}>
-                  {c.name_pl}
+                  {localized(pickLocaleColumns(c, 'name'), locale)}
                 </option>
               ))}
           </select>
         </label>
         <label className="staff-field">
-          <span>Slug</span>
+          <span>{dictionary.slug}</span>
           <input name="slug" required pattern="[a-z0-9]+(-[a-z0-9]+)*" defaultValue={item?.slug} />
         </label>
       </div>
       <div className="staff-field-row">
         <label className="staff-field">
-          <span>Nazwa PL</span>
+          <span>{dictionary.namePl}</span>
           <input name="namePl" required defaultValue={item?.name_pl} />
         </label>
         <label className="staff-field">
-          <span>Nazwa EN</span>
+          <span>{dictionary.nameEn}</span>
           <input name="nameEn" defaultValue={item?.name_en ?? ''} />
         </label>
       </div>
       <div className="staff-field-row">
         <label className="staff-field">
-          <span>Nazwa RU</span>
+          <span>{dictionary.nameRu}</span>
           <input name="nameRu" defaultValue={item?.name_ru ?? ''} />
         </label>
         <label className="staff-field">
-          <span>Nazwa UZ</span>
+          <span>{dictionary.nameUz}</span>
           <input name="nameUz" defaultValue={item?.name_uz ?? ''} />
         </label>
       </div>
       {(['Pl', 'En', 'Ru', 'Uz'] as const).map((lang) => (
         <label key={lang} className="staff-field">
-          <span>Opis {lang.toUpperCase()}</span>
+          <span>
+            {formatStaffMessage(dictionary.descriptionLanguage, { language: lang.toUpperCase() })}
+          </span>
           <textarea
             name={`description${lang}`}
             defaultValue={
@@ -154,7 +162,7 @@ export function MenuItemForm({
       ))}
       <div className="staff-field-row">
         <label className="staff-field">
-          <span>Cena PLN</span>
+          <span>{dictionary.pricePln}</span>
           <input
             name="price"
             inputMode="decimal"
@@ -163,13 +171,13 @@ export function MenuItemForm({
           />
         </label>
         <label className="staff-field">
-          <span>Porcja / jednostka</span>
+          <span>{dictionary.portion}</span>
           <input name="portionText" defaultValue={item?.portion_text ?? ''} />
         </label>
       </div>
       <div className="staff-field-row">
         <label className="staff-field">
-          <span>Kolejność</span>
+          <span>{dictionary.displayOrder}</span>
           <input
             name="displayOrder"
             type="number"
@@ -178,7 +186,7 @@ export function MenuItemForm({
           />
         </label>
         <label className="staff-field">
-          <span>Kolejność na stronie głównej</span>
+          <span>{dictionary.homepageOrder}</span>
           <input
             name="signatureOrder"
             type="number"
@@ -188,19 +196,19 @@ export function MenuItemForm({
         </label>
       </div>
       <label className="staff-field">
-        <span>Alergeny, oddzielone przecinkami</span>
+        <span>{dictionary.allergens}</span>
         <input name="allergens" defaultValue={item?.allergens.join(', ') ?? ''} />
       </label>
       <label className="staff-field">
-        <span>Tagi dietetyczne</span>
+        <span>{dictionary.dietaryTags}</span>
         <input name="dietaryTags" defaultValue={item?.dietary_tags.join(', ') ?? ''} />
       </label>
       <label className="staff-field">
-        <span>Hasła wyszukiwania</span>
+        <span>{dictionary.searchAliases}</span>
         <input name="searchAliases" defaultValue={item?.search_aliases ?? ''} />
       </label>
       <label className="staff-field">
-        <span>Zdjęcie dania</span>
+        <span>{dictionary.dishImage}</span>
         <input
           type="file"
           accept="image/jpeg,image/png,image/webp"
@@ -208,36 +216,36 @@ export function MenuItemForm({
         />
       </label>
       <label className="staff-field">
-        <span>Tekst alternatywny PL</span>
+        <span>{dictionary.imageAltPl}</span>
         <input name="imageAltPl" defaultValue={item?.image_alt_pl ?? ''} />
       </label>
       {item?.image_path ? (
         <label className="staff-check">
-          <input name="removeImage" type="checkbox" /> Usuń obecne zdjęcie
+          <input name="removeImage" type="checkbox" /> {dictionary.removeImage}
         </label>
       ) : null}
       <label className="staff-check">
         <input name="isAvailable" type="checkbox" defaultChecked={item?.is_available ?? true} />{' '}
-        Dostępne
+        {dictionary.available}
       </label>
       <label className="staff-check">
         <input name="isPublished" type="checkbox" defaultChecked={item?.is_published ?? true} />{' '}
-        Opublikowane
+        {dictionary.published}
       </label>
       <label className="staff-check">
         <input name="isSignature" type="checkbox" defaultChecked={item?.is_signature ?? false} />{' '}
-        Pokaż na stronie głównej
+        {dictionary.showOnHomepage}
       </label>
       <div className="staff-actions">
         <button className="staff-button" disabled={busy}>
-          {busy ? 'Zapisywanie…' : 'Zapisz'}
+          {busy ? dictionary.saving : dictionary.save}
         </button>
         <button
           type="button"
           className="staff-button secondary"
           onClick={() => router.push('/staff/menu')}
         >
-          Anuluj
+          {dictionary.cancel}
         </button>
         {item ? (
           <button
@@ -246,7 +254,7 @@ export function MenuItemForm({
             disabled={busy}
             onClick={() => void archive()}
           >
-            {item.archived_at ? 'Przywróć' : 'Archiwizuj'}
+            {item.archived_at ? dictionary.restore : dictionary.archive}
           </button>
         ) : null}
       </div>

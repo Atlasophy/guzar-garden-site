@@ -84,6 +84,26 @@ One password-manager record holding Squarespace, Vercel, Supabase, Twilio (when
 it exists) and GitHub ownership/recovery details. Never in the repository, never
 in chat, never in a ZIP.
 
+### 2.5 Staff account lifecycle
+
+Only an administrator can open `/staff/team`. The login name is the account's email
+address. From that page an administrator can create an account, change its name,
+email, phone, role or password, and deactivate or reactivate access. Deactivation is
+the normal offboarding action because it blocks the next authenticated request while
+preserving reservation and audit history.
+
+- Give each person an individual account; never share the administrator login.
+- Start new floor staff as `host` and grant `manager` or `admin` only when their
+  duties require it.
+- Use a unique temporary password of at least 12 characters and share it outside
+  ordinary group chat.
+- Deactivate access as soon as a person leaves the team.
+- Keep at least two trusted administrator accounts before launch so recovery does
+  not depend on one person. The interface blocks self-deactivation, self-demotion,
+  and removal of the last active administrator.
+- Password values never appear in the application database or audit log. The audit
+  record only notes that the password field changed.
+
 ---
 
 ## 3. Test data currently in the live database
@@ -333,19 +353,18 @@ correct each one before launch.
 - [ ] The privacy page: controller's full legal name, privacy contact address,
       retention periods, marketing wording
 
-**The "we will call you" promise**
+**Changes that affect a guest**
 
-The booking form now tells guests, in all four languages, that the restaurant
-will call if anything changes — because with SMS disabled nothing else reaches
-them. **That is a promise about how the restaurant operates, and it currently has
-no procedure behind it.** Before launch, the owner needs to decide:
+With SMS disabled, the booking form makes no promise of an outbound message. It
+tells guests to save their management link, which is also presented as selectable,
+copyable text on confirmation. The restaurant still needs an internal procedure for
+changes initiated by staff:
 
 - [ ] Who calls a guest when staff move, reschedule or cancel their booking?
-- [ ] How does that person know a call is owed? (Today: nothing prompts them —
-      they would have to notice the change themselves.)
+- [ ] How does that person know a call is owed?
 - [ ] What happens for a booking made for tonight when the restaurant has to
       close at short notice?
 
-Until that is answered, the wording is a claim the restaurant may not keep. The
-alternative is to soften it to "please call us if your plans change" — one string
-per language in `lib/i18n/dictionaries/*.ts` (`phoneHintNoSms`).
+Do not reschedule or cancel a guest's booking from the staff panel unless the guest
+has requested it or staff have contacted them. This remains an operating procedure,
+not a promise made by the website.
