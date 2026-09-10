@@ -50,7 +50,7 @@ export const pl = {
   },
 
   reviews: {
-    liveIntro: "Ostatnio dodane lub zaktualizowane opinie w Google.",
+    liveIntro: 'Ostatnio dodane lub zaktualizowane opinie w Google.',
     eyebrow: 'Głosy naszych gości',
     heading: 'Dobre chwile zostają w pamięci.',
     intro: 'Wybrane fragmenty najnowszych opinii w Google.',

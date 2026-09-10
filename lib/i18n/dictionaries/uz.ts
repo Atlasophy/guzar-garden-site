@@ -45,7 +45,7 @@ export const uz: Dictionary = {
   },
 
   reviews: {
-    liveIntro: "Google’da yaqinda yozilgan yoki yangilangan sharhlar.",
+    liveIntro: 'Google’da yaqinda yozilgan yoki yangilangan sharhlar.',
     eyebrow: 'Mehmonlarimizdan',
     heading: 'Yaxshi lahzalar yodda qoladi.',
     intro: 'Google’dagi so‘nggi sharhlardan tanlangan parchalar.',

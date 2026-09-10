@@ -45,7 +45,7 @@ export const en: Dictionary = {
   },
 
   reviews: {
-    liveIntro: "Recently posted or updated reviews on Google.",
+    liveIntro: 'Recently posted or updated reviews on Google.',
     eyebrow: 'From our guests',
     heading: 'Good moments stay with you.',
     intro: 'Selected excerpts from recent Google reviews.',

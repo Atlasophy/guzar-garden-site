@@ -37,12 +37,7 @@ const EMPTY_VALUES: GuestFormValues = {
   marketingConsent: false,
 };
 
-export function GuestForm({
-  defaultValues,
-  onBack,
-  onSubmit,
-  smsEnabled = true,
-}: GuestFormProps) {
+export function GuestForm({ defaultValues, onBack, onSubmit, smsEnabled = true }: GuestFormProps) {
   const { dictionary } = useLocale();
   const t = dictionary.reserve;
   const {

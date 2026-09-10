@@ -9,7 +9,8 @@ The website and its data are separate:
 - Vercel runs the Next.js website and API.
 - Supabase stores reservations, staff accounts, settings, menu content, and images.
 - Squarespace remains the domain registrar and DNS manager.
-- Twilio sends reservation SMS messages.
+- Twilio sends reservation SMS messages — **not configured yet**. The site
+  launched with `SMS_PROVIDER=disabled` and does not promise guests a text.
 
 Restarting or redeploying Vercel does not erase Supabase data. Do not delete the
 Supabase project, and never run `npm run db:reset` against the live database.
@@ -52,13 +53,18 @@ Stop either server with `Ctrl+C`.
    detected framework as Next.js.
 3. In **Project → Settings → Environment Variables**, add the variables listed in
    `.env.example`. Apply them to Production and Preview where appropriate.
-4. Set `APP_BASE_URL` to the final primary URL, normally
-   `https://guzargarden.com`.
-5. Set `TWILIO_STATUS_CALLBACK_URL` to
-   `https://guzargarden.com/api/webhooks/twilio`.
-6. Production requires Twilio credentials and `SMS_PROVIDER=twilio`. Until these
-   exist, use the local development server for reservation testing; production is
-   intentionally configured not to pretend an SMS was delivered.
+4. Set `APP_BASE_URL` to the final primary URL. **For the initial launch this is
+   `https://guzargarden.pl`, not `.com`** — see "Domain status" below.
+5. Leave `TWILIO_STATUS_CALLBACK_URL` unset while SMS is disabled. When Twilio is
+   added, set it to `https://guzargarden.pl/api/webhooks/twilio` (matching
+   whatever `APP_BASE_URL` is at that time).
+6. Production accepts `SMS_PROVIDER=twilio` (with all three `TWILIO_*` values) or
+   `SMS_PROVIDER=disabled`. It rejects `console`, which reports success for a
+   message nobody sent. `disabled` is the honest launch setting: the booking form
+   stops promising guests a confirmation text, and queued messages are recorded
+   as `undelivered` rather than sent. Switching to `twilio` later needs only the
+   environment values and a redeploy — no code change, and no backlog of stale
+   confirmations goes out, because `undelivered` rows are terminal.
 7. Generate new production-only values for `RESERVATION_TOKEN_SECRET` and
    `CRON_SECRET`. Do not reuse an account password. In PowerShell:
 
@@ -67,6 +73,7 @@ Stop either server with `Ctrl+C`.
    ```
 
    Run it twice and use a different output for each secret.
+
 8. Deploy. Vercel will provide a temporary `*.vercel.app` address, which works
    before Squarespace DNS is ready.
 
@@ -82,14 +89,32 @@ npm run db:migrate
 after staff begin editing live hours, tables, settings, or menu content because the
 seed represents the original baseline and can overwrite those baseline values.
 
+## Domain status
+
+Checked 10 September 2026. Both names are registered in Squarespace under the
+account `yvo.hakeem@gmail.com`, with **Ulugbek Halbekov (ulugbek43@gmail.com)**
+as registrant on both.
+
+- **`guzargarden.pl` — Active.** This is the launch domain. It was on the
+  third-party nameservers `ns1/ns2.emailverification.info` and has no MX and no
+  TXT records, so moving it to Squarespace nameservers breaks no email.
+- **`guzargarden.com` — SUSPENDED.** Squarespace could not verify the registrant
+  email, so ICANN verification is outstanding and the name cannot serve traffic.
+  **Only Ulugbek can clear this**, by completing the verification email sent to
+  `ulugbek43@gmail.com`. Once it is Active, add it in Vercel and redirect it to
+  the primary domain — or promote it to primary and update `APP_BASE_URL`.
+
 ## Connect the Squarespace domains
 
 After Vercel is deployed:
 
-1. Add `guzargarden.com`, `www.guzargarden.com`, `guzargarden.pl`, and
-   `www.guzargarden.pl` in **Vercel → Project → Settings → Domains**.
-2. Make `guzargarden.com` the primary domain.
-3. Redirect the other three names to the primary domain.
+1. In Squarespace, switch `guzargarden.pl` to **Squarespace nameservers**
+   (Domain → DNS → Domain Nameservers → "Use Squarespace nameservers"). The
+   panel's DNS records are inert until this is done.
+2. Add `guzargarden.pl` and `www.guzargarden.pl` in
+   **Vercel → Project → Settings → Domains**, and make `guzargarden.pl` primary.
+3. Add the `.com` pair only once its suspension is cleared, and redirect it to
+   the primary domain.
 4. Copy the exact DNS records shown by Vercel into Squarespace DNS. Use Vercel's
    displayed records rather than guessing them.
 5. Wait for Vercel to show each domain as valid and for its HTTPS certificate to
@@ -106,12 +131,28 @@ The application needs these authenticated jobs:
 - Daily: `/api/jobs/cleanup-images`
 
 Vercel automatically sends `Authorization: Bearer <CRON_SECRET>` when the project
-has a `CRON_SECRET` environment variable. Vercel Hobby currently permits only daily
-jobs, while the two operational jobs require a per-minute scheduler. Before the real
-public launch, use Vercel Pro or another trusted scheduler that can call these HTTPS
-routes with the Bearer header. A ready-to-copy Vercel Pro configuration is included
-at `docs/vercel-cron.pro.example.json`; copy it to the project root as `vercel.json`
-and redeploy only after the Vercel project supports per-minute schedules.
+has a `CRON_SECRET` environment variable.
+
+**Vercel Hobby (daily-only cron) is sufficient for the initial launch**, because
+neither per-minute job is load-bearing in this configuration:
+
+- `expire-holds` is a backstop, not a correctness requirement. `gg_expire_stale_holds`
+  is called opportunistically inside the database before every availability read and
+  before every hold, confirm, move and staff write (see
+  `supabase/migrations/0007_reservation_functions.sql`). Availability also ignores
+  any hold whose `hold_expires_at` has passed. An abandoned hold therefore never
+  blocks a table and never collides with the overlap constraint, even if the job
+  has not run for a day.
+- `process-outbox` has nothing to send while `SMS_PROVIDER=disabled`.
+- `cleanup-images` is daily anyway, which Hobby supports.
+
+This changes the moment Twilio is enabled: `process-outbox` then becomes the thing
+standing between a confirmed booking and the guest's phone, and it needs a
+per-minute scheduler. At that point move to Vercel Pro or another trusted scheduler
+that can call these HTTPS routes with the Bearer header. A ready-to-copy Vercel Pro
+configuration is included at `docs/vercel-cron.pro.example.json`; copy it to the
+project root as `vercel.json` and redeploy only after the project supports
+per-minute schedules.
 
 ## How to put it back online later
 
@@ -164,4 +205,3 @@ Then verify on the Vercel production address:
   Supabase, Twilio, and GitHub ownership/recovery details.
 - Never send `.env.local` in chat, email, or a ZIP. If a secret is exposed, rotate it
   in its provider dashboard and update Vercel immediately.
-
