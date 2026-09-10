@@ -19,6 +19,7 @@ import {
   VenueSection,
 } from '@/components/marketing/sections';
 import { SignatureSection } from '@/components/marketing/signature-section';
+import { withReportedFallback } from '@/lib/observability/suppressed';
 
 /**
  * The landing page.
@@ -45,9 +46,17 @@ const FALLBACK_HOURS: PublicHours[] = Array.from({ length: 7 }, (_, weekday) => 
 }));
 
 export default async function HomePage() {
+  // Each of these is allowed to fail without taking the homepage down, but not
+  // allowed to fail quietly: the signature dishes read through the same
+  // repository as /menu, so the price bug that blanked the menu emptied this
+  // grid too, and nothing said so.
   const [signatures, venue, reviews] = await Promise.all([
-    getSignatureDishes(publicEnv.venueSlug).catch(() => []),
-    getPublicVenueInfo(publicEnv.venueSlug).catch(() => null),
+    withReportedFallback('home.signatures_unavailable', [], () =>
+      getSignatureDishes(publicEnv.venueSlug),
+    ),
+    withReportedFallback('home.venue_info_unavailable', null, () =>
+      getPublicVenueInfo(publicEnv.venueSlug),
+    ),
     getGoogleReviews(),
   ]);
 

@@ -741,3 +741,19 @@ body.theme-emerald .book .btn:disabled::before {
     min-width: 33.333%;
   }
 }
+
+/*
+ * The step heading receives focus when the wizard advances, so a keyboard user
+ * lands at the new step instead of at <body>, and a screen reader reads which
+ * step opened. It is focused programmatically rather than tabbed to, so the
+ * standard :focus-visible ring never fires — this gives it a quieter marker of
+ * its own, enough to see where focus went without looking like an error.
+ */
+body.theme-emerald .panel h2[tabindex='-1']:focus {
+  outline: none;
+}
+body.theme-emerald .panel h2[tabindex='-1']:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 6px;
+  border-radius: 2px;
+}

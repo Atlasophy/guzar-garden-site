@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { publicEnv } from '@/lib/config/env';
 import { getPublicMenu } from '@/lib/menu/repository';
+import { reportSuppressed, withReportedFallback } from '@/lib/observability/suppressed';
 import { formatPrice } from '@/lib/menu/price';
 import { localized } from '@/lib/i18n/fallback';
 import { SITE, TEL_HREF } from '@/components/shared/site-config';
@@ -30,11 +31,14 @@ import { MenuBrowser } from '@/components/menu/menu-browser';
 export const revalidate = 3600;
 
 export default async function MenuPage() {
-  let menu;
-  try {
-    menu = await getPublicMenu(publicEnv.venueSlug);
-  } catch {
-    menu = null;
+  const menu = await withReportedFallback('menu.page_unavailable', null, () =>
+    getPublicMenu(publicEnv.venueSlug),
+  );
+
+  // An empty menu is not an error the way a thrown one is, but it reaches the
+  // visitor identically, so it is worth the same line in the log.
+  if (menu && menu.categories.length === 0) {
+    reportSuppressed('menu.page_empty', new Error('menu query returned zero categories'));
   }
 
   if (!menu || menu.categories.length === 0) {
