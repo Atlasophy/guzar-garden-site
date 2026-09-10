@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { BookingFlow } from '@/components/reservation/booking-flow';
 import { SiteFooter } from '@/components/shared/site-footer';
 import { SiteHeader } from '@/components/shared/site-header';
-import { publicEnv } from '@/lib/config/env';
+import { isSmsEnabled, publicEnv } from '@/lib/config/env';
 import { toLocalDateString } from '@/lib/time/warsaw';
 import { getPublicVenueInfo } from '@/lib/venue/public-info';
 
@@ -32,6 +32,7 @@ export default async function ReservePage() {
             initialDate={toLocalDateString(new Date())}
             maxPartySize={venue?.policy.maxOnlinePartySize ?? 12}
             bookingHorizonDays={venue?.policy.bookingHorizonDays ?? 90}
+            smsEnabled={isSmsEnabled()}
           />
         </div>
       </main>

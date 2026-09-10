@@ -256,6 +256,7 @@ export const en: Dictionary = {
     email: 'Email',
     phone: 'Mobile',
     phoneHint: 'We will text you a confirmation.',
+    phoneHintNoSms: 'Your confirmation appears on screen. We will call you if anything changes.',
     specialRequests: 'Anything we should know? (optional)',
     specialRequestsHint:
       'Allergies, a pushchair, an occasion — tell us and we will set the table for it.',

@@ -19,6 +19,12 @@ interface GuestFormProps {
   defaultValues: GuestFormValues | null;
   onBack: () => void;
   onSubmit: (values: GuestFormValues) => void;
+  /**
+   * False when the venue has no SMS channel. The hint under the phone field is
+   * the one place the site promises a confirmation text, so it is the one place
+   * that has to stop promising it. Defaults to true so the prop is additive.
+   */
+  smsEnabled?: boolean;
 }
 
 const EMPTY_VALUES: GuestFormValues = {
@@ -31,7 +37,12 @@ const EMPTY_VALUES: GuestFormValues = {
   marketingConsent: false,
 };
 
-export function GuestForm({ defaultValues, onBack, onSubmit }: GuestFormProps) {
+export function GuestForm({
+  defaultValues,
+  onBack,
+  onSubmit,
+  smsEnabled = true,
+}: GuestFormProps) {
   const { dictionary } = useLocale();
   const t = dictionary.reserve;
   const {
@@ -119,7 +130,7 @@ export function GuestForm({ defaultValues, onBack, onSubmit }: GuestFormProps) {
             })}
           />
           <small className="note" id="guest-phone-hint">
-            {t.phoneHint}
+            {smsEnabled ? t.phoneHint : t.phoneHintNoSms}
           </small>
           {errors.phone ? <small className="error">{errors.phone.message}</small> : null}
         </label>

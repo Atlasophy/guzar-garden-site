@@ -7,6 +7,7 @@ import { coerceLocale } from '@/lib/i18n/locales';
 import type { NotificationOutboxRow, ReservationRow, VenueRow } from '@/lib/database/types';
 import type { SmsProvider } from './provider';
 import { ConsoleSmsProvider } from './console-provider';
+import { DisabledSmsProvider } from './disabled-provider';
 import { TwilioSmsProvider } from './twilio-provider';
 
 /**
@@ -27,8 +28,13 @@ let cachedProvider: SmsProvider | null = null;
 
 export function getSmsProvider(): SmsProvider {
   if (cachedProvider) return cachedProvider;
+  const provider = getServerEnv().SMS_PROVIDER;
   cachedProvider =
-    getServerEnv().SMS_PROVIDER === 'twilio' ? new TwilioSmsProvider() : new ConsoleSmsProvider();
+    provider === 'twilio'
+      ? new TwilioSmsProvider()
+      : provider === 'disabled'
+        ? new DisabledSmsProvider()
+        : new ConsoleSmsProvider();
   return cachedProvider;
 }
 

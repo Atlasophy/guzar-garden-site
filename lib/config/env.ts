@@ -27,7 +27,11 @@ const serverSchema = z.object({
   APP_BASE_URL: z.url(),
   RESERVATION_TOKEN_SECRET: nonEmpty.min(24, 'RESERVATION_TOKEN_SECRET must be at least 24 chars'),
   CRON_SECRET: nonEmpty.min(16, 'CRON_SECRET must be at least 16 chars'),
-  SMS_PROVIDER: z.enum(['console', 'twilio']).default('console'),
+  // 'console' prints a redacted preview and is development-only. 'twilio' sends.
+  // 'disabled' is the deliberate "this venue has no SMS channel" setting: it is
+  // allowed in production precisely because it does not pretend — nothing is
+  // queued as sendable, and the booking UI stops promising the guest a text.
+  SMS_PROVIDER: z.enum(['console', 'twilio', 'disabled']).default('console'),
 
   MENU_IMAGE_BUCKET: nonEmpty.default('menu-images'),
   MAX_MENU_IMAGE_BYTES: z.coerce
@@ -87,9 +91,15 @@ export function getServerEnv(): ServerEnv {
         missing.push('TWILIO_AUTH_TOKEN is required when SMS_PROVIDER=twilio');
       if (!env.TWILIO_MESSAGING_SERVICE_SID)
         missing.push('TWILIO_MESSAGING_SERVICE_SID is required when SMS_PROVIDER=twilio');
-    } else {
+    } else if (env.SMS_PROVIDER !== 'disabled') {
+      // 'console' stays banned in production: it logs a preview and returns
+      // success, which is exactly the "quietly pretending to work" this file
+      // exists to prevent. 'disabled' is allowed because it claims nothing —
+      // the guest is never told a text is coming, and every queued message is
+      // recorded as undelivered rather than sent.
       missing.push(
-        'SMS_PROVIDER must be "twilio" in production — the console adapter never sends a message',
+        'SMS_PROVIDER must be "twilio" or "disabled" in production — ' +
+          'the console adapter never sends a message',
       );
     }
     if (env.RESERVATION_TOKEN_SECRET.startsWith('replace-me'))
@@ -103,6 +113,17 @@ export function getServerEnv(): ServerEnv {
 
   cached = env;
   return env;
+}
+
+/**
+ * Whether this deployment has a real SMS channel.
+ *
+ * False means the venue launched without one: the booking form must not promise
+ * a confirmation text, and the outbox records messages as undelivered instead
+ * of sending them. Turning Twilio on later flips this with no code change.
+ */
+export function isSmsEnabled(): boolean {
+  return getServerEnv().SMS_PROVIDER !== 'disabled';
 }
 
 /** Local-only adapter used when hosted Supabase is unreachable during visual review. */
