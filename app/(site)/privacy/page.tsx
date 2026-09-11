@@ -12,10 +12,11 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
+      <div className="grain" aria-hidden="true" />
       <SiteHeader variant="emerald" />
-      <main className="reserve-page">
-        <div className="wrap reserve-wrap">
-          <header className="reserve-heading">
+      <main className="book" id="main-content">
+        <div className="wrap">
+          <header className="book-head">
             <p className="eyebrow">Guzar Garden</p>
             <h1>Polityka prywatności</h1>
             <p>Informacje dotyczące rezerwacji stolików i kontaktu z restauracją.</p>
