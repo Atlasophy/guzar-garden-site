@@ -2,6 +2,7 @@ import { publicEnv } from '@/lib/config/env';
 import { getSignatureDishes } from '@/lib/menu/repository';
 import { getPublicVenueInfo, type PublicHours } from '@/lib/venue/public-info';
 import { SITE } from '@/components/shared/site-config';
+import { PUBLIC_SITE_URL } from '@/lib/config/public-site';
 import { SiteHeader } from '@/components/shared/site-header';
 import { SiteFooter } from '@/components/shared/site-footer';
 import { IntroOverlay } from '@/components/marketing/intro-overlay';
@@ -69,9 +70,9 @@ export default async function HomePage() {
     servesCuisine: ['Uzbek', 'Halal', 'Central Asian'],
     priceRange: '$$',
     telephone: SITE.phoneE164,
-    url: process.env.APP_BASE_URL ?? 'http://localhost:3000',
-    hasMenu: `${process.env.APP_BASE_URL ?? ''}/menu`,
-    acceptsReservations: `${process.env.APP_BASE_URL ?? ''}/reserve`,
+    url: PUBLIC_SITE_URL,
+    hasMenu: `${PUBLIC_SITE_URL}/menu`,
+    acceptsReservations: `${PUBLIC_SITE_URL}/reserve`,
     address: {
       '@type': 'PostalAddress',
       streetAddress: SITE.addressLine,

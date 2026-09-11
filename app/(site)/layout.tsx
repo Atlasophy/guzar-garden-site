@@ -8,6 +8,7 @@ import '../styles/floor-refresh.css';
 import '../styles/reviews.css';
 import { DocumentHead } from '@/components/shared/document-head';
 import { LocaleProvider } from '@/components/shared/locale-provider';
+import { PUBLIC_SITE_URL } from '@/lib/config/public-site';
 
 /**
  * The emerald document: the landing page, the reservation flow and the guest's
@@ -19,7 +20,7 @@ import { LocaleProvider } from '@/components/shared/locale-provider';
  */
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.APP_BASE_URL ?? 'http://localhost:3000'),
+  metadataBase: new URL(PUBLIC_SITE_URL),
   title: {
     default: 'Guzar Garden — Restauracja Uzbecka & Grill Halal, Warszawa',
     template: '%s — Guzar Garden',

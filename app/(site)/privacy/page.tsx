@@ -6,7 +6,7 @@ import { SITE, TEL_HREF } from '@/components/shared/site-config';
 export const metadata: Metadata = {
   title: 'Polityka prywatności',
   alternates: { canonical: '/privacy' },
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: true },
 };
 
 export default function PrivacyPage() {
@@ -43,8 +43,7 @@ export default function PrivacyPage() {
               Dane mogą być przetwarzane przez dostawców hostingu, bazy danych i wiadomości SMS
               działających na zlecenie restauracji. Dane rezerwacyjne są przechowywane tylko tak
               długo, jak jest to potrzebne do obsługi wizyty, rozpatrzenia roszczeń i spełnienia
-              obowiązków prawnych. Szczegółowe okresy retencji należy zatwierdzić przed
-              uruchomieniem produkcyjnym.
+              obowiązków prawnych.
             </p>
             <h2>Prawa gościa</h2>
             <p>
@@ -52,11 +51,10 @@ export default function PrivacyPage() {
               się przetwarzaniu oraz wycofać zgodę marketingową. Możesz też złożyć skargę do Prezesa
               Urzędu Ochrony Danych Osobowych.
             </p>
-            <h2>Ważne przed publikacją</h2>
+            <h2>Kontakt w sprawie danych</h2>
             <p>
-              Restauracja powinna uzupełnić pełną nazwę prawną administratora, adres e-mail do spraw
-              prywatności i zatwierdzone okresy retencji po konsultacji prawnej. Ten tekst jest
-              technicznym szkicem działania systemu, a nie poradą prawną.
+              W sprawach dotyczących danych osobowych skontaktuj się bezpośrednio z restauracją pod
+              numerem <a href={TEL_HREF}>{SITE.phoneDisplay}</a>.
             </p>
           </article>
         </div>
