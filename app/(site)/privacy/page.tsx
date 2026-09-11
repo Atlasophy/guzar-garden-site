@@ -3,7 +3,11 @@ import { SiteFooter } from '@/components/shared/site-footer';
 import { SiteHeader } from '@/components/shared/site-header';
 import { SITE, TEL_HREF } from '@/components/shared/site-config';
 
-export const metadata: Metadata = { title: 'Polityka prywatności', robots: { index: true } };
+export const metadata: Metadata = {
+  title: 'Polityka prywatności',
+  alternates: { canonical: '/privacy' },
+  robots: { index: true, follow: true },
+};
 
 export default function PrivacyPage() {
   return (

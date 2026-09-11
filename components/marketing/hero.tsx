@@ -149,7 +149,7 @@ export function Hero({
                 alt=""
                 width={364}
                 height={364}
-                priority
+                loading="eager"
               />
             </span>
             <span className="wheel-star star-one" aria-hidden="true" />

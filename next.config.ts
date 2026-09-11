@@ -15,10 +15,12 @@ const supabaseHost = (() => {
   }
 })();
 
+const isDevelopment = process.env.NODE_ENV === 'development';
+
 const CSP = [
   "default-src 'self'",
   // next/script and the framework's inline bootstrap need 'unsafe-inline'.
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+  `script-src 'self' 'unsafe-inline'${isDevelopment ? " 'unsafe-eval'" : ''}`,
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com data:",
   `img-src 'self' data: blob:${supabaseHost ? ` https://${supabaseHost}` : ''} https://*.supabase.co`,

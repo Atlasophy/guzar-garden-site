@@ -98,7 +98,7 @@ export function SiteHeader({
             alt=""
             width={364}
             height={364}
-            priority
+            loading="eager"
           />
         </span>
         <span>

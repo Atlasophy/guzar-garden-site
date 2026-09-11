@@ -26,6 +26,7 @@ export const metadata: Metadata = {
   },
   description:
     'Guzar Garden — restauracja uzbecka i grill halal przy Parku Skaryszewskim. Plow z kazana, samsa z pieca tandoor, szaszłyki z węgla. Aleja Zieleniecka 6/8, Warszawa.',
+  alternates: { canonical: '/' },
   icons: {
     icon: [
       { url: '/assets/brand/favicon-32.png', sizes: '32x32', type: 'image/png' },
@@ -35,6 +36,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
+    url: '/',
     siteName: 'Guzar Garden',
     locale: 'pl_PL',
     alternateLocale: ['en_GB', 'ru_RU', 'uz_UZ'],

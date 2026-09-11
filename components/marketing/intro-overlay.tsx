@@ -56,7 +56,7 @@ export function IntroOverlay() {
           alt=""
           width={1280}
           height={1280}
-          priority
+          loading="eager"
         />
       </div>
       <span className="cap">Guzar Garden</span>

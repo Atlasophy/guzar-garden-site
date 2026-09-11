@@ -301,15 +301,25 @@ databaseDescribe('reservation rules and conflicts', () => {
   });
 
   it('lets staff book inside the notice window, because the guest is standing there', async () => {
-    // Same instant, lead-time enforcement off. If this returns a reason it must
-    // not be the notice rule.
-    const { rows } = await db!.pool.query<{ at: Date }>(
-      `select date_trunc('hour', now() at time zone 'Europe/Warsaw') + interval '1 hour' as at`,
+    // Use a known open-hour slot and widen the notice window around it. Building
+    // the slot from `now() + 1 hour` made this test fail overnight, when both
+    // paths correctly rejected the booking as outside opening hours.
+    const id = await venueId(db!);
+    await db!.pool.query(
+      `update reservation_settings set min_notice_minutes = 10080 where venue_id = $1`,
+      [id],
     );
-    const soon = new Date(rows[0]!.at);
-    const withLead = await validateWindow(soon, 60, true);
-    const withoutLead = await validateWindow(soon, 60, false);
-    expect(withoutLead === null || withoutLead !== withLead || withLead === null).toBe(true);
+
+    try {
+      const soon = await warsawInstant(db!, 2, '19:00');
+      expect(await validateWindow(soon, 60, true)).toBe('too_soon');
+      expect(await validateWindow(soon, 60, false)).toBeNull();
+    } finally {
+      await db!.pool.query(
+        `update reservation_settings set min_notice_minutes = $1 where venue_id = $2`,
+        [POLICY.minNoticeMinutes, id],
+      );
+    }
   });
 
   it('rejects a booking beyond the booking horizon', async () => {
