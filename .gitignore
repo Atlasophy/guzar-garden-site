@@ -20,3 +20,6 @@ blob-report/
 Thumbs.db
 .vscode/
 .idea/
+/dist/
+.vinext/
+.wrangler/

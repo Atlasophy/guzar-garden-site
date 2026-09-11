@@ -6,6 +6,9 @@ const config = [
   {
     ignores: [
       '.next/**',
+      '.vinext/**',
+      '.wrangler/**',
+      'dist/**',
       'node_modules/**',
       'legacy/**',
       'public/**',
