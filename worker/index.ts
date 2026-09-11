@@ -28,9 +28,16 @@ const worker = {
       headers.set(header.key, header.value);
     }
 
-    const pathname = new URL(request.url).pathname;
+    const url = new URL(request.url);
+    const pathname = url.pathname;
     if (pathname.startsWith('/api/') || pathname.startsWith('/staff/')) {
       headers.set('Cache-Control', 'no-store, max-age=0');
+    }
+
+    // Cloudflare's temporary preview hostname is for release checks only. The
+    // restaurant's custom domain remains the one canonical, indexable website.
+    if (url.hostname.endsWith('.workers.dev')) {
+      headers.set('X-Robots-Tag', 'noindex, nofollow');
     }
 
     return new Response(response.body, {
