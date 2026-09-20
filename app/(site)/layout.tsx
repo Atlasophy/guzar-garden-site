@@ -8,6 +8,7 @@ import '../styles/floor-refresh.css';
 import '../styles/reviews.css';
 import { DocumentHead } from '@/components/shared/document-head';
 import { LocaleProvider } from '@/components/shared/locale-provider';
+import { PUBLIC_SITE_URL } from '@/lib/config/public-site';
 
 /**
  * The emerald document: the landing page, the reservation flow and the guest's
@@ -19,13 +20,14 @@ import { LocaleProvider } from '@/components/shared/locale-provider';
  */
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.APP_BASE_URL ?? 'http://localhost:3000'),
+  metadataBase: new URL(PUBLIC_SITE_URL),
   title: {
     default: 'Guzar Garden — Restauracja Uzbecka & Grill Halal, Warszawa',
     template: '%s — Guzar Garden',
   },
   description:
     'Guzar Garden — restauracja uzbecka i grill halal przy Parku Skaryszewskim. Plow z kazana, samsa z pieca tandoor, szaszłyki z węgla. Aleja Zieleniecka 6/8, Warszawa.',
+  alternates: { canonical: '/' },
   icons: {
     icon: [
       { url: '/assets/brand/favicon-32.png', sizes: '32x32', type: 'image/png' },
@@ -35,6 +37,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
+    url: '/',
     siteName: 'Guzar Garden',
     locale: 'pl_PL',
     alternateLocale: ['en_GB', 'ru_RU', 'uz_UZ'],

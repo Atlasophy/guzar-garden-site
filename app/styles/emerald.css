@@ -422,6 +422,7 @@ body.theme-emerald nav.links a {
   color: var(--ivory-soft);
   position: relative;
   padding-block: 0.3rem;
+  white-space: nowrap;
   transition: color 0.35s var(--ease);
 }
 body.theme-emerald nav.links a::after {
@@ -442,6 +443,9 @@ body.theme-emerald nav.links a:hover {
 body.theme-emerald nav.links a:hover::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+body.theme-emerald nav.links .staff-login-link {
+  color: var(--gold-hi);
 }
 body.theme-emerald nav.links .nav-cta-mobile {
   display: none;
@@ -1864,10 +1868,10 @@ html.js body.theme-emerald .rv.in {
     font-size: 0.64rem;
   }
   body.theme-emerald nav.links {
-    gap: 2.1rem;
+    gap: 1.7rem;
   }
   body.theme-emerald nav.links a {
-    font-size: 0.88rem;
+    font-size: 0.74rem;
   }
   body.theme-emerald .lang button {
     padding: 0.48rem 0.66rem;
@@ -1934,6 +1938,7 @@ html.js body.theme-emerald .rv.in {
   }
   body.theme-emerald nav.links a {
     font-size: 0.7rem;
+    letter-spacing: 0.08em;
   }
 }
 @media (max-width: 1000px) {

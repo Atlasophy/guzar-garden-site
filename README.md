@@ -111,6 +111,12 @@ Send `Authorization: Bearer $CRON_SECRET`. The same calls can be tested against 
 
 The UI hides unavailable operations, each API route authorizes again, and database RLS/functions form the final boundary.
 
+Administrators manage staff at `/staff/team`. They can create accounts, change the
+login email, name, phone, role and password, and deactivate or reactivate access.
+Passwords are never displayed or stored in the application database. The screen
+prevents an administrator from deactivating or demoting their own account and
+prevents removal of the last active administrator.
+
 ## Quality checks
 
 ```bash
@@ -129,7 +135,10 @@ Integration tests never use `DATABASE_URL`; they use an isolated embedded Postgr
 - Fill every production environment value and replace all placeholders.
 - Run migrations and seed only the baseline content required for the venue.
 - Create staff users individually and apply least-privilege roles.
-- Enable Twilio, verify the sender, callback signature, and test messages to real international numbers.
+- Verify `/staff/team`; create real staff accounts only for named employees and
+  deliver temporary passwords through a secure channel.
+- Keep `SMS_PROVIDER=disabled` for the initial published testing period. Configure
+  and verify Twilio only when the restaurant decides to activate SMS.
 - Configure the three scheduled jobs and alert on failed runs/outbox failures.
 - Replace the in-process rate-limit store with a shared Redis/KV store if the deployment uses multiple server instances or receives material abuse traffic.
 - Confirm backup/PITR settings and perform a restore drill before launch.
@@ -141,4 +150,3 @@ Integration tests never use `DATABASE_URL`; they use an isolated embedded Postgr
 ## Known business confirmations
 
 The floor geometry was inferred from supplied venue photographs and is deliberately editable under `/staff/settings`. The seeded hours and booking policy are operational defaults, not final business decisions. Menu translation gaps and price differences inherited from the old pages are documented in `docs/menu-migration-report.md`.
-

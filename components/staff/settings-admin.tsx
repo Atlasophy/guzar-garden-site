@@ -9,8 +9,20 @@ import type {
   ReservationSettingsRow,
   RestaurantTableRow,
 } from '@/lib/database/types';
+import { useLocale } from '@/components/shared/locale-provider';
+import { localized, pickLocaleColumns } from '@/lib/i18n/fallback';
+import { formatStaffMessage } from '@/lib/i18n/staff';
+import { useStaffDictionary } from './use-staff-dictionary';
 
-const DAYS = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'];
+const DAY_KEYS = [
+  'monday',
+  'tuesday',
+  'wednesday',
+  'thursday',
+  'friday',
+  'saturday',
+  'sunday',
+] as const;
 export function SettingsAdmin({
   settings,
   hours,
@@ -29,6 +41,9 @@ export function SettingsAdmin({
   canTables: boolean;
 }) {
   const router = useRouter();
+  const { locale } = useLocale();
+  const dictionary = useStaffDictionary();
+  const days = DAY_KEYS.map((key) => dictionary[key]);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
@@ -56,14 +71,14 @@ export function SettingsAdmin({
       setError(r.message);
       return;
     }
-    setMessage('Zapisano zasady rezerwacji.');
+    setMessage(dictionary.rulesSaved);
     router.refresh();
   };
   const saveHours = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setBusy(true);
     const f = new FormData(e.currentTarget);
-    const rows = DAYS.map((_, weekday) => ({
+    const rows = days.map((_, weekday) => ({
       weekday,
       opensAt: String(f.get(`open-${weekday}`)),
       closesAt: String(f.get(`close-${weekday}`)),
@@ -79,7 +94,7 @@ export function SettingsAdmin({
       setError(r.message);
       return;
     }
-    setMessage('Zapisano godziny otwarcia.');
+    setMessage(dictionary.hoursSaved);
     router.refresh();
   };
   const saveTable = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
@@ -108,7 +123,7 @@ export function SettingsAdmin({
       setError(r.message);
       return;
     }
-    setMessage(`Zapisano stolik ${body.code}.`);
+    setMessage(formatStaffMessage(dictionary.tableSaved, { code: body.code }));
     router.refresh();
   };
   const hourFor = (day: number) => hours.find((h) => h.weekday === day);
@@ -117,11 +132,11 @@ export function SettingsAdmin({
       {message ? <div className="staff-notice ok">{message}</div> : null}
       {error ? <div className="staff-notice error">{error}</div> : null}
       <section className="staff-card">
-        <h2>Zasady rezerwacji</h2>
+        <h2>{dictionary.reservationRules}</h2>
         <form onSubmit={(e) => void savePolicy(e)}>
           <div className="staff-field-row">
             <label className="staff-field">
-              <span>Interwał (min)</span>
+              <span>{dictionary.slotInterval}</span>
               <input
                 name="slot"
                 type="number"
@@ -131,7 +146,7 @@ export function SettingsAdmin({
               />
             </label>
             <label className="staff-field">
-              <span>Czas wizyty (min)</span>
+              <span>{dictionary.visitDuration}</span>
               <input
                 name="duration"
                 type="number"
@@ -141,7 +156,7 @@ export function SettingsAdmin({
               />
             </label>
             <label className="staff-field">
-              <span>Bufor (min)</span>
+              <span>{dictionary.turnaround}</span>
               <input
                 name="turnaround"
                 type="number"
@@ -151,7 +166,7 @@ export function SettingsAdmin({
               />
             </label>
             <label className="staff-field">
-              <span>Minimalne wyprzedzenie</span>
+              <span>{dictionary.minimumNotice}</span>
               <input
                 name="notice"
                 type="number"
@@ -161,7 +176,7 @@ export function SettingsAdmin({
               />
             </label>
             <label className="staff-field">
-              <span>Horyzont dni</span>
+              <span>{dictionary.bookingHorizon}</span>
               <input
                 name="horizon"
                 type="number"
@@ -171,7 +186,7 @@ export function SettingsAdmin({
               />
             </label>
             <label className="staff-field">
-              <span>Maks. grupa online</span>
+              <span>{dictionary.maxOnlineParty}</span>
               <input
                 name="party"
                 type="number"
@@ -181,7 +196,7 @@ export function SettingsAdmin({
               />
             </label>
             <label className="staff-field">
-              <span>Blokada stolika (sek.)</span>
+              <span>{dictionary.tableHold}</span>
               <input
                 name="hold"
                 type="number"
@@ -191,7 +206,7 @@ export function SettingsAdmin({
               />
             </label>
             <label className="staff-field">
-              <span>Limit anulowania (min)</span>
+              <span>{dictionary.cancellationLimit}</span>
               <input
                 name="cancel"
                 type="number"
@@ -202,7 +217,7 @@ export function SettingsAdmin({
             </label>
           </div>
           <label className="staff-field">
-            <span>Zasady anulowania PL</span>
+            <span>{formatStaffMessage(dictionary.cancellationPolicy, { language: 'PL' })}</span>
             <textarea
               name="policyPl"
               maxLength={1000}
@@ -211,7 +226,7 @@ export function SettingsAdmin({
             />
           </label>
           <label className="staff-field">
-            <span>Zasady anulowania EN</span>
+            <span>{formatStaffMessage(dictionary.cancellationPolicy, { language: 'EN' })}</span>
             <textarea
               name="policyEn"
               maxLength={1000}
@@ -220,7 +235,7 @@ export function SettingsAdmin({
             />
           </label>
           <label className="staff-field">
-            <span>Zasady anulowania RU</span>
+            <span>{formatStaffMessage(dictionary.cancellationPolicy, { language: 'RU' })}</span>
             <textarea
               name="policyRu"
               maxLength={1000}
@@ -229,7 +244,7 @@ export function SettingsAdmin({
             />
           </label>
           <label className="staff-field">
-            <span>Zasady anulowania UZ</span>
+            <span>{formatStaffMessage(dictionary.cancellationPolicy, { language: 'UZ' })}</span>
             <textarea
               name="policyUz"
               maxLength={1000}
@@ -239,15 +254,15 @@ export function SettingsAdmin({
           </label>
           {canPolicy ? (
             <button className="staff-button" disabled={busy}>
-              Zapisz zasady
+              {dictionary.saveRules}
             </button>
           ) : null}
         </form>
       </section>
       <section className="staff-card" style={{ marginTop: '1rem' }}>
-        <h2>Godziny otwarcia</h2>
+        <h2>{dictionary.openingHours}</h2>
         <form onSubmit={(e) => void saveHours(e)}>
-          {DAYS.map((day, i) => {
+          {days.map((day, i) => {
             const row = hourFor(i);
             return (
               <div className="staff-field-row" key={day}>
@@ -262,7 +277,7 @@ export function SettingsAdmin({
                 </label>
                 <div className="staff-field-row">
                   <label className="staff-field">
-                    <span>Od</span>
+                    <span>{dictionary.from}</span>
                     <input
                       type="time"
                       name={`open-${i}`}
@@ -271,7 +286,7 @@ export function SettingsAdmin({
                     />
                   </label>
                   <label className="staff-field">
-                    <span>Do</span>
+                    <span>{dictionary.to}</span>
                     <input
                       type="time"
                       name={`close-${i}`}
@@ -285,13 +300,13 @@ export function SettingsAdmin({
           })}
           {canHours ? (
             <button className="staff-button" disabled={busy}>
-              Zapisz godziny
+              {dictionary.saveHours}
             </button>
           ) : null}
         </form>
       </section>
       <section style={{ marginTop: '1rem' }}>
-        <h2>Stoliki i pozycje</h2>
+        <h2>{dictionary.tablesAndPositions}</h2>
         {tables.map((table) => (
           <form
             className="staff-card"
@@ -301,15 +316,15 @@ export function SettingsAdmin({
           >
             <div className="staff-field-row">
               <label className="staff-field">
-                <span>Kod</span>
+                <span>{dictionary.code}</span>
                 <input name="code" defaultValue={table.code} disabled={!canTables} />
               </label>
               <label className="staff-field">
-                <span>Obszar</span>
+                <span>{dictionary.area}</span>
                 <select name="area" defaultValue={table.dining_area_id} disabled={!canTables}>
                   {areas.map((a) => (
                     <option key={a.id} value={a.id}>
-                      {a.name_pl}
+                      {localized(pickLocaleColumns(a, 'name'), locale)}
                     </option>
                   ))}
                 </select>
@@ -317,7 +332,7 @@ export function SettingsAdmin({
             </div>
             <div className="staff-field-row">
               <label className="staff-field">
-                <span>Min. osób</span>
+                <span>{dictionary.minPeople}</span>
                 <input
                   name="min"
                   type="number"
@@ -326,7 +341,7 @@ export function SettingsAdmin({
                 />
               </label>
               <label className="staff-field">
-                <span>Maks. osób</span>
+                <span>{dictionary.maxPeople}</span>
                 <input
                   name="max"
                   type="number"
@@ -335,16 +350,16 @@ export function SettingsAdmin({
                 />
               </label>
               <label className="staff-field">
-                <span>Kształt</span>
+                <span>{dictionary.shape}</span>
                 <select name="shape" defaultValue={table.shape} disabled={!canTables}>
-                  <option value="round">Okrągły</option>
-                  <option value="square">Kwadratowy</option>
-                  <option value="rectangle">Prostokątny</option>
-                  <option value="booth">Loża</option>
+                  <option value="round">{dictionary.round}</option>
+                  <option value="square">{dictionary.square}</option>
+                  <option value="rectangle">{dictionary.rectangle}</option>
+                  <option value="booth">{dictionary.booth}</option>
                 </select>
               </label>
               <label className="staff-field">
-                <span>Szerokość</span>
+                <span>{dictionary.width}</span>
                 <input
                   name="width"
                   type="number"
@@ -354,7 +369,7 @@ export function SettingsAdmin({
                 />
               </label>
               <label className="staff-field">
-                <span>Głębokość</span>
+                <span>{dictionary.depth}</span>
                 <input
                   name="depth"
                   type="number"
@@ -384,7 +399,7 @@ export function SettingsAdmin({
                 />
               </label>
               <label className="staff-field">
-                <span>Obrót</span>
+                <span>{dictionary.rotation}</span>
                 <input
                   name="rotation"
                   type="number"
@@ -395,7 +410,7 @@ export function SettingsAdmin({
               <input type="hidden" name="order" value={table.display_order} />
             </div>
             <label className="staff-field">
-              <span>Notatka</span>
+              <span>{dictionary.notes}</span>
               <input name="notes" defaultValue={table.staff_notes ?? ''} disabled={!canTables} />
             </label>
             <label className="staff-check">
@@ -405,7 +420,7 @@ export function SettingsAdmin({
                 defaultChecked={table.is_active}
                 disabled={!canTables}
               />{' '}
-              Aktywny
+              {dictionary.active}
             </label>
             <label className="staff-check">
               <input
@@ -414,11 +429,11 @@ export function SettingsAdmin({
                 defaultChecked={table.is_accessible}
                 disabled={!canTables}
               />{' '}
-              Dostępny bez barier
+              {dictionary.accessible}
             </label>
             {canTables ? (
               <button className="staff-button" disabled={busy}>
-                Zapisz stolik
+                {dictionary.saveTable}
               </button>
             ) : null}
           </form>

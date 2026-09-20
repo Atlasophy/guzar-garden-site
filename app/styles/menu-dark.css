@@ -1,0 +1,66 @@
+/*
+ * The menu on the emerald ground, so every public page shares one background.
+ *
+ * Loaded after cream.css. It re-points only the tokens the page body reads
+ * (--ink, --paper, --cream-2, --line, --clay). --cream is deliberately left
+ * alone: the header already uses it as its light text colour on a dark bar.
+ * The few surfaces cream.css hard-codes as near-white are overridden below.
+ */
+
+body.theme-cream {
+  --ink: #f2ead8;
+  --ink-soft: rgba(242, 234, 216, 0.74);
+  --paper: #0d2e1f;
+  --cream-2: #123a28;
+  --cream-3: #164632;
+  --line: rgba(220, 176, 105, 0.22);
+  --line-2: rgba(220, 176, 105, 0.4);
+  --clay: #dcb069;
+  --green: #0a2418;
+  --shadow: 0 16px 40px -20px rgba(1, 10, 6, 0.8);
+  --shadow-lg: 0 34px 76px -34px rgba(1, 10, 6, 0.9);
+  background: #0a2418;
+}
+
+/* The header bar joins the page instead of sitting on it as a darker band. */
+body.theme-cream header.nav {
+  background: #0a2418;
+  border-bottom: 1px solid var(--line);
+}
+
+/* The logo is the trimmed dark-ground variant, already cropped to the
+   lockup, so it no longer needs the zoom that clipped the G of GUZAR. */
+body.theme-cream .mast-logo {
+  filter: none;
+}
+body.theme-cream .mast-logo img {
+  position: static;
+  width: 100%;
+  transform: none;
+}
+body.theme-cream .mast .atmo {
+  display: none;
+}
+
+/* Surfaces cream.css writes as literal near-white. */
+body.theme-cream .cat .go {
+  background: rgba(10, 36, 24, 0.9);
+  color: var(--ink);
+}
+body.theme-cream .sheet .close {
+  background: rgba(10, 36, 24, 0.92);
+  color: var(--ink);
+}
+body.theme-cream .sheet .sold-out-note {
+  background: rgba(220, 176, 105, 0.1);
+}
+
+/* Native <option> lists render on the operating system's light surface. */
+body.theme-cream .lang-select option {
+  color: #1a1712;
+  background: #f4ecdb;
+}
+
+body.theme-cream .searchbar input::placeholder {
+  color: rgba(242, 234, 216, 0.5);
+}

@@ -1,0 +1,205 @@
+/*
+ * The simplified landing page on the emerald theme.
+ *
+ * emerald.css still owns the palette and the section layouts; this file only
+ * takes things away (reveal hiding, ornaments, glow) and styles the two
+ * pieces that exist only here: the intro under the landing screen and the
+ * gallery.
+ */
+
+:global(body.theme-emerald) .page {
+  background: var(--green);
+}
+
+/* No reveal controller runs on this page, so reveal targets must never start
+   hidden. Written to outrank `html.js body.theme-emerald .rv` in emerald.css. */
+:global(html.js body.theme-emerald) .page :global(.rv),
+:global(body.theme-emerald) .page :global(.rv) {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition: none;
+}
+
+/* Decoration from the busier design: layered atmospheres, corner ornaments,
+   the quote seal and the rosette bled behind the location block. */
+:global(body.theme-emerald) .page :global(.atmo),
+:global(body.theme-emerald) .page :global(.orn),
+:global(body.theme-emerald) .page :global(.q-corner),
+:global(body.theme-emerald) .page :global(.q-seal),
+:global(body.theme-emerald) .page :global(.loc)::after {
+  display: none;
+}
+
+/* One ground colour for every section, so the page reads as a single surface
+   and the landing photograph can fade into it at both edges. */
+:global(body.theme-emerald) .page :global(.sec),
+:global(body.theme-emerald) .page :global(.sig),
+:global(body.theme-emerald) .page :global(.loc),
+:global(body.theme-emerald) .page :global(.google-reviews-section) {
+  background: var(--green);
+}
+
+/* Headings that sit directly on body copy need their own breathing room;
+   emerald.css zeroes every h2 margin. */
+:global(body.theme-emerald) .page :global(.kitchen-head h2) {
+  margin-bottom: 24px;
+}
+:global(body.theme-emerald) .page :global(.loc h2) {
+  margin-bottom: 36px;
+}
+
+/* ---- the intro ----------------------------------------------------------
+   Who we are, where and when, straight under the landing screen. */
+.intro {
+  padding: 40px 0 110px;
+  scroll-margin-top: 95px;
+}
+.introCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 760px;
+  margin: 24px auto 0;
+  padding-inline: 24px;
+  text-align: center;
+}
+:global(body.theme-emerald) .introCopy h2 {
+  max-width: 18ch;
+  margin-bottom: 26px;
+}
+:global(body.theme-emerald) .introCopy .introText {
+  max-width: 58ch;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--ivory-soft);
+}
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin: 44px 0 0;
+  border-block: 1px solid var(--rule-soft);
+}
+.facts > div {
+  flex: 1 1 180px;
+  padding: 22px 20px;
+}
+.facts > div + div {
+  border-left: 1px solid var(--rule-soft);
+}
+.facts dt {
+  margin-bottom: 8px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.facts dd {
+  margin: 0;
+  font-size: 15px;
+  color: var(--ivory);
+}
+/* ---- the gallery ----------------------------------------------------- */
+.gallery {
+  padding: 90px max(40px, calc((100% - 1240px) / 2));
+  scroll-margin-top: 95px;
+}
+.galleryHeading {
+  display: grid;
+  grid-template-columns: 1fr 0.7fr;
+  gap: 60px;
+  align-items: end;
+  margin-bottom: 40px;
+}
+.galleryHeading h2 {
+  max-width: 19ch;
+}
+.galleryHeading > p {
+  max-width: 40ch;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ivory-soft);
+}
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.galleryGrid figure {
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+.galleryGrid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.morePhotos summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: fit-content;
+  margin: 30px auto 0;
+  padding: 14px 24px;
+  border: 1px solid var(--rule-strong);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  list-style: none;
+  cursor: pointer;
+}
+.morePhotos summary::-webkit-details-marker {
+  display: none;
+}
+.morePhotos summary:focus-visible {
+  outline: 2px solid var(--gold-hi);
+  outline-offset: 3px;
+}
+.morePhotos[open] summary {
+  margin-bottom: 30px;
+}
+.morePhotos[open] summary span {
+  transform: rotate(45deg);
+}
+
+@media (max-width: 980px) {
+  .gallery {
+    padding: 65px 24px;
+  }
+}
+@media (max-width: 760px) {
+  .intro {
+    padding: 24px 0 72px;
+  }
+  .introCopy {
+    margin-top: 8px;
+  }
+  .facts > div {
+    flex-basis: 100%;
+    padding: 16px 0;
+  }
+  .facts > div + div {
+    border-left: 0;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .galleryHeading {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .galleryGrid {
+    gap: 14px;
+  }
+}
+@media (max-width: 550px) {
+  .galleryGrid {
+    grid-template-columns: 1fr;
+  }
+  .galleryGrid figure {
+    aspect-ratio: 4 / 3;
+  }
+}

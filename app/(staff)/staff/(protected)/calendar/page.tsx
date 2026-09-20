@@ -6,13 +6,17 @@ import {
   toLocalDateString,
   toLocalTimeString,
 } from '@/lib/time/warsaw';
+import { getServerStaffDictionary } from '@/lib/i18n/staff-server';
 
 export default async function StaffCalendarPage({
   searchParams,
 }: {
   searchParams: Promise<{ date?: string }>;
 }) {
-  const staff = await requireStaff('/staff/calendar');
+  const [staff, dictionary] = await Promise.all([
+    requireStaff('/staff/calendar'),
+    getServerStaffDictionary(),
+  ]);
   const search = await searchParams;
   const date = /^\d{4}-\d{2}-\d{2}$/.test(search.date ?? '')
     ? search.date!
@@ -32,12 +36,12 @@ export default async function StaffCalendarPage({
     <>
       <header className="staff-head">
         <div>
-          <h1>Kalendarz</h1>
-          <p>Oś zajętości stolików</p>
+          <h1>{dictionary.calendar}</h1>
+          <p>{dictionary.calendarSubtitle}</p>
         </div>
         <form>
           <input type="date" name="date" defaultValue={date} />
-          <button className="staff-button">Pokaż</button>
+          <button className="staff-button">{dictionary.show}</button>
         </form>
       </header>
       <div className="staff-table-wrap">

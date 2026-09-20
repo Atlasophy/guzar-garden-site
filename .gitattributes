@@ -1,0 +1,31 @@
+# Line endings.
+#
+# Every blob in this repository is already stored with LF — the only thing that
+# was ever CRLF was the working tree on a Windows machine with
+# `core.autocrlf=true`. That mismatch made `npm run format:check` report all 161
+# files as unformatted, because Prettier's `endOfLine` default is "lf". A
+# documented pre-launch step (see DEPLOYMENT-GUIDE.md) was therefore permanently
+# red and carried no signal.
+#
+# `eol=lf` takes precedence over each developer's `core.autocrlf`, so the
+# working tree is LF on every machine and Prettier's strict default passes on
+# its own. The alternative — setting `endOfLine: "auto"` in .prettierrc.json —
+# would have silenced the check rather than fixed it: Prettier would then accept
+# whatever endings a file happened to have, and the repository could quietly
+# acquire mixed endings with nothing left to catch it.
+#
+# `text=auto` still lets git detect binary content and leave it alone; the
+# explicit `-text` rules below make that guarantee obvious for the image assets
+# rather than leaving it to detection.
+
+* text=auto eol=lf
+
+*.png  -text
+*.webp -text
+*.ico  -text
+*.jpg  -text
+*.jpeg -text
+*.gif  -text
+*.pdf  -text
+*.woff  -text
+*.woff2 -text
