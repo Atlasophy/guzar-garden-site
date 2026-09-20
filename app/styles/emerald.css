@@ -443,6 +443,9 @@ body.theme-emerald nav.links a:hover::after {
   transform: scaleX(1);
   transform-origin: left;
 }
+body.theme-emerald nav.links .staff-login-link {
+  color: var(--gold-hi);
+}
 body.theme-emerald nav.links .nav-cta-mobile {
   display: none;
 }

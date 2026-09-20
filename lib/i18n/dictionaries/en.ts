@@ -22,6 +22,7 @@ export const en: Dictionary = {
     gallery: 'Gallery',
     venue: 'The venue',
     contact: 'Contact',
+    staffLogin: 'Staff login',
     book: 'Book a table',
     openMenu: 'Menu',
     languageGroup: 'Language',
@@ -256,7 +257,7 @@ export const en: Dictionary = {
     email: 'Email',
     phone: 'Mobile',
     phoneHint: 'We will text you a confirmation.',
-    phoneHintNoSms: 'Your confirmation appears on screen. We will call you if anything changes.',
+    phoneHintNoSms: 'Your confirmation appears on screen. Save the link to manage your booking.',
     specialRequests: 'Anything we should know? (optional)',
     specialRequestsHint:
       'Allergies, a pushchair, an occasion — tell us and we will set the table for it.',

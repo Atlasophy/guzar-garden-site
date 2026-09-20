@@ -1,20 +1,28 @@
 import Link from 'next/link';
 import type { StaffReservationView } from '@/lib/staff/reservations';
 import { formatLocalTime } from '@/lib/time/warsaw';
+import type { StaffDictionary } from '@/lib/i18n/staff';
+import { reservationStatusLabel } from '@/lib/i18n/staff';
 
-export function ReservationTable({ rows }: { rows: StaffReservationView[] }) {
-  if (!rows.length) return <p className="staff-empty">Brak rezerwacji.</p>;
+export function ReservationTable({
+  rows,
+  dictionary,
+}: {
+  rows: StaffReservationView[];
+  dictionary: StaffDictionary;
+}) {
+  if (!rows.length) return <p className="staff-empty">{dictionary.noReservations}</p>;
   return (
     <div className="staff-table-wrap">
       <table className="staff-table">
         <thead>
           <tr>
-            <th>Godzina</th>
-            <th>Gość</th>
-            <th>Osoby</th>
-            <th>Stolik</th>
-            <th>Status</th>
-            <th>Kod</th>
+            <th>{dictionary.time}</th>
+            <th>{dictionary.guest}</th>
+            <th>{dictionary.people}</th>
+            <th>{dictionary.table}</th>
+            <th>{dictionary.status}</th>
+            <th>{dictionary.code}</th>
           </tr>
         </thead>
         <tbody>
@@ -31,7 +39,9 @@ export function ReservationTable({ rows }: { rows: StaffReservationView[] }) {
               <td>{row.partySize}</td>
               <td>{row.tableCode ?? '—'}</td>
               <td>
-                <span className={`badge ${row.status}`}>{row.status}</span>
+                <span className={`badge ${row.status}`}>
+                  {reservationStatusLabel(dictionary, row.status)}
+                </span>
               </td>
               <td>{row.confirmationCode}</td>
             </tr>

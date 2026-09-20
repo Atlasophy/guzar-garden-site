@@ -1,14 +1,41 @@
 # Release candidate for independent Codex review
 
+> **Post-review update:** the unsupported “we will call you if anything changes”
+> promise was removed from all four languages. Guests are now told to save the
+> management link displayed after confirmation. `docs/operations.md` retains a
+> staff procedure checklist for changes initiated by the restaurant.
+
+> **Codex takeover update (10 September 2026):** the public site now has a
+> localized staff-login link, and the complete staff dashboard is available in
+> Polish, English, Russian and Uzbek. The language choice persists across the
+> public site, login page and authenticated dashboard. Language controls are real
+> links, so they also work before client-side JavaScript finishes loading. The
+> final review passed typecheck, lint, formatting, 59 unit tests, 26 isolated
+> PostgreSQL integration tests, the production build, and 20 Playwright checks
+> across desktop Chromium and iPhone 13. Codex also inspected the authenticated
+> dashboard in the browser and confirmed a clean fresh-load console. Nothing was
+> deployed and no DNS or hosting setting was changed.
+
+> **Staff-account update:** administrators now have `/staff/team` for creating
+> accounts and changing names, login emails, phone numbers, roles, passwords and
+> active status. Passwords remain in Supabase Auth and never enter the application
+> database or audit payload. Application and database checks prevent self-lockout
+> and removal of the last active administrator. Production remains configured for
+> `SMS_PROVIDER=disabled` until the restaurant activates Twilio later. Migration
+> `0013_protect_last_staff_admin` was applied to the connected Supabase project on
+> 10 September 2026.
+
 **Branch:** `release/pre-codex-review`
-**Release commit:** `8a0643b`
+**Release commit before the Codex takeover:** `bf746cf`
 **Base:** `fix/line-endings-format-check` (`6a4516d`), which contains all of `main` (`4d6e587`)
-**Working tree:** clean at the time of the final check run
+**Working tree:** contains the tested Codex takeover changes. The original `.git`
+directory remained read-only to Codex, so a portable release commit and patch were
+created from separate Git metadata in the Codex workspace.
 **Date:** 10 September 2026
 
-Everything below was verified by Claude. **Codex has verified none of it.** That is
-the point of this document: it says precisely what was run and what was not, so the
-review can be independent rather than a re-reading of these claims.
+The historical release notes below were written from Claude's verification. Codex
+has now independently rerun the automated suites and browser checks listed in the
+takeover update above.
 
 Nothing has been deployed. No DNS record has been changed. No hosting account,
 subscription or production setting has been touched.
@@ -154,9 +181,10 @@ the strings were checked, not the whole journey.
    placeholder that cannot receive a password reset. See §7.
 4. **`guzargarden.com` is suspended.** Only the registrant can clear it. Not on the
    `.pl` critical path.
-5. **The "we will call you if anything changes" promise has no procedure behind it.**
-   The site now tells guests this in four languages. Who calls, and how do they know
-   a call is owed? Nothing prompts staff today. Owner decision — `docs/operations.md` §7.
+5. **Resolved after review:** the unsupported “we will call you if anything changes”
+   promise was removed in all four languages. Guests are told to save their management
+   link. Staff-initiated changes still require an internal procedure —
+   `docs/operations.md` §7.
 
 ### Later improvements
 
@@ -169,9 +197,11 @@ the strings were checked, not the whole journey.
    uploaded — but it becomes real the moment staff upload one.
 9. **One Supabase project serves both Production and Preview** unless a second is
    created. See `DEPLOYMENT-GUIDE.md`.
-10. **Staff dashboard was not exercised through a real login.** See §7 — I did not
-    create staff accounts. Permissions were verified structurally and by unit test,
-    not by signing in as a host and being refused.
+10. **The administrator dashboard and `/staff/team` were exercised through the real
+    login.** Creating or changing another live account was deliberately not performed
+    without that employee's real identity. Host and manager restrictions are covered
+    structurally and by unit tests; a role-by-role live acceptance test remains for
+    the published testing phase.
 
 ---
 
@@ -181,7 +211,7 @@ the strings were checked, not the whole journey.
 - [ ] Decide whether to move Supabase to **Pro** before launch
 - [ ] Provide a real email address for the staff admin account
 - [ ] Approve the test-data cleanup in `docs/operations.md` §3
-- [ ] Answer the "who calls the guest" question
+- [ ] Establish the internal procedure for staff-initiated guest changes
 - [ ] Confirm the 40 tables, capacities, areas, hours, prices, booking rules,
       cancellation policy and contact details — the full checklist is
       `docs/operations.md` §7. **None of these were changed.**

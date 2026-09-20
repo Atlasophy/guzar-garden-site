@@ -25,13 +25,17 @@ export function IntroOverlay() {
       return;
     }
 
-    const onLoad = () => window.setTimeout(dismiss, 650);
+    let loadTimer: number | undefined;
+    const onLoad = () => {
+      loadTimer = window.setTimeout(dismiss, 650);
+    };
     if (document.readyState === 'complete') onLoad();
     else window.addEventListener('load', onLoad);
 
     const ceiling = window.setTimeout(dismiss, 1800);
     return () => {
       window.removeEventListener('load', onLoad);
+      if (loadTimer !== undefined) window.clearTimeout(loadTimer);
       window.clearTimeout(ceiling);
     };
   }, []);

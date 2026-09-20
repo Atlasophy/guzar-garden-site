@@ -333,13 +333,21 @@ Then verify on the Vercel production address:
 
 1. Public homepage and menu in all four languages.
 2. Reservation availability, table selection, confirmation, reschedule, and cancel.
-3. SMS delivery to a real Polish and international phone number.
+3. SMS-disabled guest wording, on-screen management link, and undelivered outbox status.
 4. Staff login, calendar, live floor, and reservation status changes.
 5. Menu image upload, edit, publish/unpublish, and price change.
 6. Opening hours, exception dates, table capacities, booking duration, and notice
    rules against the restaurant's real operating policy.
 7. Privacy page details and restaurant contact information.
 8. Vercel function/cron logs and the staff notification-failure view.
+9. Sign in as an administrator, open `/staff/team`, and confirm account creation,
+   role changes, password replacement and deactivation. Remove any test account
+   immediately after this check.
+
+For the initial published testing period, production must use
+`SMS_PROVIDER=disabled`. Leave all `TWILIO_*` values empty and do not set
+`RESERVATION_PREVIEW_MODE`. Configure Twilio and run real delivery tests only when
+the restaurant decides to activate SMS.
 
 ## Backups and secrets
 
