@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocale } from '@/components/shared/locale-provider';
 import { apiPatch } from '@/lib/api/client';
 import type { GuestReservationView } from '@/lib/reservations/service';
@@ -14,9 +14,18 @@ import {
 export function ManageReservation({
   token,
   initial,
+  smsEnabled = true,
 }: {
   token: string;
   initial: GuestReservationView;
+  /**
+   * False when the venue has no SMS channel. This page is then the *only* copy
+   * of the management link the guest will ever get: nothing is texted, and the
+   * URL contains a token they cannot retype from memory. Closing the tab means
+   * telephoning the restaurant. So the link becomes something to save, and the
+   * page says so.
+   */
+  smsEnabled?: boolean;
 }) {
   const { locale, dictionary } = useLocale();
   const t = dictionary.manage;
@@ -24,6 +33,42 @@ export function ManageReservation({
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  /**
+   * The management URL, read after mount.
+   *
+   * Not during render: the server has no `window`, so rendering the URL
+   * directly would emit an empty input on the server and a populated one in the
+   * browser — a hydration mismatch. The field is empty for one frame instead.
+   */
+  const [manageUrl, setManageUrl] = useState('');
+  useEffect(() => {
+    setManageUrl(window.location.href.split('?')[0] ?? window.location.href);
+  }, []);
+
+  /**
+   * Copy the management link.
+   *
+   * `navigator.clipboard` is unavailable outside a secure context and can be
+   * refused by permission, so a failure selects the link instead and leaves the
+   * guest one keystroke from copying it themselves. It never reports success it
+   * did not achieve — that is the whole point of the button existing.
+   */
+  const copyLink = async () => {
+    const url = manageUrl || window.location.href;
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setMessage(t.linkCopied);
+      window.setTimeout(() => setCopied(false), 4000);
+    } catch {
+      const field = document.getElementById('manage-link-value') as HTMLInputElement | null;
+      field?.focus();
+      field?.select();
+      setMessage(t.linkCopyManual);
+    }
+  };
   const [date, setDate] = useState(toLocalDateString(new Date(initial.startsAt)));
   const [time, setTime] = useState(toLocalTimeString(new Date(initial.startsAt)));
 
@@ -112,6 +157,33 @@ export function ManageReservation({
         <small>{dictionary.confirmation.code}</small>
         <b>{reservation.confirmationCode}</b>
       </div>
+
+      {/*
+        With no SMS, this page is the only place the management link exists.
+        Saying so, and making the link copyable, is the difference between a
+        guest who can reschedule themselves and one who has to telephone.
+      */}
+      {reservation.status !== 'cancelled' ? (
+        <section className="save-link" aria-labelledby="save-link-heading">
+          <h2 id="save-link-heading">{smsEnabled ? t.saveLinkHeading : t.saveLinkHeadingNoSms}</h2>
+          <p className="note">{smsEnabled ? t.saveLinkBody : t.saveLinkBodyNoSms}</p>
+          <div className="field-row">
+            <label className="field" style={{ flex: 1 }}>
+              <span className="sr-only">{t.saveLinkLabel}</span>
+              <input
+                id="manage-link-value"
+                type="text"
+                readOnly
+                value={manageUrl}
+                onFocus={(event) => event.currentTarget.select()}
+              />
+            </label>
+            <button type="button" className="btn outline" onClick={() => void copyLink()}>
+              <span>{copied ? t.linkCopied : t.copyLink}</span>
+            </button>
+          </div>
+        </section>
+      ) : null}
       <ul className="summary">
         <li>
           <span className="label">{dictionary.confirmation.guest}</span>

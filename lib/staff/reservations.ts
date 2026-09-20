@@ -48,6 +48,14 @@ export interface StaffReservationView {
     status: NotificationOutboxRow['status'];
     type: NotificationOutboxRow['type'];
     lastError: string | null;
+    /**
+     * Which adapter produced this row. 'twilio' is the only one that reaches a
+     * phone; 'console' reports success for a message it only printed, and
+     * 'disabled' refuses on purpose. Staff must be able to tell those apart,
+     * because 'sent' means three different things depending on this field.
+     */
+    provider: string | null;
+    deliveredToPhone: boolean;
   } | null;
 }
 
@@ -204,6 +212,10 @@ export async function listReservations(
             status: notification.status,
             type: notification.type,
             lastError: notification.last_error,
+            provider: notification.provider ?? null,
+            deliveredToPhone:
+              notification.provider === 'twilio' &&
+              ['sent', 'delivered'].includes(notification.status),
           }
         : null,
     };

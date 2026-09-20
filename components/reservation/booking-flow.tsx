@@ -264,6 +264,38 @@ export function BookingFlow({
   }, [countdown.expired, hold, partySize, time, date, loadAvailability, t.holdExpiredBody]);
 
   /*
+   * Move focus to the new step's heading.
+   *
+   * Each step replaces the previous one in the DOM, so the button that was just
+   * pressed stops existing and the browser drops focus to <body>. A keyboard
+   * user then has to tab past the skip link, the whole navigation and the
+   * language switcher to reach the step they are already looking at — five
+   * times, once per step — and a screen-reader user is told nothing at all,
+   * because the live region announces slot counts, not which step opened.
+   *
+   * Focusing the heading fixes both at once: it reads the step's name and puts
+   * the next Tab exactly where the new controls start. The headings carry
+   * tabIndex={-1} so they can receive focus programmatically without joining
+   * the tab order.
+   *
+   * Only on an actual change of step. Remembering the previous value rather
+   * than "have I run before" matters: React's Strict Mode mounts, unmounts and
+   * remounts in development, so a boolean flag is already spent by the second
+   * invocation and the heading steals focus on page load — which is its own
+   * accessibility bug, and one this effect was verified to have introduced
+   * before it was written this way.
+   */
+  const lastFocusedStep = useRef<Step | null>(null);
+  useEffect(() => {
+    if (lastFocusedStep.current === null || lastFocusedStep.current === step) {
+      lastFocusedStep.current = step;
+      return;
+    }
+    lastFocusedStep.current = step;
+    document.getElementById(`step-${step}`)?.focus();
+  }, [step]);
+
+  /*
    * A best-effort release when the tab goes away. `visibilitychange` with
    * `sendBeacon` is the only version of this that fires reliably on mobile —
    * and even so it is a courtesy, not the mechanism: the hold's own expiry and
@@ -461,7 +493,9 @@ export function BookingFlow({
         {/* ---- party size ---- */}
         {step === 'party' ? (
           <section className="panel" aria-labelledby="step-party">
-            <h2 id="step-party">{t.partyHeading}</h2>
+            <h2 id="step-party" tabIndex={-1}>
+              {t.partyHeading}
+            </h2>
             <div className="choices">
               {Array.from({ length: maxPartySize }, (_, index) => index + 1).map((size) => (
                 <button
@@ -491,7 +525,9 @@ export function BookingFlow({
         {/* ---- date ---- */}
         {step === 'date' ? (
           <section className="panel" aria-labelledby="step-date">
-            <h2 id="step-date">{t.dateHeading}</h2>
+            <h2 id="step-date" tabIndex={-1}>
+              {t.dateHeading}
+            </h2>
             <div className="choices wide">
               {dates.map((entry, index) => (
                 <button
@@ -523,7 +559,9 @@ export function BookingFlow({
         {/* ---- time ---- */}
         {step === 'time' ? (
           <section className="panel" aria-labelledby="step-time">
-            <h2 id="step-time">{t.timeHeading}</h2>
+            <h2 id="step-time" tabIndex={-1}>
+              {t.timeHeading}
+            </h2>
             {loading ? <p className="hint">{dictionary.common.loading}</p> : null}
 
             {!loading && availability?.state === 'closed_that_day' ? (
@@ -572,7 +610,9 @@ export function BookingFlow({
         {/* ---- table ---- */}
         {step === 'table' ? (
           <section className="panel" aria-labelledby="step-table">
-            <h2 id="step-table">{t.tableHeading}</h2>
+            <h2 id="step-table" tabIndex={-1}>
+              {t.tableHeading}
+            </h2>
             <p className="hint">{t.planHint}</p>
 
             {availability && availability.state === 'no_table_for_party' ? (
@@ -611,7 +651,9 @@ export function BookingFlow({
         {/* ---- details ---- */}
         {step === 'details' ? (
           <section className="panel" aria-labelledby="step-details">
-            <h2 id="step-details">{t.detailsHeading}</h2>
+            <h2 id="step-details" tabIndex={-1}>
+              {t.detailsHeading}
+            </h2>
             <GuestForm
               defaultValues={guest}
               smsEnabled={smsEnabled}
@@ -627,7 +669,9 @@ export function BookingFlow({
         {/* ---- review ---- */}
         {step === 'review' && guest ? (
           <section className="panel" aria-labelledby="step-review">
-            <h2 id="step-review">{t.reviewHeading}</h2>
+            <h2 id="step-review" tabIndex={-1}>
+              {t.reviewHeading}
+            </h2>
 
             {hold ? (
               <div className={`hold-bar${countdown.urgent ? ' urgent' : ''}`}>

@@ -3,10 +3,12 @@
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { getBrowserSupabase } from '@/lib/supabase/client';
+import { useStaffDictionary } from './use-staff-dictionary';
 
 export function StaffLoginForm() {
   const router = useRouter();
   const search = useSearchParams();
+  const dictionary = useStaffDictionary();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -21,7 +23,7 @@ export function StaffLoginForm() {
         password,
       });
       if (authError) {
-        setError('Nieprawidłowy adres e-mail lub hasło.');
+        setError(dictionary.invalidLogin);
         setBusy(false);
         return;
       }
@@ -29,7 +31,7 @@ export function StaffLoginForm() {
       router.replace(next?.startsWith('/staff') ? next : '/staff');
       router.refresh();
     } catch {
-      setError('Logowanie jest chwilowo niedostępne. Sprawdź konfigurację Supabase.');
+      setError(dictionary.loginUnavailable);
       setBusy(false);
     }
   };
@@ -41,7 +43,7 @@ export function StaffLoginForm() {
         </div>
       ) : null}
       <label className="staff-field">
-        <span>E-mail</span>
+        <span>{dictionary.email}</span>
         <input
           type="email"
           autoComplete="username"
@@ -51,7 +53,7 @@ export function StaffLoginForm() {
         />
       </label>
       <label className="staff-field">
-        <span>Hasło</span>
+        <span>{dictionary.password}</span>
         <input
           type="password"
           autoComplete="current-password"
@@ -62,7 +64,7 @@ export function StaffLoginForm() {
         />
       </label>
       <button className="staff-button" style={{ width: '100%' }} disabled={busy}>
-        {busy ? 'Logowanie…' : 'Zaloguj się'}
+        {busy ? dictionary.signingIn : dictionary.signIn}
       </button>
     </form>
   );

@@ -47,6 +47,7 @@ async function createTestDatabase(): Promise<TestDatabase> {
   // and an ordinary development/production connection must never be targeted.
   const external = process.env.TEST_DATABASE_URL;
   if (external) {
+    assertDisposable(external);
     const pool = new pg.Pool({ connectionString: external, max: 8 });
     await applyMigrations(pool);
     return makeHandle(pool, external, async () => {
@@ -115,7 +116,60 @@ function makeHandle(
   };
 }
 
+/**
+ * Refuse to run against anything that is not obviously disposable.
+ *
+ * This helper truncates every table and drops the public schema. `DATABASE_URL`
+ * is already excluded by never being read here, but `TEST_DATABASE_URL` is
+ * supplied by hand and a paste error is cheap to make and expensive to survive.
+ * A hosted Supabase project is never a valid target.
+ */
+export function assertDisposable(connectionString: string): void {
+  let url: URL;
+  try {
+    url = new URL(connectionString);
+  } catch {
+    throw new Error('TEST_DATABASE_URL must be a valid PostgreSQL connection string.');
+  }
+
+  const host = url.hostname;
+  const database = decodeURIComponent(url.pathname.replace(/^\//, ''));
+
+  if (/supabase\.(co|com)$/i.test(host) || /\bpooler\.supabase\b/i.test(host)) {
+    throw new Error(
+      `Refusing to run the integration suite against ${host}. ` +
+        'TEST_DATABASE_URL must point at a disposable local database — this suite ' +
+        'drops the public schema and truncates every table.',
+    );
+  }
+
+  if (!/(^|[_-])(test|testing|throwaway|disposable)([_-]|$)/i.test(database)) {
+    throw new Error(
+      `Refusing to run the integration suite against database “${database || '(missing)'}”. ` +
+        'Its name must explicitly identify it as test, testing, throwaway or disposable.',
+    );
+  }
+}
+
+/**
+ * Apply the whole migration set to an empty public schema.
+ *
+ * The schema is dropped first because the migrations are a history, not a set
+ * of idempotent statements: 0005 creates `public_menu_items` with a numeric
+ * price and 0012 rebuilds it with a text price, so replaying 0005 over an
+ * already-migrated database fails with "cannot change data type of view column".
+ * Production never hits this — `db:migrate` records what it has applied and
+ * skips it — but a test database is reused across runs, so it did, and the
+ * whole suite refused to start on the second run.
+ *
+ * Dropping only `public` is deliberate: 0000's shims live in `auth` and are all
+ * guarded with `if not exists`, so they survive and are reused.
+ */
 async function applyMigrations(pool: pg.Pool): Promise<void> {
+  await pool.query('drop schema if exists public cascade');
+  await pool.query('create schema public');
+  await pool.query('grant all on schema public to public');
+
   const files = (await readdir(MIGRATIONS_DIR)).filter((f) => f.endsWith('.sql')).sort();
   for (const file of files) {
     const sql = await readFile(path.join(MIGRATIONS_DIR, file), 'utf8');

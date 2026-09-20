@@ -27,6 +27,7 @@ export const pl = {
     gallery: 'Galeria',
     venue: 'Miejsce',
     contact: 'Kontakt',
+    staffLogin: 'Panel pracownika',
     book: 'Rezerwacja',
     openMenu: 'Menu',
     languageGroup: 'Język',
@@ -271,8 +272,8 @@ export const pl = {
     phone: 'Telefon',
     phoneHint: 'Wyślemy SMS z potwierdzeniem.',
     // Used when the venue has no SMS channel — see isSmsEnabled(). Promises
-    // only what actually happens: the code on screen, and a call if needed.
-    phoneHintNoSms: 'Potwierdzenie zobaczysz na ekranie. Zadzwonimy, gdyby coś się zmieniło.',
+    // only what actually happens: confirmation on screen and a management link.
+    phoneHintNoSms: 'Potwierdzenie zobaczysz na ekranie. Zapisz link do zarządzania rezerwacją.',
     specialRequests: 'Uwagi (opcjonalnie)',
     specialRequestsHint: 'Alergie, wózek dziecięcy, okazja — napisz, a przygotujemy stolik.',
     privacyAccept: 'Akceptuję politykę prywatności',
@@ -323,6 +324,15 @@ export const pl = {
     statusNoShow: 'Nieobecność',
     cancel: 'Odwołaj rezerwację',
     cancelConfirm: 'Na pewno odwołać rezerwację?',
+    saveLinkHeading: 'Zachowaj ten link',
+    saveLinkBody: 'Pod tym linkiem zmienisz termin lub odwołasz rezerwację.',
+    saveLinkHeadingNoSms: 'Zachowaj ten link — nie wysyłamy SMS-a',
+    saveLinkBodyNoSms:
+      'To jedyny sposób, żeby wrócić do tej rezerwacji. Skopiuj link albo dodaj stronę do zakładek. Zawsze możesz też zadzwonić.',
+    saveLinkLabel: 'Link do zarządzania rezerwacją',
+    copyLink: 'Skopiuj link',
+    linkCopied: 'Link skopiowany',
+    linkCopyManual: 'Zaznaczyliśmy link — skopiuj go teraz (Ctrl+C).',
     cancelReason: 'Powód (opcjonalnie)',
     cancelled: 'Rezerwacja została odwołana.',
     reschedule: 'Zmień termin',

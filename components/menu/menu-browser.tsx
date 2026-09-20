@@ -61,11 +61,11 @@ export function MenuBrowser({ menu }: { menu: PublicMenu }) {
     if (next === 'home') {
       setCategorySlug(null);
       if (!skipHash && window.location.hash) {
-        window.history.pushState('', '', window.location.pathname);
+        window.history.pushState(null, '', window.location.pathname);
       }
     } else if (next === 'cat' && slug) {
       setCategorySlug(slug);
-      if (!skipHash) window.history.pushState('', '', `#${slug}`);
+      if (!skipHash) window.history.pushState(null, '', `#${slug}`);
     }
     window.scrollTo({ top: 0, behavior: next === 'search' ? 'auto' : 'smooth' });
   }, []);
@@ -166,11 +166,11 @@ export function MenuBrowser({ menu }: { menu: PublicMenu }) {
         <div className="wrap">
           <div className="mast-logo">
             <Image
-              src="/assets/brand/guzar-full-transparent.png"
+              src="/assets/brand/guzar-full-on-dark.png"
               alt="Guzar Garden — est. 2024"
-              width={1280}
-              height={1280}
-              priority
+              width={905}
+              height={467}
+              loading="eager"
             />
           </div>
           <h1>{t.heading}</h1>
