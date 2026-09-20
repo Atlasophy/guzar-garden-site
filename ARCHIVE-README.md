@@ -25,3 +25,23 @@ test connection strings in `tests/helpers/database.ts` and the docs.
 A fifth folder, `NEWGUZAR/`, held only design screenshots. Those are binary
 assets, so they went to Google Drive under `design/site-screenshots/` rather
 than into git.
+
+## `zips/`
+
+Six zip archives that sat beside the folders, kept byte-exact rather than
+extracted. They were checked too, and they are **not** redundant with the
+folders above:
+
+| Zip | Files found nowhere else |
+|---|---|
+| `guzar-garden-platform-continued.zip` | 13 — different versions of `page.tsx`, `hero.tsx`, `emerald.css`, `reserve.css` |
+| `guzar-garden-platform-production-2026-09-02.zip` | 12 — same files, another point in time |
+| `guzar-garden.zip` / `guzargarden.zip` | 2 each — different versions of `index.html` and `menu.html` |
+| `guzar-garden-redesign.zip`, `guzar-garden-site.zip` | 0 — fully redundant, kept for completeness |
+
+None of them contains a real `.env` file; only `.env.example` templates.
+
+To read one: download it from this branch and unzip locally. They are kept
+zipped because the point is preservation, not browsing — every file that
+mattered for working on the project is either on `main`, on a feature branch,
+or extracted in the folders above.
