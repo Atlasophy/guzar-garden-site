@@ -1,0 +1,93 @@
+/* Real photography introduces the venue immediately after the brand hero. */
+body.theme-emerald .gallery-highlights {
+  padding: 3.5rem 0 4.5rem;
+  background: #061a11;
+  border-block: 1px solid var(--rule-soft);
+}
+body.theme-emerald .highlights-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+body.theme-emerald .highlights-heading .eyebrow {
+  margin-bottom: 0.9rem;
+}
+body.theme-emerald .highlights-heading h2 {
+  font-size: clamp(2rem, 3.3vw, 3rem);
+  max-width: 23ch;
+}
+body.theme-emerald .highlights-link {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.4rem;
+  white-space: nowrap;
+  font-size: 0.8rem;
+}
+body.theme-emerald .highlights-link span {
+  margin-left: 1.5rem;
+}
+body.theme-emerald .highlights-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 1rem;
+}
+body.theme-emerald .highlight-photo {
+  display: block;
+  position: relative;
+  min-width: 0;
+  height: clamp(260px, 27vw, 390px);
+  overflow: hidden;
+}
+body.theme-emerald .highlight-photo img {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+body.theme-emerald .highlight-photo:hover img {
+  transform: scale(1.035);
+}
+body.theme-emerald .highlight-caption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 4rem 1.3rem 1.2rem;
+  background: linear-gradient(transparent, rgba(4, 18, 12, 0.9));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  line-height: 1.2;
+  color: #fff6e4;
+}
+@media (max-width: 650px) {
+  body.theme-emerald .highlights-heading {
+    display: block;
+  }
+  body.theme-emerald .highlights-link {
+    display: inline-block;
+    margin-top: 1rem;
+  }
+  body.theme-emerald .highlights-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+  }
+  body.theme-emerald .highlight-photo {
+    height: 220px;
+  }
+  body.theme-emerald .highlight-photo:first-child {
+    grid-column: 1 / -1;
+    height: 300px;
+  }
+  body.theme-emerald .highlight-caption {
+    padding: 3rem 0.8rem 0.9rem;
+    font-size: 1.15rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.theme-emerald .highlight-photo img {
+    transition: none;
+  }
+}

@@ -1,0 +1,12 @@
+import { dishArt, kindFor } from '../lib/menu/dish-art.js';
+const a = dishArt('grill', 'Szaszłyk z jagnięciny');
+const b = dishArt('grill', 'Szaszłyk z jagnięciny');
+console.log('deterministic:', a === b);
+console.log('is svg:', a.startsWith('<svg viewBox="0 0 200 200"'));
+console.log('length:', a.length);
+console.log('kindFor(grill, Szaszlyk):', kindFor('grill', 'Szaszłyk z jagnięciny'));
+console.log('kindFor(dania, Plow):', kindFor('dania', 'Plow'));
+console.log('kindFor(herbaty, Herbata zielona):', kindFor('herbaty', 'Herbata zielona'));
+const kinds = new Set();
+for (const n of ['Plow','Lagman','Manty','Samsa','Chleb','Ayran','Napoleon','Kimchi']) kinds.add(dishArt('dania', n).length);
+console.log('distinct outputs for 8 names:', kinds.size);

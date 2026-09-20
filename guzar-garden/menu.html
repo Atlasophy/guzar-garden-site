@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karta dań — Guzar Garden, Restauracja Uzbecka &amp; Grill Halal</title>
+<meta name="description" content="Pełna karta dań Guzar Garden — plow, samsa z tandoora, szaszłyki, manty, lagman, chleb, desery i herbaty. Restauracja uzbecka przy Parku Skaryszewskim w Warszawie.">
+<meta name="theme-color" content="#122417">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/brand/favicon-64.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/brand/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1712;
+  --ink-soft:#544c3e;
+  --cream:#f4ecdb;
+  --cream-2:#e9dcc2;
+  --cream-3:#dfceac;
+  --paper:#fffdf7;
+  --clay:#9e3f1b;
+  --saffron:#d3901f;
+  --lapis:#1f4d6b;
+  --green:#122417;
+  --green-2:#1f3a26;
+  --logo-red:#b62a19;
+  --logo-teal:#338e75;
+  --logo-navy:#07365a;
+  --teal:#186b5c;
+  --teal-soft:#2c8b78;
+  --line:rgba(26,23,18,.16);
+  --line-2:rgba(158,63,27,.34);
+  --green-deep:#0a170e;
+  --green-3:#2c4d33;
+  --cream-soft:rgba(247,241,228,.72);
+  --cream-faint:rgba(247,241,228,.46);
+  --line-dark:rgba(247,241,228,.14);
+  --mark:url("assets/brand/ornament-mask.png");
+  --serif:'Cormorant Garamond',Cormorant,Garamond,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.68,.24,1);
+  --shadow:0 16px 40px -20px rgba(90,52,26,.34);
+  --shadow-lg:0 34px 76px -34px rgba(90,52,26,.42);
+  --rose:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201000%201000%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M488.6%2018.1%20476.2%2023.3%20464.8%2031.6%20463.3%2036.2%20475.7%2047.6%20488.1%2069.4%20496.9%2079.2%20500.5%2076.6%20524.3%2035.2%20505.2%2020.2%20489.6%2018.1ZM385.1%2038.8%20362.3%2043%20348.9%2049.2%20326.6%2070.4%20301.2%20106.1%20268.1%20118.5%20253.6%20127.8%20235.5%20152.2%20228.3%20179.1%20228.3%20198.8%20237.6%20221.5%20243.3%20227.2%20289.9%20226.2%20314.7%20234.5%20330.7%20252.6%20335.9%20290.9%20340.6%20295.5%20355.1%20297.6%20374.7%20295.5%20393.4%20289.3%20429.6%20269.7%20452.9%20242.2%20461.2%20224.6%20467.4%20199.8%20463.3%20166.7%20450.8%20144.9%20430.6%20128.9%20401.7%20123.7%20377.8%20125.8%20360.2%20132%20349.4%20141.8%20343.2%20156.3%20345.2%20185.3%20353%20194.1%20364.4%20198.2%20376.3%20194.6%20372.2%20172.9%20377.8%20157.9%20386.1%20151.7%20394.4%20150.6%20405.8%20151.7%20413.6%20156.3%20421.8%20168.7%20422.9%20185.3%20418.7%20198.8%20399.6%20222%20386.1%20228.3%20368.5%20227.2%20354%20223.1%20338.5%20212.7%20323.5%20193.6%20318.3%20180.1%20317.3%20157.3%20323.5%20132.5%20328.7%20124.2%20342.7%20110.2%20354%20103%20377.8%2094.7%20398.6%2091.6%20403.2%2087%20414.6%2055.9%20414.6%2045.5%20405.8%2039.9%20386.1%2038.8ZM589%2038.8%20581.8%2041.9%20577.1%2049.7%20591.6%2085.9%20598.3%2090.6%20611.8%2091.6%20632.5%2098.9%20650.1%20110.2%20662%20123.2%20671.3%20149.1%20670.3%20180.1%20659.9%20199.8%20641.8%20213.8%20623.2%20220%20607.7%20220%20594.2%20214.8%20581.3%20202.9%20573%20188.4%20573%20172.9%20576.1%20165.6%20588%20155.8%20608.7%20155.8%20617.5%20164.6%20616.5%20189.4%20621.1%20193.1%20626.3%20193.1%20632.5%20190%20639.2%20181.2%20644.4%20167.7%20644.4%20158.4%20638.2%20143.9%20623.2%20131%20600.4%20123.7%20581.8%20126.8%20570.4%20132%20552.3%20149.1%20539.9%20170.8%20535.7%20190.5%20539.9%20219.5%20543%20228.8%20554.3%20246.4%20580.7%20271.7%20615.9%20290.4%20633.5%20295.5%20654.2%20297.6%20663.6%20295.5%20671.3%20286.7%20674.4%20247.4%20687.4%20231.4%20693.6%20227.2%20712.2%20223.1%20743.3%20223.1%20749%20218.4%20754.1%20200.8%20754.1%20168.7%20749%20151.1%20737.6%20131.5%20716.4%20112.3%20703.9%20106.1%20680.1%20100.9%20662%2067.3%20644.9%2050.2%20623.2%2041.9%20590.1%2038.8ZM444.1%2065.7%20436.3%2072.5%20428.1%2090.1%20428.1%2096.3%20446.2%20109.2%20467.4%20132.5%20495.9%20186.9%20500.5%20184.3%20503.6%20169.8%20518.1%20141.8%20559.5%2095.2%20562.6%2087%20549.7%2066.8%20541.4%2067.8%20518.1%2098.3%20505.7%20124.2%20497.9%20126.8%20475.7%2098.3%20464.3%2078.7%20453.4%2067.8%20445.1%2065.7ZM790.9%20148.6%20785.2%20156.3%20786.2%20183.2%20783.1%20203.9%20770.7%20227.7%20776.4%20233.4%20817.8%20227.2%20856.1%20226.2%20861.8%20220.5%20861.8%20185.3%20852.5%20165.6%20834.4%20152.7%20791.9%20148.6ZM170.8%20157.9%20146%20165.1%20128.9%20179.1%20120.6%20193.6%20118.5%20211.2%20124.7%20230.8%20130.4%20234.5%20188.4%20243.8%20215.3%20243.8%20217.9%20241.2%20203.4%20209.1%20202.4%20178.1%20205.5%20167.7%20194.6%20159.9%20171.8%20157.9ZM267.1%20241.7%20254.1%20248.4%20254.1%20257.8%20280.5%20284.2%20303.3%20295.5%20311.6%20294.5%20319.4%20285.7%20320.4%20279.5%20316.3%20267.1%20297.1%20247.9%20281.6%20241.7%20268.1%20241.7ZM722.6%20241.7%20702.9%20244.8%20686.9%20259.8%20682.7%20268.1%20682.7%20277.4%20688.4%20283.1%20708.1%20275.9%20735.5%20253.6%20736.5%20246.4%20732.9%20242.8%20723.6%20241.7ZM174.9%20254.1%20150.1%20257.2%20133.5%20262.4%20114.4%20277.4%2083.3%20327.1%2069.4%20338%2052.8%20344.2%2037.8%20358.2%2026.4%20378.9%2021.2%20409.9%2022.3%20428.6%2026.9%20434.3%2067.3%20424.9%2074%20418.2%2075.1%20396.5%2082.3%20372.7%2086.4%20364.4%20101.4%20349.4%20117%20342.1%20137.7%20338%20162.5%20338%20182.2%20343.2%20198.2%20357.1%20207.6%20376.8%20206.5%20407.9%20190.5%20428.1%20177%20438.4%20159.4%20443.6%20147%20437.4%20134.1%20423.4%20131%20409.9%20136.1%20400.6%20142.9%20394.9%20148%20391.8%20176%20394.9%20180.6%20390.3%20178.6%20383%20169.8%20374.2%20153.2%20369%20138.7%20370.1%20118%20382.5%20100.9%20403.7%2096.8%20419.3%2099.9%20437.9%20113.9%20457%20137.7%20474.6%20172.9%20488.1%20190.5%20488.1%20210.1%20484%20231.9%20473.6%20244.3%20464.3%20272.8%20428.6%20281.1%20411%20289.3%20381%20289.3%20352%20283.6%20345.2%20273.3%20344.2%20261.9%20349.4%20245.3%20349.4%20224.6%20340.1%20210.7%20328.2%20203.4%20316.8%20200.3%20305.4%20200.3%20288.8%20206.5%20270.2%20206.5%20259.8%20201.9%20256.2%20176%20254.1ZM484.5%20255.2%20462.7%20278%20424.4%20306.9%20388.2%20320.4%20344.2%20328.2%20345.8%20332.8%20363.4%20337%20405.8%20357.7%20449.3%20387.7%20452.9%20386.1%20453.9%20355.1%20462.2%20327.1%20476.7%20284.7%20489.1%20259.8%20485.5%20255.2ZM807.5%20257.2%20796.1%20258.3%20791.4%20261.9%20798.7%20291.9%20798.7%20307.5%20790.4%20327.1%20774.3%20342.1%20754.7%20350.4%20738.1%20351.4%20723.6%20345.2%20715.3%20346.3%20708.6%20357.1%20708.6%20375.8%20717.9%20413%20737.6%20448.2%20751.6%20463.3%20771.2%20477.7%20791.9%20487.1%20808.5%20490.2%20825.1%20490.2%20840.6%20486%20868.5%20472.6%20890.8%20453.4%20901.1%20435.8%20903.2%20426.5%20900.1%20408.9%20892.9%20396.5%20877.8%20381.5%20857.1%20371.1%20841.6%20371.1%20832.3%20374.2%20819.4%20386.1%20817.3%20392.3%20821.9%20397%20833.3%20397%20848.9%20392.9%20856.1%20396%20865.9%20405.8%20868%20419.3%20854%20437.4%20837.5%20445.7%20831.3%20444.6%20817.8%20437.4%20797.6%20418.2%20791.4%20403.7%20792.4%20374.7%20799.7%20360.2%20813.7%20346.3%20820.9%20343.2%20836.4%20340.1%20866.5%20340.1%20892.3%20348.3%20906.3%20359.2%20918.7%20378.9%20923.9%20395.4%20924.9%20419.3%20928.6%20424.9%20964.8%20435.3%20973.1%20435.3%20977.7%20428.6%20976.7%20395.4%20972.6%20378.9%20966.4%20366.5%20953.4%20351.4%20927.5%20338%20915.6%20328.2%20883.5%20277.4%20873.7%20268.6%20850.9%20259.3%20808.5%20257.2ZM519.7%20260.4%20517.1%20267.1%20530.5%20286.7%20548.1%20335.4%20553.3%20360.2%20554.3%20387.2%20556.9%20387.7%20570.4%20374.2%20589%20361.8%20636.6%20339%20651.1%20334.9%20654.8%20330.2%20608.7%20317.3%20580.7%20304.9%20552.8%20288.3%20520.2%20260.9ZM761.9%20269.7%20735%20288.3%20716.9%20308.5%20716.9%20312.6%20722.6%20317.3%20748.4%20322.5%20765%20318.3%20775.9%20303.3%20775.9%20278.5%20769.2%20269.7%20762.9%20269.7ZM234%20280%20224.1%20290.9%20224.1%20306.4%20229.3%20316.8%20238.1%20325.6%20257.8%20333.9%20277.4%20330.7%20283.1%20326.1%20284.2%20318.8%20259.8%20292.4%20248.4%20284.2%20235%20280ZM323%20351.4%20318.3%20396.5%20311.1%20420.3%20296.6%20447.2%20280%20466.9%20261.4%20483.4%20261.9%20489.1%20335.4%20464.3%20392.9%20461.7%20358.7%20424.4%20342.1%20395.4%20329.7%20356.1%20324%20351.4ZM679.1%20353.5%20674.4%20358.2%20672.4%20365.4%20621.6%20451.3%20625.3%20453.9%20655.3%20455%20696.7%20465.3%20719.5%20474.6%20738.1%20486%20743.8%20483.4%20742.8%20480.3%20720%20460.7%20696.2%20424.4%20685.8%20388.2%20683.7%20356.1%20680.1%20353.5ZM493.8%20424.9%20476.2%20429.1%20463.8%20435.3%20444.6%20451.3%20434.3%20467.9%20428.1%20494.8%20431.2%20520.7%20444.6%20545.5%20464.8%20562.6%20481.4%20569.9%20493.8%20571.9%20522.8%20569.9%20549.7%20555.4%20566.8%20534.2%20576.1%20504.1%20576.1%20491.7%20570.9%20471%20562.6%20455.5%20551.8%20443.6%20524.8%20428.1%20494.8%20424.9ZM34.2%20445.7%209.8%20466.9%20-0.5%20486.5%20-0.5%20504.1%205.7%20518.6%2018.1%20535.2%2033.1%20549.2%2038.3%20547.1%2064.2%20521.2%2076.6%20512.9%2098.3%20506.7%20102%20503.1%2099.4%20496.4%2069.4%20474.6%2039.3%20446.7%2035.2%20445.7ZM962.7%20447.7%20901.7%20497.4%20898%20501%20898%20506.2%20926.5%20517.1%20942%20528.5%20963.8%20550.2%20970%20549.2%20989.1%20528%201000.5%20503.1%20999.5%20487.6%20993.3%20474.1%20976.2%20455%20963.8%20447.7ZM181.2%20506.7%20149.1%20515%20124.2%20529.5%20104%20549.7%2095.8%20570.4%2098.9%20589%20108.2%20604.6%20124.2%20619.6%20146%20627.8%20157.3%20626.8%20169.8%20621.6%20179.6%20609.7%20179.6%20603.5%20176%20600.9%20164.6%20600.9%20157.3%20605.1%20151.1%20605.1%20138.7%20598.9%20133%20592.1%20131%20587%20132%20575.6%20147%20558.5%20157.3%20553.3%20168.7%20554.3%20181.2%20561.6%20199.3%20577.6%20207.6%20595.2%20205.5%20623.2%20194.1%20642.9%20178.1%20654.8%20165.6%20657.9%20128.4%20657.9%20108.7%20651.7%20101.4%20647.5%2084.4%20629.4%2075.1%20605.6%2073%20578.7%2069.4%20573%2029%20561.6%2021.2%20569.4%2022.3%20605.6%2030.5%20628.4%2048.7%20649.6%2082.3%20668.7%20113.4%20719.5%20122.2%20728.3%20146%20739.6%20174.9%20743.8%20201.9%20740.7%20205.5%20738.1%20206.5%20729.8%20199.3%20709.1%20199.3%20690.5%20207.6%20670.8%20225.7%20654.8%20237.1%20649.6%20257.8%20646.5%20273.3%20652.7%20280.5%20652.7%20286.2%20648%20289.3%20640.8%20289.3%20622.2%20280%20583.9%20257.2%20545.5%20239.1%20528.5%20223.6%20518.1%20210.1%20511.9%20181.7%20507.2ZM805.4%20509.8%20778.5%20518.1%20760.9%20529.5%20742.8%20546.6%20732.4%20560%20717.9%20588%20712.7%20604.6%20708.6%20633.5%20711.7%20648%20719.5%20654.8%20735%20649.6%20755.7%20649.6%20773.3%20656.8%20789.3%20670.8%20799.7%20693.6%20799.7%20708.1%20792.4%20739.1%20799.2%20743.8%20841.6%20743.8%20861.3%20738.6%20876.8%20730.3%20894.9%20709.1%20915.6%20671.8%20950.3%20651.7%20964.3%20637.7%20972.6%20622.2%20978.8%20593.2%20978.8%20572.5%20977.7%20568.3%20972%20563.7%20933.7%20573%20927%20578.7%20924.9%20602.5%20918.7%20624.2%20911.5%20635.6%20898.6%20648.6%20881%20656.8%20860.2%20661%20841.6%20661%20816.8%20654.8%20799.7%20637.7%20791.4%20615.9%20792.4%20592.1%20809.5%20569.9%20824%20558.5%20838.5%20555.4%20852%20560.6%20865.9%20574.5%20868%20588%20864.9%20595.2%20856.1%20604%20842.7%20607.1%20828.2%20602%20819.4%20606.6%20820.4%20613.9%20827.1%20621.6%20842.7%20628.9%20861.3%20627.8%20877.8%20619.6%20898%20596.3%20904.2%20574.5%20894.9%20550.7%20882%20536.7%20866.5%20525.4%20837.5%20511.9%20805.9%20510.4ZM262.9%20511.9%20260.4%20514.5%20261.4%20517.6%20292.4%20547.6%20310%20575.6%20320.4%20610.8%20324%20649.6%20327.1%20649.6%20329.7%20646%20340.1%20611.8%20355.6%20582.8%20373.2%20560%20393.9%20542.4%20393.9%20539.3%20354%20539.9%20329.2%20535.7%20264%20511.9ZM739.1%20516%20723.6%20525.4%20697.7%20535.7%20655.3%20546.1%20625.3%20548.1%20621.6%20550.7%20638.2%20574.5%20679.1%20646.5%20683.7%20642.9%20687.9%20607.7%20696.2%20578.7%20711.7%20551.8%20724.6%20536.7%20741.7%20523.8%20743.8%20517.6%20740.2%20516ZM450.3%20613.4%20399.6%20647.5%20349.9%20668.2%20344.2%20672.9%20347.8%20675.5%20365.4%20675.5%20397.5%20682.7%20425.5%20694.1%20459.6%20720%20485.5%20745.9%20489.1%20744.3%20489.1%20739.1%20478.8%20718.4%20459.1%20662.5%20453.9%20639.8%20453.9%20614.9%20451.3%20613.4ZM555.9%20614.4%20555.4%20636.6%20549.2%20664.6%20530.5%20715.3%20518.1%20734%20520.7%20740.7%20545.5%20718.9%20585.9%20694.1%20612.8%20682.7%20643.9%20673.4%20653.2%20673.4%20655.8%20670.8%20646%20664.1%20597.3%20643.4%20556.9%20614.4ZM255.7%20665.1%20238.1%20671.3%20223.1%20688.4%20220%20705%20227.2%20716.4%20232.9%20720%20239.1%20718.9%20253.6%20709.6%20282.1%20679.1%20281.1%20673.9%20274.3%20668.2%20256.7%20665.1ZM746.4%20678.6%20722.6%20683.7%20717.9%20687.4%20717.9%20692.5%20742.2%20717.9%20765%20732.4%20770.2%20731.4%20776.9%20722.6%20779%20708.1%20775.9%20695.7%20766%20682.7%20747.4%20678.6ZM347.8%20703.4%20339.5%20706.5%20335.9%20712.2%20331.8%20746.4%20326.6%20756.7%20319.9%20763.5%20306.4%20770.7%20293%20773.8%20262.9%20774.8%20246.4%20772.8%20238.6%20778.5%20229.3%20802.3%20229.3%20824%20237.6%20850.9%20250.5%20869%20265%20880.4%20304.3%20897%20331.8%20935.8%20346.8%20949.8%20360.2%20957%20384.1%20962.2%20400.6%20962.2%20414.6%20957.6%20415.6%20946.2%20406.3%20919.3%20399.6%20909.4%20374.7%20905.3%20354%20897%20341.6%20888.7%20328.7%20874.7%20322.5%20863.4%20318.3%20841.6%20318.3%20827.1%20324.5%20807.5%20338.5%20789.3%20349.9%20781.1%20366.5%20773.8%20389.2%20773.8%20398.6%20778%20414.6%20794%20421.8%20808.5%20422.9%20828.2%20419.8%20837.5%20406.8%20848.3%20394.4%20850.4%20384.1%20847.3%20377.3%20840.6%20373.2%20831.3%20373.2%20819.9%20377.3%20807.5%20373.7%20803.8%20363.4%20802.8%20350.9%20809%20346.3%20815.7%20343.2%20828.2%20344.2%20844.7%20349.4%20857.1%20363.4%20870.1%20384.1%20876.3%20417.2%20876.3%20440%20867%20458.1%20846.8%20466.4%20826.1%20467.4%20797.1%20455%20760.9%20443.6%20744.3%20426.5%20728.3%20408.9%20717.9%20383%20707.6%20367.5%20703.4%20348.9%20703.4ZM649.1%20703.4%20610.8%20712.7%20582.8%20728.3%20552.3%20757.8%20539.9%20782.6%20537.8%20815.7%20541.9%20832.3%20551.2%20849.9%20564.2%20863.9%20585.9%20875.3%20608.7%20876.3%20625.3%20869%20639.2%20857.1%20645.4%20842.7%20643.4%20826.1%20639.2%20817.8%20628.4%20808%20622.2%20808%20617.5%20812.6%20619.6%20830.2%20617.5%20837.5%20611.8%20843.2%20605.6%20846.3%20594.2%20846.3%20583.9%20842.1%20576.1%20833.3%20573%20818.8%20577.1%20805.4%20589%20790.4%20605.6%20782.1%20612.8%20781.1%20625.3%20781.1%20637.7%20785.2%20648%20790.4%20662%20802.3%20670.3%20818.8%20673.4%20834.4%20671.3%20856.1%20667.2%20869.6%20658.9%20883%20643.9%20896%20628.4%20904.2%20597.3%20910.5%20591.6%20916.1%20578.2%20953.4%20583.9%20960.1%20598.3%20963.3%20622.2%20960.1%20647%20949.8%20662%20934.8%20681.2%20900.1%20698.8%20897%20711.2%20891.8%20736.5%20871.6%20746.9%20856.1%20754.1%20835.4%20755.2%20807.5%20751%20783.6%20744.3%20778%20709.1%20776.9%20695.7%20773.8%20687.4%20768.6%20681.7%20764%20674.4%20750.5%20673.4%20719.5%20670.3%20711.2%20662.5%20704.5%20650.1%20703.4ZM300.2%20706.5%20287.8%20711.7%20278.5%20718.9%20256.2%20742.2%20254.1%20751.6%20268.1%20759.3%20283.6%20759.3%20293%20755.2%20301.2%20751%20314.2%20738.1%20320.4%20726.7%20319.4%20713.3%20312.6%20706.5%20301.2%20706.5ZM690.5%20717.9%20682.7%20725.7%20687.9%20741.2%20701.9%20755.2%20715.3%20759.3%20732.9%20758.3%20737.6%20753.6%20736.5%20747.4%20713.3%20728.3%20691.5%20717.9ZM197.7%20756.2%20130.4%20766.6%20121.6%20778.5%20120.6%20804.3%20129.9%20821.9%20146%20834.9%20168.7%20843.2%20193.6%20842.1%20201.9%20838%20206.5%20832.3%20203.4%20821.9%20202.4%20802.3%20207.6%20781.6%20217.9%20765%20217.9%20759.8%20213.3%20756.2%20198.8%20756.2ZM776.4%20767.6%20771.7%20772.3%20782.1%20791.9%20786.2%20808.5%20787.3%20847.8%20789.9%20851.4%20797.1%20853.5%20834.4%20848.3%20852.5%20836.4%20860.8%20821.9%20862.8%20812.6%20862.8%20780.5%20857.1%20774.8%20802.3%20771.7%20777.4%20767.6ZM496.9%20814.2%20467.4%20868.5%20450.3%20888.7%20429.1%20905.8%20435.3%20924.4%20445.1%20935.3%20451.3%20935.3%20459.1%20928.6%20497.9%20874.2%20503.1%20874.2%20506.7%20877.8%20528.5%20917.2%20543.5%20934.3%20549.7%20934.3%20559.5%20921.3%20562.6%20914.1%20561.6%20906.8%20519.2%20859.2%20505.7%20834.4%20500.5%20815.7%20497.9%20814.2ZM495.9%20922.9%20478.8%20950.3%20464.3%20964.8%20466.9%20970.5%20485.5%20981.9%20506.2%20980.8%20525.4%20964.8%20500.5%20923.4%20496.9%20922.9Z%22%2F%3E%3C%2Fsvg%3E");
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit}
+h1,h2,h3,.display{font-family:var(--serif);font-weight:400;letter-spacing:.01em;line-height:1.05;margin:0}
+.wrap{width:min(1220px,92vw);margin-inline:auto;position:relative;z-index:2}
+.eyebrow{font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--clay);font-weight:500;margin:0 0 1rem}
+
+/* ---------- background ---------- */
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+body>*:not(.grain){position:relative;z-index:2}
+.atmo{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.atmo-layer{position:absolute;aspect-ratio:1;-webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat;
+  background:currentColor}
+.atmo-static{width:36vh;opacity:.05}
+
+/* ---------- nav ---------- */
+header.nav{
+  position:fixed;inset:0 0 auto 0;z-index:80;display:flex;align-items:center;gap:2rem;
+  padding:1.15rem clamp(1rem,4vw,2.5rem);color:var(--cream);
+  background:var(--green);box-shadow:0 1px 0 rgba(0,0,0,.14);
+}
+.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;margin-right:auto}
+.brand .m{width:38px;height:38px;flex:none;transition:transform .7s var(--ease)}
+.plate{position:relative;background:var(--paper);overflow:hidden;
+  border:1px solid rgba(212,178,120,.4);
+  box-shadow:0 1px 0 rgba(255,255,255,.6) inset, 0 0 0 1px rgba(20,20,10,.05) inset,
+             0 16px 34px -14px rgba(0,0,0,.55), 0 3px 8px -3px rgba(0,0,0,.3)}
+.plate img{width:100%;height:100%;display:block;object-fit:cover}
+.plate-round{border-radius:50%}
+.plate-tile{border-radius:20px}
+.brand:hover .m{transform:rotate(20deg)}
+.brand b{font-family:var(--serif);font-size:1.4rem;font-weight:600;letter-spacing:.07em;line-height:1;display:block;color:var(--cream)}
+.brand i{display:block;font-style:normal;font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,241,228,.62);margin-top:.22rem}
+nav.links{display:flex;gap:1.7rem}
+nav.links a{text-decoration:none;font-size:.77rem;letter-spacing:.15em;text-transform:uppercase;white-space:nowrap;color:rgba(247,241,228,.72);position:relative;padding-bottom:3px;transition:color .3s}
+nav.links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--saffron);transition:right .45s var(--ease)}
+nav.links a:hover{color:var(--cream)}
+nav.links a:hover::after{right:0}
+.nav-tools{display:flex;align-items:center;gap:.6rem}
+.lang{display:flex;border:1px solid rgba(247,241,228,.28);border-radius:999px;overflow:hidden;background:rgba(247,241,228,.08)}
+.lang button{border:0;background:none;cursor:pointer;font:inherit;font-size:.66rem;letter-spacing:.1em;padding:.42rem .58rem;color:rgba(247,241,228,.72);transition:.25s}
+.lang button.on{background:var(--cream);color:var(--green)}
+.lang-select{display:none;border:1px solid rgba(247,241,228,.28);border-radius:999px;background:rgba(247,241,228,.08);
+  color:var(--cream);font:inherit;font-size:.66rem;letter-spacing:.1em;padding:.42rem 1.5rem .42rem .7rem;cursor:pointer;
+  -webkit-appearance:none;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f4ecdb' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .5rem center;background-size:12px}
+.lang-select option{color:var(--ink);background:var(--cream)}
+.burger{display:none;border:1px solid rgba(247,241,228,.32);background:none;color:var(--cream);border-radius:999px;padding:.44rem .82rem;font:inherit;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+:focus-visible{outline:2px solid var(--saffron);outline-offset:3px}
+.lang button:focus-visible{outline-offset:-2px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none;cursor:pointer;font-family:inherit;
+  font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;padding:.92rem 1.7rem;border-radius:999px;
+  border:1px solid transparent;position:relative;overflow:hidden;background:none;color:inherit;
+  transition:color .45s var(--ease),border-color .45s var(--ease)}
+.btn>span{position:relative;z-index:2}
+.btn::before{content:"";position:absolute;inset:0;background:var(--clay);transform:translateY(101%);transition:transform .55s var(--ease);z-index:1}
+.btn:hover::before{transform:translateY(0)}
+.btn:hover{color:var(--cream)}
+.btn.solid{background:var(--green);color:var(--cream)}
+.btn.outline{border-color:currentColor}
+.btn.outline:hover{border-color:var(--clay)}
+.nav-cta{padding:.62rem 1.15rem;font-size:.67rem;background:var(--cream);color:var(--green)}
+.nav-cta::before{background:var(--logo-red)}
+.nav-cta:hover{color:var(--cream)}
+.nav-cta-mobile{display:none;background:var(--cream);color:var(--green)}
+.nav-cta-mobile::before{background:var(--logo-red)}
+.nav-cta-mobile:hover{color:var(--cream)}
+nav.links a.nav-cta-mobile{color:var(--green)}
+nav.links a.nav-cta-mobile:hover{color:var(--cream)}
+
+/* ---------- masthead ---------- */
+.mast{padding:9rem 0 2.6rem;text-align:center;position:relative;overflow:hidden}
+.mast .crest{width:clamp(200px,22vw,270px);aspect-ratio:553/364;margin:0 auto 1.4rem}
+.mast h1{font-size:clamp(2.6rem,7vw,4.8rem);font-weight:300}
+.mast .sub{font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-soft);margin:1.1rem 0 0}
+.mast .note{font-family:var(--serif);font-size:clamp(1.05rem,2vw,1.32rem);color:var(--ink-soft);max-width:600px;margin:1.2rem auto 0}
+
+/* ---------- search ---------- */
+.searchbar{width:min(560px,92vw);margin:2.2rem auto 0;position:relative}
+.searchbar input{
+  width:100%;font:inherit;font-size:1rem;padding:1rem 3.2rem 1rem 3.2rem;border-radius:999px;
+  border:1px solid var(--line);background:var(--paper);color:var(--ink);outline:none;
+  transition:border-color .35s var(--ease),box-shadow .35s var(--ease)}
+.searchbar input:focus{border-color:var(--clay);box-shadow:0 0 0 4px rgba(181,80,44,.1)}
+.searchbar .ico{position:absolute;left:1.15rem;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--ink-soft);pointer-events:none}
+.searchbar .clr{position:absolute;right:.75rem;top:50%;transform:translateY(-50%);border:0;background:none;cursor:pointer;
+  font:inherit;font-size:1.3rem;line-height:1;color:var(--ink-soft);padding:.3rem .5rem;border-radius:50%;display:none}
+.searchbar .clr.on{display:block}
+.searchbar .clr:hover{color:var(--clay)}
+
+/* ---------- views ---------- */
+.view{display:none;padding-bottom:clamp(4rem,8vw,7rem)}
+.view.on{display:block;animation:viewIn .55s var(--ease) both}
+@keyframes viewIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ---------- signature strip ---------- */
+.strip{margin:3.4rem 0 0}
+.strip-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.strip-head h2{font-size:clamp(1.5rem,3vw,2.1rem)}
+.strip-head span{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+.strip-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+
+/* ---------- category grid ---------- */
+.cats{margin-top:3.6rem}
+.cats-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.cats-head h2{font-size:clamp(1.5rem,3vw,2.1rem)}
+.cats-head span{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+.cat{background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden;cursor:pointer;
+  text-align:left;font:inherit;color:inherit;padding:0;display:block;position:relative;
+  transition:transform .6s var(--ease),box-shadow .6s var(--ease),border-color .6s var(--ease)}
+.cat:hover{transform:translateY(-9px);box-shadow:var(--shadow-lg);border-color:var(--line-2)}
+.cat .art{aspect-ratio:16/10;overflow:hidden;background:var(--cream-2)}
+.cat .art svg{width:100%;height:100%;display:block;transition:transform 1.1s var(--ease)}
+.cat:hover .art svg{transform:scale(1.1) rotate(-3deg)}
+.cat .txt{padding:1rem 1.15rem 1.2rem;display:flex;align-items:flex-end;justify-content:space-between;gap:.6rem}
+.cat h3{font-size:1.3rem;line-height:1.15}
+.cat .meta{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-top:.3rem}
+.cat .from{font-family:var(--serif);font-size:1.15rem;color:var(--teal);white-space:nowrap}
+.cat .go{position:absolute;top:.85rem;right:.85rem;width:30px;height:30px;border-radius:50%;background:rgba(255,253,248,.9);
+  backdrop-filter:blur(6px);display:grid;place-items:center;opacity:0;transform:translateX(-6px);
+  transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.cat:hover .go{opacity:1;transform:none}
+.cat .go svg{width:14px;height:14px;color:var(--clay)}
+
+/* ---------- category view ---------- */
+.cat-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  padding:2.2rem 0 1.8rem;border-bottom:1px solid var(--line);margin-bottom:2.2rem}
+.cat-head h2{font-size:clamp(2rem,5vw,3.4rem)}
+.cat-head .count{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-top:.5rem}
+.back{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line);background:var(--paper);border-radius:999px;
+  padding:.55rem 1.1rem;font:inherit;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;color:var(--ink-soft);
+  transition:.35s var(--ease);margin-bottom:1.4rem}
+.back:hover{color:var(--clay);border-color:var(--clay);transform:translateX(-4px)}
+.back svg{width:13px;height:13px}
+
+.dish-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.15rem}
+.dish{background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden;cursor:pointer;
+  text-align:left;font:inherit;color:inherit;padding:0;display:flex;flex-direction:column;
+  opacity:0;transform:translateY(22px);animation:cardIn .7s var(--ease) forwards;animation-delay:var(--d,0s);
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+@keyframes cardIn{to{opacity:1;transform:none}}
+.dish:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.dish .art{aspect-ratio:4/3;overflow:hidden;background:var(--cream-2);flex:none}
+.dish .art svg,.dish .art img{width:100%;height:100%;display:block;object-fit:cover;transition:transform 1.1s var(--ease)}
+.dish:hover .art svg,.dish:hover .art img{transform:scale(1.08)}
+.dish .txt{padding:1rem 1.15rem 1.25rem;display:flex;flex-direction:column;flex:1}
+.dish .row{display:flex;align-items:baseline;justify-content:space-between;gap:.8rem}
+.dish h3{font-size:1.22rem;line-height:1.2}
+.dish .pr{font-family:var(--serif);font-size:1.15rem;color:var(--clay);white-space:nowrap}
+.dish .desc{font-size:.85rem;color:var(--ink-soft);line-height:1.55;margin:.5rem 0 0;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dish .in-cat{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);display:block;margin-bottom:.4rem}
+
+/* prev / next */
+.catnav{display:flex;justify-content:space-between;gap:1rem;margin-top:3rem;padding-top:1.8rem;border-top:1px solid var(--line)}
+.catnav button{border:0;background:none;cursor:pointer;font:inherit;text-align:left;color:inherit;padding:.4rem 0;max-width:46%;
+  transition:color .3s}
+.catnav button:last-child{text-align:right}
+.catnav button:hover{color:var(--clay)}
+.catnav small{display:block;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.3rem}
+.catnav b{font-family:var(--serif);font-size:1.3rem;font-weight:500}
+.catnav button[disabled]{opacity:.3;cursor:default}
+
+/* ---------- empty ---------- */
+.empty{text-align:center;padding:5rem 1rem;color:var(--ink-soft)}
+.empty svg{width:54px;height:54px;opacity:.3;margin:0 auto 1.2rem;display:block}
+.empty p{font-family:var(--serif);font-size:1.5rem;color:var(--ink);margin:0 0 .4rem}
+
+/* ---------- dish detail overlay ---------- */
+.sheet{position:fixed;inset:0;z-index:120;display:none;place-items:center;padding:1.5rem}
+.sheet.on{display:grid}
+.sheet .scrim{position:absolute;inset:0;background:rgba(29,26,20,.55);backdrop-filter:blur(6px);animation:fadeIn .35s var(--ease) both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.sheet .card{position:relative;background:var(--paper);border-radius:26px;overflow:hidden;width:min(760px,100%);
+  max-height:88vh;overflow-y:auto;box-shadow:var(--shadow-lg);animation:sheetIn .5s var(--ease) both;
+  display:grid;grid-template-columns:1fr 1fr}
+@keyframes sheetIn{from{opacity:0;transform:translateY(26px) scale(.97)}to{opacity:1;transform:none}}
+.sheet .art{background:var(--cream-2)}
+.sheet .art svg,.sheet .art img{width:100%;height:100%;display:block;object-fit:cover;min-height:260px}
+.sheet .body{padding:2.1rem 2rem 2.2rem;display:flex;flex-direction:column}
+.sheet .in-cat{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--clay);margin-bottom:.7rem}
+.sheet h3{font-size:clamp(1.6rem,3.4vw,2.2rem);line-height:1.12;margin-bottom:.5rem}
+.sheet .pr{font-family:var(--serif);font-size:1.7rem;color:var(--clay);margin-bottom:1.1rem}
+.sheet .desc{font-size:.95rem;color:var(--ink-soft);line-height:1.65;margin:0}
+.sheet .close{position:absolute;top:.9rem;right:.9rem;width:36px;height:36px;border-radius:50%;border:0;cursor:pointer;
+  background:rgba(255,253,248,.92);backdrop-filter:blur(6px);display:grid;place-items:center;color:var(--ink);font-size:1.2rem;line-height:1;
+  transition:.3s var(--ease)}
+.sheet .close:hover{background:var(--clay);color:var(--cream);transform:rotate(90deg)}
+
+/* ---------- footer ---------- */
+footer{background:var(--green);color:rgba(247,241,228,.7);padding:clamp(3rem,6vw,4.5rem) 0 2rem;position:relative;overflow:hidden}
+.foot-in{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-end}
+.foot-in .plate-tile{width:min(260px,64vw);aspect-ratio:953/520;margin-bottom:.8rem}
+.foot-in p{margin:0;font-size:.9rem}
+.foot-in a{text-decoration:none;border-bottom:1px solid rgba(247,241,228,.3)}
+.foot-in a:hover{color:var(--saffron)}
+.colophon{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:2.6rem;padding-top:1.5rem;
+  border-top:1px solid rgba(247,241,228,.14);font-size:.72rem}
+.colophon a{border-bottom:1px solid rgba(247,241,228,.3);text-decoration:none}
+
+/* ---------- responsive ---------- */
+@media(max-width:1000px){
+  .cat-grid{grid-template-columns:repeat(3,1fr)}
+  .strip-grid{grid-template-columns:repeat(3,1fr)}
+  .dish-grid{grid-template-columns:repeat(2,1fr)}
+  nav.links{position:fixed;inset:0 0 auto 0;background:var(--green);flex-direction:column;padding:6rem 2rem 2.4rem;gap:1.3rem;
+    transform:translateY(-102%);transition:transform .6s var(--ease);box-shadow:0 20px 40px -20px rgba(0,0,0,.5);z-index:-1}
+  nav.links.open{transform:translateY(0)}
+  nav.links a{font-size:1rem}
+  nav.links .nav-cta-mobile{display:inline-flex;margin-top:.4rem}
+  .burger{display:block}
+  .nav-cta{display:none}
+  .sheet .card{grid-template-columns:1fr}
+}
+@media(max-width:460px){
+  header.nav{gap:.6rem;padding-inline:.85rem}
+  .brand{gap:.4rem}
+  .brand b{font-size:1.15rem}
+  .brand i{display:none}
+  .brand .m{width:34px;height:34px}
+  .nav-tools{gap:.4rem}
+  .lang{display:none}
+  .lang-select{display:block}
+  .burger{padding:.44rem .64rem}
+}
+@media(max-width:640px){
+  .cat-grid,.strip-grid{grid-template-columns:repeat(2,1fr)}
+  .dish-grid{grid-template-columns:1fr}
+  .mast{padding-top:7.5rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .dish{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="brand" href="index.html">
+    <span class="m plate plate-round"><img src="assets/brand/plate-rosette.png" alt="" width="330" height="350"></span>
+    <span>
+      <b>GUZAR</b>
+      <i data-pl="Garden · Warszawa" data-en="Garden · Warsaw" data-ru="Garden · Варшава" data-uz="Garden · Varshava">Garden · Warszawa</i>
+    </span>
+  </a>
+  <nav class="links" id="links">
+    <a href="index.html#o-nas" data-pl="O nas" data-en="About" data-ru="О нас" data-uz="Biz haqimizda">O nas</a>
+    <a href="index.html#kuchnia" data-pl="Kuchnia" data-en="The cuisine" data-ru="Кухня" data-uz="Taomlarimiz">Kuchnia</a>
+    <a href="index.html#miejsce" data-pl="Miejsce" data-en="The venue" data-ru="Место" data-uz="Makon">Miejsce</a>
+    <a href="index.html#kontakt" data-pl="Kontakt" data-en="Contact" data-ru="Контакты" data-uz="Aloqa">Kontakt</a>
+    <a class="btn nav-cta-mobile" href="tel:+48570088888"><span data-pl="Rezerwacja" data-en="Book a table" data-ru="Бронь" data-uz="Bron qilish">Rezerwacja</span></a>
+  </nav>
+  <div class="nav-tools">
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" class="on" data-lang="pl">PL</button>
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="ru">RU</button>
+      <button type="button" data-lang="uz">UZ</button>
+    </div>
+    <select class="lang-select" id="langSelect" aria-label="Language">
+      <option value="pl">PL</option>
+      <option value="en">EN</option>
+      <option value="ru">RU</option>
+      <option value="uz">UZ</option>
+    </select>
+    <a class="btn nav-cta" href="tel:+48570088888"><span data-pl="Rezerwacja" data-en="Book a table" data-ru="Бронь" data-uz="Bron qilish">Rezerwacja</span></a>
+    <button class="burger" id="burger" aria-label="Menu" aria-controls="links" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<section class="mast">
+  <div class="atmo" aria-hidden="true"><div class="atmo-layer atmo-static" style="top:-14vh;right:-10vh;color:var(--green-3)"></div></div>
+  <div class="wrap">
+    <div class="crest plate plate-tile">
+      <img src="assets/brand/plate-emblem.png" alt="Guzar Garden — est. 2024" width="553" height="364">
+    </div>
+    <h1 data-pl="Karta dań" data-en="The menu" data-ru="Меню" data-uz="Menyu">Karta dań</h1>
+    <p class="sub" data-pl="Kuchnia uzbecka · wszystko halal" data-en="Uzbek kitchen · all halal" data-ru="Узбекская кухня · всё халяль" data-uz="O'zbek oshxonasi · barchasi halol">Kuchnia uzbecka · wszystko halal</p>
+    <p class="note" data-pl="Wybierz kategorię, żeby zobaczyć dania — albo wpisz, na co masz ochotę." data-en="Pick a category to see the dishes — or just type what you feel like eating." data-ru="Выберите категорию, чтобы увидеть блюда, — или просто напишите, чего хочется." data-uz="Taomlarni ko'rish uchun turkumni tanlang — yoki nima xohlasangiz, shuni yozing.">Wybierz kategorię, żeby zobaczyć dania — albo wpisz, na co masz ochotę.</p>
+
+    <div class="searchbar">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input type="search" id="q" autocomplete="off"
+             data-pl-ph="Szukaj: plow, samsa, herbata…" data-en-ph="Search: plov, samsa, tea…" data-ru-ph="Поиск: плов, самса, чай…" data-uz-ph="Qidirish: palov, somsa, choy…"
+             placeholder="Szukaj: plow, samsa, herbata…">
+      <button class="clr" id="clr" aria-label="Clear">&times;</button>
+    </div>
+  </div>
+</section>
+
+<noscript>
+  <div class="wrap" style="padding:2rem 0 4rem;text-align:center">
+    <p style="font-family:var(--serif);font-size:1.4rem;margin:0 0 .6rem">
+      Karta dań wymaga włączonego JavaScriptu.
+    </p>
+    <p style="color:var(--ink-soft);margin:0">
+      Zadzwoń do nas: <a href="tel:+48570088888">+48 570 088 888</a>
+    </p>
+  </div>
+</noscript>
+
+<!-- ============ view: home ============ -->
+<div class="view on" id="v-home">
+  <div class="wrap">
+    <div class="strip">
+      <div class="strip-head">
+        <h2 data-pl="Polecane" data-en="Signatures" data-ru="Рекомендуем" data-uz="Tavsiya etamiz">Polecane</h2>
+        <span data-pl="To zamawia się najczęściej" data-en="What people order most" data-ru="Заказывают чаще всего" data-uz="Eng ko'p buyurtma qilinadi">To zamawia się najczęściej</span>
+      </div>
+      <div class="strip-grid" id="stripGrid"></div>
+    </div>
+
+    <div class="cats">
+      <div class="cats-head">
+        <h2 data-pl="Kategorie" data-en="Categories" data-ru="Категории" data-uz="Turkumlar">Kategorie</h2>
+        <span id="totalCount"></span>
+      </div>
+      <div class="cat-grid" id="catGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ view: one category ============ -->
+<div class="view" id="v-cat">
+  <div class="wrap">
+    <button class="back" id="back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg>
+      <span data-pl="Wszystkie kategorie" data-en="All categories" data-ru="Все категории" data-uz="Barcha turkumlar">Wszystkie kategorie</span>
+    </button>
+    <div class="cat-head">
+      <div>
+        <h2 id="catTitle">—</h2>
+        <span class="count" id="catCount"></span>
+      </div>
+    </div>
+    <div class="dish-grid" id="dishGrid"></div>
+    <div class="catnav">
+      <button id="prevCat"><small data-pl="Poprzednia" data-en="Previous" data-ru="Предыдущая" data-uz="Oldingi">Poprzednia</small><b>—</b></button>
+      <button id="nextCat"><small data-pl="Następna" data-en="Next" data-ru="Следующая" data-uz="Keyingi">Następna</small><b>—</b></button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ view: search results ============ -->
+<div class="view" id="v-search">
+  <div class="wrap">
+    <div class="cat-head">
+      <div>
+        <h2 id="resTitle">—</h2>
+        <span class="count" id="resCount"></span>
+      </div>
+    </div>
+    <div class="dish-grid" id="resGrid"></div>
+    <div class="empty" id="empty" style="display:none">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M8.5 11h5"/></svg>
+      <p data-pl="Nic takiego nie mamy" data-en="Nothing like that here" data-ru="Такого у нас нет" data-uz="Bunday narsa yo'q">Nic takiego nie mamy</p>
+      <span data-pl="Spróbuj innego słowa — albo przejrzyj kategorie." data-en="Try another word — or browse the categories." data-ru="Попробуйте другое слово — или посмотрите категории." data-uz="Boshqa so'z bilan qidiring — yoki turkumlarni ko'rib chiqing.">Spróbuj innego słowa — albo przejrzyj kategorie.</span>
+    </div>
+  </div>
+</div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true">
+  <div class="scrim" data-close></div>
+  <div class="card">
+    <button class="close" data-close aria-label="Close">&times;</button>
+    <div class="art" id="sheetArt"></div>
+    <div class="body">
+      <span class="in-cat" id="sheetCat"></span>
+      <h3 id="sheetName"></h3>
+      <div class="pr" id="sheetPrice"></div>
+      <p class="desc" id="sheetDesc"></p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="atmo" aria-hidden="true"><div class="atmo-layer atmo-static" style="bottom:-14vh;right:-10vh;color:var(--green-3)"></div></div>
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <div class="plate plate-tile"><img src="assets/brand/plate-lockup-full.png" alt="Guzar Garden — est. 2024" width="953" height="520"></div>
+        <p data-pl="al. Zieleniecka 6/8, Warszawa · 9:00 – 24:00 codziennie" data-en="al. Zieleniecka 6/8, Warsaw · 9:00 – 24:00 daily" data-ru="al. Zieleniecka 6/8, Варшава · 9:00 – 24:00 ежедневно" data-uz="al. Zieleniecka 6/8, Varshava · har kuni 9:00 – 24:00">al. Zieleniecka 6/8, Warszawa · 9:00 – 24:00 codziennie</p>
+      </div>
+      <p>
+        <a href="tel:+48570088888">+48 570 088 888</a><br>
+        <a href="https://www.tripadvisor.com/Restaurant_Review-g274856-d34611526-Reviews-Guzar_Garden-Warsaw_Mazovia_Province_Central_Poland.html" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.35rem;margin-top:.4rem">
+          TripAdvisor
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          <span data-pl="— zobacz opinie" data-en="— see reviews" data-ru="— смотреть отзывы" data-uz="— sharhlarni ko'rish">— zobacz opinie</span>
+        </a>
+      </p>
+    </div>
+    <div class="colophon">
+      <span>© <span id="yr">2026</span> Guzar Garden</span>
+    </div>
+  </div>
+</footer>
+
+<script src="art.js"></script>
+<script>
+const SECTIONS=[
+{id:'salaty',t:{pl:'Sałaty',en:'Salads',ru:'Салаты',uz:'Salatlar'},items:[
+ {n:'Oliwie z mięsem',p:'29 zł',d:{pl:'ziemniaki, marchewka, jajo przepiórcze, ogórek kiszony, mięso wołowe, groszek zielony, majonez',en:'potato, carrot, quail egg, pickled cucumber, beef, green peas, mayonnaise',ru:'картофель, морковь, перепелиное яйцо, солёный огурец, говядина, зелёный горошек, майонез',uz:'kartoshka, sabzi, bedana tuxumi, tuzlangan bodring, mol go\'shti, yashil no\'xat, mayonez'}},
+ {n:'Kiszony mix',p:'29 zł',d:{pl:'kimczi, marchewka, ogórek kiszony, pomidor marynowany, papryka kiszona',en:'kimchi, carrot, pickled cucumber, marinated tomato, pickled pepper',ru:'кимчи, морковь, солёный огурец, маринованный помидор, солёный перец',uz:'kimchi, sabzi, tuzlangan bodring, marinadlangan pomidor, tuzlangan qalampir'}},
+ {n:'Sałatka z burakami',p:'29 zł',d:{pl:'buraki, mięso wołowe, ziemniaki',en:'beetroot, beef, potato',ru:'свёкла, говядина, картофель',uz:'lavlagi, mol go\'shti, kartoshka'}},
+ {n:'Sałatka grecka',p:'29 zł',d:{pl:'ser feta, ogórek, pomidor cherry, papryka czerwona/zielona/żółta, cebula czerwona, rzodkiewka, sałata rosso, sałata rzymska, olej oliwkowy, sos grecki, crema balsamic, sos pesto',en:'feta, cucumber, cherry tomato, red/green/yellow pepper, red onion, radish, rosso and romaine lettuce, olive oil, Greek dressing, balsamic cream, pesto',ru:'фета, огурец, черри, красный/зелёный/жёлтый перец, красный лук, редис, салат россо и романо, оливковое масло, греческий соус, бальзамик, песто',uz:'feta pishlog\'i, bodring, cherri pomidor, qizil/yashil/sariq qalampir, qizil piyoz, turp, rosso va rim salati, zaytun moyi, grek sousi, balzamik krema, pesto sousi'}},
+ {n:'Kimchi',p:'12.99 zł',d:{pl:'kapusta koreańska, pikantna',en:'Korean cabbage, spicy',ru:'корейская капуста, острая',uz:'koreyscha karam, achchiq'}},
+ {n:'Cezar',p:'29 zł',d:{pl:'sałata rosso, sałata rzymska, kurczak z grila, pomidor cherry, pieczywo chrupiące, jajo przepiórcze, ser parmeggiano, sos cezar, sos pesto',en:'rosso and romaine lettuce, grilled chicken, cherry tomato, croutons, quail egg, parmesan, Caesar dressing, pesto',ru:'салат россо и романо, курица гриль, черри, гренки, перепелиное яйцо, пармезан, соус цезарь, песто',uz:'rosso va rim salati, mangalda pishirilgan tovuq, cherri pomidor, qarsildoq krutonlar, bedana tuxumi, parmezan pishlog\'i, sezar sousi, pesto sousi'}},
+ {n:'Sałata wiosna',p:'17 zł',d:{pl:'rzodkiewka, ogórek, pomidor cherry, pietruszka, cebula zielona, koperek, cebula czerwona, jogurt, jajo przepiórcze',en:'radish, cucumber, cherry tomato, parsley, spring onion, dill, red onion, yoghurt, quail egg',ru:'редис, огурец, черри, петрушка, зелёный лук, укроп, красный лук, йогурт, перепелиное яйцо',uz:'turp, bodring, cherri pomidor, petrushka, yashil piyoz, ukrop, qizil piyoz, qatiq, bedana tuxumi'}},
+ {n:'Marchewka',p:'12.99 zł',d:{pl:'marchewka koreańska',en:'Korean-style carrot',ru:'морковь по-корейски',uz:'koreyscha sabzi'}},
+ {n:'Kapryz',p:'29 zł',d:{pl:'mięso wołowe, ogórek, ser mozzarella, majonez, kukurydza, kiełbasa',en:'beef, cucumber, mozzarella, mayonnaise, sweetcorn, sausage',ru:'говядина, огурец, моцарелла, майонез, кукуруза, колбаса',uz:'mol go\'shti, bodring, mozzarella pishlog\'i, mayonez, makkajo\'xori, kolbasa'}},
+ {n:'Szakarob',p:'8.99 zł',d:{pl:'pomidor, ogórek, cebula, koperek, pietruszka',en:'tomato, cucumber, onion, dill, parsley',ru:'помидор, огурец, лук, укроп, петрушка',uz:'pomidor, bodring, piyoz, ukrop, petrushka'}},
+ {n:'Bakłażan rulet',p:'21.99 zł',d:{pl:'bakłażan smażony panierowany z jajkiem, pomidor, czosnek, koperek, sos czosnkowy',en:'egg-battered fried aubergine rolls, tomato, garlic, dill, garlic sauce',ru:'жареные баклажаны в яичном кляре, помидор, чеснок, укроп, чесночный соус',uz:'tuxumga botirib qovurilgan baqlajon, pomidor, sarimsoq, ukrop, sarimsoqli sous'}},
+ {n:'Sałatka „Samarkand”',p:'29 zł',d:{pl:'fasola czerwona, mięso wołowe, cebula czerwona, papryka czerwona, kolendra świeża, sos sojowy, masło oliwkowy, orzech',en:'red beans, beef, red onion, red pepper, fresh coriander, soy sauce, olive oil, walnut',ru:'красная фасоль, говядина, красный лук, красный перец, свежая кинза, соевый соус, оливковое масло, орех',uz:'qizil loviya, mol go\'shti, qizil piyoz, qizil qalampir, yangi kashnich, soya sousi, zaytun moyi, yong\'oq'}},
+ {n:'Sałatka „Tashkent”',p:'29 zł',d:{pl:'indyk, mięso wołowe, dajkom, ogórek kiszony, ziemniaki, sałata mix, jaja przepiórcze',en:'turkey, beef, daikon, pickled cucumber, potato, mixed leaves, quail eggs',ru:'индейка, говядина, дайкон, солёный огурец, картофель, микс салата, перепелиные яйца',uz:'kurka go\'shti, mol go\'shti, daykon turp, tuzlangan bodring, kartoshka, aralash salat barglari, bedana tuxumlari'}},
+ {n:'Chłodna sałatka japońska',p:'29 zł',d:{pl:'pomidor, ogórek, mięso wołowe, kolendra świeża, sos sojowy, masło oliwkowy, sezam, sałata mix, czosnek',en:'tomato, cucumber, beef, fresh coriander, soy sauce, olive oil, sesame, mixed leaves, garlic',ru:'помидор, огурец, говядина, свежая кинза, соевый соус, оливковое масло, кунжут, микс салата, чеснок',uz:'pomidor, bodring, mol go\'shti, yangi kashnich, soya sousi, zaytun moyi, kunjut, aralash salat barglari, sarimsoq'}},
+ {n:'Sałatka azjatycka',p:'20.99 zł',d:{pl:'bakłażany chrupiące, pomidor, sos słodko-kwaśny, kolendra świeża, orzech, sezam',en:'crispy aubergine, tomato, sweet-and-sour sauce, fresh coriander, walnut, sesame',ru:'хрустящие баклажаны, помидор, кисло-сладкий соус, свежая кинза, орех, кунжут',uz:'qarsildoq baqlajon, pomidor, shirin-achchiq sous, yangi kashnich, yong\'oq, kunjut'}},
+ {n:'Ciepła sałatka japońska',p:'29.99 zł',d:{pl:'mięso wołowe, ogórek, papryka mix, pomidor, cebula zielony, kapusta pekińska, seler, sos sojowy, sezam',en:'beef, cucumber, mixed peppers, tomato, spring onion, Chinese cabbage, celery, soy sauce, sesame',ru:'говядина, огурец, микс перцев, помидор, зелёный лук, пекинская капуста, сельдерей, соевый соус, кунжут',uz:'mol go\'shti, bodring, aralash qalampir, pomidor, yashil piyoz, pekin karami, selderey, soya sousi, kunjut'}}
+]},
+
+{id:'zupy',t:{pl:'Zupy',en:'Soups',ru:'Супы',uz:'Sho\'rvalar'},items:[
+ {n:'Szurpa z wołowiną',p:'21.99 zł',d:{pl:'tradycyjna uzbecka zupa z dużymi kawałkami mięsa, ziemniaki, marchewka',en:'traditional Uzbek soup with large pieces of meat, potato and carrot',ru:'традиционный узбекский суп с крупными кусками мяса, картофелем и морковью',uz:'yirik go\'sht bo\'laklari, kartoshka va sabzi bilan an\'anaviy o\'zbek sho\'rvasi'}},
+ {n:'Szurpa z baraniną',p:'23.99 zł',d:{pl:'tradycyjna uzbecka zupa z mięsa baraniego, z ziemniakami, marchewką',en:'traditional Uzbek mutton soup with potato and carrot',ru:'традиционный узбекский суп из баранины с картофелем и морковью',uz:'kartoshka va sabzi bilan an\'anaviy o\'zbek qo\'y go\'shti sho\'rvasi'}},
+ {n:'Mastawa',p:'20.99 zł',d:{pl:'zupa z wołowiną, ryżem i warzywami',en:'beef soup with rice and vegetables',ru:'суп с говядиной, рисом и овощами',uz:'mol go\'shti, guruch va sabzavotli sho\'rva'}},
+ {n:'Moszchurda',p:'21.99 zł',d:{pl:'zupa z wołowiną, ryżu, fasolą mung i jogurtu',en:'beef soup with rice, mung beans and yoghurt',ru:'суп с говядиной, рисом, машем и йогуртом',uz:'mol go\'shti, guruch, mosh va qatiqli sho\'rva'}},
+ {n:'Zupa z piemieniami i kluskami',p:'26.99 zł',d:{pl:'',en:'dumplings and noodles in broth',ru:'пельмени и лапша в бульоне',uz:'bulyonda chuchvara va lag\'mon xamiri'}},
+ {n:'Zupa z klopsikami',p:'26.99 zł',d:{pl:'wołowina mielona, jaja, ziemniaki, marchew, rosół',en:'minced beef, egg, potato, carrot, broth',ru:'фарш из говядины, яйцо, картофель, морковь, бульон',uz:'mol go\'shti qiymasi, tuxum, kartoshka, sabzi, bulyon'}},
+ {n:'Zupa „Męska”',p:'34.99 zł',d:{pl:'mięso wołowe, kazi, konina, ciasto, cebula, rosół',en:'beef, kazi, horse meat, dough, onion, broth',ru:'говядина, казы, конина, тесто, лук, бульон',uz:'mol go\'shti, qazi, ot go\'shti, xamir, piyoz, bulyon'}}
+]},
+
+{id:'dania',t:{pl:'Dania',en:'Mains',ru:'Основные блюда',uz:'Asosiy taomlar'},items:[
+ {n:'Plow',u:'450 g',p:'26.99 zł',d:{pl:'aromatyczne danie z ryżu, mięsa i marchewki, gotowane na wolnym ogniu z orientalnymi przyprawami',en:'rice, meat and carrot slow-cooked over a low flame with oriental spices',ru:'рис, мясо и морковь на медленном огне с восточными специями',uz:'sharq ziravorlari bilan sekin o\'tda pishirilgan guruch, go\'sht va sabzi'}},
+ {n:'Plow samarkandski',p:'27.99 zł',d:{pl:'marchewka oraz mięso, pod spodem ryż',en:'carrot and meat, rice underneath',ru:'морковь и мясо, рис снизу',uz:'sabzi va go\'sht, ostida guruch'}},
+ {n:'Czajhana plow',p:'30.99 zł',d:{pl:'przygotowywany w stylu domowym – z ryżem, mięsem, marchewką i delikatnymi przyprawami, serwowany jak w prawdziwej uzbeckiej czajchanie',en:'home-style — rice, meat, carrot and gentle spices, served the way a real Uzbek chaikhana does',ru:'по-домашнему — рис, мясо, морковь и мягкие специи, как в настоящей узбекской чайхане',uz:'uy usulida — guruch, go\'sht, sabzi va yumshoq ziravorlar, haqiqiy o\'zbek choyxonasidagidek tortiladi'}},
+ {n:'Kazi',u:'dodatek / extra',p:'10 zł',d:{pl:'dodatek do plowu',en:'add to any plov',ru:'добавка к плову',uz:'palovga qo\'shimcha'}},
+ {n:'Lagman uzbecki',p:'25.99 zł',d:{pl:'aromatyczne danie z ręcznie robionym makaronem, duszoną wołowiną i warzywami w korzennym bulionie',en:'hand-made noodles with braised beef and vegetables in a spiced broth',ru:'лапша ручной работы с тушёной говядиной и овощами в пряном бульоне',uz:'qo\'lda cho\'zilgan lag\'mon xamiri, dimlangan mol go\'shti va sabzavotlar bilan ziravorli bulyonda'}},
+ {n:'Lagman smażony',p:'29.99 zł',d:{pl:'makaron smażony z mięsem i warzywami na woku w aromatycznych przyprawach',en:'noodles wok-fried with meat, vegetables and aromatic spices',ru:'лапша, обжаренная на воке с мясом, овощами и специями',uz:'vokda go\'sht, sabzavot va xushbo\'y ziravorlar bilan qovurilgan lag\'mon'}},
+ {n:'Lagman ujgurski',p:'29.99 zł',d:{pl:'smażone na woku warzywa i mięso w aromatycznym bulionie, podawane z ręcznie robionym makaronem',en:'wok-fried vegetables and meat in aromatic broth, served with hand-made noodles',ru:'овощи и мясо с вока в ароматном бульоне, подаются с домашней лапшой',uz:'vokda qovurilgan sabzavot va go\'sht xushbo\'y bulyonda, qo\'lda cho\'zilgan lag\'mon bilan'}},
+ {n:'Norin',p:'44.99 zł',d:{pl:'konina oraz wołowina, kmin rzymski, ciasto, bulion',en:'horse meat and beef, cumin, dough, broth',ru:'конина и говядина, зира, тесто, бульон',uz:'ot go\'shti va mol go\'shti, zira, xamir, bulyon'}},
+ {n:'Nuhatszurak',p:'23.99 zł',d:{pl:'zupa z wołowiną i ciecierzycą',en:'beef and chickpea dish',ru:'блюдо из говядины с нутом',uz:'mol go\'shti va no\'xatli taom'}},
+ {n:'Saj mięsny',p:'30.99 zł',d:{pl:'uzbeckie danie z mięsa smażonego na dużej, płaskiej patelni, z dodatkiem warzyw i przypraw',en:'meat seared on a large flat saj pan with vegetables and spices',ru:'мясо, обжаренное на большой плоской сковороде садж, с овощами и специями',uz:'katta yassi sadj tovada sabzavot va ziravorlar bilan qovurilgan go\'sht'}},
+ {n:'Befstroganow od „Guzar Garden”',p:'36.99 zł',d:{pl:'mięso wołowe, tłuczone ziemniaki, sos śmietankowy, pieczarki, cebula, ogórek kiszony',en:'beef, mashed potato, cream sauce, mushrooms, onion, pickled cucumber',ru:'говядина, картофельное пюре, сливочный соус, шампиньоны, лук, солёный огурец',uz:'mol go\'shti, kartoshka pyuresi, qaymoqli sous, qo\'ziqorin, piyoz, tuzlangan bodring'}},
+ {n:'Czuponcza waguri',p:'55.99 zł',d:{pl:'smażona baranina w małych kawałkach, smażona na otwartym ogniu lub w kazanie, po tym paruje się, podawana z ziemniakami',en:'mutton in small pieces seared over open fire or in the kazan, then steamed, served with potatoes',ru:'баранина мелкими кусочками, обжаренная на открытом огне или в казане, затем на пару, с картофелем',uz:'mayda bo\'laklangan qo\'y go\'shti, ochiq olovda yoki qozonda qovurilib, so\'ng bug\'da dimlanadi, kartoshka bilan'}},
+ {n:'Tabaka',p:'28.99 zł',d:{pl:'smażony na chrupiąco kurczak z ziemniakami',en:'crisp-fried chicken with potatoes',ru:'хрустящая жареная курица с картофелем',uz:'kartoshka bilan qarsildoq qovurilgan tovuq'}},
+ {n:'Kazan kebab',u:'450 g',p:'43.99 zł',d:{pl:'potrawa z mięsa i ziemniaków smażonych w dużym żeliwnym kotle',en:'meat and potatoes fried in a large cast-iron cauldron',ru:'мясо и картофель, жаренные в большом чугунном казане',uz:'katta cho\'yan qozonda qovurilgan go\'sht va kartoshka'}},
+ {n:'Kaszkar dziz',p:'44.99 zł',d:{pl:'mięso baranie smażony w głębokim oleju, podawane z ziemniakami',en:'deep-fried mutton served with potatoes',ru:'баранина во фритюре, подаётся с картофелем',uz:'chuqur yog\'da qovurilgan qo\'y go\'shti, kartoshka bilan'}},
+ {n:'Karkówka z baraniny',p:'46.99 zł',d:{pl:'marynowana, pieczona 4 godzin w piecu, gotowana w sosie pomidorowym, podawana z ziemniakami',en:'marinated, oven-roasted for 4 hours, finished in tomato sauce, served with potatoes',ru:'маринованная, 4 часа в печи, доводится в томатном соусе, с картофелем',uz:'marinadlangan, pechda 4 soat pishirilgan, pomidor sousida tayyorlangan, kartoshka bilan'}},
+ {n:'Kotlety z wołowiny',p:'35 zł',d:{pl:'kotlety z wołowiną, w środku ser mozarella, papryka, bakłażan, pomidor, czosnek, pietruszka, obok ziemniaki oraz sałata',en:'beef patties stuffed with mozzarella, pepper, aubergine, tomato, garlic and parsley, with potatoes and salad',ru:'говяжьи котлеты с моцареллой, перцем, баклажаном, помидором, чесноком и петрушкой, с картофелем и салатом',uz:'ichida mozzarella, qalampir, baqlajon, pomidor, sarimsoq va petrushka bo\'lgan mol go\'shti kotletlari, kartoshka va salat bilan'}},
+ {n:'Dolma',p:'34.99 zł',d:{pl:'mięso wołowe w liściach winogron, obok ziemniaki oraz sałatka',en:'beef in vine leaves, with potatoes and salad',ru:'говядина в виноградных листьях, с картофелем и салатом',uz:'uzum bargida mol go\'shti, kartoshka va salat bilan'}}
+]},
+
+{id:'piec',t:{pl:'Z pieca tandoor',en:'From the tandoor',ru:'Из тандыра',uz:'Tandirdan'},items:[
+ {n:'Samsa',p:'10.99 zł',d:{pl:'ciasto z wołowiną gotowane w piecu tandoor',en:'beef pastry baked in the tandoor',ru:'тесто с говядиной, запечённое в тандыре',uz:'tandirda pishirilgan mol go\'shtli xamir'}},
+ {n:'Samsa duża',p:'36.99 zł',d:{pl:'+ ćwierć chleba',en:'+ a quarter loaf of bread',ru:'+ четверть лепёшки',uz:'+ chorak non'}},
+ {n:'Tomchi samsa',p:'12.99 zł',d:{pl:'ciasto francuskie w formie kropla',en:'puff pastry in a teardrop shape',ru:'слоёное тесто в форме капли',uz:'tomchi shaklidagi qatlamli xamir'}},
+ {n:'Czeburek',p:'21.99 zł',d:{pl:'chrupiące, smażone na głębokim oleju ciasto z nadzieniem z mielonego mięsa i cebuli',en:'crisp deep-fried pastry filled with minced meat and onion',ru:'хрустящее жареное тесто с фаршем и луком',uz:'qiyma va piyoz bilan to\'ldirilgan, chuqur yog\'da qovurilgan qarsildoq xamir'}},
+ {n:'Czeburek 3 sery',p:'21.99 zł',d:{pl:'mozzarella, parmezan, cheddar',en:'mozzarella, parmesan, cheddar',ru:'моцарелла, пармезан, чеддер',uz:'mozzarella, parmezan, cheddar'}},
+ {n:'Czeburek ze szpinakiem',p:'21.99 zł',d:{pl:'',en:'with spinach',ru:'со шпинатом',uz:'ismaloq bilan'}}
+]},
+
+{id:'grill',t:{pl:'Grill',en:'Charcoal grill',ru:'Гриль',uz:'Ko\'mirda mangal'},items:[
+ {n:'Szaszłyk z wołowiną',p:'27.99 zł',d:{pl:'mięso wołowe, cebula, sos pomidorowy',en:'beef, onion, tomato sauce',ru:'говядина, лук, томатный соус',uz:'mol go\'shti, piyoz, pomidor sousi'}},
+ {n:'Szaszłyk z baraniny',p:'28.99 zł',d:{pl:'mięso baranie, tłuszcz baranie, cebula, sos pomidorowy',en:'mutton, mutton fat, onion, tomato sauce',ru:'баранина, курдюк, лук, томатный соус',uz:'qo\'y go\'shti, dumba yog\'i, piyoz, pomidor sousi'}},
+ {n:'Szaszłyk z jagnięciny',p:'33.99 zł',d:{pl:'mięso jagnięce, tłuszcz jagnięce, cebula, sos pomidorowy',en:'lamb, lamb fat, onion, tomato sauce',ru:'ягнятина, жир ягнёнка, лук, томатный соус',uz:'qo\'zi go\'shti, qo\'zi yog\'i, piyoz, pomidor sousi'}},
+ {n:'Lula kebab',p:'22.99 zł',d:{pl:'mięso wołowe mielone, cebula, sos pomidorowy',en:'minced beef, onion, tomato sauce',ru:'говяжий фарш, лук, томатный соус',uz:'mol go\'shti qiymasi, piyoz, pomidor sousi'}},
+ {n:'Filet z kurczaka',p:'22.99 zł',d:{pl:'filet z kurczaka, cebula, sos pomidorowy',en:'chicken fillet, onion, tomato sauce',ru:'куриное филе, лук, томатный соус',uz:'tovuq filesi, piyoz, pomidor sousi'}},
+ {n:'Skrzydełka',p:'22.99 zł',d:{pl:'skrzydełka z kurczaka, sos pomidorowy',en:'chicken wings, tomato sauce',ru:'куриные крылышки, томатный соус',uz:'tovuq qanotlari, pomidor sousi'}},
+ {n:'Rulet z wołowiny',p:'46.99 zł',d:{pl:'mięso wołowe, tłuszcz baranie, cebula, sos pomidorowy',en:'beef, mutton fat, onion, tomato sauce',ru:'говядина, курдюк, лук, томатный соус',uz:'mol go\'shti, dumba yog\'i, piyoz, pomidor sousi'}},
+ {n:'Kotleciki z baraniny',p:'49.99 zł',d:{pl:'mięso baranie, sałatka, cebula, sos pomidorowy',en:'mutton chops, salad, onion, tomato sauce',ru:'бараньи котлетки, салат, лук, томатный соус',uz:'qo\'y go\'shti kotletlari, salat, piyoz, pomidor sousi'}},
+ {n:'Kotleciki jagnięce',p:'59.99 zł',d:{pl:'mięso jagnięce, sałatka, cebula, sos pomidorowy',en:'lamb chops, salad, onion, tomato sauce',ru:'котлетки из ягнёнка, салат, лук, томатный соус',uz:'qo\'zi go\'shti kotletlari, salat, piyoz, pomidor sousi'}},
+ {n:'Warzywa na grilu',p:'19 zł',d:{pl:'bakłażan, cukinia, kukurydza, papryka mix',en:'aubergine, courgette, sweetcorn, mixed peppers',ru:'баклажан, кабачок, кукуруза, микс перцев',uz:'baqlajon, qovoqcha, makkajo\'xori, aralash qalampir'}},
+ {n:'Mix „Guzar Garden”',u:'na 3 osoby / for 3',p:'275 zł',hl:1,d:{pl:'wielki półmisek z grilla — szaszłyki, kotleciki, lula kebab, kurczak i warzywa',en:'a grand grill platter — skewers, chops, lula kebab, chicken and vegetables',ru:'большое блюдо с гриля — шашлыки, котлетки, люля-кебаб, курица и овощи',uz:'katta mangal likobi — shashlik, kotletlar, lula kabob, tovuq va sabzavotlar'}}
+]},
+
+{id:'parze',t:{pl:'Dania gotowane na parze',en:'Steamed',ru:'На пару',uz:'Bug\'da pishirilgan'},items:[
+ {n:'Manty',u:'6 zł / szt',p:'29.99 zł',d:{pl:'gotowane na parze, wołowina w środku',en:'steamed, filled with beef',ru:'на пару, с говядиной',uz:'bug\'da pishirilgan, ichida mol go\'shti'}},
+ {n:'Manty z szpinakiem',p:'29.99 zł',d:{pl:'pierogi z szpinakiem gotowane na parze',en:'steamed spinach dumplings',ru:'манты со шпинатом на пару',uz:'ismaloqli bug\'da pishirilgan manti'}},
+ {n:'Gulmanti',p:'29.99 zł',d:{pl:'ciasto zawijane, w środku mięso wołowe, cebula, przyprawy, gotowane na parze, podawane z jogurtem',en:'rolled dough filled with beef, onion and spices, steamed, served with yoghurt',ru:'завёрнутое тесто с говядиной, луком и специями, на пару, с йогуртом',uz:'ichida mol go\'shti, piyoz va ziravorlar bo\'lgan o\'ralgan xamir, bug\'da pishirilgan, qatiq bilan'}},
+ {n:'Chonim',p:'29.99 zł',d:{pl:'ciasto zawijane, w środku mięso wołowe, cebula, ziemniaki, przyprawy, gotowane na parze, podawane z jogurtem',en:'rolled dough filled with beef, onion, potato and spices, steamed, served with yoghurt',ru:'завёрнутое тесто с говядиной, луком, картофелем и специями, на пару, с йогуртом',uz:'ichida mol go\'shti, piyoz, kartoshka va ziravorlar bo\'lgan o\'ralgan xamir, bug\'da pishirilgan, qatiq bilan'}}
+]},
+
+{id:'zestawy',t:{pl:'Zestawy',en:'Sets',ru:'Сеты',uz:'Setlar'},items:[
+ {n:'Plow zestaw',p:'34.99 zł',d:{pl:'plow, szakarob, pół chleba, filiżanka herbaty',en:'plov, shakarob salad, half a loaf, a cup of tea',ru:'плов, шакароб, половина лепёшки, чашка чая',uz:'palov, shakarob salati, yarim non, bir piyola choy'}},
+ {n:'Manty zestaw',p:'35.99 zł',d:{pl:'manty, bulion, pół chleba, filiżanka herbaty',en:'manti, broth, half a loaf, a cup of tea',ru:'манты, бульон, половина лепёшки, чашка чая',uz:'manti, bulyon, yarim non, bir piyola choy'}},
+ {n:'Samsa zestaw',p:'35.99 zł',d:{pl:'3 sztuki samsy, bulion, filiżanka herbaty',en:'3 samsa, broth, a cup of tea',ru:'3 самсы, бульон, чашка чая',uz:'3 dona somsa, bulyon, bir piyola choy'}},
+ {n:'Lagman zestaw',p:'38.99 zł',d:{pl:'lagman smażony, szakarob, pół chleba, filiżanka herbaty',en:'fried lagman, shakarob salad, half a loaf, a cup of tea',ru:'жареный лагман, шакароб, половина лепёшки, чашка чая',uz:'qovurilgan lag\'mon, shakarob salati, yarim non, bir piyola choy'}},
+ {n:'Tabaka zestaw',p:'44.99 zł',d:{pl:'tabaka, pół porcji sałaty oliwie, pół chleba, filiżanka herbaty',en:'tabaka chicken, half an Olivier salad, half a loaf, a cup of tea',ru:'табака, полпорции салата оливье, половина лепёшки, чашка чая',uz:'tabaka tovuq, yarim porsiya olivye salati, yarim non, bir piyola choy'}},
+ {n:'Kazan kebab zestaw',p:'51.99 zł',d:{pl:'kazan kebab, szakarob, pół chleba, filiżanka herbaty',en:'kazan kebab, shakarob salad, half a loaf, a cup of tea',ru:'казан-кебаб, шакароб, половина лепёшки, чашка чая',uz:'qozon kabob, shakarob salati, yarim non, bir piyola choy'}}
+]},
+
+{id:'chleb',t:{pl:'Chleb',en:'Bread',ru:'Хлеб',uz:'Non'},items:[
+ {n:'Chleb',p:'8 zł',d:{pl:'chleb uzbecki z pieca tandoor',en:'Uzbek tandoor bread',ru:'узбекская лепёшка из тандыра',uz:'tandirda pishirilgan o\'zbek noni'}},
+ {n:'Pół chleba',p:'4 zł',d:{pl:'',en:'half a loaf',ru:'половина лепёшки',uz:'yarim non'}},
+ {n:'Patir',p:'16.99 zł',d:{pl:'tradycyjny chleb w maśle klarowanym',en:'traditional bread made with clarified butter',ru:'традиционная лепёшка на топлёном масле',uz:'sariyog\'da tayyorlangan an\'anaviy non'}},
+ {n:'Katlama patir',p:'12 zł',d:{pl:'ciasto francuskie, w maśle klarowanym',en:'flaky pastry bread with clarified butter',ru:'слоёная лепёшка на топлёном масле',uz:'sariyog\'li qatlama non'}},
+ {n:'Chleb „Assorti”',p:'17.99 zł',d:{pl:'chleb uzbecki, bagietka, patir, chleb dietetyczny',en:'Uzbek bread, baguette, patir, diet bread',ru:'узбекская лепёшка, багет, патыр, диетический хлеб',uz:'o\'zbek noni, bagett, patir, parhez non'}}
+]},
+
+{id:'dodatki',t:{pl:'Dodatki i sosy',en:'Sides &amp; sauces',ru:'Гарниры и соусы',uz:'Garnirlar va souslar'},items:[
+ {n:'Ryż z warzywami',p:'11.99 zł',d:{pl:'',en:'rice with vegetables',ru:'рис с овощами',uz:'sabzavotli guruch'}},
+ {n:'Frytki',p:'11.99 zł',d:{pl:'',en:'french fries',ru:'картофель фри',uz:'fri kartoshka'}},
+ {n:'Tartar',p:'5 zł',d:{pl:'majonez, koperek, ogórek kiszony, czosnek, woda, śmietana',en:'mayonnaise, dill, pickled cucumber, garlic, water, sour cream',ru:'майонез, укроп, солёный огурец, чеснок, вода, сметана',uz:'mayonez, ukrop, tuzlangan bodring, sarimsoq, suv, qaymoq'}},
+ {n:'Czimmiczuri',p:'5 zł',d:{pl:'olej oliwkowy, olej słonecznikowy, pietruszka, cebula czerwona, czosnek, ocet jabłkowy, cytrynka, papryka słodka oraz ostra, cukier',en:'olive and sunflower oil, parsley, red onion, garlic, cider vinegar, lemon, sweet and hot paprika, sugar',ru:'оливковое и подсолнечное масло, петрушка, красный лук, чеснок, яблочный уксус, лимон, сладкая и острая паприка, сахар',uz:'zaytun va kungaboqar moyi, petrushka, qizil piyoz, sarimsoq, olma sirkasi, limon, shirin va achchiq qalampir, shakar'}},
+ {n:'Czosnkowy',p:'5 zł',d:{pl:'majonez, jogurt, czosnek, cytrynka, koperek',en:'mayonnaise, yoghurt, garlic, lemon, dill',ru:'майонез, йогурт, чеснок, лимон, укроп',uz:'mayonez, qatiq, sarimsoq, limon, ukrop'}},
+ {n:'Meksykanski',p:'5 zł',d:{pl:'pomidor, cebula czerwona, sól, kmin rzymski, jalapeño, cukier, olej słonecznikowy, limonka, olej oliwkowy',en:'tomato, red onion, salt, cumin, jalapeño, sugar, sunflower oil, lime, olive oil',ru:'помидор, красный лук, соль, зира, халапеньо, сахар, подсолнечное масло, лайм, оливковое масло',uz:'pomidor, qizil piyoz, tuz, zira, jalapenyo, shakar, kungaboqar moyi, laym, zaytun moyi'}},
+ {n:'Lazi’',p:'5 zł',d:{pl:'ostry sos w stylu ujgurskim',en:'hot Uyghur-style chilli sauce',ru:'острый соус в уйгурском стиле',uz:'uyg\'urcha achchiq sous'}},
+ {n:'Pomidorowy',p:'5 zł',d:{pl:'',en:'tomato sauce',ru:'томатный соус',uz:'pomidor sousi'}},
+ {n:'Jogurt',p:'6 zł',d:{pl:'',en:'plain yoghurt',ru:'натуральный йогурт',uz:'toza qatiq'}}
+]},
+
+{id:'desery',t:{pl:'Desery',en:'Desserts',ru:'Десерты',uz:'Shirinliklar'},items:[
+ {n:'Napoleon',p:'23.99 zł',d:{pl:'',en:'',ru:'',uz:''}},
+ {n:'Sernik',p:'23.99 zł',d:{pl:'cheesecake',en:'cheesecake',ru:'чизкейк',uz:'chizkeyk'}},
+ {n:'Medowik',p:'23.99 zł',d:{pl:'tort miodowy',en:'honey cake',ru:'медовик',uz:'asalli tort'}},
+ {n:'Karmelowy',p:'23.99 zł',d:{pl:'',en:'caramel cake',ru:'карамельный торт',uz:'karamelli tort'}},
+ {n:'Spartak',p:'23.99 zł',d:{pl:'tort czekoladowy',en:'chocolate cake',ru:'шоколадный торт',uz:'shokoladli tort'}},
+ {n:'Deser dnia',p:'—',d:{pl:'pytaj kelnera',en:'ask your waiter',ru:'спросите у официанта',uz:'ofitsiantdan so\'rang'}}
+]},
+
+{id:'napoje',t:{pl:'Napoje zimne',en:'Cold drinks',ru:'Холодные напитки',uz:'Sovuq ichimliklar'},items:[
+ {n:'Coca-Cola',p:'8.99 zł',d:{pl:'klasyczna lub zero do wyboru',en:'classic or zero',ru:'классическая или zero',uz:'klassik yoki zero'}},
+ {n:'Pepsi',p:'8.99 zł',d:{pl:'',en:'',ru:'',uz:''}},
+ {n:'Fanta',p:'8.99 zł',d:{pl:'',en:'',ru:'',uz:''}},
+ {n:'Mirinda',p:'8.99 zł',d:{pl:'',en:'',ru:'',uz:''}},
+ {n:'Sprite',p:'8.99 zł',d:{pl:'',en:'',ru:'',uz:''}},
+ {n:'7-UP',p:'8.99 zł',d:{pl:'',en:'',ru:'',uz:''}},
+ {n:'Fuze tea',p:'8.99 zł',d:{pl:'zielona lub czarna do wyboru',en:'green or black',ru:'зелёный или чёрный',uz:'yashil yoki qora'}},
+ {n:'Lipton',p:'8.99 zł',d:{pl:'zielona lub czarna do wyboru',en:'green or black',ru:'зелёный или чёрный',uz:'yashil yoki qora'}},
+ {n:'Sok',p:'8.99 zł',d:{pl:'jabłkowy, pomarańczowy, grejpfrutowy',en:'apple, orange, grapefruit',ru:'яблочный, апельсиновый, грейпфрутовый',uz:'olma, apelsin, greypfrut'}},
+ {n:'Ayran',p:'10 zł',d:{pl:'',en:'salted yoghurt drink',ru:'айран',uz:'ayron'}},
+ {n:'Woda',p:'6.99 zł',d:{pl:'gazowana lub niegazowana do wyboru',en:'sparkling or still',ru:'газированная или негазированная',uz:'gazli yoki gazsiz'}},
+ {n:'Natakhtari',p:'11.99 zł',d:{pl:'estragon, gruszka, kremowy, winogrono, cytryna-limonka, feijoa',en:'tarragon, pear, cream, grape, lemon-lime, feijoa',ru:'тархун, груша, сливочный, виноград, лимон-лайм, фейхоа',uz:'tarxun, nok, kremli, uzum, limon-laym, feyxoa'}},
+ {n:'Borjomi',p:'12 zł',d:{pl:'gruzińska woda mineralna',en:'Georgian mineral water',ru:'грузинская минеральная вода',uz:'gruzin mineral suvi'}}
+]},
+
+{id:'herbaty',t:{pl:'Herbaty i kawa',en:'Tea &amp; coffee',ru:'Чай и кофе',uz:'Choy va qahva'},items:[
+ {n:'Herbata zielona',u:'1 L',p:'8.99 zł',d:{pl:'',en:'green tea',ru:'зелёный чай',uz:'yashil choy'}},
+ {n:'Herbata czarna',u:'1 L',p:'8.99 zł',d:{pl:'',en:'black tea',ru:'чёрный чай',uz:'qora choy'}},
+ {n:'Herbata z cytryną',u:'1 L',p:'13.99 zł',d:{pl:'',en:'tea with lemon',ru:'чай с лимоном',uz:'limonli choy'}},
+ {n:'Herbata taszkentska',u:'1 L',p:'18.99 zł',hl:1,d:{pl:'',en:'Tashkent-style tea',ru:'ташкентский чай',uz:'toshkentcha choy'}},
+ {n:'Espresso',p:'9.99 zł',d:{pl:'',en:'',ru:'',uz:''}},
+ {n:'Doppio',p:'9.99 zł',d:{pl:'',en:'',ru:'',uz:''}},
+ {n:'Macchiato',p:'9.99 zł',d:{pl:'',en:'',ru:'',uz:''}},
+ {n:'Americano',u:'mała / duża',p:'9.99 zł',d:{pl:'',en:'small or large',ru:'маленький или большой',uz:'kichik yoki katta'}},
+ {n:'Cappuccino',u:'mała / duża',p:'9.99 zł',d:{pl:'',en:'small or large',ru:'маленький или большой',uz:'kichik yoki katta'}},
+ {n:'Biała kawa',u:'mała / duża',p:'9.99 zł',d:{pl:'',en:'small or large',ru:'маленький или большой',uz:'kichik yoki katta'}},
+ {n:'Flat White',p:'9.99 zł',d:{pl:'',en:'',ru:'',uz:''}},
+ {n:'Latte',p:'9.99 zł',d:{pl:'',en:'',ru:'',uz:''}}
+]},
+
+{id:'mocktails',t:{pl:'Mocktails',en:'Mocktails',ru:'Моктейли',uz:'Mokteyllar'},items:[
+ {n:'Mojito',p:'15 zł',d:{pl:'woda gazowana, mięta, limonka',en:'sparkling water, mint, lime',ru:'газированная вода, мята, лайм',uz:'gazli suv, yalpiz, laym'}},
+ {n:'Mojito truskawkowy',p:'16 zł',d:{pl:'woda gazowana, mięta, limonka, syrop truskawkowy',en:'sparkling water, mint, lime, strawberry syrup',ru:'газированная вода, мята, лайм, клубничный сироп',uz:'gazli suv, yalpiz, laym, qulupnay siropi'}},
+ {n:'Pina Colada',p:'19 zł',d:{pl:'syrop coconut, syrop bananowy, sok ananasowy, sok pomarańczowy, woda gazowana',en:'coconut syrup, banana syrup, pineapple juice, orange juice, sparkling water',ru:'кокосовый сироп, банановый сироп, ананасовый сок, апельсиновый сок, газированная вода',uz:'kokos siropi, banan siropi, ananas sharbati, apelsin sharbati, gazli suv'}},
+ {n:'Green Garden Highball',p:'21 zł',d:{pl:'',en:'',ru:'',uz:''}},
+ {n:'Baziliko',p:'21 zł',d:{pl:'',en:'',ru:'',uz:''}},
+ {n:'Apperetivo Spritz',p:'23 zł',d:{pl:'',en:'',ru:'',uz:''}},
+ {n:'Aperitivo Sour',p:'24 zł',d:{pl:'',en:'',ru:'',uz:''}},
+ {n:'Hugo Cucumber Spritz',p:'28 zł',d:{pl:'',en:'',ru:'',uz:''}}
+]},
+
+{id:'specials',t:{pl:'Guzar Specials',en:'Guzar Specials',ru:'Guzar Specials',uz:'Guzar Specials'},items:[
+ {n:'Silk Espresso',p:'14 zł',hl:1,d:{pl:'wschodnia kawa na poranek po długiej podróży — aksamit, ciepło i subtelna nuta odległych przypraw',en:'an eastern coffee for the morning after a long journey — velvet, warmth and a faint note of distant spice',ru:'восточный кофе на утро после долгой дороги — бархат, тепло и лёгкая нота далёких специй',uz:'uzoq safardan keyingi tong uchun sharq qahvasi — baxmal, iliqlik va uzoq ziravorlarning nozik ohangi'}},
+ {n:'Sultan’s Mary',p:'19 zł',d:{pl:'pikantny i przyprawowy — pomidor z limonką, miodem i pieprzem odsłania głęboki smak z orientalnym ogniem',en:'spicy and savoury — tomato with lime, honey and pepper opens into a deep flavour with an oriental fire',ru:'острый и пряный — помидор с лаймом, мёдом и перцем раскрывается глубоким вкусом с восточным огнём',uz:'achchiq va ziravorli — laym, asal va murch bilan pomidor sharqona olov bilan chuqur ta\'mni ochadi'}},
+ {n:'„Pickle Me Softly”',p:'21 zł',d:{pl:'świeży, zadziorny i pikantny — pietruszka, limonka i szczypta soli nadają pikantny orientalny charakter',en:'fresh, cheeky and piquant — parsley, lime and a pinch of salt give it an oriental edge',ru:'свежий, дерзкий и пикантный — петрушка, лайм и щепотка соли придают восточный характер',uz:'yangi, quyuq va achchiq — petrushka, laym va bir chimdim tuz unga sharqona xarakter beradi'}},
+ {n:'Cucumber &amp; Mint Ayran Fizz',p:'23 zł',hl:1,d:{pl:'orzeźwiający łyk koczowniczej oazy — chłód zieleni, lekka sól i aksamit mlecznej fali',en:'a refreshing sip of a nomad oasis — cool green, a light salt and a velvet milky wave',ru:'освежающий глоток кочевого оазиса — прохлада зелени, лёгкая соль и бархат молочной волны',uz:'ko\'chmanchi vohaning salqin bir qultumi — yashillik salqinligi, yengil tuz va sutli baxmal to\'lqin'}},
+ {n:'Sharbat Bloom',p:'27 zł',d:{pl:'fiołkowy i lekki — delikatna kwaskowość limonki, miód i kwiatowy aromat w aksamitnej teksturze',en:'violet and light — a delicate lime tartness, honey and floral aroma in a velvet texture',ru:'фиалковый и лёгкий — деликатная кислинка лайма, мёд и цветочный аромат в бархатной текстуре',uz:'binafsharang va yengil — laymning nozik nordonligi, asal va gulli xushbo\'ylik baxmalsimon tuzilishda'}},
+ {n:'Uzbekistan Sour',p:'28 zł',d:{pl:'soczysty jak granat na targu w Samarkandzie — wschodnia kwaskowość rozwija się na tle łagodnej miodowej słodyczy',en:'as juicy as a pomegranate at a Samarkand market — an eastern tartness unfolding over gentle honey sweetness',ru:'сочный, как гранат на самаркандском базаре — восточная кислинка на фоне мягкой медовой сладости',uz:'Samarqand bozoridagi anordek sersuv — sharqona nordonlik mayin asal shirinligi fonida ochiladi'}}
+]}
+];
+
+/* Search aliases, so a guest can type in their own language and script.
+   Dish names stay in Latin on the card, so "самса" or "skewer" would
+   otherwise find nothing. */
+const SEC_ALIAS={
+ salaty:'salad салат salatka przystawka starter zakuska закуска',
+ zupy:'soup суп zupa broth бульон',
+ dania:'main mains danie основное горячее hot dish',
+ piec:'tandoor тандыр pastry выпечка pieczywo baked',
+ grill:'grill гриль bbq skewer kebab шашлык мангал charcoal',
+ parze:'steamed на пару dumpling dumplings пельмени вареное',
+ zestawy:'set sets сет комбо combo lunch obiad бизнес-ланч',
+ chleb:'bread хлеб лепешка лепёшка non nan patir',
+ dodatki:'side sides гарнир sauce соус dip приправа',
+ desery:'dessert десерт sweet сладкое cake торт пирожное',
+ napoje:'drink drinks напиток напитки soft cold холодные lemoniada',
+ herbaty:'tea чай coffee кофе hot горячие napoje',
+ mocktails:'mocktail моктейль cocktail коктейль bezalkoholowy безалкогольный',
+ specials:'special specials спешл signature фирменный'
+};
+const ITEM_ALIAS={
+ 'Plow':'плов palov pilaf osh ош','Plow samarkandski':'плов самаркандский',
+ 'Czajhana plow':'плов чайхана chaikhana','Kazi':'казы kazy',
+ 'Manty':'манты manti','Manty z szpinakiem':'манты шпинат spinach',
+ 'Gulmanti':'гулманты gulmanti','Chonim':'хоним khonim',
+ 'Samsa':'самса somsa sambusa','Samsa duża':'самса большая big',
+ 'Tomchi samsa':'самса томчи tomchi','Czeburek':'чебурек cheburek',
+ 'Czeburek 3 sery':'чебурек сыр cheese','Czeburek ze szpinakiem':'чебурек шпинат spinach',
+ 'Dolma':'долма dolma','Norin':'норин naryn',
+ 'Lagman uzbecki':'лагман lagman noodles makaron','Lagman smażony':'лагман жареный fried noodles',
+ 'Lagman ujgurski':'лагман уйгурский uyghur',
+ 'Szurpa z wołowiną':'шурпа shurpa','Szurpa z baraniną':'шурпа баранина lamb',
+ 'Mastawa':'мастава mastava','Moszchurda':'мошхурда moshhurda',
+ 'Nuhatszurak':'нухат nohat chickpea ciecierzyca','Zupa „Męska”':'мужской суп',
+ 'Kazan kebab':'казан кебаб kazan','Tabaka':'табака tabaka chicken kurczak',
+ 'Kaszkar dziz':'кашкар kashkar','Czuponcza waguri':'чупончa waguri',
+ 'Karkówka z baraniny':'баранина lamb neck','Befstroganow od „Guzar Garden”':'бефстроганов stroganoff',
+ 'Saj mięsny':'садж saj','Kotlety z wołowiny':'котлеты beef patties',
+ 'Szaszłyk z wołowiną':'шашлык говядина beef skewer','Szaszłyk z baraniny':'шашлык баранина mutton skewer',
+ 'Szaszłyk z jagnięciny':'шашлык ягненок lamb skewer','Lula kebab':'люля кебаб lyulya',
+ 'Filet z kurczaka':'курица chicken','Skrzydełka':'крылышки wings',
+ 'Rulet z wołowiny':'рулет roll','Kotleciki z baraniny':'котлетки баранина',
+ 'Kotleciki jagnięce':'котлетки ягненок','Warzywa na grilu':'овощи vegetables',
+ 'Mix „Guzar Garden”':'микс mix platter ассорти',
+ 'Chleb':'хлеб лепешка non nan','Pół chleba':'полхлеба half','Patir':'патыр patir',
+ 'Katlama patir':'катлама katlama','Chleb „Assorti”':'ассорти assorti',
+ 'Ryż z warzywami':'рис rice','Frytki':'фри fries','Jogurt':'йогурт yoghurt',
+ 'Herbata zielona':'зеленый чай green tea','Herbata czarna':'черный чай black tea',
+ 'Herbata z cytryną':'чай лимон lemon','Herbata taszkentska':'ташкентский чай tashkent',
+ 'Biała kawa':'латте flat white молоко','Ayran':'айран ayran','Woda':'вода water',
+ 'Sok':'сок juice','Napoleon':'наполеон','Sernik':'чизкейк','Medowik':'медовик',
+ 'Karmelowy':'карамель caramel','Spartak':'спартак','Deser dnia':'десерт дня of the day'
+};
+
+
+/* ==========================================================================
+   Menu — a two-stage browse instead of one long scroll.
+     home    : signature plates + the 14 category cards
+     cat     : one category at a time, with prev/next
+     search  : matches across every category, in all three languages
+   The view is mirrored into location.hash so a category can be linked to
+   directly (menu.html#grill) and the back button behaves.
+   ========================================================================== */
+(function(){
+'use strict';
+
+var T={
+  pl:{dishes:'dań',from:'od',results:'Wyniki',found:'znaleziono',all:'Wszystkie dania',categories:'kategorii'},
+  en:{dishes:'dishes',from:'from',results:'Results',found:'found',all:'All dishes',categories:'categories'},
+  ru:{dishes:'блюд',from:'от',results:'Результаты',found:'найдено',all:'Все блюда',categories:'категорий'},
+  uz:{dishes:'taom',from:'dan',results:'Natijalar',found:'topildi',all:'Barcha taomlar',categories:'turkum'}
+};
+var lang='pl';
+var state={view:'home',cat:null,q:''};
+
+var fold=function(s){
+  return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ł/g,'l')
+    .replace(/[‘’ʻʼ'`´]/g,'');
+};
+var esc=function(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+};
+
+/* ---------- index for search ---------- */
+var ALL=[];
+SECTIONS.forEach(function(sec){
+  sec.items.forEach(function(it){
+    ALL.push({sec:sec,item:it,hay:fold([
+      it.n, it.d.pl, it.d.en, it.d.ru,
+      sec.t.pl, sec.t.en, sec.t.ru,
+      SEC_ALIAS[sec.id]||'', ITEM_ALIAS[it.n]||''
+    ].join(' '))});
+  });
+});
+
+function priceNum(p){ var m=String(p).match(/[\d.]+/); return m?parseFloat(m[0]):Infinity; }
+function fromPrice(sec){
+  var min=Math.min.apply(null, sec.items.map(function(i){ return priceNum(i.p); }));
+  return isFinite(min) ? (min%1===0?min:min.toFixed(2))+' zł' : '';
+}
+function secTitle(sec){ return sec.t[lang]||sec.t.pl; }
+
+/* the plate that represents a whole category on its card */
+function catArt(sec){
+  return GGArt.dishArt(sec.id, sec.items[0] ? sec.items[0].n : sec.id);
+}
+/* a dish picture: a real photograph if the data carries one, artwork otherwise */
+function dishArt(sec,it){
+  if(it.img) return '<img src="'+esc(it.img)+'" alt="'+esc(it.n)+'" loading="lazy">';
+  return GGArt.dishArt(sec.id, it.n);
+}
+
+/* ---------- render: home ---------- */
+var SIG=['Plow uzbecki','Szaszłyk z jagnięciny','Samsa z jagnięciną','Manty z mięsem','Lagman'];
+function renderHome(){
+  var picks=[];
+  SIG.forEach(function(name){
+    var hit=null, target=fold(name);
+    for(var i=0;i<ALL.length;i++){
+      if(fold(ALL[i].item.n)===target){ hit=ALL[i]; break; }
+    }
+    if(!hit){
+      for(var j=0;j<ALL.length;j++){
+        if(fold(ALL[j].item.n).indexOf(fold(name.split(' ')[0]))===0){ hit=ALL[j]; break; }
+      }
+    }
+    if(hit && picks.indexOf(hit)<0) picks.push(hit);
+  });
+  while(picks.length<5 && picks.length<ALL.length){
+    var c=ALL[picks.length*7 % ALL.length];
+    if(picks.indexOf(c)<0) picks.push(c); else break;
+  }
+
+  document.getElementById('stripGrid').innerHTML = picks.map(function(r,i){
+    return card(r.sec, r.item, i, true);
+  }).join('');
+
+  document.getElementById('catGrid').innerHTML = SECTIONS.map(function(sec){
+    return '<button class="cat" data-cat="'+sec.id+'">'+
+      '<span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7"/></svg></span>'+
+      '<span class="art">'+catArt(sec)+'</span>'+
+      '<span class="txt"><span><h3>'+esc(secTitle(sec))+'</h3>'+
+        '<span class="meta">'+sec.items.length+' '+T[lang].dishes+'</span></span>'+
+        '<span class="from">'+T[lang].from+' '+fromPrice(sec)+'</span></span>'+
+      '</button>';
+  }).join('');
+
+  document.getElementById('totalCount').textContent =
+    ALL.length+' '+T[lang].dishes+' · '+SECTIONS.length+' '+T[lang].categories;
+}
+
+/* ---------- a dish card ---------- */
+function card(sec,it,i,showCat){
+  return '<button class="dish" data-sec="'+sec.id+'" data-dish="'+esc(it.n)+'" style="--d:'+(Math.min(i,14)*0.045).toFixed(3)+'s">'+
+    '<span class="art">'+dishArt(sec,it)+'</span>'+
+    '<span class="txt">'+
+      (showCat?'<span class="in-cat">'+esc(secTitle(sec))+'</span>':'')+
+      '<span class="row"><h3>'+esc(it.n)+'</h3><span class="pr">'+esc(it.p)+'</span></span>'+
+      '<span class="desc">'+esc(it.d[lang]||it.d.pl)+'</span>'+
+    '</span></button>';
+}
+
+/* ---------- render: one category ---------- */
+function renderCat(id){
+  var idx=-1;
+  SECTIONS.forEach(function(s,i){ if(s.id===id) idx=i; });
+  if(idx<0){ go('home'); return; }
+  var sec=SECTIONS[idx];
+  document.getElementById('catTitle').textContent=secTitle(sec);
+  document.getElementById('catCount').textContent=sec.items.length+' '+T[lang].dishes+' · '+T[lang].from+' '+fromPrice(sec);
+  document.getElementById('dishGrid').innerHTML=sec.items.map(function(it,i){
+    return card(sec,it,i,false);
+  }).join('');
+
+  var prev=SECTIONS[idx-1], next=SECTIONS[idx+1];
+  var pb=document.getElementById('prevCat'), nb=document.getElementById('nextCat');
+  pb.disabled=!prev; nb.disabled=!next;
+  pb.querySelector('b').textContent = prev?secTitle(prev):'—';
+  nb.querySelector('b').textContent = next?secTitle(next):'—';
+  pb.dataset.go = prev?prev.id:'';
+  nb.dataset.go = next?next.id:'';
+}
+
+/* ---------- render: search ---------- */
+function renderSearch(q){
+  var terms=fold(q).split(/\s+/).filter(Boolean);
+  var hits=ALL.filter(function(r){
+    return terms.every(function(t){ return r.hay.indexOf(t)>-1; });
+  });
+  document.getElementById('resTitle').textContent=T[lang].results;
+  document.getElementById('resCount').textContent=hits.length+' '+T[lang].found+' · "'+q+'"';
+  document.getElementById('resGrid').innerHTML=hits.map(function(r,i){
+    return card(r.sec,r.item,i,true);
+  }).join('');
+  document.getElementById('empty').style.display = hits.length?'none':'block';
+}
+
+/* ---------- view router ---------- */
+function show(id){
+  ['v-home','v-cat','v-search'].forEach(function(v){
+    document.getElementById(v).classList.toggle('on', v===id);
+  });
+}
+function go(view,arg,skipHash){
+  state.view=view;
+  if(view==='home'){
+    state.cat=null; renderHome(); show('v-home');
+    if(!skipHash && location.hash) history.pushState('','',location.pathname);
+  } else if(view==='cat'){
+    state.cat=arg; renderCat(arg); show('v-cat');
+    if(!skipHash) history.pushState('','','#'+arg);
+  } else {
+    renderSearch(arg); show('v-search');
+  }
+  window.scrollTo({top:0,behavior:state.view==='search'?'auto':'smooth'});
+}
+
+/* ---------- dish sheet ---------- */
+var sheet=document.getElementById('sheet');
+function openDish(secId,name){
+  var sec=null,it=null;
+  SECTIONS.forEach(function(s){ if(s.id===secId) sec=s; });
+  if(!sec) return;
+  sec.items.forEach(function(x){ if(x.n===name) it=x; });
+  if(!it) return;
+  document.getElementById('sheetArt').innerHTML=dishArt(sec,it);
+  document.getElementById('sheetCat').textContent=secTitle(sec);
+  document.getElementById('sheetName').textContent=it.n;
+  document.getElementById('sheetPrice').textContent=it.p;
+  document.getElementById('sheetDesc').textContent=it.d[lang]||it.d.pl;
+  sheet.classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeDish(){ sheet.classList.remove('on'); document.body.style.overflow=''; }
+sheet.addEventListener('click',function(e){ if(e.target.hasAttribute('data-close')) closeDish(); });
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeDish(); });
+
+/* ---------- events ---------- */
+document.addEventListener('click',function(e){
+  var cat=e.target.closest('[data-cat]');
+  if(cat){ go('cat',cat.dataset.cat); return; }
+  var dish=e.target.closest('[data-dish]');
+  if(dish){ openDish(dish.dataset.sec, dish.dataset.dish); return; }
+});
+document.getElementById('back').addEventListener('click',function(){ go('home'); });
+['prevCat','nextCat'].forEach(function(id){
+  document.getElementById(id).addEventListener('click',function(){
+    if(this.dataset.go) go('cat',this.dataset.go);
+  });
+});
+
+var qEl=document.getElementById('q'), clr=document.getElementById('clr');
+var lastNonSearch='home';
+qEl.addEventListener('input',function(){
+  var v=qEl.value.trim();
+  clr.classList.toggle('on', !!v);
+  state.q=v;
+  if(v.length>=2){
+    if(state.view!=='search') lastNonSearch=state.view==='cat'?('cat:'+state.cat):'home';
+    go('search',v);
+  } else if(state.view==='search'){
+    if(lastNonSearch.indexOf('cat:')===0) go('cat',lastNonSearch.slice(4));
+    else go('home');
+  }
+});
+clr.addEventListener('click',function(){
+  qEl.value=''; clr.classList.remove('on'); state.q='';
+  if(lastNonSearch.indexOf('cat:')===0) go('cat',lastNonSearch.slice(4)); else go('home');
+  qEl.focus();
+});
+
+window.addEventListener('popstate',function(){ routeFromHash(true); });
+function routeFromHash(skip){
+  var h=location.hash.replace('#','');
+  var found=SECTIONS.some(function(s){ return s.id===h; });
+  if(found) go('cat',h,true); else go('home',null,skip);
+}
+
+/* ---------- language ---------- */
+function setLang(l){
+  lang=l;
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-'+l+']').forEach(function(el){ el.innerHTML=el.getAttribute('data-'+l); });
+  document.querySelectorAll('[data-'+l+'-ph]').forEach(function(el){ el.placeholder=el.getAttribute('data-'+l+'-ph'); });
+  document.querySelectorAll('.lang button').forEach(function(b){ b.classList.toggle('on', b.dataset.lang===l); });
+  var sel=document.getElementById('langSelect');
+  if(sel) sel.value=l;
+  try{ localStorage.setItem('gg-lang',l); }catch(e){}
+  if(state.view==='cat') renderCat(state.cat);
+  else if(state.view==='search') renderSearch(state.q);
+  else renderHome();
+}
+document.querySelectorAll('.lang button').forEach(function(b){
+  b.addEventListener('click',function(){ setLang(b.dataset.lang); });
+});
+var langSelect=document.getElementById('langSelect');
+if(langSelect) langSelect.addEventListener('change',function(){ setLang(this.value); });
+
+var links=document.getElementById('links');
+var burger=document.getElementById('burger');
+function setMenu(open){
+  links.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+burger.addEventListener('click',function(){ setMenu(!links.classList.contains('open')); });
+links.addEventListener('click',function(e){ if(e.target.tagName==='A') setMenu(false); });
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape' && links.classList.contains('open')){ setMenu(false); burger.focus(); }
+});
+
+/* ---------- boot ---------- */
+document.getElementById('yr').textContent=new Date().getFullYear();
+var saved=null;
+try{ saved=localStorage.getItem('gg-lang'); }catch(e){}
+setLang(saved && T[saved] ? saved : 'pl');
+routeFromHash(true);
+})();
+</script>
+</body>
+</html>

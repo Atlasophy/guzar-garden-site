@@ -1,0 +1,1283 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guzar Garden — Restauracja Uzbecka &amp; Grill Halal, Warszawa</title>
+<meta name="description" content="Guzar Garden — restauracja uzbecka i grill halal przy Parku Skaryszewskim. Plow z kazana, samsa z pieca tandoor, szaszłyki z węgla. Aleja Zieleniecka 6/8, Warszawa.">
+<meta name="theme-color" content="#122417">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/brand/favicon-64.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/brand/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.className+=' js';</script>
+<style>
+:root{
+  --ink:#1a1712;
+  --ink-soft:#544c3e;
+  /* Three real tonal steps in the ground, not one flat cream — sections can
+     alternate and cards can lift off the page instead of floating in milk. */
+  --cream:#f4ecdb;
+  --cream-2:#e9dcc2;
+  --cream-3:#dfceac;
+  --paper:#fffdf7;
+  --clay:#9e3f1b;
+  --saffron:#d3901f;
+  --lapis:#1f4d6b;
+  /* a small scale of forest-green tones, not one flat fill — sections shift
+     between them so the dark ground still reads as layered, not painted */
+  --green:#122417;
+  --green-2:#1f3a26;
+  --green-deep:#0a170e;
+  --green-3:#2c4d33;
+  --cream-soft:rgba(247,241,228,.72);
+  --cream-faint:rgba(247,241,228,.46);
+  --line-dark:rgba(247,241,228,.14);
+  /* the three inks of the official mark, sampled from the printed logo */
+  --logo-red:#b62a19;
+  --logo-teal:#338e75;
+  --logo-navy:#07365a;
+  /* teal earns a place in the page, not just inside the logo — red, teal and
+     gold on cream is the suzani triad this whole design is borrowing from */
+  --teal:#186b5c;
+  --teal-soft:#2c8b78;
+  --line:rgba(26,23,18,.16);
+  --line-2:rgba(158,63,27,.34);
+  /* the rosette silhouette, cut straight from the real emblem's alpha
+     channel — every decorative background layer is built from this one
+     shape, tinted and rescaled, so the atmosphere reads as "the mark's
+     geometry, ambient" rather than generic ornament */
+  --mark:url("assets/brand/guzar-mark-transparent.png");
+  --serif:'Cormorant Garamond',Cormorant,Garamond,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.68,.24,1);
+  /* warm-tinted shadows — a neutral grey shadow on cream reads as dirt */
+  --shadow:0 16px 40px -20px rgba(90,52,26,.34);
+  --shadow-lg:0 34px 76px -34px rgba(90,52,26,.42);
+  --rose:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201000%201000%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M488.6%2018.1%20476.2%2023.3%20464.8%2031.6%20463.3%2036.2%20475.7%2047.6%20488.1%2069.4%20496.9%2079.2%20500.5%2076.6%20524.3%2035.2%20505.2%2020.2%20489.6%2018.1ZM385.1%2038.8%20362.3%2043%20348.9%2049.2%20326.6%2070.4%20301.2%20106.1%20268.1%20118.5%20253.6%20127.8%20235.5%20152.2%20228.3%20179.1%20228.3%20198.8%20237.6%20221.5%20243.3%20227.2%20289.9%20226.2%20314.7%20234.5%20330.7%20252.6%20335.9%20290.9%20340.6%20295.5%20355.1%20297.6%20374.7%20295.5%20393.4%20289.3%20429.6%20269.7%20452.9%20242.2%20461.2%20224.6%20467.4%20199.8%20463.3%20166.7%20450.8%20144.9%20430.6%20128.9%20401.7%20123.7%20377.8%20125.8%20360.2%20132%20349.4%20141.8%20343.2%20156.3%20345.2%20185.3%20353%20194.1%20364.4%20198.2%20376.3%20194.6%20372.2%20172.9%20377.8%20157.9%20386.1%20151.7%20394.4%20150.6%20405.8%20151.7%20413.6%20156.3%20421.8%20168.7%20422.9%20185.3%20418.7%20198.8%20399.6%20222%20386.1%20228.3%20368.5%20227.2%20354%20223.1%20338.5%20212.7%20323.5%20193.6%20318.3%20180.1%20317.3%20157.3%20323.5%20132.5%20328.7%20124.2%20342.7%20110.2%20354%20103%20377.8%2094.7%20398.6%2091.6%20403.2%2087%20414.6%2055.9%20414.6%2045.5%20405.8%2039.9%20386.1%2038.8ZM589%2038.8%20581.8%2041.9%20577.1%2049.7%20591.6%2085.9%20598.3%2090.6%20611.8%2091.6%20632.5%2098.9%20650.1%20110.2%20662%20123.2%20671.3%20149.1%20670.3%20180.1%20659.9%20199.8%20641.8%20213.8%20623.2%20220%20607.7%20220%20594.2%20214.8%20581.3%20202.9%20573%20188.4%20573%20172.9%20576.1%20165.6%20588%20155.8%20608.7%20155.8%20617.5%20164.6%20616.5%20189.4%20621.1%20193.1%20626.3%20193.1%20632.5%20190%20639.2%20181.2%20644.4%20167.7%20644.4%20158.4%20638.2%20143.9%20623.2%20131%20600.4%20123.7%20581.8%20126.8%20570.4%20132%20552.3%20149.1%20539.9%20170.8%20535.7%20190.5%20539.9%20219.5%20543%20228.8%20554.3%20246.4%20580.7%20271.7%20615.9%20290.4%20633.5%20295.5%20654.2%20297.6%20663.6%20295.5%20671.3%20286.7%20674.4%20247.4%20687.4%20231.4%20693.6%20227.2%20712.2%20223.1%20743.3%20223.1%20749%20218.4%20754.1%20200.8%20754.1%20168.7%20749%20151.1%20737.6%20131.5%20716.4%20112.3%20703.9%20106.1%20680.1%20100.9%20662%2067.3%20644.9%2050.2%20623.2%2041.9%20590.1%2038.8ZM444.1%2065.7%20436.3%2072.5%20428.1%2090.1%20428.1%2096.3%20446.2%20109.2%20467.4%20132.5%20495.9%20186.9%20500.5%20184.3%20503.6%20169.8%20518.1%20141.8%20559.5%2095.2%20562.6%2087%20549.7%2066.8%20541.4%2067.8%20518.1%2098.3%20505.7%20124.2%20497.9%20126.8%20475.7%2098.3%20464.3%2078.7%20453.4%2067.8%20445.1%2065.7ZM790.9%20148.6%20785.2%20156.3%20786.2%20183.2%20783.1%20203.9%20770.7%20227.7%20776.4%20233.4%20817.8%20227.2%20856.1%20226.2%20861.8%20220.5%20861.8%20185.3%20852.5%20165.6%20834.4%20152.7%20791.9%20148.6ZM170.8%20157.9%20146%20165.1%20128.9%20179.1%20120.6%20193.6%20118.5%20211.2%20124.7%20230.8%20130.4%20234.5%20188.4%20243.8%20215.3%20243.8%20217.9%20241.2%20203.4%20209.1%20202.4%20178.1%20205.5%20167.7%20194.6%20159.9%20171.8%20157.9ZM267.1%20241.7%20254.1%20248.4%20254.1%20257.8%20280.5%20284.2%20303.3%20295.5%20311.6%20294.5%20319.4%20285.7%20320.4%20279.5%20316.3%20267.1%20297.1%20247.9%20281.6%20241.7%20268.1%20241.7ZM722.6%20241.7%20702.9%20244.8%20686.9%20259.8%20682.7%20268.1%20682.7%20277.4%20688.4%20283.1%20708.1%20275.9%20735.5%20253.6%20736.5%20246.4%20732.9%20242.8%20723.6%20241.7ZM174.9%20254.1%20150.1%20257.2%20133.5%20262.4%20114.4%20277.4%2083.3%20327.1%2069.4%20338%2052.8%20344.2%2037.8%20358.2%2026.4%20378.9%2021.2%20409.9%2022.3%20428.6%2026.9%20434.3%2067.3%20424.9%2074%20418.2%2075.1%20396.5%2082.3%20372.7%2086.4%20364.4%20101.4%20349.4%20117%20342.1%20137.7%20338%20162.5%20338%20182.2%20343.2%20198.2%20357.1%20207.6%20376.8%20206.5%20407.9%20190.5%20428.1%20177%20438.4%20159.4%20443.6%20147%20437.4%20134.1%20423.4%20131%20409.9%20136.1%20400.6%20142.9%20394.9%20148%20391.8%20176%20394.9%20180.6%20390.3%20178.6%20383%20169.8%20374.2%20153.2%20369%20138.7%20370.1%20118%20382.5%20100.9%20403.7%2096.8%20419.3%2099.9%20437.9%20113.9%20457%20137.7%20474.6%20172.9%20488.1%20190.5%20488.1%20210.1%20484%20231.9%20473.6%20244.3%20464.3%20272.8%20428.6%20281.1%20411%20289.3%20381%20289.3%20352%20283.6%20345.2%20273.3%20344.2%20261.9%20349.4%20245.3%20349.4%20224.6%20340.1%20210.7%20328.2%20203.4%20316.8%20200.3%20305.4%20200.3%20288.8%20206.5%20270.2%20206.5%20259.8%20201.9%20256.2%20176%20254.1ZM484.5%20255.2%20462.7%20278%20424.4%20306.9%20388.2%20320.4%20344.2%20328.2%20345.8%20332.8%20363.4%20337%20405.8%20357.7%20449.3%20387.7%20452.9%20386.1%20453.9%20355.1%20462.2%20327.1%20476.7%20284.7%20489.1%20259.8%20485.5%20255.2ZM807.5%20257.2%20796.1%20258.3%20791.4%20261.9%20798.7%20291.9%20798.7%20307.5%20790.4%20327.1%20774.3%20342.1%20754.7%20350.4%20738.1%20351.4%20723.6%20345.2%20715.3%20346.3%20708.6%20357.1%20708.6%20375.8%20717.9%20413%20737.6%20448.2%20751.6%20463.3%20771.2%20477.7%20791.9%20487.1%20808.5%20490.2%20825.1%20490.2%20840.6%20486%20868.5%20472.6%20890.8%20453.4%20901.1%20435.8%20903.2%20426.5%20900.1%20408.9%20892.9%20396.5%20877.8%20381.5%20857.1%20371.1%20841.6%20371.1%20832.3%20374.2%20819.4%20386.1%20817.3%20392.3%20821.9%20397%20833.3%20397%20848.9%20392.9%20856.1%20396%20865.9%20405.8%20868%20419.3%20854%20437.4%20837.5%20445.7%20831.3%20444.6%20817.8%20437.4%20797.6%20418.2%20791.4%20403.7%20792.4%20374.7%20799.7%20360.2%20813.7%20346.3%20820.9%20343.2%20836.4%20340.1%20866.5%20340.1%20892.3%20348.3%20906.3%20359.2%20918.7%20378.9%20923.9%20395.4%20924.9%20419.3%20928.6%20424.9%20964.8%20435.3%20973.1%20435.3%20977.7%20428.6%20976.7%20395.4%20972.6%20378.9%20966.4%20366.5%20953.4%20351.4%20927.5%20338%20915.6%20328.2%20883.5%20277.4%20873.7%20268.6%20850.9%20259.3%20808.5%20257.2ZM519.7%20260.4%20517.1%20267.1%20530.5%20286.7%20548.1%20335.4%20553.3%20360.2%20554.3%20387.2%20556.9%20387.7%20570.4%20374.2%20589%20361.8%20636.6%20339%20651.1%20334.9%20654.8%20330.2%20608.7%20317.3%20580.7%20304.9%20552.8%20288.3%20520.2%20260.9ZM761.9%20269.7%20735%20288.3%20716.9%20308.5%20716.9%20312.6%20722.6%20317.3%20748.4%20322.5%20765%20318.3%20775.9%20303.3%20775.9%20278.5%20769.2%20269.7%20762.9%20269.7ZM234%20280%20224.1%20290.9%20224.1%20306.4%20229.3%20316.8%20238.1%20325.6%20257.8%20333.9%20277.4%20330.7%20283.1%20326.1%20284.2%20318.8%20259.8%20292.4%20248.4%20284.2%20235%20280ZM323%20351.4%20318.3%20396.5%20311.1%20420.3%20296.6%20447.2%20280%20466.9%20261.4%20483.4%20261.9%20489.1%20335.4%20464.3%20392.9%20461.7%20358.7%20424.4%20342.1%20395.4%20329.7%20356.1%20324%20351.4ZM679.1%20353.5%20674.4%20358.2%20672.4%20365.4%20621.6%20451.3%20625.3%20453.9%20655.3%20455%20696.7%20465.3%20719.5%20474.6%20738.1%20486%20743.8%20483.4%20742.8%20480.3%20720%20460.7%20696.2%20424.4%20685.8%20388.2%20683.7%20356.1%20680.1%20353.5ZM493.8%20424.9%20476.2%20429.1%20463.8%20435.3%20444.6%20451.3%20434.3%20467.9%20428.1%20494.8%20431.2%20520.7%20444.6%20545.5%20464.8%20562.6%20481.4%20569.9%20493.8%20571.9%20522.8%20569.9%20549.7%20555.4%20566.8%20534.2%20576.1%20504.1%20576.1%20491.7%20570.9%20471%20562.6%20455.5%20551.8%20443.6%20524.8%20428.1%20494.8%20424.9ZM34.2%20445.7%209.8%20466.9%20-0.5%20486.5%20-0.5%20504.1%205.7%20518.6%2018.1%20535.2%2033.1%20549.2%2038.3%20547.1%2064.2%20521.2%2076.6%20512.9%2098.3%20506.7%20102%20503.1%2099.4%20496.4%2069.4%20474.6%2039.3%20446.7%2035.2%20445.7ZM962.7%20447.7%20901.7%20497.4%20898%20501%20898%20506.2%20926.5%20517.1%20942%20528.5%20963.8%20550.2%20970%20549.2%20989.1%20528%201000.5%20503.1%20999.5%20487.6%20993.3%20474.1%20976.2%20455%20963.8%20447.7ZM181.2%20506.7%20149.1%20515%20124.2%20529.5%20104%20549.7%2095.8%20570.4%2098.9%20589%20108.2%20604.6%20124.2%20619.6%20146%20627.8%20157.3%20626.8%20169.8%20621.6%20179.6%20609.7%20179.6%20603.5%20176%20600.9%20164.6%20600.9%20157.3%20605.1%20151.1%20605.1%20138.7%20598.9%20133%20592.1%20131%20587%20132%20575.6%20147%20558.5%20157.3%20553.3%20168.7%20554.3%20181.2%20561.6%20199.3%20577.6%20207.6%20595.2%20205.5%20623.2%20194.1%20642.9%20178.1%20654.8%20165.6%20657.9%20128.4%20657.9%20108.7%20651.7%20101.4%20647.5%2084.4%20629.4%2075.1%20605.6%2073%20578.7%2069.4%20573%2029%20561.6%2021.2%20569.4%2022.3%20605.6%2030.5%20628.4%2048.7%20649.6%2082.3%20668.7%20113.4%20719.5%20122.2%20728.3%20146%20739.6%20174.9%20743.8%20201.9%20740.7%20205.5%20738.1%20206.5%20729.8%20199.3%20709.1%20199.3%20690.5%20207.6%20670.8%20225.7%20654.8%20237.1%20649.6%20257.8%20646.5%20273.3%20652.7%20280.5%20652.7%20286.2%20648%20289.3%20640.8%20289.3%20622.2%20280%20583.9%20257.2%20545.5%20239.1%20528.5%20223.6%20518.1%20210.1%20511.9%20181.7%20507.2ZM805.4%20509.8%20778.5%20518.1%20760.9%20529.5%20742.8%20546.6%20732.4%20560%20717.9%20588%20712.7%20604.6%20708.6%20633.5%20711.7%20648%20719.5%20654.8%20735%20649.6%20755.7%20649.6%20773.3%20656.8%20789.3%20670.8%20799.7%20693.6%20799.7%20708.1%20792.4%20739.1%20799.2%20743.8%20841.6%20743.8%20861.3%20738.6%20876.8%20730.3%20894.9%20709.1%20915.6%20671.8%20950.3%20651.7%20964.3%20637.7%20972.6%20622.2%20978.8%20593.2%20978.8%20572.5%20977.7%20568.3%20972%20563.7%20933.7%20573%20927%20578.7%20924.9%20602.5%20918.7%20624.2%20911.5%20635.6%20898.6%20648.6%20881%20656.8%20860.2%20661%20841.6%20661%20816.8%20654.8%20799.7%20637.7%20791.4%20615.9%20792.4%20592.1%20809.5%20569.9%20824%20558.5%20838.5%20555.4%20852%20560.6%20865.9%20574.5%20868%20588%20864.9%20595.2%20856.1%20604%20842.7%20607.1%20828.2%20602%20819.4%20606.6%20820.4%20613.9%20827.1%20621.6%20842.7%20628.9%20861.3%20627.8%20877.8%20619.6%20898%20596.3%20904.2%20574.5%20894.9%20550.7%20882%20536.7%20866.5%20525.4%20837.5%20511.9%20805.9%20510.4ZM262.9%20511.9%20260.4%20514.5%20261.4%20517.6%20292.4%20547.6%20310%20575.6%20320.4%20610.8%20324%20649.6%20327.1%20649.6%20329.7%20646%20340.1%20611.8%20355.6%20582.8%20373.2%20560%20393.9%20542.4%20393.9%20539.3%20354%20539.9%20329.2%20535.7%20264%20511.9ZM739.1%20516%20723.6%20525.4%20697.7%20535.7%20655.3%20546.1%20625.3%20548.1%20621.6%20550.7%20638.2%20574.5%20679.1%20646.5%20683.7%20642.9%20687.9%20607.7%20696.2%20578.7%20711.7%20551.8%20724.6%20536.7%20741.7%20523.8%20743.8%20517.6%20740.2%20516ZM450.3%20613.4%20399.6%20647.5%20349.9%20668.2%20344.2%20672.9%20347.8%20675.5%20365.4%20675.5%20397.5%20682.7%20425.5%20694.1%20459.6%20720%20485.5%20745.9%20489.1%20744.3%20489.1%20739.1%20478.8%20718.4%20459.1%20662.5%20453.9%20639.8%20453.9%20614.9%20451.3%20613.4ZM555.9%20614.4%20555.4%20636.6%20549.2%20664.6%20530.5%20715.3%20518.1%20734%20520.7%20740.7%20545.5%20718.9%20585.9%20694.1%20612.8%20682.7%20643.9%20673.4%20653.2%20673.4%20655.8%20670.8%20646%20664.1%20597.3%20643.4%20556.9%20614.4ZM255.7%20665.1%20238.1%20671.3%20223.1%20688.4%20220%20705%20227.2%20716.4%20232.9%20720%20239.1%20718.9%20253.6%20709.6%20282.1%20679.1%20281.1%20673.9%20274.3%20668.2%20256.7%20665.1ZM746.4%20678.6%20722.6%20683.7%20717.9%20687.4%20717.9%20692.5%20742.2%20717.9%20765%20732.4%20770.2%20731.4%20776.9%20722.6%20779%20708.1%20775.9%20695.7%20766%20682.7%20747.4%20678.6ZM347.8%20703.4%20339.5%20706.5%20335.9%20712.2%20331.8%20746.4%20326.6%20756.7%20319.9%20763.5%20306.4%20770.7%20293%20773.8%20262.9%20774.8%20246.4%20772.8%20238.6%20778.5%20229.3%20802.3%20229.3%20824%20237.6%20850.9%20250.5%20869%20265%20880.4%20304.3%20897%20331.8%20935.8%20346.8%20949.8%20360.2%20957%20384.1%20962.2%20400.6%20962.2%20414.6%20957.6%20415.6%20946.2%20406.3%20919.3%20399.6%20909.4%20374.7%20905.3%20354%20897%20341.6%20888.7%20328.7%20874.7%20322.5%20863.4%20318.3%20841.6%20318.3%20827.1%20324.5%20807.5%20338.5%20789.3%20349.9%20781.1%20366.5%20773.8%20389.2%20773.8%20398.6%20778%20414.6%20794%20421.8%20808.5%20422.9%20828.2%20419.8%20837.5%20406.8%20848.3%20394.4%20850.4%20384.1%20847.3%20377.3%20840.6%20373.2%20831.3%20373.2%20819.9%20377.3%20807.5%20373.7%20803.8%20363.4%20802.8%20350.9%20809%20346.3%20815.7%20343.2%20828.2%20344.2%20844.7%20349.4%20857.1%20363.4%20870.1%20384.1%20876.3%20417.2%20876.3%20440%20867%20458.1%20846.8%20466.4%20826.1%20467.4%20797.1%20455%20760.9%20443.6%20744.3%20426.5%20728.3%20408.9%20717.9%20383%20707.6%20367.5%20703.4%20348.9%20703.4ZM649.1%20703.4%20610.8%20712.7%20582.8%20728.3%20552.3%20757.8%20539.9%20782.6%20537.8%20815.7%20541.9%20832.3%20551.2%20849.9%20564.2%20863.9%20585.9%20875.3%20608.7%20876.3%20625.3%20869%20639.2%20857.1%20645.4%20842.7%20643.4%20826.1%20639.2%20817.8%20628.4%20808%20622.2%20808%20617.5%20812.6%20619.6%20830.2%20617.5%20837.5%20611.8%20843.2%20605.6%20846.3%20594.2%20846.3%20583.9%20842.1%20576.1%20833.3%20573%20818.8%20577.1%20805.4%20589%20790.4%20605.6%20782.1%20612.8%20781.1%20625.3%20781.1%20637.7%20785.2%20648%20790.4%20662%20802.3%20670.3%20818.8%20673.4%20834.4%20671.3%20856.1%20667.2%20869.6%20658.9%20883%20643.9%20896%20628.4%20904.2%20597.3%20910.5%20591.6%20916.1%20578.2%20953.4%20583.9%20960.1%20598.3%20963.3%20622.2%20960.1%20647%20949.8%20662%20934.8%20681.2%20900.1%20698.8%20897%20711.2%20891.8%20736.5%20871.6%20746.9%20856.1%20754.1%20835.4%20755.2%20807.5%20751%20783.6%20744.3%20778%20709.1%20776.9%20695.7%20773.8%20687.4%20768.6%20681.7%20764%20674.4%20750.5%20673.4%20719.5%20670.3%20711.2%20662.5%20704.5%20650.1%20703.4ZM300.2%20706.5%20287.8%20711.7%20278.5%20718.9%20256.2%20742.2%20254.1%20751.6%20268.1%20759.3%20283.6%20759.3%20293%20755.2%20301.2%20751%20314.2%20738.1%20320.4%20726.7%20319.4%20713.3%20312.6%20706.5%20301.2%20706.5ZM690.5%20717.9%20682.7%20725.7%20687.9%20741.2%20701.9%20755.2%20715.3%20759.3%20732.9%20758.3%20737.6%20753.6%20736.5%20747.4%20713.3%20728.3%20691.5%20717.9ZM197.7%20756.2%20130.4%20766.6%20121.6%20778.5%20120.6%20804.3%20129.9%20821.9%20146%20834.9%20168.7%20843.2%20193.6%20842.1%20201.9%20838%20206.5%20832.3%20203.4%20821.9%20202.4%20802.3%20207.6%20781.6%20217.9%20765%20217.9%20759.8%20213.3%20756.2%20198.8%20756.2ZM776.4%20767.6%20771.7%20772.3%20782.1%20791.9%20786.2%20808.5%20787.3%20847.8%20789.9%20851.4%20797.1%20853.5%20834.4%20848.3%20852.5%20836.4%20860.8%20821.9%20862.8%20812.6%20862.8%20780.5%20857.1%20774.8%20802.3%20771.7%20777.4%20767.6ZM496.9%20814.2%20467.4%20868.5%20450.3%20888.7%20429.1%20905.8%20435.3%20924.4%20445.1%20935.3%20451.3%20935.3%20459.1%20928.6%20497.9%20874.2%20503.1%20874.2%20506.7%20877.8%20528.5%20917.2%20543.5%20934.3%20549.7%20934.3%20559.5%20921.3%20562.6%20914.1%20561.6%20906.8%20519.2%20859.2%20505.7%20834.4%20500.5%20815.7%20497.9%20814.2ZM495.9%20922.9%20478.8%20950.3%20464.3%20964.8%20466.9%20970.5%20485.5%20981.9%20506.2%20980.8%20525.4%20964.8%20500.5%20923.4%20496.9%20922.9Z%22%2F%3E%3C%2Fsvg%3E");
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,.display{font-family:var(--serif);font-weight:400;letter-spacing:.01em;line-height:1.05;margin:0}
+.wrap{width:min(1220px,92vw);margin-inline:auto;position:relative;z-index:2}
+.eyebrow{font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--clay);font-weight:500;margin:0 0 1rem}
+.sec{padding:clamp(5rem,10vw,9.5rem) 0;position:relative}
+.orn{width:130px;height:22px;display:block;margin:1.4rem 0;color:var(--saffron)}
+.orn.center{margin-inline:auto}
+
+/* ===================== ground texture ===================== */
+/* A single calm, static paper grain — no spinning watermark layer. Premium
+   restaurant pages read cleaner without a rotating background motif fighting
+   the content for attention. */
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+body>*:not(.grain){position:relative;z-index:2}
+
+/* ===================== atmosphere (depth system) ===================== */
+/* The rosette mask, tinted and rescaled into several layers per section.
+   Everything here is decoration: pointer-events:none, absolutely positioned
+   inside its own section so it can never shift layout or sit above content. */
+.atmo{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.atmo-layer{position:absolute;aspect-ratio:1;-webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat;
+  background:currentColor;transform:translate3d(0,0,0);will-change:transform}
+/* one calm, static rosette per dark section below the hero — same shape,
+   different tone and position each time, so sections stay legible as
+   distinct rooms rather than one undifferentiated green field */
+.atmo-static{width:38vh;aspect-ratio:1;opacity:.05}
+
+/* ===================== logo plate ===================== */
+/* The supplied artwork carries its own white background. Rather than risk
+   another chroma-key extraction — which is what produced visible edge
+   fringing before — every logo placement now sits deliberately on its own
+   porcelain-tile plate: a bordered, shadowed light surface, presented as a
+   considered object against the dark ground rather than an accidental
+   rectangle. Circular plates (.plate-round) carry the rosette-only crop for
+   compact uses; tile plates (.plate-tile) carry the wider rosette+"EST 2024"
+   or full-lockup crops where there is room to show more. */
+.plate{position:relative;background:var(--paper);overflow:hidden;
+  border:1px solid rgba(212,178,120,.4);
+  box-shadow:0 1px 0 rgba(255,255,255,.6) inset, 0 0 0 1px rgba(20,20,10,.05) inset,
+             0 16px 34px -14px rgba(0,0,0,.55), 0 3px 8px -3px rgba(0,0,0,.3)}
+.plate img{width:100%;height:100%;display:block;object-fit:cover}
+.plate-round{border-radius:50%}
+.plate-tile{border-radius:20px}
+.brand-mark{position:relative;width:44px!important;height:44px!important;overflow:hidden;flex:none;filter:drop-shadow(0 7px 10px rgba(0,0,0,.28));transition:transform .7s var(--ease)}
+.brand-mark img{width:100%;height:100%;display:block;object-fit:contain;clip-path:circle(46% at 50% 50%)}
+
+/* ===================== intro ===================== */
+/* One quick, quiet moment — a single fade-and-settle of the real mark, not a
+   staggered multi-layer build. Gone well before it can feel like a wait. */
+.intro{position:fixed;inset:0;z-index:200;background:radial-gradient(circle at 50% 46%,#1d5137 0,#0a2114 48%,#06150c 100%);display:grid;place-items:center;
+  transition:opacity .6s var(--ease),visibility .6s}
+.intro.gone{opacity:0;visibility:hidden}
+.intro-logo{position:relative;width:min(74vw,520px);aspect-ratio:1.94;overflow:hidden;animation:settle .8s var(--ease) both;filter:drop-shadow(0 26px 42px rgba(0,0,0,.38))}
+.intro-logo img{position:absolute;width:142%;max-width:none;left:50%;top:50%;transform:translate(-50%,-50%);filter:brightness(1.22) saturate(1.08)}
+@keyframes settle{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
+.intro .cap{position:absolute;bottom:14%;font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(247,241,228,.55);
+  animation:fade .6s .25s var(--ease) both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+/* ===================== nav ===================== */
+/* Solid forest green from the first frame — the brand states itself
+   immediately instead of assembling on scroll, and stays legible over
+   whatever sits behind it in the hero. */
+header.nav{
+  position:fixed;inset:0 0 auto 0;z-index:80;display:flex;align-items:center;gap:2rem;
+  padding:1.15rem clamp(1rem,4vw,2.5rem);color:var(--cream);
+  background:var(--green);box-shadow:0 1px 0 rgba(0,0,0,.14);
+  transition:box-shadow .45s var(--ease),padding .45s var(--ease);
+}
+header.nav.solid{box-shadow:0 10px 30px -18px rgba(0,0,0,.5);padding-block:.62rem}
+.progress{position:absolute;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,var(--logo-teal),var(--logo-red),var(--saffron))}
+.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;margin-right:auto}
+.brand .m{flex:none;transition:transform .7s var(--ease)}
+.brand:hover .m{transform:rotate(20deg)}
+.brand b{font-family:var(--serif);font-size:1.42rem;font-weight:600;letter-spacing:.07em;line-height:1;display:block;color:var(--cream)}
+.brand i{display:block;font-style:normal;font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,241,228,.62);margin-top:.22rem}
+nav.links{display:flex;gap:1.7rem}
+nav.links a{text-decoration:none;font-size:.77rem;letter-spacing:.15em;text-transform:uppercase;white-space:nowrap;color:rgba(247,241,228,.72);position:relative;padding-bottom:3px;transition:color .3s}
+nav.links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--saffron);transition:right .45s var(--ease)}
+nav.links a:hover{color:var(--cream)}
+nav.links a:hover::after{right:0}
+.nav-tools{display:flex;align-items:center;gap:.6rem}
+.lang{display:flex;border:1px solid rgba(247,241,228,.28);border-radius:999px;overflow:hidden;background:rgba(247,241,228,.08)}
+.lang button{border:0;background:none;cursor:pointer;font:inherit;font-size:.66rem;letter-spacing:.1em;padding:.42rem .58rem;color:rgba(247,241,228,.72);transition:.25s}
+.lang button.on{background:var(--cream);color:var(--green)}
+/* compact single control for the narrowest phones — swapped in for the
+   four-button pill so the language switch never forces horizontal scroll */
+.lang-select{display:none;border:1px solid rgba(247,241,228,.28);border-radius:999px;background:rgba(247,241,228,.08);
+  color:var(--cream);font:inherit;font-size:.66rem;letter-spacing:.1em;padding:.42rem 1.5rem .42rem .7rem;cursor:pointer;
+  -webkit-appearance:none;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f4ecdb' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .5rem center;background-size:12px}
+.lang-select option{color:var(--ink);background:var(--cream)}
+.burger{display:none;border:1px solid rgba(247,241,228,.32);background:none;color:var(--cream);border-radius:999px;padding:.44rem .82rem;font:inherit;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+:focus-visible{outline:2px solid var(--saffron);outline-offset:3px}
+.lang button:focus-visible{outline-offset:-2px}
+.nav-cta{padding:.62rem 1.15rem;font-size:.67rem;background:var(--cream);color:var(--green)}
+.nav-cta::before{background:var(--logo-red)}
+.nav-cta:hover{color:var(--cream)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none;cursor:pointer;font-family:inherit;
+  font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;padding:.95rem 1.75rem;border-radius:999px;
+  border:1px solid transparent;position:relative;overflow:hidden;background:none;color:inherit;
+  transition:color .45s var(--ease),border-color .45s var(--ease),transform .35s var(--ease)}
+.btn>span{position:relative;z-index:2}
+.btn::before{content:"";position:absolute;inset:0;background:var(--clay);transform:translateY(101%);transition:transform .55s var(--ease);z-index:1}
+.btn:hover::before{transform:translateY(0)}
+.btn:hover{color:var(--cream)}
+.btn.solid{background:var(--green);color:var(--cream)}
+.btn.outline{border-color:currentColor}
+.btn.outline:hover{border-color:var(--clay)}
+.btn.light{background:var(--paper);color:var(--ink);box-shadow:var(--shadow)}
+.nav-cta-mobile{display:none;background:var(--cream);color:var(--green)}
+.nav-cta-mobile::before{background:var(--logo-red)}
+.nav-cta-mobile:hover{color:var(--cream)}
+/* nav.links a's own color rule (0,1,2) otherwise beats .nav-cta-mobile
+   (0,1,0) and leaves this button cream-on-cream — this selector must win */
+nav.links a.nav-cta-mobile{color:var(--green)}
+nav.links a.nav-cta-mobile:hover{color:var(--cream)}
+
+/* ===================== hero: Silk Road night ===================== */
+.hero{
+  min-height:100svh;display:block;padding:clamp(7.4rem,11vh,9rem) 0 clamp(6rem,9vh,7.5rem);
+  position:relative;overflow:hidden;z-index:0;color:var(--cream);
+  background:
+    radial-gradient(58% 72% at 80% 40%,rgba(51,142,117,.2),transparent 68%),
+    radial-gradient(42% 52% at 9% 8%,rgba(211,144,31,.1),transparent 72%),
+    linear-gradient(128deg,#07140c 0%,#10291a 48%,#0b1c12 100%);
+}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:linear-gradient(90deg,rgba(4,12,7,.36),transparent 36%,transparent 70%,rgba(4,12,7,.16));
+  box-shadow:inset 0 -120px 130px -100px rgba(0,0,0,.65)}
+.hero-shell{width:min(1320px,92vw);min-height:calc(100svh - clamp(13.4rem,20vh,16.5rem));margin:auto;
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(390px,.85fr);gap:clamp(3rem,7vw,7rem);align-items:center;
+  position:relative;z-index:2}
+.hero-copy{text-align:left;max-width:720px}
+.hero-kicker{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:clamp(1.2rem,3vh,2rem);
+  color:var(--saffron);font-size:.67rem;letter-spacing:.24em;text-transform:uppercase}
+.hero-kicker>span:first-child{display:flex;align-items:center;gap:.8rem}
+.hero-kicker>span:first-child::before{content:"";width:42px;height:1px;background:currentColor}
+.hero .atmo-1{width:32vw;min-width:360px;top:-18vw;right:-10vw;color:var(--green-3);opacity:.13}
+.hero .atmo-2{width:24vw;min-width:280px;bottom:-11vw;left:-8vw;color:var(--logo-teal);opacity:.08}
+.hero .atmo-3{width:12vw;min-width:150px;top:15%;left:43%;color:var(--saffron);opacity:.12}
+.hero .atmo-4{width:10vw;min-width:130px;bottom:11%;right:2%;color:var(--logo-navy);opacity:.13}
+.status{display:inline-flex;align-items:center;gap:.55rem;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
+  border:1px solid rgba(247,241,228,.2);border-radius:999px;padding:.42rem .82rem;background:rgba(247,241,228,.07);
+  backdrop-filter:blur(8px);color:var(--cream-soft)}
+.status .dot{width:7px;height:7px;border-radius:50%;background:var(--logo-red);position:relative}
+.status .dot.open{background:var(--logo-teal)}
+.status .dot.open::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--logo-teal);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{transform:scale(.6);opacity:1}100%{transform:scale(1.6);opacity:0}}
+h1.title{font-size:clamp(4.3rem,8.4vw,8.1rem);font-weight:300;letter-spacing:-.035em;line-height:.78;color:var(--cream);margin-left:-.04em}
+h1.title em{font-style:italic;font-weight:400;color:var(--saffron);display:block;margin-left:.42em}
+.hero .sub{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,241,228,.62);margin:2.6rem 0 1.1rem}
+.hero .lede{font-family:var(--serif);font-size:clamp(1.18rem,1.7vw,1.48rem);line-height:1.5;color:rgba(247,241,228,.78);max-width:610px;margin:0 0 2.2rem}
+.hero-cta{display:flex;gap:.75rem;justify-content:flex-start;flex-wrap:wrap;margin-bottom:2.35rem}
+.hero-cta .btn.outline{border-color:rgba(247,241,228,.4);color:var(--cream)}
+.hero-cta .btn.outline:hover{border-color:var(--saffron)}
+.hero-facts{display:flex;align-items:stretch;gap:0;border-top:1px solid rgba(247,241,228,.16);max-width:620px}
+.hero-facts>span{display:grid;gap:.2rem;padding:1.1rem clamp(1rem,2vw,1.7rem);border-right:1px solid rgba(247,241,228,.16)}
+.hero-facts>span:first-child{padding-left:0}.hero-facts>span:last-child{border:0}
+.hero-facts b{font-family:var(--serif);font-size:1.22rem;font-weight:500;color:var(--cream);line-height:1}
+.hero-facts small{font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-faint)}
+.hero-visual{display:grid;place-items:center;min-width:0}
+.brand-stage{--tilt-x:0deg;--tilt-y:0deg;width:min(100%,560px);aspect-ratio:1;position:relative;display:grid;place-items:center;
+  transform:perspective(1200px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));transition:transform .5s var(--ease)}
+.brand-stage::before{content:"";position:absolute;inset:10%;border-radius:50%;background:radial-gradient(circle,rgba(211,144,31,.2),transparent 68%);
+  box-shadow:0 0 120px rgba(51,142,117,.18)}
+.brand-orbit{position:absolute;border:1px solid rgba(211,144,31,.25);border-radius:50%;inset:7%;transform:rotate(-14deg)}
+.brand-orbit::before,.brand-orbit::after{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--saffron);box-shadow:0 0 0 7px rgba(211,144,31,.08)}
+.brand-orbit::before{top:11%;left:18%}.brand-orbit::after{right:8%;bottom:24%}
+.orbit-two{inset:17%;border-color:rgba(51,142,117,.32);transform:rotate(24deg)}
+.brand-corner{position:absolute;width:35%;aspect-ratio:1;color:rgba(247,241,228,.08);background:currentColor;
+  -webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat}
+.corner-one{left:-1%;top:3%;transform:rotate(-18deg)}.corner-two{right:-2%;bottom:1%;transform:rotate(21deg);color:rgba(211,144,31,.09)}
+.crest{width:min(86%,500px);aspect-ratio:953/520;margin:0;z-index:2;border-radius:24px;background:#f7f0e3;
+  box-shadow:0 40px 90px -34px rgba(0,0,0,.9),0 0 0 1px rgba(211,144,31,.32),0 1px 0 rgba(255,255,255,.8) inset;
+  animation:brand-float 8s ease-in-out infinite}
+.crest img{mix-blend-mode:multiply}
+.brand-caption{position:absolute;z-index:3;right:3%;bottom:14%;padding:.7rem 1rem;border:1px solid rgba(247,241,228,.2);
+  border-radius:999px;background:rgba(7,20,12,.72);backdrop-filter:blur(12px);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-soft)}
+.hero-arch{position:absolute;left:50%;bottom:-1px;width:min(1460px,104vw);height:74px;transform:translateX(-50%);z-index:4;
+  background:var(--green);clip-path:polygon(0 100%,0 62%,16% 62%,19% 24%,81% 24%,84% 62%,100% 62%,100% 100%)}
+@keyframes brand-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+/* ===================== hero v2: illuminated Silk Road pavilion ===================== */
+.hero{isolation:isolate;background:
+  radial-gradient(44% 70% at 74% 47%,rgba(46,132,98,.28),transparent 72%),
+  radial-gradient(34% 42% at 13% 16%,rgba(204,126,24,.12),transparent 72%),
+  linear-gradient(122deg,#030d08 0%,#092016 42%,#0b2d20 72%,#06130d 100%)}
+.hero::before{content:"";position:absolute;inset:-20%;z-index:0;pointer-events:none;
+  background:conic-gradient(from 202deg at 71% 49%,transparent 0 32deg,rgba(78,196,146,.08) 42deg,transparent 58deg 184deg,rgba(211,144,31,.06) 198deg,transparent 215deg);
+  animation:depth-breathe 11s ease-in-out infinite alternate}
+.hero::after{z-index:2;background:
+  linear-gradient(90deg,rgba(2,9,5,.62),transparent 43%,transparent 78%,rgba(2,9,5,.26)),
+  linear-gradient(180deg,rgba(2,8,5,.1),transparent 58%,rgba(1,8,4,.72));
+  box-shadow:inset 0 -180px 170px -125px rgba(0,0,0,.92)}
+.hero-depth{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;perspective:900px}
+.depth-grid{position:absolute;left:50%;bottom:-41%;width:148%;height:78%;transform:translateX(-50%) rotateX(64deg);transform-origin:center top;
+  background-image:linear-gradient(rgba(73,169,128,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(73,169,128,.11) 1px,transparent 1px);
+  background-size:70px 54px;mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.82) 26%,transparent 82%);opacity:.48;animation:grid-travel 14s linear infinite}
+.depth-beam{position:absolute;width:18%;height:135%;top:-18%;filter:blur(1px);opacity:.12;transform:rotate(16deg);background:linear-gradient(90deg,transparent,rgba(244,236,219,.3),transparent)}
+.beam-one{left:57%;animation:beam-sweep 13s ease-in-out infinite alternate}.beam-two{left:83%;opacity:.07;animation:beam-sweep 17s -6s ease-in-out infinite alternate-reverse}
+.depth-arc{position:absolute;border:1px solid rgba(211,144,31,.12);border-bottom:0;border-radius:50% 50% 0 0}
+.arc-one{width:76vw;height:54vw;min-width:860px;min-height:610px;right:-22vw;bottom:-34vw;box-shadow:0 0 0 70px rgba(16,57,39,.025),0 0 0 140px rgba(16,57,39,.018)}
+.arc-two{width:36vw;height:44vw;min-width:420px;min-height:520px;left:-15vw;top:12%;border-color:rgba(74,171,128,.08);transform:rotate(12deg)}
+.depth-dust{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--saffron);box-shadow:0 0 20px 5px rgba(211,144,31,.28);animation:dust-float 7s ease-in-out infinite}
+.dust-one{left:49%;top:27%}.dust-two{right:6%;top:63%;animation-delay:-3s;transform:scale(.7)}.dust-three{left:42%;bottom:12%;animation-delay:-5s;transform:scale(.55)}
+.hero-shell{position:relative;z-index:4}
+.hero-copy{position:relative}
+.hero-copy::before{content:"";position:absolute;left:-4.5vw;top:-3rem;width:1px;height:clamp(280px,46vh,470px);background:linear-gradient(transparent,rgba(211,144,31,.42),transparent)}
+h1.title{text-shadow:0 8px 38px rgba(0,0,0,.28)}
+h1.title em{text-shadow:0 7px 34px rgba(211,144,31,.16)}
+.hero-facts{padding:.15rem .55rem;border:1px solid rgba(247,241,228,.13);border-radius:18px;background:linear-gradient(115deg,rgba(247,241,228,.055),rgba(247,241,228,.014));backdrop-filter:blur(10px);box-shadow:0 24px 54px -34px rgba(0,0,0,.9)}
+.hero-facts>span:first-child{padding-left:1.15rem}
+.brand-stage{--tilt-x:0deg;--tilt-y:0deg;--stage-lift:0px;--stage-turn:0deg;width:min(100%,610px);aspect-ratio:1;isolation:isolate;
+  transform-style:preserve-3d;transform:perspective(1250px) translateY(var(--stage-lift)) rotateZ(var(--stage-turn)) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transition:transform .55s var(--ease)}
+.brand-stage::before{inset:5%;z-index:-4;background:radial-gradient(circle at 50% 48%,rgba(92,197,151,.22),rgba(23,75,50,.1) 38%,transparent 68%);box-shadow:0 0 170px rgba(51,142,117,.22);animation:halo-breathe 6s ease-in-out infinite}
+.brand-stage::after{content:"";position:absolute;inset:19%;z-index:-3;border-radius:34% 34% 48% 48%;border:1px solid rgba(247,241,228,.11);
+  background:radial-gradient(ellipse at 50% 58%,rgba(247,241,228,.15),transparent 58%),linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.005));box-shadow:inset 0 1px rgba(255,255,255,.08),0 38px 90px -54px #000;transform:translateZ(-12px)}
+.silk-gate{position:absolute;inset:7% 14% 8%;z-index:-2;border:1px solid rgba(211,144,31,.17);border-bottom-color:transparent;border-radius:48% 48% 10% 10%;transform:translateZ(-28px)}
+.gate-mid{inset:14% 21% 14%;border-color:rgba(70,173,128,.18);border-bottom-color:transparent;transform:translateZ(-8px)}
+.logo-halo{position:absolute;inset:13%;z-index:-1;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 18%,rgba(211,144,31,.26) 24%,transparent 31% 65%,rgba(74,171,128,.24) 71%,transparent 78%);filter:blur(.2px);animation:orbit-spin 30s linear infinite}
+.logo-halo::after{content:"";position:absolute;inset:7%;border:1px dashed rgba(247,241,228,.14);border-radius:50%}
+.brand-orbit{z-index:-1;inset:4%;border-color:rgba(211,144,31,.2);animation:orbit-spin 24s linear infinite}
+.orbit-two{inset:18%;border-color:rgba(74,171,128,.25);animation:orbit-reverse 20s linear infinite}
+.orbit-three{inset:28%;border-color:rgba(247,241,228,.11);animation:orbit-spin 16s linear infinite}
+.brand-orbit::before,.brand-orbit::after{box-shadow:0 0 0 7px rgba(211,144,31,.06),0 0 24px rgba(211,144,31,.5)}
+.brand-corner{opacity:.8;animation:corner-drift 9s ease-in-out infinite alternate}.corner-two{animation-delay:-4s}
+.hero-logo-source{position:absolute;z-index:3;width:142%;max-width:none;height:auto;left:50%;top:50%;transform:translate3d(-50%,-50%,62px);filter:brightness(1.52) saturate(1.18) drop-shadow(0 30px 32px rgba(0,0,0,.44));animation:logo-drift 7.5s ease-in-out infinite;will-change:transform}
+.brand-caption{right:7%;bottom:13%;box-shadow:0 14px 32px -20px rgba(0,0,0,.9);animation:caption-float 7.5s -1s ease-in-out infinite}
+.stage-number{position:absolute;z-index:3;font-family:var(--serif);font-size:.64rem;letter-spacing:.28em;color:rgba(247,241,228,.4);writing-mode:vertical-rl;text-transform:uppercase}
+.stage-est{left:8%;top:34%}.stage-year{right:7%;top:29%}
+.hero-arch{height:98px;background:linear-gradient(180deg,rgba(16,41,26,.25),var(--green));clip-path:polygon(0 100%,0 73%,10% 73%,13% 55%,23% 55%,26% 28%,74% 28%,77% 55%,87% 55%,90% 73%,100% 73%,100% 100%)}
+@keyframes depth-breathe{from{transform:rotate(-2deg) scale(1);opacity:.68}to{transform:rotate(3deg) scale(1.07);opacity:1}}
+@keyframes beam-sweep{from{transform:translateX(-10vw) rotate(16deg)}to{transform:translateX(8vw) rotate(16deg)}}
+@keyframes grid-travel{to{background-position:0 54px,70px 0}}
+@keyframes orbit-spin{to{transform:rotate(360deg)}}
+@keyframes orbit-reverse{to{transform:rotate(-360deg)}}
+@keyframes halo-breathe{50%{transform:scale(1.06);opacity:.8}}
+@keyframes logo-drift{0%,100%{transform:translate3d(-50%,-50%,62px) translateY(0)}50%{transform:translate3d(-50%,-50%,62px) translateY(-10px)}}
+@keyframes caption-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes corner-drift{to{translate:0 -10px;rotate:3deg}}
+@keyframes dust-float{0%,100%{translate:0 0;opacity:.35}50%{translate:9px -18px;opacity:1}}
+
+/* ===================== hero v3: quiet architectural pavilion ===================== */
+.hero-shell{width:min(1420px,94vw);grid-template-columns:minmax(0,1.28fr) minmax(410px,.72fr);gap:clamp(2rem,4.5vw,5rem)}
+.hero-copy{max-width:790px}
+h1.title{font-size:clamp(5rem,8.8vw,8.8rem)}
+.hero .lede{max-width:680px;font-size:clamp(1.2rem,1.65vw,1.55rem)}
+.hero-facts{max-width:680px}
+.hero-visual{justify-items:end}
+.brand-stage{width:min(100%,500px);aspect-ratio:.82;overflow:visible;transform:perspective(1400px) translateY(var(--stage-lift)) rotateZ(var(--stage-turn)) rotateX(var(--tilt-x)) rotateY(var(--tilt-y))}
+.brand-stage::before{inset:4% 2% 3%;border-radius:48% 48% 12% 12%;background:radial-gradient(ellipse at 50% 44%,rgba(103,201,157,.2),transparent 46%),linear-gradient(180deg,rgba(29,83,58,.25),rgba(3,16,9,.08));box-shadow:0 0 130px rgba(51,142,117,.18);animation:pavilion-breathe 8s ease-in-out infinite}
+.brand-stage::after{inset:7% 6% 4%;border-radius:47% 47% 9% 9%;border:1px solid rgba(247,241,228,.1);background:linear-gradient(135deg,rgba(255,255,255,.035),transparent 45%,rgba(211,144,31,.025));box-shadow:inset 0 1px rgba(255,255,255,.07),0 45px 75px -50px #000;transform:translateZ(-10px)}
+.pavilion-shadow{position:absolute;z-index:-4;left:8%;right:8%;bottom:-1%;height:12%;border-radius:50%;background:rgba(0,0,0,.66);filter:blur(22px);transform:translateZ(-40px)}
+.pavilion-frame{position:absolute;z-index:-1;pointer-events:none;border:1px solid rgba(211,144,31,.28);border-bottom-color:rgba(211,144,31,.08);border-radius:50% 50% 7% 7%}
+.frame-outer{inset:1% 1% 0%;box-shadow:inset 0 0 0 7px rgba(211,144,31,.018),0 0 0 1px rgba(74,171,128,.08)}
+.frame-inner{inset:10% 11% 8%;border-color:rgba(247,241,228,.15);box-shadow:inset 0 0 55px rgba(0,0,0,.2)}
+.pavilion-screen{position:absolute;z-index:-2;inset:11% 12% 9%;border-radius:50% 50% 6% 6%;overflow:hidden;background:
+  linear-gradient(90deg,rgba(2,11,6,.58),transparent 24%,transparent 76%,rgba(2,11,6,.58)),
+  repeating-linear-gradient(90deg,transparent 0 46px,rgba(247,241,228,.025) 47px 48px),
+  linear-gradient(180deg,rgba(32,98,68,.28),rgba(5,22,13,.35))}
+.pavilion-screen::after{content:"";position:absolute;inset:16% 11%;opacity:.055;background:var(--green-3);-webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat}
+.pavilion-light{position:absolute;z-index:-1;left:16%;right:16%;top:19%;height:51%;border-radius:50%;background:radial-gradient(circle,rgba(228,168,57,.2),rgba(74,171,128,.1) 34%,transparent 68%);filter:blur(2px);animation:lamp-breathe 6.5s ease-in-out infinite}
+.pavilion-sheen{position:absolute;z-index:4;top:15%;bottom:14%;width:18%;left:-24%;opacity:.17;background:linear-gradient(90deg,transparent,rgba(247,241,228,.46),transparent);transform:skewX(-12deg);filter:blur(3px);animation:sheen-pass 9s 1.8s ease-in-out infinite;pointer-events:none}
+.pavilion-column{position:absolute;z-index:1;top:25%;bottom:9%;width:1px;background:linear-gradient(transparent,rgba(211,144,31,.36),rgba(247,241,228,.12),transparent);box-shadow:0 0 20px rgba(211,144,31,.08)}
+.column-left{left:17%}.column-right{right:17%}
+.hero-logo-source{width:132%;top:48%;filter:brightness(1.55) saturate(1.15) drop-shadow(0 28px 30px rgba(0,0,0,.42));animation:logo-presence 8s ease-in-out infinite}
+.brand-caption{left:50%;right:auto;bottom:15%;transform:translateX(-50%);white-space:nowrap;background:rgba(4,18,10,.58);animation:none}
+@keyframes pavilion-breathe{50%{filter:brightness(1.12);transform:scale(1.012)}}
+@keyframes lamp-breathe{50%{opacity:.72;transform:scale(1.06)}}
+@keyframes sheen-pass{0%,58%{left:-24%;opacity:0}66%{opacity:.17}82%{left:106%;opacity:.08}100%{left:106%;opacity:0}}
+@keyframes logo-presence{0%,100%{transform:translate3d(-50%,-50%,54px)}50%{transform:translate3d(-50%,-50%,54px) translateY(-5px)}}
+
+/* ===================== hero v4: rotating garden medallions ===================== */
+.hero{background:
+  radial-gradient(58% 88% at 78% 52%,rgba(33,111,79,.34),transparent 70%),
+  radial-gradient(32% 46% at 8% 14%,rgba(211,144,31,.075),transparent 74%),
+  linear-gradient(112deg,#030c07 0%,#071a11 43%,#0a3022 76%,#071911 100%)}
+.hero::before{background:linear-gradient(116deg,transparent 0 52%,rgba(76,177,132,.035) 52.2% 66%,transparent 66.2%),radial-gradient(circle at 76% 50%,rgba(75,167,128,.12),transparent 34%);animation:depth-breathe 14s ease-in-out infinite alternate}
+.hero-shell{display:block;width:min(1340px,92vw);min-height:calc(100svh - clamp(13.4rem,20vh,16.5rem))}
+.hero-copy{width:min(720px,55vw);max-width:none;margin-left:clamp(0rem,4vw,4.5rem);position:relative;z-index:5}
+h1.title{font-size:clamp(5rem,8.2vw,8.45rem)}
+.hero .lede{max-width:660px}
+.hero-visual{position:absolute;z-index:3;top:0;right:-7vw;bottom:0;width:61%;display:block;pointer-events:none}
+.brand-stage{--drift-x:0px;--drift-y:0px;--stage-lift:0px;position:absolute;inset:-5% -2% -9% 0;width:auto;aspect-ratio:auto;overflow:hidden;isolation:isolate;
+  transform:translate3d(var(--drift-x),calc(var(--drift-y) + var(--stage-lift)),0);transition:transform .8s var(--ease)}
+.brand-stage::before,.brand-stage::after{display:none}
+.wheel-glow{position:absolute;right:-3%;top:12%;width:80%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(77,184,139,.19),rgba(30,102,72,.08) 43%,transparent 69%);filter:blur(8px);animation:wheel-glow 8s ease-in-out infinite}
+.logo-wheel{position:absolute;display:block;aspect-ratio:1;border-radius:50%;will-change:transform;transform-origin:50% 50%}
+.wheel-color{z-index:3;width:min(68vw,900px);right:-27%;bottom:-31%;filter:drop-shadow(0 36px 50px rgba(0,0,0,.42));animation:wheel-clockwise 84s linear infinite}
+.wheel-color img{width:100%;height:100%;display:block;object-fit:contain;clip-path:circle(46% at 50% 50%);filter:brightness(1.06) saturate(1.1)}
+.wheel-gold{z-index:2;width:min(42vw,590px);right:20%;top:13%;opacity:.22;background:linear-gradient(135deg,#ffe09a 0%,#d3911f 38%,#8f5b08 75%,#ffe1a0 100%);
+  -webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat;clip-path:circle(46% at 50% 50%);filter:drop-shadow(0 24px 28px rgba(0,0,0,.3));animation:wheel-clockwise 62s linear infinite}
+.wheel-trace{position:absolute;z-index:1;border:1px solid rgba(211,144,31,.12);border-radius:50%;pointer-events:none}
+.trace-one{width:67%;aspect-ratio:1;right:-2%;top:7%;border-left-color:transparent;border-bottom-color:transparent;transform:rotate(24deg)}
+.trace-two{width:48%;aspect-ratio:1;right:22%;bottom:2%;border-color:rgba(78,180,135,.13);border-top-color:transparent;transform:rotate(-17deg)}
+.wheel-star{position:absolute;z-index:4;width:7px;height:7px;border-radius:50%;background:var(--saffron);box-shadow:0 0 0 7px rgba(211,144,31,.07),0 0 25px rgba(211,144,31,.55);animation:star-pulse 3.8s ease-in-out infinite}
+.star-one{right:17%;top:23%}.star-two{right:47%;bottom:15%;animation-delay:-1.7s}
+.wheel-caption{position:absolute;z-index:5;right:39%;bottom:10%;font-size:.55rem;letter-spacing:.27em;text-transform:uppercase;color:rgba(247,241,228,.56);white-space:nowrap}
+.wheel-caption::before{content:"";display:inline-block;width:42px;height:1px;background:var(--saffron);vertical-align:middle;margin-right:.8rem}
+@keyframes wheel-clockwise{to{transform:rotate(360deg)}}
+@keyframes wheel-glow{50%{opacity:.68;transform:scale(1.05)}}
+@keyframes star-pulse{50%{opacity:.38;transform:scale(.7)}}
+
+/* Masked word reveal and the generic reveal both start hidden — but only once
+   JS has confirmed it is running (html.js). Without scripting, or if the
+   reveal observer never fires, the content stays plainly visible rather than
+   leaving a blank page. */
+/* The clip box is padded well past the glyph box and pulled back with an equal
+   negative margin: Cormorant's ascenders and descenders overflow a line-height
+   below 1, and would otherwise be sheared off by the overflow:hidden. */
+.sw{display:inline-block;overflow:hidden;vertical-align:bottom;
+    padding:.18em .06em .22em;margin:-.18em -.06em -.22em}
+.sw>i{display:inline-block;font-style:inherit;transition:transform .6s var(--ease);transition-delay:var(--d,0s)}
+.js .sw>i{transform:translateY(110%)}
+.js .sw.in>i{transform:translateY(0)}
+.rv{transition:opacity .6s var(--ease),transform .6s var(--ease);transition-delay:var(--d,0s)}
+.js .rv{opacity:0;transform:translateY(16px)}
+.js .rv.in{opacity:1;transform:none}
+
+/* ===================== marquee ===================== */
+.marquee{background:var(--green);color:var(--cream);padding:1.1rem 0;overflow:hidden;position:relative}
+.marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:12%;z-index:2;pointer-events:none}
+.marquee::before{left:0;background:linear-gradient(90deg,var(--green),transparent)}
+.marquee::after{right:0;background:linear-gradient(270deg,var(--green),transparent)}
+.marquee-track{display:flex;width:max-content;animation:slide 42s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track span{font-family:var(--serif);font-size:1.5rem;letter-spacing:.16em;text-transform:uppercase;opacity:.88;
+  display:flex;align-items:center;gap:2.6rem;white-space:nowrap;padding-right:2.6rem}
+.marquee-track span::after{content:"";width:15px;height:15px;flex:none;background:var(--saffron);
+  -webkit-mask:var(--rose) center/contain no-repeat;mask:var(--rose) center/contain no-repeat}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ===================== about ===================== */
+.about{background:var(--green-2);color:var(--cream-soft);overflow:hidden;position:relative}
+.about::before{content:"";position:absolute;inset:0 0 auto 0;height:clamp(70px,9vw,120px);
+  background:linear-gradient(180deg,var(--green),transparent);pointer-events:none;z-index:0}
+.about .eyebrow{color:var(--saffron)}
+.about .atmo-static{top:-18vh;right:-14vh;color:var(--green-3)}
+.about-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:clamp(2.5rem,6vw,6rem);align-items:start}
+.about h2{font-size:clamp(2.1rem,4.6vw,3.4rem);color:var(--cream)}
+.about p{color:var(--cream-soft);margin:0 0 1.3rem}
+.big-first::first-letter{font-family:var(--serif);font-size:4.4rem;line-height:.78;float:left;margin:.3rem .7rem 0 0;color:var(--saffron)}
+.stats{display:grid;gap:1px;background:var(--line-dark);border:1px solid var(--line-dark);border-radius:16px;overflow:hidden}
+.stat{background:var(--paper);padding:1.55rem 1.35rem;transition:background .45s var(--ease)}
+.stat:hover{background:var(--cream-2)}
+.stat b{font-family:var(--serif);font-size:2.7rem;font-weight:500;display:block;line-height:1;color:var(--clay)}
+.stat:nth-child(2n) b{color:var(--teal)}
+.stat b.small{font-size:1.5rem;color:var(--ink)}
+.stat small{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-top:.5rem}
+
+/* ===================== kitchen (dark band) ===================== */
+.kitchen{background:var(--green);color:var(--cream);overflow:hidden;position:relative}
+.kitchen::before{content:"";position:absolute;inset:0 0 auto 0;height:clamp(70px,9vw,120px);
+  background:linear-gradient(180deg,var(--green-2),transparent);pointer-events:none;z-index:0}
+.kitchen .eyebrow{color:var(--saffron)}
+.kitchen .atmo-static{top:-14vh;right:-18vh;color:var(--green-3);width:70vh}
+.kitchen h2{font-size:clamp(2.2rem,5vw,3.8rem)}
+.kitchen-head{text-align:center;max-width:840px;margin:0 auto 4.6rem}
+.kitchen .lede{font-family:var(--serif);font-size:clamp(1.15rem,2.2vw,1.5rem);line-height:1.55;color:rgba(247,241,228,.78)}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:1.15rem}
+.pillar{position:relative;padding:2.25rem 1.65rem;border:1px solid rgba(247,241,228,.16);border-radius:18px;overflow:hidden;
+  transition:transform .65s var(--ease),border-color .65s var(--ease),background .65s var(--ease)}
+.pillar::before{content:"";position:absolute;right:-32%;bottom:-36%;width:80%;aspect-ratio:1;opacity:.07;background:var(--saffron);
+  -webkit-mask:var(--rose) center/contain no-repeat;mask:var(--rose) center/contain no-repeat;
+  transition:transform 1.2s var(--ease),opacity .65s var(--ease)}
+.pillar:hover{transform:translateY(-9px);border-color:rgba(217,154,43,.5);background:rgba(247,241,228,.04)}
+.pillar:hover::before{transform:rotate(90deg) scale(1.14);opacity:.14}
+.pillar .num{font-family:var(--serif);font-size:.85rem;letter-spacing:.2em;color:var(--saffron);display:block;margin-bottom:1.45rem}
+.pillar>svg{width:44px;height:44px;stroke-width:1.2;color:var(--saffron);margin-bottom:1.1rem}
+.pillar h3{font-size:1.72rem;margin-bottom:.2rem}
+.pillar .uz{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(247,241,228,.5);display:block;margin-bottom:.9rem}
+.pillar p{font-size:.92rem;color:rgba(247,241,228,.74);margin:0}
+.quote{text-align:center;max-width:780px;margin:5rem auto 0;padding-top:3.6rem;border-top:1px solid rgba(247,241,228,.16)}
+.quote p{font-family:var(--serif);font-size:clamp(1.5rem,3.4vw,2.4rem);font-style:italic;line-height:1.35;margin:0 0 1rem}
+.quote span{font-size:.65rem;letter-spacing:.26em;text-transform:uppercase;color:var(--saffron)}
+.kitchen-cta{text-align:center;margin-top:3.5rem}
+.kitchen-cta small{display:block;margin-top:1.15rem;font-size:.68rem;letter-spacing:.14em;color:rgba(247,241,228,.5)}
+
+/* ===================== signature dishes ===================== */
+.sig{background:var(--green-2);color:var(--cream-soft);overflow:hidden;position:relative}
+.sig::before{content:"";position:absolute;inset:0 0 auto 0;height:clamp(70px,9vw,120px);
+  background:linear-gradient(180deg,var(--green),transparent);pointer-events:none;z-index:0}
+.sig .eyebrow{color:var(--saffron)}
+.sig .atmo-static{bottom:-20vh;left:-16vh;color:var(--logo-teal);opacity:.06}
+.sig-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:2.8rem}
+.sig-head h2{font-size:clamp(2.1rem,4.6vw,3.4rem);color:var(--cream)}
+.sig-head .btn.outline{border-color:rgba(247,241,228,.4);color:var(--cream)}
+.sig-head .btn.outline:hover{border-color:var(--saffron)}
+.sig-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem}
+/* flex column, so .art and .txt are blockified — as plain inline spans the
+   heading inside .txt overflowed the clipped card and cut the price off */
+.dish{background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden;text-decoration:none;
+  display:flex;flex-direction:column;
+  transition:transform .65s var(--ease),box-shadow .65s var(--ease),border-color .65s var(--ease)}
+.dish:hover{transform:translateY(-11px);box-shadow:var(--shadow-lg);border-color:var(--line-2)}
+.dish .art{aspect-ratio:1;overflow:hidden;position:relative;background:var(--cream-2);flex:none}
+.dish .art svg{width:100%;height:100%;display:block;transition:transform 1.1s var(--ease)}
+.dish:hover .art svg{transform:scale(1.08) rotate(-2.5deg)}
+.dish .txt{padding:1.05rem 1.15rem 1.3rem;display:flex;flex-direction:column;flex:1}
+.dish .cat{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:.45rem}
+.dish h3{font-size:1.2rem;line-height:1.2;margin-bottom:.35rem;color:var(--ink)}
+.dish .pr{font-size:.78rem;letter-spacing:.1em;color:var(--clay);font-weight:500}
+
+/* ===================== venue ===================== */
+.feat{background:var(--green);color:var(--cream-soft);overflow:hidden;position:relative}
+.feat::before{content:"";position:absolute;inset:0 0 auto 0;height:clamp(70px,9vw,120px);
+  background:linear-gradient(180deg,var(--green-2),transparent);pointer-events:none;z-index:0}
+.feat .eyebrow{color:var(--saffron)}
+.feat .atmo-static{top:-16vh;left:50%;margin-left:-32vh;color:var(--green-3)}
+.feat h2{font-size:clamp(2rem,4.4vw,3.1rem);margin-bottom:2.9rem;color:var(--cream)}
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-dark);border:1px solid var(--line-dark);border-radius:18px;overflow:hidden}
+.f{background:var(--paper);padding:1.95rem 1.55rem;transition:background .45s var(--ease);color:var(--ink)}
+.f:hover{background:var(--cream-2)}
+.f svg{width:26px;height:26px;color:var(--clay);margin-bottom:1rem;stroke-width:1.4}
+.f:nth-child(2n) svg{color:var(--teal)}
+.f b{font-family:var(--serif);font-size:1.28rem;font-weight:500;display:block;margin-bottom:.3rem;color:var(--ink)}
+.f small{font-size:.83rem;color:var(--ink-soft);line-height:1.55;display:block}
+
+/* ===================== location ===================== */
+/* The one place the page still needs a fully light, dense-text surface —
+   presented as a deliberate ivory panel set into the dark page rather than
+   a full-bleed section, so there is no abrupt light/dark seam to explain. */
+.loc{background:var(--green);color:var(--cream-soft);overflow:hidden;position:relative}
+.loc::before{content:"";position:absolute;inset:0 0 auto 0;height:clamp(70px,9vw,120px);
+  background:linear-gradient(180deg,var(--green-2),transparent);pointer-events:none;z-index:0}
+.loc .atmo-static{bottom:-16vh;left:-14vh;color:var(--green-3)}
+.loc-panel{background:var(--cream);color:var(--ink);border-radius:28px;
+  padding:clamp(1.8rem,5vw,3.4rem);box-shadow:0 44px 90px -34px rgba(0,0,0,.55),0 1px 0 rgba(255,255,255,.5) inset}
+.loc-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2.5rem,6vw,5rem);align-items:start}
+.loc h2{font-size:clamp(1.9rem,4vw,2.8rem)}
+.info-block{padding:1.35rem 0;border-top:1px solid var(--line)}
+.info-block h4{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--clay);margin:0 0 .5rem;font-weight:500;font-family:var(--sans)}
+.info-block p{margin:0;font-size:1.05rem}
+.info-block p a{text-decoration:none;border-bottom:1px solid var(--line)}
+.info-block small{display:block;margin-top:.4rem;font-size:.83rem;color:var(--ink-soft);line-height:1.55}
+.hours{list-style:none;margin:0;padding:0}
+.hours li{display:flex;justify-content:space-between;gap:1rem;padding:.28rem 0;font-size:.92rem;color:var(--ink-soft)}
+.hours li.today{color:var(--ink);font-weight:500}
+.hours li.today b{color:var(--clay)}
+.mapcard{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--paper);box-shadow:var(--shadow)}
+.map-frame{position:relative;aspect-ratio:4/3.1}
+.map-frame iframe{width:100%;height:100%;border:0;filter:sepia(.42) saturate(.78) contrast(1.02);transition:filter .8s var(--ease)}
+.map-frame:hover iframe{filter:none}
+.map-badge{position:absolute;top:1rem;left:1rem;z-index:3;background:rgba(255,253,248,.94);backdrop-filter:blur(8px);border-radius:13px;padding:.7rem .95rem;box-shadow:var(--shadow);pointer-events:none}
+.map-badge b{font-family:var(--serif);font-size:1.05rem;display:block}
+.map-badge small{font-size:.65rem;color:var(--ink-soft)}
+.map-bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:.9rem 1.1rem;border-top:1px solid var(--line)}
+.map-bar .coords{font-size:.72rem;letter-spacing:.12em;color:var(--ink-soft)}
+.map-bar .acts{display:flex;gap:1.2rem;flex-wrap:wrap}
+.map-bar a{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--clay);padding-bottom:2px;color:var(--clay)}
+.map-hint{margin:0;padding:.7rem 1.1rem;font-size:.72rem;color:var(--ink-soft);border-top:1px solid var(--line)}
+
+/* ===================== footer ===================== */
+footer{background:var(--green);color:rgba(247,241,228,.7);padding:clamp(4rem,8vw,6rem) 0 2rem;position:relative;overflow:hidden}
+footer .atmo-static{bottom:-22vh;right:-16vh;color:var(--green-3);width:72vh}
+.foot-grid{display:grid;grid-template-columns:1.6fr .7fr .9fr;gap:clamp(2rem,5vw,4rem)}
+.foot-sign{display:flex;align-items:center;gap:1rem;margin-bottom:1.45rem}
+.foot-emblem{position:relative;flex:0 0 78px;width:78px;height:78px;overflow:hidden;background:none;filter:drop-shadow(0 12px 15px rgba(0,0,0,.28))}
+.foot-emblem img{width:100%;height:100%;display:block;object-fit:contain;clip-path:circle(46% at 50% 50%)}
+.foot-emblem::after{display:none}
+.foot-word{display:grid;gap:.3rem}
+.foot-word strong{font-family:var(--serif);font-size:clamp(1.25rem,2vw,1.7rem);font-weight:500;letter-spacing:.04em;color:var(--cream)}
+.foot-word small{font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:var(--saffron)}
+.foot-brand p{margin:0 0 1.45rem;max-width:38ch;font-size:.92rem}
+.socials{display:flex;gap:.6rem}
+.socials a{width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(247,241,228,.2);border-radius:50%;color:var(--cream);transition:.45s var(--ease)}
+.socials a:hover{background:var(--clay);border-color:var(--clay);transform:translateY(-3px)}
+.socials svg{width:17px;height:17px}
+footer h5{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--saffron);margin:0 0 1rem;font-weight:500;font-family:var(--sans)}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;font-size:.9rem}
+footer a{text-decoration:none;transition:color .3s}
+footer a:hover{color:var(--saffron)}
+.colophon{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:3.4rem;padding-top:1.6rem;border-top:1px solid rgba(247,241,228,.14);font-size:.72rem}
+.colophon a{border-bottom:1px solid rgba(247,241,228,.3)}
+
+/* ===================== continuous section flow ===================== */
+body{background:var(--green-deep)}
+.marquee{width:min(1240px,calc(100% - 2rem));margin:-28px auto 0;border:1px solid rgba(211,144,31,.3);border-radius:999px;
+  background:rgba(12,30,19,.94);box-shadow:0 22px 58px -32px rgba(0,0,0,.85);z-index:8;backdrop-filter:blur(12px)}
+.marquee::before{border-radius:999px 0 0 999px;background:linear-gradient(90deg,rgba(12,30,19,1),transparent)}
+.marquee::after{border-radius:0 999px 999px 0;background:linear-gradient(270deg,rgba(12,30,19,1),transparent)}
+.about,.kitchen,.sig,.feat,.loc{overflow:visible;isolation:isolate}
+.about{background:radial-gradient(70% 55% at 92% 20%,rgba(51,142,117,.08),transparent 70%),var(--green-2)}
+.kitchen{background:radial-gradient(58% 48% at 12% 22%,rgba(211,144,31,.045),transparent 72%),var(--green)}
+.sig{background:radial-gradient(60% 55% at 85% 86%,rgba(51,142,117,.07),transparent 70%),var(--green-2)}
+.feat{background:radial-gradient(58% 48% at 20% 12%,rgba(211,144,31,.05),transparent 72%),var(--green)}
+.loc{background:radial-gradient(70% 55% at 84% 92%,rgba(51,142,117,.08),transparent 72%),var(--green-deep);padding-top:clamp(3.6rem,7vw,6.5rem)}
+.about::before,.kitchen::before,.sig::before,.feat::before,.loc::before{content:"";position:absolute;left:0;right:0;top:-112px;height:114px;pointer-events:none;z-index:-1}
+.about::before{background:linear-gradient(180deg,var(--green),var(--green-2))}
+.kitchen::before{background:linear-gradient(180deg,var(--green-2),var(--green))}
+.sig::before{background:linear-gradient(180deg,var(--green),var(--green-2))}
+.feat::before{background:linear-gradient(180deg,var(--green-2),var(--green))}
+.loc::before{background:linear-gradient(180deg,var(--green),var(--green-deep))}
+.about>.wrap,.kitchen>.wrap,.sig>.wrap,.feat>.wrap,.loc>.wrap{position:relative}
+.feat-grid{box-shadow:0 32px 76px -46px rgba(0,0,0,.8)}
+.loc-panel{border:1px solid rgba(211,144,31,.26);box-shadow:0 46px 110px -48px rgba(0,0,0,.9),0 1px 0 rgba(255,255,255,.64) inset}
+footer{background:radial-gradient(60% 68% at 8% 88%,rgba(51,142,117,.08),transparent 72%),var(--green-deep);margin-top:-1px;padding-top:clamp(5rem,9vw,7rem)}
+footer::before{content:"";position:absolute;left:0;right:0;top:-96px;height:98px;background:linear-gradient(180deg,var(--green-deep),var(--green-deep));pointer-events:none}
+
+/* ===================== responsive ===================== */
+@media(max-width:1100px){
+  .hero-shell{grid-template-columns:minmax(0,1fr) minmax(350px,.78fr);gap:2.2rem}
+  .brand-caption{right:0}
+}
+@media(max-width:860px){
+  .hero{padding-top:7.5rem;padding-bottom:7rem}
+  .hero-shell{min-height:auto;display:flex;flex-direction:column;gap:2.8rem}
+  .hero-copy{width:min(700px,100%);text-align:center;margin-inline:auto}
+  .hero-kicker,.hero-cta{justify-content:center}
+  .hero-kicker>span:first-child::before{display:none}
+  .hero .lede{margin-inline:auto}
+  .hero-facts{margin-inline:auto;justify-content:center}
+  .hero-visual{position:relative;inset:auto;width:min(720px,94vw);height:440px;margin-inline:auto}
+  .brand-stage{position:absolute;inset:0;width:auto}
+  .wheel-color{width:min(620px,84vw);right:-12%;bottom:-37%}
+  .wheel-gold{width:min(410px,56vw);right:37%;top:1%}
+  .wheel-caption{right:34%;bottom:7%}
+  .hero-arch{height:54px}
+}
+@media(max-width:1000px){
+  .pillars,.feat-grid{grid-template-columns:repeat(2,1fr)}
+  .sig-grid{grid-template-columns:repeat(3,1fr)}
+  .about-grid,.loc-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  nav.links{position:fixed;inset:0 0 auto 0;background:var(--green);flex-direction:column;padding:6rem 2rem 2.4rem;gap:1.3rem;
+    transform:translateY(-102%);transition:transform .6s var(--ease);box-shadow:0 20px 40px -20px rgba(0,0,0,.5);z-index:-1}
+  nav.links.open{transform:translateY(0)}
+  nav.links a{font-size:1rem}
+  nav.links .nav-cta-mobile{display:inline-flex;margin-top:.4rem}
+  .burger{display:block}
+  .nav-cta{display:none}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+/* Nav bar itself gets tight below ~460px — the language switch, brand
+   subtitle and burger were fighting for the same row. Trim padding and
+   drop the subtitle rather than let the burger button run off-screen. */
+@media(max-width:460px){
+  header.nav{gap:.6rem;padding-inline:.85rem}
+  .brand{gap:.4rem}
+  .brand b{font-size:1.15rem}
+  .brand i{display:none}
+  .brand .m{width:34px;height:34px}
+  .nav-tools{gap:.4rem}
+  .lang{display:none}
+  .lang-select{display:block}
+  .burger{padding:.44rem .64rem}
+}
+@media(max-width:640px){
+  .hero{padding-top:6.7rem;padding-bottom:6rem}
+  .hero-shell{width:min(92vw,520px);gap:2rem}
+  h1.title{font-size:clamp(4rem,22vw,5.8rem)}
+  h1.title em{margin-left:0}
+  .hero .sub{letter-spacing:.2em;line-height:1.65;margin-top:2rem}
+  .hero .lede{font-size:1.08rem}
+  .hero-cta .btn{width:100%}
+  .hero-facts{width:100%;justify-content:stretch}
+  .hero-facts>span{flex:1;padding:.9rem .55rem}
+  .hero-facts>span:first-child{padding-left:.55rem}
+  .hero-facts b{font-size:1rem}.hero-facts small{font-size:.49rem;letter-spacing:.1em}
+  .hero-visual{width:min(380px,92vw);height:340px}
+  .wheel-color{width:350px;right:-30%;bottom:-24%}
+  .wheel-gold{width:225px;right:34%;top:0}
+  .wheel-trace{opacity:.7}
+  .wheel-caption{display:none}
+  .hero-logo-source{width:126%}
+  .stage-number{display:none}
+  .depth-grid{width:210%;bottom:-36%;opacity:.34}
+  .brand-caption{left:50%;right:auto;bottom:12%;transform:translateX(-50%);white-space:nowrap;animation:none}
+  .marquee{margin-top:-20px;width:calc(100% - 1rem)}
+  .foot-sign{justify-content:center}
+  .about::before,.kitchen::before,.sig::before,.feat::before,.loc::before{top:-76px;height:78px}
+  .loc-panel{border-radius:20px;padding:1.35rem}
+  .sig-grid{grid-template-columns:repeat(2,1fr)}
+  .sig-grid .dish:nth-child(5){display:none}
+  .feat-grid,.stats,.pillars,.foot-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .js .rv{opacity:1;transform:none}
+  .js .sw>i{transform:none}
+  .crest{animation:none}
+  .brand-stage{transform:none!important}
+  .hero-logo-source{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro-logo"><img src="assets/brand/guzar-full-transparent.png" alt="" width="1280" height="1280"></div>
+  <span class="cap">Guzar Garden</span>
+</div>
+
+<!-- ===================== nav ===================== -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top">
+    <span class="m brand-mark"><img src="assets/brand/guzar-mark-transparent.png" alt="" width="364" height="364"></span>
+    <span>
+      <b>GUZAR</b>
+      <i data-pl="Garden · Warszawa" data-en="Garden · Warsaw" data-ru="Garden · Варшава" data-uz="Garden · Varshava">Garden · Warszawa</i>
+    </span>
+  </a>
+  <nav class="links" id="links">
+    <a href="#o-nas" data-pl="O nas" data-en="About" data-ru="О нас" data-uz="Biz haqimizda">O nas</a>
+    <a href="#kuchnia" data-pl="Kuchnia" data-en="The cuisine" data-ru="Кухня" data-uz="Taomlarimiz">Kuchnia</a>
+    <a href="menu.html" data-pl="Karta dań" data-en="Menu" data-ru="Меню" data-uz="Menyu">Karta dań</a>
+    <a href="#miejsce" data-pl="Miejsce" data-en="The venue" data-ru="Место" data-uz="Makon">Miejsce</a>
+    <a href="#kontakt" data-pl="Kontakt" data-en="Contact" data-ru="Контакты" data-uz="Aloqa">Kontakt</a>
+    <a class="btn nav-cta-mobile" href="tel:+48570088888"><span data-pl="Rezerwacja" data-en="Book a table" data-ru="Бронь" data-uz="Bron qilish">Rezerwacja</span></a>
+  </nav>
+  <div class="nav-tools">
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" class="on" data-lang="pl">PL</button>
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="ru">RU</button>
+      <button type="button" data-lang="uz">UZ</button>
+    </div>
+    <select class="lang-select" id="langSelect" aria-label="Language">
+      <option value="pl">PL</option>
+      <option value="en">EN</option>
+      <option value="ru">RU</option>
+      <option value="uz">UZ</option>
+    </select>
+    <a class="btn solid nav-cta" href="tel:+48570088888"><span data-pl="Rezerwacja" data-en="Book a table" data-ru="Бронь" data-uz="Bron qilish">Rezerwacja</span></a>
+    <button class="burger" id="burger" aria-label="Menu" aria-controls="links" aria-expanded="false">Menu</button>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<!-- ===================== hero ===================== -->
+<section class="hero" id="top">
+  <div class="hero-depth" aria-hidden="true">
+    <span class="depth-grid"></span>
+    <span class="depth-beam beam-one"></span><span class="depth-beam beam-two"></span>
+    <span class="depth-arc arc-one"></span><span class="depth-arc arc-two"></span>
+    <span class="depth-dust dust-one"></span><span class="depth-dust dust-two"></span><span class="depth-dust dust-three"></span>
+  </div>
+  <div class="atmo" aria-hidden="true">
+    <div class="atmo-layer atmo-1" data-depth=".3"></div>
+    <div class="atmo-layer atmo-2" data-depth=".55"></div>
+    <div class="atmo-layer atmo-3" data-depth=".85"></div>
+    <div class="atmo-layer atmo-4" data-depth=".7"></div>
+  </div>
+  <div class="hero-shell">
+    <div class="hero-copy">
+      <div class="hero-kicker rv">
+        <span data-pl="Warszawa · Park Skaryszewski" data-en="Warsaw · Skaryszewski Park" data-ru="Варшава · парк Скарышевского" data-uz="Varshava · Skaryszewski bog'i">Warszawa · Park Skaryszewski</span>
+        <span class="status" id="status"><span class="dot" id="statusDot"></span><span id="statusTxt">—</span></span>
+      </div>
+      <h1 class="title" data-split>GUZAR <em>Garden</em></h1>
+      <p class="sub rv" style="--d:.16s" data-pl="Restauracja uzbecka &amp; grill halal · Praga-Południe" data-en="Uzbek restaurant &amp; halal grill · Praga-Południe" data-ru="Узбекский ресторан и халяльный гриль · Прага-Полудне" data-uz="O'zbek restorani va halol mangal · Praga-Południe">Restauracja uzbecka &amp; grill halal · Praga-Południe</p>
+      <p class="lede rv" style="--d:.24s" data-pl="Plow z kazana, manty lepione ręcznie i samsa prosto z pieca tandoor — u bram Parku Skaryszewskiego." data-en="Kazan plov, hand-folded manti and samsa straight from the tandoor — at the gates of Skaryszewski Park." data-ru="Плов из казана, манты ручной лепки и самса прямо из тандыра — у ворот парка Скарышевского." data-uz="Qozonda pishirilgan palov, qo'lda tayyorlangan manti va tandirdan issiq somsa — Skaryszewski bog'i darvozasida.">Plow z kazana, manty lepione ręcznie i samsa prosto z pieca tandoor — u bram Parku Skaryszewskiego.</p>
+      <div class="hero-cta rv" style="--d:.32s">
+        <a class="btn light" href="menu.html"><span data-pl="Zobacz menu" data-en="See the menu" data-ru="Смотреть меню" data-uz="Menyuni ko'rish">Zobacz menu</span></a>
+        <a class="btn outline" href="tel:+48570088888"><span data-pl="Zadzwoń" data-en="Call us" data-ru="Позвонить" data-uz="Qo'ng'iroq qilish">Zadzwoń</span></a>
+        <a class="btn outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=Guzar+Garden+aleja+Zieleniecka+6%2F8+03-727+Warszawa" target="_blank" rel="noopener"><span data-pl="Wyznacz trasę" data-en="Get directions" data-ru="Проложить маршрут" data-uz="Yo'nalishni ko'rsatish">Wyznacz trasę</span></a>
+      </div>
+      <div class="hero-facts rv" style="--d:.4s">
+        <span><b>100%</b><small>Halal</small></span>
+        <span><b>9:00–24:00</b><small data-pl="Codziennie" data-en="Every day" data-ru="Ежедневно" data-uz="Har kuni">Codziennie</small></span>
+        <span><b>4.7</b><small data-pl="Ocena Google" data-en="Google rating" data-ru="Рейтинг Google" data-uz="Google reytingi">Ocena Google</small></span>
+      </div>
+    </div>
+    <div class="hero-visual rv" style="--d:.12s">
+      <div class="brand-stage" id="brandStage">
+        <span class="wheel-glow" aria-hidden="true"></span>
+        <span class="wheel-trace trace-one" aria-hidden="true"></span>
+        <span class="wheel-trace trace-two" aria-hidden="true"></span>
+        <span class="logo-wheel wheel-gold" aria-hidden="true"></span>
+        <span class="logo-wheel wheel-color" aria-hidden="true"><img src="assets/brand/guzar-mark-transparent.png" alt="" width="364" height="364"></span>
+        <span class="wheel-star star-one" aria-hidden="true"></span>
+        <span class="wheel-star star-two" aria-hidden="true"></span>
+        <span class="wheel-caption" data-pl="Jedwabny Szlak · Warszawa" data-en="Silk Road · Warsaw" data-ru="Шёлковый путь · Варшава" data-uz="Ipak yo'li · Varshava">Jedwabny Szlak · Warszawa</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-arch" aria-hidden="true"></div>
+</section>
+
+<!-- ===================== marquee ===================== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Plow</span><span>Manty</span><span>Samsa</span><span>Lagman</span><span>Szaszłyk</span><span>Tandoor</span><span>Kazan</span><span>Halal</span>
+    <span>Plow</span><span>Manty</span><span>Samsa</span><span>Lagman</span><span>Szaszłyk</span><span>Tandoor</span><span>Kazan</span><span>Halal</span>
+  </div>
+</div>
+
+<!-- ===================== about ===================== -->
+<section class="sec about" id="o-nas">
+  <div class="atmo" aria-hidden="true"><div class="atmo-layer atmo-static"></div></div>
+  <div class="wrap about-grid">
+    <div>
+      <p class="eyebrow rv" data-pl="Nasza historia" data-en="Our story" data-ru="Наша история" data-uz="Bizning tariximiz">Nasza historia</p>
+      <h2 class="rv" style="--d:.06s" data-pl="Uzbecka gościnność w sercu Warszawy" data-en="Uzbek hospitality in the heart of Warsaw" data-ru="Узбекское гостеприимство в сердце Варшавы" data-uz="Varshava markazidagi o'zbek mehmondo'stligi">Uzbecka gościnność w sercu Warszawy</h2>
+      <svg class="orn rv" style="--d:.12s" viewBox="0 0 120 22" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <path d="M0 11h40M80 11h40"/><path d="M60 3l6 8-6 8-6-8z"/><circle cx="48" cy="11" r="3"/><circle cx="72" cy="11" r="3"/>
+      </svg>
+      <p class="big-first rv" style="--d:.18s" data-pl="Guzar to po uzbecku miejsce spotkań — plac, na którym zbiega się cała dzielnica. Guzar Garden przenosi ten zwyczaj do Warszawy: duża sala, ogród przy Parku Skaryszewskim, kominek na chłodniejsze wieczory i stoły, przy których siada się na dłużej." data-en="In Uzbek, a guzar is a meeting place — the square where a whole neighbourhood comes together. Guzar Garden brings that habit to Warsaw: a big dining room, a garden by Skaryszewski Park, a fireplace for colder evenings, and tables you settle into for hours." data-ru="Гузар по-узбекски — место встреч, площадь, где сходится весь квартал. Guzar Garden переносит этот обычай в Варшаву: большой зал, сад у парка Скарышевского, камин для прохладных вечеров и столы, за которыми задерживаются надолго." data-uz="O'zbek tilida «guzar» — uchrashuv joyi, butun mahalla yig'iladigan maydon. Guzar Garden bu an'anani Varshavaga olib keladi: katta zal, Skaryszewski bog'i yonidagi hovli, sovuq kechalar uchun kamin va soatlab o'tirsa bo'ladigan stollar.">Guzar to po uzbecku miejsce spotkań — plac, na którym zbiega się cała dzielnica. Guzar Garden przenosi ten zwyczaj do Warszawy: duża sala, ogród przy Parku Skaryszewskim, kominek na chłodniejsze wieczory i stoły, przy których siada się na dłużej.</p>
+      <p class="rv" style="--d:.24s" data-pl="Gotujemy tak, jak w Samarkandzie i Bucharze: plow dusi się w ciężkim kazanie, samsa piecze się na ściankach tandoora, makaron do lagmanu ciągnie się ręcznie, a mięso — w całości halal — trafia prosto na węgiel. Herbatę podajemy w czajniku, bo posiłek zaczyna się i kończy przy herbacie." data-en="We cook the way Samarkand and Bukhara do: plov simmers in a heavy kazan, samsa bakes on the tandoor wall, lagman noodles are pulled by hand, and the meat — all halal — goes straight over charcoal. Tea arrives in a pot, because a meal begins and ends with tea." data-ru="Мы готовим так, как готовят в Самарканде и Бухаре: плов томится в тяжёлом казане, самса печётся на стенках тандыра, лапшу для лагмана тянут вручную, а мясо — полностью халяль — идёт прямо на угли. Чай подаём в чайнике, ведь трапеза начинается и заканчивается чаем." data-uz="Biz Samarqand va Buxoroda pishirilganidek pishiramiz: palov og'ir qozonda dimlanadi, somsa tandir devoriga yopishtirib pishiriladi, lag'mon xamiri qo'lda cho'ziladi, go'sht esa — to'liq halol — to'g'ridan-to'g'ri cho'g'ga tushadi. Choy choynakda beriladi, chunki ovqat choy bilan boshlanadi va tugaydi.">Gotujemy tak, jak w Samarkandzie i Bucharze: plow dusi się w ciężkim kazanie, samsa piecze się na ściankach tandoora, makaron do lagmanu ciągnie się ręcznie, a mięso — w całości halal — trafia prosto na węgiel. Herbatę podajemy w czajniku, bo posiłek zaczyna się i kończy przy herbacie.</p>
+    </div>
+    <div class="stats rv" style="--d:.2s">
+      <div class="stat"><b data-count="4.7">4.7</b><small data-pl="Ocena Google" data-en="Google rating" data-ru="Оценка Google" data-uz="Google reytingi">Ocena Google</small></div>
+      <div class="stat"><b data-count="2900" data-suffix="+">2900+</b><small data-pl="Opinii gości" data-en="Guest reviews" data-ru="Отзывов гостей" data-uz="Mehmon sharhlari">Opinii gości</small></div>
+      <div class="stat"><b data-count="100" data-suffix="%">100%</b><small>Halal</small></div>
+      <div class="stat"><b class="small">9:00 – 24:00</b><small data-pl="Codziennie" data-en="Every day" data-ru="Ежедневно" data-uz="Har kuni">Codziennie</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== what uzbek food is ===================== -->
+<section class="sec kitchen" id="kuchnia">
+  <div class="atmo" aria-hidden="true"><div class="atmo-layer atmo-static"></div></div>
+  <div class="wrap">
+    <div class="kitchen-head">
+      <p class="eyebrow rv" data-pl="Kuchnia uzbecka" data-en="Uzbek cuisine" data-ru="Узбекская кухня" data-uz="O'zbek oshxonasi">Kuchnia uzbecka</p>
+      <h2 class="rv" style="--d:.06s" data-pl="Czym jest kuchnia uzbecka" data-en="What Uzbek cooking is" data-ru="Что такое узбекская кухня" data-uz="O'zbek oshxonasi nima">Czym jest kuchnia uzbecka</h2>
+      <svg class="orn center rv" style="--d:.12s" viewBox="0 0 120 22" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <path d="M0 11h40M80 11h40"/><path d="M60 3l6 8-6 8-6-8z"/><circle cx="48" cy="11" r="3"/><circle cx="72" cy="11" r="3"/>
+      </svg>
+      <p class="lede rv" style="--d:.18s" data-pl="Uzbekistan leży na skrzyżowaniu Jedwabnego Szlaku — i takim samym skrzyżowaniem jest jego kuchnia. Perska cierpliwość, turecki ogień, chińskie ciągnione ciasto i step, który nauczył gotować z niewielu składników, ale długo. Je się powoli, z jednego stołu i nigdy w pojedynkę." data-en="Uzbekistan sits at the crossroads of the Silk Road, and its cooking is a crossroads too. Persian patience, Turkic fire, Chinese hand-pulled dough, and a steppe that taught people to cook with few ingredients but plenty of time. You eat slowly, from one shared table, and never alone." data-ru="Узбекистан лежит на перекрёстке Великого шёлкового пути — и его кухня такой же перекрёсток. Персидское терпение, тюркский огонь, китайское тянутое тесто и степь, научившая готовить из немногого, но долго. Едят медленно, за общим столом и никогда в одиночку." data-uz="O'zbekiston Buyuk ipak yo'lining chorrahasida joylashgan — va uning oshxonasi ham xuddi shunday chorraha. Fors sabri, turkiy olov, xitoycha cho'zma xamir va odamlarni oz mahsulotdan, lekin uzoq vaqt davomida pishirishga o'rgatgan dasht. Bu yerda sekin, bir dasturxon atrofida va hech qachon yolg'iz ovqatlanmaydilar.">Uzbekistan leży na skrzyżowaniu Jedwabnego Szlaku — i takim samym skrzyżowaniem jest jego kuchnia. Perska cierpliwość, turecki ogień, chińskie ciągnione ciasto i step, który nauczył gotować z niewielu składników, ale długo. Je się powoli, z jednego stołu i nigdy w pojedynkę.</p>
+    </div>
+
+    <div class="pillars">
+      <article class="pillar rv">
+        <span class="num">01</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M8 20h32a16 16 0 0 1-16 16A16 16 0 0 1 8 20Z"/><path d="M4 20h40M14 36l-3 6M34 36l3 6"/><path d="M18 12c0-3 3-3 3-6M27 12c0-3 3-3 3-6"/></svg>
+        <h3 data-pl="Kazan" data-en="Kazan" data-ru="Казан" data-uz="Qozon">Kazan</h3>
+        <span class="uz" data-pl="Żeliwny kocioł" data-en="The cast-iron cauldron" data-ru="Чугунный котёл" data-uz="Cho'yan qozon">Żeliwny kocioł</span>
+        <p data-pl="Ciężki kocioł, w którym wszystko dzieje się powoli: ryż pije tłuszcz i przyprawy, mięso mięknie godzinami. Nic się tu nie śpieszy." data-en="A heavy pot where everything happens slowly: rice drinks up the fat and the spice, meat softens for hours. Nothing here is rushed." data-ru="Тяжёлый котёл, где всё происходит медленно: рис впитывает жир и специи, мясо размягчается часами. Здесь ничего не торопят." data-uz="Og'ir qozon, unda hamma narsa asta-sekin sodir bo'ladi: guruch yog' va ziravorlarni shimib oladi, go'sht soatlab yumshaydi. Bu yerda hech narsa shoshilmaydi.">Ciężki kocioł, w którym wszystko dzieje się powoli: ryż pije tłuszcz i przyprawy, mięso mięknie godzinami. Nic się tu nie śpieszy.</p>
+      </article>
+
+      <article class="pillar rv" style="--d:.08s">
+        <span class="num">02</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M14 42V22a10 10 0 0 1 20 0v20Z"/><path d="M10 42h28M18 22h12"/><path d="M24 16c0-4-4-5-4-9M31 16c0-3-3-4-3-7"/></svg>
+        <h3 data-pl="Tandoor" data-en="Tandoor" data-ru="Тандыр" data-uz="Tandir">Tandoor</h3>
+        <span class="uz" data-pl="Gliniany piec" data-en="The clay oven" data-ru="Глиняная печь" data-uz="Loy pech">Gliniany piec</span>
+        <p data-pl="Rozgrzana glina, do której przykleja się ciasto. Chleb i samsa wychodzą z niej chrupiące z wierzchu i miękkie w środku." data-en="Searing clay walls that dough is pressed onto. Bread and samsa come out crisp outside and soft within." data-ru="Раскалённая глина, к которой приклеивают тесто. Лепёшки и самса выходят хрустящими снаружи и мягкими внутри." data-uz="Xamir yopishtiriladigan qizigan loy devor. Non va somsa tashqi tomondan qarsildoq, ichi esa yumshoq bo'lib chiqadi.">Rozgrzana glina, do której przykleja się ciasto. Chleb i samsa wychodzą z niej chrupiące z wierzchu i miękkie w środku.</p>
+      </article>
+
+      <article class="pillar rv" style="--d:.16s">
+        <span class="num">03</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M6 16h36M6 26h36M6 36h36"/><circle cx="16" cy="16" r="2.5"/><circle cx="28" cy="16" r="2.5"/><circle cx="20" cy="26" r="2.5"/><circle cx="32" cy="26" r="2.5"/><circle cx="16" cy="36" r="2.5"/><circle cx="28" cy="36" r="2.5"/></svg>
+        <h3 data-pl="Ogień" data-en="Fire" data-ru="Огонь" data-uz="Olov">Ogień</h3>
+        <span class="uz" data-pl="Szaszłyk z węgla" data-en="Charcoal skewers" data-ru="Шашлык на углях" data-uz="Ko'mirda shashlik">Szaszłyk z węgla</span>
+        <p data-pl="Mięso marynowane w cebuli i kminie, nad samym węglem, obracane ręcznie. Prosty gest, którego nie da się przyspieszyć." data-en="Meat marinated in onion and cumin, held right over the coals and turned by hand. A simple gesture you cannot hurry." data-ru="Мясо, маринованное в луке и зире, прямо над углями, переворачивают вручную. Простой жест, который нельзя ускорить." data-uz="Piyoz va zira bilan marinadlangan go'sht, to'g'ridan-to'g'ri cho'g' ustida, qo'lda aylantiriladi. Shoshiltirib bo'lmaydigan oddiy harakat.">Mięso marynowane w cebuli i kminie, nad samym węglem, obracane ręcznie. Prosty gest, którego nie da się przyspieszyć.</p>
+      </article>
+
+      <article class="pillar rv" style="--d:.24s">
+        <span class="num">04</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round"><circle cx="24" cy="24" r="15"/><circle cx="24" cy="24" r="7"/><path d="M24 9v6M24 33v6M9 24h6M33 24h6M13.4 13.4l4.3 4.3M30.3 30.3l4.3 4.3M34.6 13.4l-4.3 4.3M17.7 30.3l-4.3 4.3"/></svg>
+        <h3 data-pl="Dastarchan" data-en="Dastarkhan" data-ru="Дастархан" data-uz="Dasturxon">Dastarchan</h3>
+        <span class="uz" data-pl="Wspólny stół" data-en="The shared table" data-ru="Общий стол" data-uz="Umumiy dasturxon">Wspólny stół</span>
+        <p data-pl="Najpierw herbata, potem chleb łamany w dłoniach, a dania stawia się na środku — dla wszystkich naraz. Gość siada tam, skąd widać cały stół." data-en="Tea first, then bread broken by hand, and the dishes set in the middle — for everyone at once. The guest is seated where the whole table is in view." data-ru="Сначала чай, потом хлеб, разломленный руками, а блюда ставят в середину — сразу для всех. Гостя сажают там, откуда виден весь стол." data-uz="Avval choy, keyin qo'lda sindirilgan non, taomlar esa dasturxon o'rtasiga — hamma uchun bir vaqtda qo'yiladi. Mehmon butun dasturxon ko'rinadigan joyga o'tqaziladi.">Najpierw herbata, potem chleb łamany w dłoniach, a dania stawia się na środku — dla wszystkich naraz. Gość siada tam, skąd widać cały stół.</p>
+      </article>
+    </div>
+
+    <div class="quote rv">
+      <p data-pl="„Gościa nie pyta się, czy jest głodny. Stawia się jedzenie na stole.”" data-en="&ldquo;You don't ask a guest whether they're hungry. You put food on the table.&rdquo;" data-ru="«Гостя не спрашивают, голоден ли он. Еду просто ставят на стол.»" data-uz="«Mehmondan och-to'qligini so'ramaydilar. Dasturxonga taom qo'yiladi.»">„Gościa nie pyta się, czy jest głodny. Stawia się jedzenie na stole.”</p>
+      <span data-pl="Uzbeckie przysłowie" data-en="Uzbek saying" data-ru="Узбекская поговорка" data-uz="O'zbek maqoli">Uzbeckie przysłowie</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== signature dishes ===================== -->
+<section class="sec sig" id="dania">
+  <div class="atmo" aria-hidden="true"><div class="atmo-layer atmo-static"></div></div>
+  <div class="wrap">
+    <div class="sig-head">
+      <div>
+        <p class="eyebrow rv" data-pl="Z naszej karty" data-en="From the menu" data-ru="Из нашего меню" data-uz="Bizning menyudan">Z naszej karty</p>
+        <h2 class="rv" style="--d:.06s" data-pl="Dania, po które się wraca" data-en="The dishes people come back for" data-ru="Блюда, ради которых возвращаются" data-uz="Odamlar qayta-qayta keladigan taomlar">Dania, po które się wraca</h2>
+      </div>
+      <a class="btn outline rv" style="--d:.12s" href="menu.html"><span data-pl="Cała karta" data-en="Full menu" data-ru="Всё меню" data-uz="To'liq menyu">Cała karta</span></a>
+    </div>
+    <div class="sig-grid" id="sigGrid"></div>
+  </div>
+</section>
+
+<!-- ===================== venue ===================== -->
+<section class="sec feat">
+  <div class="atmo" aria-hidden="true"><div class="atmo-layer atmo-static"></div></div>
+  <div class="wrap">
+    <p class="eyebrow rv" data-pl="Miejsce" data-en="The venue" data-ru="Место" data-uz="Makon">Miejsce</p>
+    <h2 class="rv" style="--d:.06s" data-pl="Sala, ogród i miejsce na wielkie stoły" data-en="A hall, a garden and room for long tables" data-ru="Зал, сад и место для больших столов" data-uz="Zal, hovli va katta stollar uchun joy">Sala, ogród i miejsce na wielkie stoły</h2>
+    <div class="feat-grid rv" style="--d:.12s">
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c4 4 7 6 7 10a7 7 0 1 1-14 0c0-4 3-6 7-10Z"/></svg><b data-pl="Ogród" data-en="Garden" data-ru="Сад" data-uz="Hovli">Ogród</b><small data-pl="Stoliki na zewnątrz przy Parku Skaryszewskim" data-en="Outdoor tables beside Skaryszewski Park" data-ru="Столики на улице у парка Скарышевского" data-uz="Skaryszewski bog'i yonida ochiq havoda stollar">Stoliki na zewnątrz przy Parku Skaryszewskim</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg><b data-pl="Kominek" data-en="Fireplace" data-ru="Камин" data-uz="Kamin">Kominek</b><small data-pl="Ciepła sala na jesienne i zimowe wieczory" data-en="A warm room for autumn and winter evenings" data-ru="Тёплый зал для осенних и зимних вечеров" data-uz="Kuz va qish kechalari uchun issiq zal">Ciepła sala na jesienne i zimowe wieczory</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg><b data-pl="Muzyka na żywo" data-en="Live music" data-ru="Живая музыка" data-uz="Jonli musiqa">Muzyka na żywo</b><small data-pl="Wieczory z muzyką w wybrane dni" data-en="Music nights on selected days" data-ru="Музыкальные вечера по отдельным дням" data-uz="Belgilangan kunlarda musiqali kechalar">Wieczory z muzyką w wybrane dni</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg><b data-pl="Imprezy i wesela" data-en="Events &amp; weddings" data-ru="Банкеты и свадьбы" data-uz="Tadbirlar va to'ylar">Imprezy i wesela</b><small data-pl="Sala na przyjęcia i duże grupy" data-en="Private room for parties and large groups" data-ru="Зал для торжеств и больших компаний" data-uz="Ziyofatlar va katta guruhlar uchun zal">Sala na przyjęcia i duże grupy</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/><path d="M2 9a15 15 0 0 1 20 0"/></svg><b>Wi-Fi</b><small data-pl="Darmowy internet dla gości" data-en="Free internet for guests" data-ru="Бесплатный интернет для гостей" data-uz="Mehmonlar uchun bepul internet">Darmowy internet dla gości</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9.5 17V7h3a3 3 0 0 1 0 6h-3"/></svg><b data-pl="Parking" data-en="Parking" data-ru="Парковка" data-uz="Avtoturargoh">Parking</b><small data-pl="Płatny parking w pobliżu restauracji" data-en="Paid parking is available near the restaurant" data-ru="Платная парковка рядом с рестораном" data-uz="Restoran yaqinida pullik avtoturargoh mavjud">Płatny parking w pobliżu restauracji</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="4" r="2"/><path d="M10 8v6h6l3 6M10 14l-3 6"/></svg><b data-pl="Dostępność" data-en="Accessible" data-ru="Доступность" data-uz="Qulay kirish">Dostępność</b><small data-pl="Wejście i toaleta bez barier" data-en="Step-free entrance and restroom" data-ru="Вход и туалет без барьеров" data-uz="To'siqsiz kirish va hojatxona">Wejście i toaleta bez barier</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8h11l3 5v6H5z"/><circle cx="8.5" cy="19" r="1.8"/><circle cx="16" cy="19" r="1.8"/><path d="M9 4c0 1.5-1.5 1.5-1.5 3M13 4c0 1.5-1.5 1.5-1.5 3"/></svg><b data-pl="Na wynos" data-en="Takeaway" data-ru="На вынос" data-uz="Olib ketish">Na wynos</b><small data-pl="Samsa, plow i szaszłyki pakowane na drogę" data-en="Samsa, plov and skewers packed to go" data-ru="Самса, плов и шашлыки с собой" data-uz="Somsa, palov va shashlik yo'l uchun qadoqlanadi">Samsa, plow i szaszłyki pakowane na drogę</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== location ===================== -->
+<section class="sec loc" id="miejsce">
+  <div class="atmo" aria-hidden="true"><div class="atmo-layer atmo-static"></div></div>
+  <div class="wrap">
+  <div class="loc-panel">
+  <div class="loc-grid">
+    <div class="rv">
+      <p class="eyebrow" data-pl="Jak trafić" data-en="Find us" data-ru="Как добраться" data-uz="Bizni toping">Jak trafić</p>
+      <h2>Aleja Zieleniecka 6/8</h2>
+      <svg class="orn" viewBox="0 0 120 22" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <path d="M0 11h40M80 11h40"/><path d="M60 3l6 8-6 8-6-8z"/><circle cx="48" cy="11" r="3"/><circle cx="72" cy="11" r="3"/>
+      </svg>
+
+      <div class="info-block">
+        <h4 data-pl="Adres" data-en="Address" data-ru="Адрес" data-uz="Manzil">Adres</h4>
+        <p>al. Zieleniecka 6/8<br>03-727 Warszawa, Praga-Południe</p>
+        <small data-pl="Przy północnym narożniku Parku Skaryszewskiego, kilka minut od Ronda Waszyngtona." data-en="At the northern corner of Skaryszewski Park, a few minutes from Rondo Waszyngtona." data-ru="У северного угла парка Скарышевского, в нескольких минутах от Rondo Waszyngtona." data-uz="Skaryszewski bog'ining shimoliy burchagida, Rondo Waszyngtona'dan bir necha daqiqa.">Przy północnym narożniku Parku Skaryszewskiego, kilka minut od Ronda Waszyngtona.</small>
+      </div>
+
+      <div class="info-block">
+        <h4 data-pl="Godziny otwarcia" data-en="Opening hours" data-ru="Часы работы" data-uz="Ish vaqti">Godziny otwarcia</h4>
+        <ul class="hours" id="hours"></ul>
+        <small data-pl="Śniadania, obiady i kolacje. Kuchnia pracuje do późna." data-en="Breakfast, lunch and dinner. The kitchen runs late." data-ru="Завтраки, обеды и ужины. Кухня работает допоздна." data-uz="Nonushta, tushlik va kechki ovqat. Oshxona kech soatlargacha ishlaydi.">Śniadania, obiady i kolacje. Kuchnia pracuje do późna.</small>
+      </div>
+
+      <div class="info-block">
+        <h4 data-pl="Dojazd" data-en="Getting here" data-ru="Как доехать" data-uz="Qanday yetib borish">Dojazd</h4>
+        <p data-pl="Metro M2 Stadion Narodowy — 900 m" data-en="Metro M2 Stadion Narodowy — 900 m" data-ru="Метро M2 Stadion Narodowy — 900 м" data-uz="Metro M2 Stadion Narodowy — 900 m">Metro M2 Stadion Narodowy — 900 m</p>
+        <small data-pl="Tramwaje i autobusy: Rondo Waszyngtona." data-en="Trams and buses: Rondo Waszyngtona." data-ru="Трамваи и автобусы: Rondo Waszyngtona." data-uz="Tramvay va avtobuslar: Rondo Waszyngtona.">Tramwaje i autobusy: Rondo Waszyngtona.</small>
+      </div>
+
+      <div class="info-block">
+        <h4 data-pl="Parking" data-en="Parking" data-ru="Парковка" data-uz="Avtoturargoh">Parking</h4>
+        <p data-pl="Płatny parking w pobliżu restauracji" data-en="Paid parking is available near the restaurant" data-ru="Платная парковка рядом с рестораном" data-uz="Restoran yaqinida pullik avtoturargoh mavjud">Płatny parking w pobliżu restauracji</p>
+        <small data-pl="Miejsca parkingowe w okolicy — przyjazd samochodem jest wygodny." data-en="Parking spaces nearby — arriving by car is easy." data-ru="Парковочные места поблизости — удобно приезжать на машине." data-uz="Yaqin atrofda avtoturargoh joylari bor — mashinada kelish qulay.">Miejsca parkingowe w okolicy — przyjazd samochodem jest wygodny.</small>
+      </div>
+
+      <div class="info-block">
+        <h4 data-pl="Rezerwacje" data-en="Reservations" data-ru="Бронирование" data-uz="Bron qilish">Rezerwacje</h4>
+        <p><a href="tel:+48570088888">+48 570 088 888</a></p>
+        <small data-pl="Rezerwacje telefoniczne — także dla dużych grup." data-en="By phone — large groups welcome." data-ru="Бронирование по телефону — в том числе для больших компаний." data-uz="Telefon orqali — katta guruhlar uchun ham.">Rezerwacje telefoniczne — także dla dużych grup.</small>
+      </div>
+    </div>
+
+    <div class="rv" style="--d:.1s">
+      <div class="mapcard">
+        <div class="map-frame">
+          <div class="map-badge">
+            <b>Guzar Garden</b>
+            <small data-pl="Restauracja uzbecka &amp; grill halal" data-en="Uzbek restaurant &amp; halal grill" data-ru="Узбекский ресторан и халяльный гриль" data-uz="O'zbek restorani va halol mangal">Restauracja uzbecka &amp; grill halal</small>
+          </div>
+          <iframe
+            id="gmap"
+            title="Guzar Garden — Google Maps"
+            src="https://maps.google.com/maps?q=Guzar%20Garden%2C%20aleja%20Zieleniecka%206%2F8%2C%2003-727%20Warszawa&amp;z=16&amp;hl=pl&amp;output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+        <div class="map-bar">
+          <span class="coords">52.2441° N · 21.0497° E</span>
+          <span class="acts">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Guzar+Garden+aleja+Zieleniecka+6%2F8+03-727+Warszawa" target="_blank" rel="noopener" data-pl="Wyznacz trasę" data-en="Get directions" data-ru="Проложить маршрут" data-uz="Yo'nalishni ko'rsatish">Wyznacz trasę</a>
+            <a href="https://maps.app.goo.gl/3WL53ikiXv6bY1CJ7" target="_blank" rel="noopener" data-pl="Otwórz w Mapach Google" data-en="Open in Google Maps" data-ru="Открыть в Google Картах" data-uz="Google Xaritada ochish">Otwórz w Mapach Google</a>
+          </span>
+        </div>
+        <p class="map-hint" data-pl="Najedź na mapę, aby zobaczyć ją w pełnych kolorach." data-en="Hover the map to see it in full colour." data-ru="Наведите курсор на карту, чтобы увидеть её в полном цвете." data-uz="To'liq rangda ko'rish uchun xaritaga sichqonchani olib boring.">Najedź na mapę, aby zobaczyć ją w pełnych kolorach.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</section>
+
+<!-- ===================== footer ===================== -->
+<footer id="kontakt">
+  <div class="atmo" aria-hidden="true"><div class="atmo-layer atmo-static"></div></div>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="foot-sign" aria-label="Guzar Garden — est. 2024">
+          <span class="foot-emblem" aria-hidden="true"><img src="assets/brand/guzar-mark-transparent.png" alt="" width="364" height="364"></span>
+          <span class="foot-word"><strong>GUZAR GARDEN</strong><small>EST. 2024 · WARSAW</small></span>
+        </div>
+        <p data-pl="Restauracja uzbecka &amp; grill halal. Aleja Zieleniecka 6/8, Warszawa." data-en="Uzbek restaurant &amp; halal grill. Aleja Zieleniecka 6/8, Warsaw." data-ru="Узбекский ресторан и халяльный гриль. Aleja Zieleniecka 6/8, Варшава." data-uz="O'zbek restorani va halol mangal. Aleja Zieleniecka 6/8, Varshava.">Restauracja uzbecka &amp; grill halal. Aleja Zieleniecka 6/8, Warszawa.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/guzar_garden_restauracja/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.facebook.com/p/Guzar-Garden-Restauracja-Uzbecka-Grill-61579770369680/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.5-1.5H17V4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.6v3h2.7v8z"/></svg>
+          </a>
+          <a href="https://www.tripadvisor.com/Restaurant_Review-g274856-d34611526-Reviews-Guzar_Garden-Warsaw_Mazovia_Province_Central_Poland.html" target="_blank" rel="noopener noreferrer" aria-label="TripAdvisor">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8.2" cy="13.2" r="3.4"/><circle cx="15.8" cy="13.2" r="3.4"/><path d="M8.2 13.2a3.6 3.6 0 0 1 7.6 0M2.5 9.8h3.4M18.1 9.8h3.4M9.5 6.4c1-.9 4-.9 5 0"/></svg>
+          </a>
+          <a href="tel:+48570088888" aria-label="Telefon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L16 13l5 2v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4 5.2 2 2 0 0 1 6 3Z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h5 data-pl="Godziny" data-en="Hours" data-ru="Часы работы" data-uz="Ish vaqti">Godziny</h5>
+        <ul>
+          <li data-pl="Poniedziałek – Niedziela" data-en="Monday – Sunday" data-ru="Понедельник – Воскресенье" data-uz="Dushanba – Yakshanba">Poniedziałek – Niedziela</li>
+          <li style="color:var(--cream);font-family:var(--serif);font-size:1.3rem">9:00 – 24:00</li>
+          <li data-pl="Śniadania · Obiady · Kolacje" data-en="Breakfast · Lunch · Dinner" data-ru="Завтраки · Обеды · Ужины" data-uz="Nonushta · Tushlik · Kechki ovqat">Śniadania · Obiady · Kolacje</li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-pl="Kontakt" data-en="Contact" data-ru="Контакты" data-uz="Aloqa">Kontakt</h5>
+        <ul>
+          <li><a href="tel:+48570088888">+48 570 088 888</a></li>
+          <li><a href="https://maps.app.goo.gl/3WL53ikiXv6bY1CJ7" target="_blank" rel="noopener">al. Zieleniecka 6/8<br>03-727 Warszawa</a></li>
+          <li><a href="menu.html" data-pl="Karta dań" data-en="Menu" data-ru="Меню" data-uz="Menyu">Karta dań</a></li>
+          <li><a href="https://www.instagram.com/guzar_garden_restauracja/" target="_blank" rel="noopener">@guzar_garden_restauracja</a></li>
+          <li>
+            <a href="https://www.tripadvisor.com/Restaurant_Review-g274856-d34611526-Reviews-Guzar_Garden-Warsaw_Mazovia_Province_Central_Poland.html" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.4rem">
+              TripAdvisor
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              <span data-pl="— zobacz opinie" data-en="— see reviews" data-ru="— смотреть отзывы" data-uz="— sharhlarni ko'rish">— zobacz opinie</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>© <span id="yr">2026</span> Guzar Garden · <span data-pl="Wszelkie prawa zastrzeżone" data-en="All rights reserved" data-ru="Все права защищены" data-uz="Barcha huquqlar himoyalangan">Wszelkie prawa zastrzeżone</span></span>
+    </div>
+  </div>
+</footer>
+
+<script src="art.js"></script>
+<script>
+(function(){
+'use strict';
+var REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------------- language ---------------- */
+var DAYS={
+  pl:['Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota','Niedziela'],
+  en:['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+  ru:['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье'],
+  uz:['Dushanba','Seshanba','Chorshanba','Payshanba','Juma','Shanba','Yakshanba']
+};
+var STATUS={
+  pl:{open:'Otwarte teraz',closed:'Zamknięte'},
+  en:{open:'Open now',closed:'Closed'},
+  ru:{open:'Открыто сейчас',closed:'Закрыто'},
+  uz:{open:'Hozir ochiq',closed:'Yopiq'}
+};
+var OPEN=9,CLOSE=24,HOURS_TXT='9:00 – 24:00';
+var lang='pl';
+
+function renderHours(){
+  var todayIdx=(new Date().getDay()+6)%7;
+  document.getElementById('hours').innerHTML = DAYS[lang].map(function(d,i){
+    return '<li class="'+(i===todayIdx?'today':'')+'"><span>'+d+'</span><b>'+HOURS_TXT+'</b></li>';
+  }).join('');
+}
+function updateStatus(){
+  var now=new Date(), h=now.getHours()+now.getMinutes()/60, open=h>=OPEN&&h<CLOSE;
+  document.getElementById('statusTxt').textContent=STATUS[lang][open?'open':'closed'];
+  document.getElementById('statusDot').classList.toggle('open',open);
+}
+function setLang(l){
+  lang=l;
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-'+l+']').forEach(function(el){
+    el.innerHTML=el.getAttribute('data-'+l);
+  });
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.classList.toggle('on', b.dataset.lang===l);
+  });
+  var sel=document.getElementById('langSelect');
+  if(sel) sel.value=l;
+  var map=document.getElementById('gmap');
+  if(map){
+    var want = (l==='ru'||l==='en'||l==='uz')?l:'pl';
+    map.src = map.src.replace(/hl=[a-z]{2}/, 'hl='+want);
+  }
+  renderHours(); updateStatus(); buildSignature();
+  try{ localStorage.setItem('gg-lang', l); }catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(function(b){
+  b.addEventListener('click', function(){ setLang(b.dataset.lang); });
+});
+var langSelect=document.getElementById('langSelect');
+if(langSelect) langSelect.addEventListener('change', function(){ setLang(this.value); });
+
+/* ---------------- signature dishes ----------------
+   Five plates that stand for the kitchen. Prices mirror menu.html; if a
+   dish is renamed or repriced there, update it here too. */
+var SIGNATURE=[
+  {sec:'dania', pl:'Plow uzbecki',       en:'Uzbek plov',        ru:'Плов узбекский',       uz:'O\'zbek palovi',
+   cpl:'Dania', cen:'Mains', cru:'Основные блюда', cuz:'Asosiy taomlar', price:'39 zł'},
+  {sec:'grill', pl:'Szaszłyk z jagnięciny', en:'Lamb shashlik',  ru:'Шашлык из баранины',   uz:'Qo\'zi shashlik',
+   cpl:'Grill', cen:'Charcoal grill', cru:'Гриль', cuz:'Ko\'mirda mangal', price:'32 zł'},
+  {sec:'piec',  pl:'Samsa z jagnięciną', en:'Lamb samsa',        ru:'Самса с бараниной',    uz:'Qo\'zi go\'shtli somsa',
+   cpl:'Z pieca tandoor', cen:'From the tandoor', cru:'Из тандыра', cuz:'Tandirdan', price:'12 zł'},
+  {sec:'parze', pl:'Manty z mięsem',     en:'Meat manti',        ru:'Манты с мясом',        uz:'Go\'shtli manti',
+   cpl:'Na parze', cen:'Steamed', cru:'На пару', cuz:'Bug\'da pishirilgan', price:'29 zł'},
+  {sec:'zupy',  pl:'Lagman',             en:'Lagman',            ru:'Лагман',               uz:'Lag\'mon',
+   cpl:'Zupy', cen:'Soups', cru:'Супы', cuz:'Sho\'rvalar', price:'29 zł'}
+];
+function buildSignature(){
+  var grid=document.getElementById('sigGrid');
+  if(!grid) return;
+  grid.innerHTML = SIGNATURE.map(function(d,i){
+    var name=d[lang]||d.pl, cat=d['c'+lang]||d.cpl;
+    return '<a class="dish rv" style="--d:'+(i*0.07).toFixed(2)+'s" href="menu.html#'+d.sec+'">'+
+      '<span class="art">'+GGArt.dishArt(d.sec,d.pl)+'</span>'+
+      '<span class="txt"><span class="cat">'+cat+'</span>'+
+      '<h3>'+name+'</h3><span class="pr">'+d.price+'</span></span></a>';
+  }).join('');
+  grid.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+}
+
+/* ---------------- reveals ---------------- */
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+/* Safety net. IntersectionObserver does not fire while the tab is hidden, so a
+   page restored into a background tab could otherwise sit at opacity 0. This
+   reveals anything that has reached the viewport by any other means; it runs
+   off the scroll handler, a first timer, and the visibility change. */
+function revealVisible(){
+  var h=window.innerHeight;
+  document.querySelectorAll('.rv:not(.in)').forEach(function(el){
+    if(el.getBoundingClientRect().top < h*0.94){ el.classList.add('in'); io.unobserve(el); }
+  });
+}
+setTimeout(revealVisible,1200);
+document.addEventListener('visibilitychange',function(){
+  if(document.visibilityState==='visible') revealVisible();
+});
+
+/* split headings into masked words */
+document.querySelectorAll('[data-split]').forEach(function(h){
+  var walk=function(node){
+    [].slice.call(node.childNodes).forEach(function(n){
+      if(n.nodeType===3){
+        var frag=document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function(w){
+          if(!w.trim()){ frag.appendChild(document.createTextNode(w)); return; }
+          var s=document.createElement('span'); s.className='sw';
+          var i=document.createElement('i'); i.textContent=w;
+          s.appendChild(i); frag.appendChild(s);
+        });
+        n.parentNode.replaceChild(frag,n);
+      } else if(n.nodeType===1){ walk(n); }
+    });
+  };
+  walk(h);
+  var words=h.querySelectorAll('.sw');
+  words.forEach(function(w,i){ w.style.setProperty('--d',(0.28+i*0.09).toFixed(2)+'s'); });
+  var hio=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){ words.forEach(function(w){ w.classList.add('in'); }); hio.disconnect(); }
+    });
+  },{threshold:.2});
+  hio.observe(h);
+});
+
+/* counters */
+function runCounter(el){
+  var target=parseFloat(el.dataset.count), suffix=el.dataset.suffix||'';
+  var dec=(target%1!==0)?1:0, start=performance.now(), dur=1400;
+  function tick(now){
+    var p=Math.min((now-start)/dur,1);
+    var e=1-Math.pow(1-p,3);
+    el.textContent=(target*e).toFixed(dec)+suffix;
+    if(p<1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+var cio=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      if(!REDUCED) runCounter(e.target);
+      cio.unobserve(e.target);
+    }
+  });
+},{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
+
+/* ---------------- nav ---------------- */
+var nav=document.getElementById('nav'), links=document.getElementById('links');
+var burger=document.getElementById('burger');
+function setMenu(open){
+  links.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+burger.addEventListener('click',function(){ setMenu(!links.classList.contains('open')); });
+links.addEventListener('click',function(e){ if(e.target.tagName==='A') setMenu(false); });
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape' && links.classList.contains('open')){ setMenu(false); burger.focus(); }
+});
+
+/* ---------------- scroll: progress + nav shadow ---------------- */
+var progress=document.getElementById('progress');
+var ticking=false;
+
+/* ---------------- atmosphere: depth layers ----------------
+   Each ornament moves against its OWN section's position in the viewport,
+   never against raw page scroll — a layer inside the footer never sees the
+   thousands of pixels of scrollY the hero has accumulated by the time you
+   reach it. "progress" is -1..1 (section centred above/below viewport
+   centre), so displacement is hard-capped at RANGE_PX regardless of how
+   far or fast the page scrolls. Pointer parallax is capped separately and
+   only ever runs on hover-capable pointers. */
+var atmoLayers=[].slice.call(document.querySelectorAll('.atmo-layer'));
+var RANGE_PX=22, POINTER_PX=10;
+var pointerX=0,pointerY=0;
+function applyAtmo(){
+  var vh=window.innerHeight;
+  atmoLayers.forEach(function(el){
+    var depth=parseFloat(el.dataset.depth)||0;
+    if(depth===0) return;
+    var host=el.closest('section,footer')||el.parentElement;
+    var r=host.getBoundingClientRect();
+    var progress=((r.top+r.height/2)-vh/2)/(vh/2+r.height/2);
+    progress=Math.max(-1,Math.min(1,progress));
+    var sy=progress*RANGE_PX*depth;
+    var sx=pointerX*POINTER_PX*depth;
+    sy+=pointerY*POINTER_PX*depth*0.6;
+    el.style.transform='translate3d('+sx.toFixed(1)+'px,'+sy.toFixed(1)+'px,0)';
+  });
+}
+
+function applyHeroScroll(){
+  var stage=document.getElementById('brandStage');
+  var hero=document.getElementById('top');
+  if(!stage||!hero) return;
+  var r=hero.getBoundingClientRect();
+  var p=Math.max(0,Math.min(1,-r.top/Math.max(r.height,1)));
+  stage.style.setProperty('--stage-lift',(p*-24).toFixed(1)+'px');
+  stage.style.setProperty('--stage-turn',(p*1.8).toFixed(2)+'deg');
+}
+
+function onScroll(){
+  var y=window.scrollY||window.pageYOffset;
+  nav.classList.toggle('solid', y>40);
+  var max=document.documentElement.scrollHeight-window.innerHeight;
+  progress.style.width=(max>0?(y/max*100):0)+'%';
+  if(!REDUCED){ applyAtmo(); applyHeroScroll(); }
+  revealVisible();
+  ticking=false;
+}
+window.addEventListener('scroll',function(){
+  if(!ticking){ requestAnimationFrame(onScroll); ticking=true; }
+},{passive:true});
+
+if(!REDUCED && matchMedia('(hover:hover) and (pointer:fine)').matches){
+  var heroEl=document.getElementById('top'), brandStage=document.getElementById('brandStage');
+  if(heroEl){
+    heroEl.addEventListener('mousemove',function(e){
+      var r=heroEl.getBoundingClientRect();
+      pointerX=((e.clientX-r.left)/r.width-0.5)*2;
+      pointerY=((e.clientY-r.top)/r.height-0.5)*2;
+      requestAnimationFrame(applyAtmo);
+      if(brandStage){
+        brandStage.style.setProperty('--tilt-y',(pointerX*1.7).toFixed(2)+'deg');
+        brandStage.style.setProperty('--tilt-x',(pointerY*-1.45).toFixed(2)+'deg');
+      }
+    });
+    heroEl.addEventListener('mouseleave',function(){
+      pointerX=0; pointerY=0; requestAnimationFrame(applyAtmo);
+      if(brandStage){
+        brandStage.style.setProperty('--tilt-y','0deg');
+        brandStage.style.setProperty('--tilt-x','0deg');
+      }
+    });
+  }
+}
+
+/* magnetic buttons */
+if(!REDUCED && matchMedia('(hover:hover)').matches){
+  document.querySelectorAll('.btn').forEach(function(b){
+    b.addEventListener('mousemove',function(e){
+      var r=b.getBoundingClientRect();
+      var dx=(e.clientX-(r.left+r.width/2))/r.width;
+      var dy=(e.clientY-(r.top+r.height/2))/r.height;
+      b.style.transform='translate('+(dx*8).toFixed(1)+'px,'+(dy*6).toFixed(1)+'px)';
+    });
+    b.addEventListener('mouseleave',function(){ b.style.transform=''; });
+  });
+}
+
+/* ---------------- boot ---------------- */
+document.getElementById('yr').textContent=new Date().getFullYear();
+var saved=null;
+try{ saved=localStorage.getItem('gg-lang'); }catch(e){}
+setLang(saved && DAYS[saved] ? saved : 'pl');
+setInterval(updateStatus,60000);
+onScroll();
+
+var intro=document.getElementById('intro');
+function dismissIntro(){ intro.classList.add('gone'); setTimeout(function(){ intro.remove(); },600); }
+if(REDUCED){ dismissIntro(); }
+else { window.addEventListener('load',function(){ setTimeout(dismissIntro,650); });
+       setTimeout(dismissIntro,1800); }
+})();
+</script>
+</body>
+</html>

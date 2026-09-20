@@ -1,0 +1,1219 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guzar Garden — Restauracja Uzbecka &amp; Grill Halal, Warszawa</title>
+<meta name="description" content="Guzar Garden — restauracja uzbecka i grill halal przy Parku Skaryszewskim. Plow z kazana, samsa z pieca tandoor, szaszłyki z węgla. Aleja Zieleniecka 6/8, Warszawa.">
+<meta name="theme-color" content="#0a2418">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/brand/favicon-64.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/brand/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.className+=' js';</script>
+<style>
+:root{
+  /* ---- ground -------------------------------------------------------
+     Four steps of the same emerald so panels can sit on top of each other
+     and still read as separate planes of paper, the way the reference
+     artwork layers its cut shapes. */
+  --green-abyss:#04120c;
+  --green:#0a2418;
+  --green-2:#0d2e1f;
+  --green-3:#123a28;
+
+  /* ---- gold ----------------------------------------------------------
+     A ribbon of gold is lit from its top-left corner and falls away to a
+     deep brass at the far end; the gradient below is that fall. */
+  --gold-hi:#f6e3b4;
+  --gold:#dcb069;
+  --gold-ribbon:linear-gradient(135deg,#f6e3b4 0%,#e0b671 34%,#c69745 68%,#9c7130 100%);
+
+  --ivory:#f2ead8;
+  --ivory-soft:rgba(242,234,216,.74);
+  --ivory-faint:rgba(242,234,216,.46);
+
+  --rule:rgba(220,176,105,.3);
+  --rule-soft:rgba(220,176,105,.16);
+  --rule-strong:rgba(220,176,105,.55);
+
+
+  --mark:url("assets/brand/guzar-mark-transparent.png");
+
+  --serif:'Cormorant Garamond',Cormorant,Garamond,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.68,.24,1);
+
+  /* Shadows are green-black, never neutral grey: a grey shadow on emerald
+     turns to ash. Every cut edge in the reference art throws exactly this. */
+  --cut:0 18px 34px -18px rgba(1,10,6,.85);
+  --cut-lg:0 40px 80px -34px rgba(1,10,6,.9);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ivory);
+  background:var(--green);
+  font-family:var(--sans);font-size:16px;line-height:1.7;font-weight:300;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+::selection{background:var(--gold);color:var(--green-abyss)}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.06;margin:0}
+h2{font-size:clamp(2.05rem,4.4vw,3.5rem);letter-spacing:.005em}
+h3{font-size:1.45rem;letter-spacing:.01em}
+p{margin:0 0 1.1rem}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:1px}
+
+.wrap{width:min(1220px,92vw);margin-inline:auto;position:relative;z-index:2}
+.sec{padding:clamp(5rem,10vw,9rem) 0;position:relative;overflow:hidden}
+
+/* An eyebrow here is a gold hairline that runs into the word, borrowed from
+   the ruled cartouche in the ornament reference — not a floating caps label. */
+.eyebrow{display:flex;align-items:center;gap:.85rem;font-size:.68rem;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--gold);font-weight:500;margin:0 0 1.4rem}
+.eyebrow::before{content:"";width:42px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));flex:none}
+.kitchen-head .eyebrow{justify-content:center}
+.kitchen-head .eyebrow::after{content:"";width:42px;height:1px;background:linear-gradient(270deg,transparent,var(--gold));flex:none}
+
+.lede{font-size:1.12rem;line-height:1.8;color:var(--ivory-soft);max-width:60ch}
+.big-first{font-size:1.08rem;color:var(--ivory-soft);max-width:62ch}
+
+/* the divider ornament: two hairlines meeting at a struck diamond */
+.orn{width:132px;height:22px;display:block;margin:1.5rem 0;color:var(--gold)}
+.orn.center{margin-inline:auto}
+
+/* ---------------- paper grain ---------------- */
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.055;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+body>*:not(.grain){position:relative;z-index:2}
+
+/* ---------------- ambient rosette ---------------- */
+/* The emblem's own silhouette, tinted gold and held at a whisper. One per
+   section, never moving on its own — the ribbons carry the motion. */
+.atmo{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.atmo-layer{position:absolute;aspect-ratio:1;color:var(--gold);
+  -webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat;
+  background:currentColor;transform:translate3d(0,0,0);will-change:transform}
+.atmo-static{width:40vh;opacity:.035;right:-8vh;top:8%}
+.sec:nth-of-type(even) .atmo-static{right:auto;left:-10vh;top:auto;bottom:6%}
+.atmo-1{width:52vh;left:-14vh;top:-10vh;opacity:.05}
+.atmo-2{width:22vh;right:6%;bottom:8%;opacity:.055}
+.atmo-3{width:13vh;left:34%;bottom:-4vh;opacity:.05}
+.atmo-4{width:30vh;right:34%;top:-12vh;opacity:.035}
+
+/* ---------------- buttons ---------------- */
+/* Cut square, like every shape in the reference sheet. The solid one is a
+   length of the gold ribbon itself. */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.92rem 1.7rem;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:500;text-decoration:none;border:1px solid var(--rule-strong);
+  color:var(--gold-hi);background:transparent;position:relative;isolation:isolate;
+  transition:color .45s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--gold-ribbon);
+  transform:scaleX(0);transform-origin:left center;transition:transform .5s var(--ease)}
+.btn:hover{color:var(--green-abyss);border-color:var(--gold-hi);box-shadow:var(--cut)}
+.btn:hover::before{transform:scaleX(1)}
+.btn.solid,.btn.light{background:var(--gold-ribbon);border-color:transparent;color:var(--green-abyss);
+  box-shadow:0 10px 22px -12px rgba(1,10,6,.9)}
+.btn.solid::before,.btn.light::before{background:var(--gold-hi)}
+.btn.solid:hover,.btn.light:hover{color:var(--green-abyss)}
+
+/* ---------------- opening frame ---------------- */
+.intro{position:fixed;inset:0;z-index:200;display:grid;place-items:center;gap:1.2rem;
+  background:radial-gradient(circle at 50% 44%,#14442e 0,#09271a 46%,#04120c 100%);
+  transition:opacity .6s var(--ease),visibility .6s}
+.intro.gone{opacity:0;visibility:hidden}
+.intro-logo{width:min(300px,52vw);animation:introSettle 1.1s var(--ease) both}
+.intro-logo img{width:100%;height:auto}
+.intro .cap{font-size:.66rem;letter-spacing:.44em;text-transform:uppercase;color:var(--gold);
+  animation:introSettle 1.1s .16s var(--ease) both}
+@keyframes introSettle{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+
+/* ---------------- nav ---------------- */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:120;display:flex;align-items:center;
+  gap:1.6rem;padding:1.05rem clamp(1rem,4vw,2.6rem);
+  transition:background .5s var(--ease),padding .5s var(--ease),box-shadow .5s var(--ease)}
+header.nav.solid{background:rgba(4,18,12,.96);padding-block:.7rem;
+  box-shadow:0 1px 0 var(--rule-soft),0 18px 34px -28px rgba(0,0,0,.9)}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;margin-right:auto}
+.brand-mark{width:42px;height:42px;flex:none;position:relative;
+  filter:drop-shadow(0 6px 10px rgba(1,10,6,.6));transition:transform .8s var(--ease)}
+.brand-mark img{width:100%;height:100%;object-fit:contain}
+.brand:hover .brand-mark{transform:rotate(45deg)}
+.brand b{display:block;font-family:var(--serif);font-size:1.32rem;font-weight:500;
+  letter-spacing:.2em;color:var(--ivory);line-height:1}
+.brand i{display:block;font-style:normal;font-size:.58rem;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--gold);margin-top:.34rem}
+nav.links{display:flex;align-items:center;gap:2rem}
+nav.links a{text-decoration:none;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ivory-soft);position:relative;padding-block:.3rem;transition:color .35s var(--ease)}
+nav.links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
+nav.links a:hover{color:var(--gold-hi)}
+nav.links a:hover::after{transform:scaleX(1);transform-origin:left}
+nav.links .nav-cta-mobile{display:none}
+.nav-tools{display:flex;align-items:center;gap:.9rem}
+.lang{display:flex;border:1px solid var(--rule-soft)}
+.lang button{background:none;border:0;padding:.4rem .58rem;font:inherit;font-size:.62rem;
+  letter-spacing:.14em;color:var(--ivory-faint);cursor:pointer;transition:color .3s,background .3s}
+.lang button+button{border-left:1px solid var(--rule-soft)}
+.lang button.on{color:var(--green-abyss);background:var(--gold)}
+.lang button:hover:not(.on){color:var(--gold-hi)}
+.lang-select{display:none;background:transparent;border:1px solid var(--rule-soft);color:var(--ivory-soft);
+  font:inherit;font-size:.7rem;padding:.34rem .4rem}
+.lang-select option{color:#000}
+.nav-cta{padding:.7rem 1.15rem;font-size:.64rem}
+.burger{display:none;background:none;border:1px solid var(--rule-soft);color:var(--gold-hi);
+  font:inherit;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;padding:.5rem .8rem;cursor:pointer}
+.progress{position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold-ribbon)}
+/* ===================== hero ===================== */
+/* The whole page is built on one idea taken from the reference sheet: strips
+   of gold ribbon laid across deep emerald at 45 degrees, each one throwing a
+   shadow onto the sheet below it. The hero is where that idea is played at
+   full size; everywhere further down the page it is reduced to a hairline. */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;
+  padding:7.4rem 0 5rem;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 12% 20%,#0f3122 0,transparent 60%),
+    linear-gradient(160deg,#0c2b1d 0%,#0a2418 46%,#061a11 100%)}
+
+/* the cut planes the ribbons lie on */
+.hero-weave{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.hero-weave svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-weave .plane{position:absolute;inset:0}
+.plane-a{background:rgba(4,18,12,.55);clip-path:polygon(0 0,58% 0,0 62%)}
+.plane-b{background:rgba(4,18,12,.4);clip-path:polygon(100% 34%,100% 100%,26% 100%)}
+
+.hero-shell{width:min(1220px,92vw);margin-inline:auto;position:relative;z-index:3;
+  display:grid;grid-template-columns:minmax(0,1.02fr) minmax(320px,.8fr);
+  align-items:center;gap:3rem}
+.hero-copy{max-width:36rem}
+
+.hero-kicker{display:flex;align-items:center;gap:1rem;font-size:.66rem;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem;flex-wrap:wrap}
+.hero-kicker>span:first-child{display:flex;align-items:center;gap:.8rem}
+.hero-kicker>span:first-child::before{content:"";width:52px;height:1px;background:var(--gold);flex:none}
+.status{display:inline-flex;align-items:center;gap:.45rem;color:var(--ivory-soft)}
+.status .dot{width:6px;height:6px;background:#c05a3a;transform:rotate(45deg);flex:none;
+  transition:background .4s}
+.status .dot.open{background:#5fbd8a;box-shadow:0 0 0 3px rgba(95,189,138,.16)}
+
+/* The wordmark sets both words in one weight and one colour — the printed
+   logo does the same, and splitting them would invent a hierarchy the brand
+   does not have. The gold is lit across the letterforms like the ribbons. */
+h1.title{font-size:clamp(2.9rem,7.5vw,5.9rem);font-weight:300;letter-spacing:.075em;
+  line-height:.96;text-transform:uppercase;
+  background:linear-gradient(122deg,#f6e3b4 0%,#e2ba77 30%,#c99a48 62%,#a97e34 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 14px 26px rgba(1,10,6,.55))}
+h1.title em{display:block;font-style:normal}
+/* The wordmark is one orchestrated moment: the whole lockup rises once on
+   load. The per-word spans the script inserts stay inline on purpose —
+   an inline-block there would take the letters out of the gradient's text
+   clip and the gold would vanish. */
+.sw,.sw>i{display:inline;font-style:inherit;transform:none}
+.js h1.title{animation:titleRise 1.1s .18s var(--ease) both}
+@keyframes titleRise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+.hero .sub{margin:1.4rem 0 1.1rem;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--ivory-faint);line-height:2;max-width:34rem}
+.hero .lede{max-width:38ch;color:var(--ivory-soft);font-size:1.06rem}
+
+.hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.7rem}
+
+/* three facts, ruled apart by hairlines instead of boxed into cards */
+.hero-facts{display:flex;margin-top:2.1rem;border-top:1px solid var(--rule-soft);padding-top:1.1rem}
+.hero-facts>span{display:flex;flex-direction:column;gap:.3rem;padding-right:2.2rem;margin-right:2.2rem;
+  border-right:1px solid var(--rule-soft)}
+.hero-facts>span:last-child{border-right:0;margin-right:0;padding-right:0}
+.hero-facts b{font-family:var(--serif);font-size:1.4rem;font-weight:500;color:var(--gold-hi);line-height:1}
+.hero-facts small{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ivory-faint)}
+
+/* ---- the emblem roundel ---- */
+/* The mark is presented the way the ornament reference presents its centre
+   medallion: held inside a struck gold ring, sitting on top of the pattern. */
+.hero-visual{position:relative;display:grid;place-items:center;min-height:min(64vh,540px)}
+.brand-stage{position:relative;width:min(430px,80%);aspect-ratio:1;display:grid;place-items:center;
+  transform:translateY(var(--stage-lift,0)) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) rotate(var(--stage-turn,0deg));
+  transform-style:preserve-3d;transition:transform .5s var(--ease)}
+/* A cut emerald disc laid over the weave, so the mark is read against a
+   clean field the way a medallion is set into a pattern — not through it. */
+.wheel-glow{position:absolute;inset:-16%;border-radius:50%;
+  background:
+    radial-gradient(circle,rgba(6,26,17,.97) 0,rgba(6,26,17,.95) 41%,rgba(6,26,17,.55) 53%,transparent 66%),
+    radial-gradient(circle,rgba(220,176,105,.3) 0,rgba(220,176,105,.08) 46%,transparent 72%);
+  box-shadow:0 30px 60px -30px rgba(1,10,6,.9)}
+.wheel-trace{position:absolute;border-radius:50%;border:1px solid var(--rule-soft)}
+.trace-one{inset:-4%}
+.trace-two{inset:6%;border-style:dashed;border-color:rgba(220,176,105,.22)}
+/* the ring itself: a cut brass band, lit top-left like every other gold edge */
+.wheel-gold{position:absolute;inset:0;border-radius:50%;padding:1px;
+  background:conic-gradient(from 210deg,#8f6829,#f6e3b4 22%,#c19240 48%,#8f6829 68%,#e2c07f 88%,#8f6829);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude}
+.wheel-color{position:relative;width:64%;display:block;filter:drop-shadow(0 22px 34px rgba(1,10,6,.75))}
+.wheel-color img{width:100%;height:auto}
+.wheel-star{position:absolute;width:12px;height:12px;background:var(--gold);transform:rotate(45deg);
+  box-shadow:0 0 14px rgba(220,176,105,.6)}
+.star-one{top:-6px;left:50%;margin-left:-6px}
+.star-two{bottom:-6px;left:50%;margin-left:-6px}
+.wheel-caption{position:absolute;bottom:-2.6rem;left:50%;transform:translateX(-50%);white-space:nowrap;
+  font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ivory-faint)}
+
+/* The weave runs edge to edge, so the top of it is darkened back down to
+   keep the navigation legible where a ribbon passes behind a link. */
+.hero::after{content:"";position:absolute;left:0;right:0;top:0;height:150px;z-index:2;
+  pointer-events:none;background:linear-gradient(180deg,rgba(4,18,12,.82),rgba(4,18,12,.34) 55%,transparent)}
+
+/* the hero's lower edge: one gold hairline the sections below keep echoing */
+.hero-arch{position:absolute;left:0;right:0;bottom:0;height:1px;z-index:3;
+  background:linear-gradient(90deg,transparent,var(--rule-strong) 22%,var(--rule-strong) 78%,transparent)}
+
+/* ===================== marquee ===================== */
+.marquee{position:relative;z-index:3;overflow:hidden;background:var(--green-abyss);
+  border-bottom:1px solid var(--rule-soft);padding:.85rem 0}
+.marquee-track{display:flex;gap:3.4rem;width:max-content;animation:slide 42s linear infinite}
+.marquee span{font-family:var(--serif);font-size:1.02rem;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold);opacity:.66;display:flex;align-items:center;gap:3.4rem}
+.marquee span::after{content:"";width:5px;height:5px;background:var(--gold);transform:rotate(45deg);opacity:.7}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ===================== section rhythm ===================== */
+/* Each section boundary is the ribbon idea at its quietest: two hairlines
+   crossing the page on the same 45-degree bias, and nothing else. */
+.sec::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--rule-soft) 30%,var(--rule-soft) 70%,transparent)}
+.about{background:var(--green-2)}
+.kitchen{background:var(--green)}
+.sig{background:var(--green-2)}
+.feat{background:var(--green)}
+.loc{background:var(--green-2)}
+
+/* ===================== about ===================== */
+.about-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);
+  gap:clamp(2.5rem,6vw,5.5rem);align-items:start}
+.about h2{max-width:16ch}
+
+/* the stats read as a struck plaque, ruled not boxed */
+.stats{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule-soft);
+  background:rgba(4,18,12,.42);box-shadow:var(--cut)}
+.stat{padding:1.9rem 1.5rem;border-right:1px solid var(--rule-soft);border-bottom:1px solid var(--rule-soft)}
+.stat:nth-child(2n){border-right:0}
+.stat:nth-child(n+3){border-bottom:0}
+.stat b{display:block;font-family:var(--serif);font-size:2.5rem;font-weight:400;color:var(--gold-hi);line-height:1}
+.stat b.small{font-size:1.55rem;letter-spacing:.01em}
+.stat small{display:block;margin-top:.5rem;font-size:.56rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ivory-faint)}
+/* ===================== the cuisine ===================== */
+.kitchen-head{text-align:center;max-width:64ch;margin:0 auto clamp(3rem,6vw,4.6rem)}
+.kitchen-head .lede{margin-inline:auto}
+
+/* Four ways of cooking, not four steps — so they are ruled apart, not
+   numbered. Each panel is a cut sheet with one lit gold edge. */
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule-soft);
+  border:1px solid var(--rule-soft);box-shadow:var(--cut-lg)}
+.pillar{background:var(--green-2);padding:2.6rem 1.7rem 2.4rem;position:relative;overflow:hidden;
+  transition:background .5s var(--ease)}
+.pillar::before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;
+  background:var(--gold-ribbon);transform:scaleX(0);transform-origin:left;
+  transition:transform .6s var(--ease)}
+.pillar:hover{background:var(--green-3)}
+.pillar:hover::before{transform:scaleX(1)}
+.pillar svg{width:44px;height:44px;color:var(--gold);stroke-width:1.15;margin-bottom:1.4rem}
+.pillar h3{color:var(--ivory)}
+.pillar .uz{display:block;margin:.45rem 0 1rem;font-size:.58rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gold)}
+.pillar p{font-size:.94rem;color:var(--ivory-soft);margin:0}
+
+/* ---- the cartouche ---- */
+/* The one fully ornate object on the page. It is the framed panel from the
+   ornament reference, drawn once, around the line the whole kitchen is
+   really about. Nothing else on the page competes with it. */
+.quote{position:relative;margin:clamp(3.4rem,7vw,5.4rem) auto 0;max-width:60rem;
+  padding:clamp(3.2rem,7vw,5rem) clamp(2rem,6vw,4.6rem);text-align:center;
+  background:
+    radial-gradient(90% 120% at 50% 0,rgba(24,84,58,.6) 0,transparent 70%),
+    var(--green-3);
+  border:1px solid var(--rule)}
+.quote::before,.quote::after{content:"";position:absolute;pointer-events:none;
+  border:1px solid var(--rule-soft)}
+.quote::before{inset:9px}
+.quote::after{inset:16px;border-color:rgba(220,176,105,.1)}
+.q-corner{position:absolute;width:clamp(34px,5vw,54px);height:auto;color:var(--gold);opacity:.9}
+.q-corner.tl{top:5px;left:5px}
+.q-corner.tr{top:5px;right:5px;transform:scaleX(-1)}
+.q-corner.bl{bottom:5px;left:5px;transform:scaleY(-1)}
+.q-corner.br{bottom:5px;right:5px;transform:scale(-1)}
+/* The keystone of the cartouche is the restaurant's own rosette, struck in
+   gold and set into the top rule — the mark doing the ornament's job rather
+   than invented scrollwork standing in for it. */
+.q-seal{position:absolute;top:0;left:50%;width:clamp(46px,7vw,64px);aspect-ratio:1;
+  transform:translate(-50%,-52%);background:var(--green-3);color:var(--gold);
+  display:grid;place-items:center;z-index:2}
+.q-seal::before{content:"";position:absolute;inset:14%;background:currentColor;
+  -webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat}
+.q-seal::after{content:"";position:absolute;inset:0;border:1px solid var(--rule);transform:rotate(45deg)}
+.quote p{position:relative;font-family:var(--serif);font-size:clamp(1.5rem,3.4vw,2.3rem);
+  line-height:1.4;color:var(--ivory);max-width:26ch;margin:0 auto 1.4rem}
+.quote span{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+
+/* ===================== signature dishes ===================== */
+.sig-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;
+  margin-bottom:clamp(2.4rem,5vw,3.6rem);flex-wrap:wrap}
+.sig-head h2{max-width:18ch}
+.sig-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem}
+.dish{display:block;text-decoration:none;background:var(--green);border:1px solid var(--rule-soft);
+  padding:1.1rem 1.1rem 1.3rem;transition:border-color .5s var(--ease),transform .5s var(--ease),background .5s var(--ease)}
+.dish:hover{border-color:var(--rule-strong);background:var(--green-3);transform:translateY(-4px)}
+/* the plate sits in a struck aperture — the ring is the same brass band as
+   the hero roundel, at a fifth of the size */
+.dish .art{display:block;position:relative;aspect-ratio:1;border-radius:50%;overflow:hidden;
+  box-shadow:0 0 0 1px var(--rule),0 14px 26px -16px rgba(1,10,6,.9);margin-bottom:1rem}
+.dish .art svg,.dish .art img{width:100%;height:100%;display:block;object-fit:cover}
+.dish .txt{display:block;text-align:center}
+.dish .cat{display:block;font-size:.53rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.dish h3{font-size:1.18rem;color:var(--ivory);margin-bottom:.45rem}
+.dish .pr{font-size:.8rem;letter-spacing:.1em;color:var(--ivory-faint)}
+
+/* ===================== the venue ===================== */
+.feat h2{max-width:20ch;margin-bottom:clamp(2.4rem,5vw,3.4rem)}
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule-soft);
+  border:1px solid var(--rule-soft)}
+.feat .f{background:var(--green);padding:1.9rem 1.5rem;display:flex;flex-direction:column;gap:.7rem;
+  transition:background .5s var(--ease)}
+.feat .f:hover{background:var(--green-3)}
+.feat .f svg{width:26px;height:26px;color:var(--gold)}
+.feat .f b{font-family:var(--serif);font-size:1.24rem;font-weight:500;color:var(--ivory)}
+.feat .f span{font-size:.88rem;color:var(--ivory-soft);line-height:1.6}
+
+/* ===================== finding us ===================== */
+/* The location block takes the third reference directly: the rosette blown
+   up and bled off the left edge in gold, a double rule down the middle, the
+   practical information set against it. */
+.loc{position:relative}
+.loc::after{content:"";position:absolute;left:-16vw;top:50%;transform:translateY(-50%);
+  width:min(58vw,720px);aspect-ratio:1;color:var(--gold);opacity:.06;pointer-events:none;z-index:0;
+  -webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat;
+  background:currentColor}
+.loc-panel{position:relative;border:1px solid var(--rule);background:rgba(4,18,12,.66);
+  padding:clamp(1.8rem,4vw,3.4rem);box-shadow:var(--cut-lg)}
+.loc-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
+  gap:clamp(2rem,5vw,4rem);align-items:start}
+.loc h2{font-size:clamp(1.9rem,3.6vw,2.9rem)}
+.info-block{padding-top:1.3rem;margin-top:1.3rem;border-top:1px solid var(--rule-soft)}
+.info-block:first-of-type{border-top:0;margin-top:0;padding-top:0}
+.info-block h4{font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);
+  font-family:var(--sans);font-weight:500;margin-bottom:.55rem}
+.info-block p{margin:0;color:var(--ivory);font-size:.98rem}
+.info-block p a{text-decoration:none;border-bottom:1px solid var(--rule);transition:color .3s}
+.info-block p a:hover{color:var(--gold-hi)}
+.info-block small{display:block;margin-top:.4rem;font-size:.8rem;color:var(--ivory-faint);line-height:1.6}
+.hours{list-style:none;margin:0;padding:0;font-size:.95rem}
+.hours li{display:flex;justify-content:space-between;gap:1rem;padding:.32rem 0;color:var(--ivory-soft)}
+.hours li.today{color:var(--gold-hi)}
+.hours li.today b{font-weight:500}
+
+.mapcard{border:1px solid var(--rule-soft);background:var(--green-abyss);overflow:hidden}
+.map-frame{position:relative;aspect-ratio:4/3.1;min-height:300px}
+.map-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;
+  filter:grayscale(1) invert(.92) hue-rotate(115deg) saturate(.7) contrast(.88);
+  transition:filter .7s var(--ease)}
+.mapcard:hover .map-frame iframe{filter:none}
+.map-badge{position:absolute;z-index:2;left:1rem;top:1rem;background:rgba(4,18,12,.92);
+  border:1px solid var(--rule);padding:.7rem .95rem;pointer-events:none}
+.map-badge b{display:block;font-family:var(--serif);font-size:1.05rem;color:var(--gold-hi);letter-spacing:.06em}
+.map-badge small{display:block;font-size:.62rem;color:var(--ivory-faint);margin-top:.2rem}
+.map-bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  padding:.85rem 1rem;border-top:1px solid var(--rule-soft)}
+.coords{font-size:.66rem;letter-spacing:.16em;color:var(--ivory-faint)}
+.acts{display:flex;gap:1.2rem;flex-wrap:wrap}
+.acts a{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
+  text-decoration:none;border-bottom:1px solid transparent;transition:border-color .35s}
+.acts a:hover{border-color:var(--gold)}
+.map-hint{margin:.7rem 0 0;font-size:.74rem;color:var(--ivory-faint)}
+/* ===================== footer ===================== */
+footer{position:relative;background:var(--green-abyss);padding:clamp(4rem,8vw,6.5rem) 0 2.4rem;
+  overflow:hidden;border-top:1px solid var(--rule-soft)}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1.2fr);
+  gap:clamp(2rem,5vw,4rem)}
+.foot-sign{display:flex;align-items:center;gap:1rem;margin-bottom:1.3rem}
+.foot-emblem{width:62px;height:62px;flex:none;filter:drop-shadow(0 8px 14px rgba(0,0,0,.6))}
+.foot-emblem img{width:100%;height:100%;object-fit:contain}
+.foot-word strong{display:block;font-family:var(--serif);font-size:1.5rem;font-weight:500;
+  letter-spacing:.16em;color:var(--ivory)}
+.foot-word small{display:block;margin-top:.3rem;font-size:.55rem;letter-spacing:.3em;color:var(--gold)}
+.foot-brand p{color:var(--ivory-faint);font-size:.92rem;max-width:38ch}
+.socials{display:flex;gap:.6rem;margin-top:1.4rem}
+.socials a{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--rule-soft);
+  color:var(--gold);transition:background .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease)}
+.socials a svg{width:17px;height:17px}
+.socials a:hover{background:var(--gold);color:var(--green-abyss);border-color:var(--gold)}
+footer h5{font-family:var(--sans);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);font-weight:500;margin:0 0 1rem}
+footer ul{list-style:none;margin:0;padding:0;font-size:.92rem;color:var(--ivory-faint)}
+footer ul li{padding:.28rem 0}
+footer ul a{text-decoration:none;transition:color .3s}
+footer ul a:hover{color:var(--gold-hi)}
+.colophon{margin-top:clamp(2.6rem,5vw,4rem);padding-top:1.4rem;border-top:1px solid var(--rule-soft);
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-size:.7rem;letter-spacing:.1em;color:rgba(242,234,216,.34)}
+
+/* ===================== reveals ===================== */
+/* One reveal behaviour for the whole page: content rises a few pixels into
+   place the first time it is seen. Nothing loops, nothing floats. */
+.js .rv{opacity:0;transform:translateY(20px);
+  transition:opacity .85s var(--ease) var(--d,0s),transform .85s var(--ease) var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+
+/* ===================== responsive ===================== */
+@media(max-width:1180px){
+  .hero-shell{grid-template-columns:minmax(0,1fr) minmax(300px,.72fr);gap:2rem}
+  .sig-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:1000px){
+  .pillars{grid-template-columns:repeat(2,1fr)}
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
+  .about-grid,.loc-grid{grid-template-columns:1fr}
+  nav.links{position:fixed;inset:0 0 auto 0;background:var(--green-abyss);flex-direction:column;
+    padding:6rem 2rem 2.4rem;gap:1.3rem;transform:translateY(-102%);
+    transition:transform .6s var(--ease);box-shadow:0 24px 48px -24px rgba(0,0,0,.8);z-index:-1;
+    border-bottom:1px solid var(--rule-soft)}
+  nav.links.open{transform:translateY(0)}
+  nav.links a{font-size:.95rem}
+  nav.links .nav-cta-mobile{display:inline-flex;margin-top:.6rem}
+  .burger{display:block}
+  .nav-cta{display:none}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+  .hero{min-height:auto;padding:8rem 0 5rem}
+  .hero-shell{display:flex;flex-direction:column;gap:3rem}
+  .hero-copy{width:min(640px,100%);max-width:100%;text-align:center}
+  .hero-kicker,.hero-cta,.hero-facts{justify-content:center}
+  .hero-kicker>span:first-child::before{display:none}
+  .eyebrow{justify-content:center}
+  .hero .lede,.hero .sub{margin-inline:auto}
+  .hero-visual{min-height:auto;width:100%}
+  .brand-stage{width:min(340px,72vw)}
+  /* On a narrow screen the weave cannot cover the whole hero without
+     swallowing the type, so it drops to the lower half — a band the emblem
+     sits on — and is faded back into the ground where the copy begins. */
+  .hero-weave svg{top:auto;bottom:0;left:-12%;width:124%;height:34%}
+  .hero-weave::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,var(--green) 0,rgba(10,36,24,.96) 62%,rgba(10,36,24,.6) 74%,transparent 88%)}
+  .plane-a,.plane-b{display:none}
+  .loc::after{left:-40vw;width:110vw;opacity:.045}
+  .sig-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:760px){
+  .sig-grid{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  h1.title{font-size:clamp(2.9rem,17vw,4.4rem)}
+  .hero .sub{letter-spacing:.24em;font-size:.66rem}
+  .hero-cta .btn{width:100%}
+  /* the three facts stay one row on a phone — wrapping the last one onto a
+     line of its own left it reading as an afterthought */
+  .hero-facts>span{flex:1 1 0;align-items:center;text-align:center;
+    padding-right:.6rem;margin-right:.6rem}
+  .hero-facts b{font-size:1.02rem}
+  .hero-facts small{font-size:.5rem;letter-spacing:.14em}
+  .wheel-caption{display:none}
+  .pillars,.feat-grid,.foot-grid{grid-template-columns:1fr}
+  .sig-grid .dish:nth-child(5){display:none}
+  .quote{padding-inline:1.3rem}
+  .q-corner{width:44px}
+  .map-frame{min-height:240px}
+  .colophon{justify-content:center;text-align:center}
+}
+@media(max-width:460px){
+  header.nav{gap:.6rem;padding-inline:.85rem}
+  .brand{gap:.45rem}
+  .brand b{font-size:1.08rem;letter-spacing:.14em}
+  .brand i{display:none}
+  .brand-mark{width:34px;height:34px}
+  .nav-tools{gap:.45rem}
+  .lang{display:none}
+  .lang-select{display:block}
+  .burger{padding:.44rem .62rem}
+  .marquee span{font-size:.86rem;letter-spacing:.24em;gap:2.2rem}
+  .marquee-track{gap:2.2rem}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important}
+  .js .rv{opacity:1;transform:none}
+  .js h1.title{animation:none}
+  .brand-stage{transform:none!important}
+  .marquee-track{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro-logo"><img src="assets/brand/guzar-full-transparent.png" alt="" width="1280" height="1280"></div>
+  <span class="cap">Guzar Garden</span>
+</div>
+
+<!-- ===================== nav ===================== -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top">
+    <span class="brand-mark"><img src="assets/brand/guzar-mark-transparent.png" alt="" width="364" height="364"></span>
+    <span>
+      <b>GUZAR</b>
+      <i data-pl="Garden · Warszawa" data-en="Garden · Warsaw" data-ru="Garden · Варшава" data-uz="Garden · Varshava">Garden · Warszawa</i>
+    </span>
+  </a>
+  <nav class="links" id="links">
+    <a href="#o-nas" data-pl="O nas" data-en="About" data-ru="О нас" data-uz="Biz haqimizda">O nas</a>
+    <a href="#kuchnia" data-pl="Kuchnia" data-en="The cuisine" data-ru="Кухня" data-uz="Taomlarimiz">Kuchnia</a>
+    <a href="menu.html" data-pl="Karta dań" data-en="Menu" data-ru="Меню" data-uz="Menyu">Karta dań</a>
+    <a href="#miejsce" data-pl="Miejsce" data-en="The venue" data-ru="Место" data-uz="Makon">Miejsce</a>
+    <a href="#kontakt" data-pl="Kontakt" data-en="Contact" data-ru="Контакты" data-uz="Aloqa">Kontakt</a>
+    <a class="btn nav-cta-mobile" href="tel:+48570088888"><span data-pl="Rezerwacja" data-en="Book a table" data-ru="Бронь" data-uz="Bron qilish">Rezerwacja</span></a>
+  </nav>
+  <div class="nav-tools">
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" class="on" data-lang="pl">PL</button>
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="ru">RU</button>
+      <button type="button" data-lang="uz">UZ</button>
+    </div>
+    <select class="lang-select" id="langSelect" aria-label="Language">
+      <option value="pl">PL</option>
+      <option value="en">EN</option>
+      <option value="ru">RU</option>
+      <option value="uz">UZ</option>
+    </select>
+    <a class="btn solid nav-cta" href="tel:+48570088888"><span data-pl="Rezerwacja" data-en="Book a table" data-ru="Бронь" data-uz="Bron qilish">Rezerwacja</span></a>
+    <button class="burger" id="burger" aria-label="Menu" aria-controls="links" aria-expanded="false">Menu</button>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<!-- ===================== hero ===================== -->
+<section class="hero" id="top">
+<!-- The gold weave. Strips of brass laid across the emerald sheet on a strict
+     45-degree bias, each one lit from its top-left end and dropping a shadow
+     onto the sheet below. Drawn once here at full size; the rest of the page
+     only quotes it as a hairline. -->
+<div class="hero-weave" aria-hidden="true">
+  <span class="plane plane-a"></span>
+  <span class="plane plane-b"></span>
+  <svg viewBox="0 0 1200 760" preserveAspectRatio="xMaxYMid slice">
+    <defs>
+      <linearGradient id="ggGold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#f6e3b4"/>
+        <stop offset=".34" stop-color="#e0b671"/>
+        <stop offset=".7" stop-color="#c19240"/>
+        <stop offset="1" stop-color="#9c7130"/>
+      </linearGradient>
+      <linearGradient id="ggGoldDim" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#d9b478"/>
+        <stop offset="1" stop-color="#8a6228"/>
+      </linearGradient>
+      <filter id="ggCut" x="-30%" y="-30%" width="180%" height="180%">
+        <feDropShadow dx="13" dy="13" stdDeviation="10" flood-color="#020d07" flood-opacity=".72"/>
+      </filter>
+    </defs>
+    <g fill="none" stroke-linecap="butt" stroke-linejoin="miter" filter="url(#ggCut)">
+      <!-- the long rising strips -->
+      <path d="M330 800 L980 150" stroke="url(#ggGold)" stroke-width="30"/>
+      <path d="M560 810 L1180 190" stroke="url(#ggGoldDim)" stroke-width="13"/>
+      <path d="M700 830 L1260 270" stroke="url(#ggGold)" stroke-width="21"/>
+      <path d="M905 800 L1240 465" stroke="url(#ggGoldDim)" stroke-width="9"/>
+      <!-- strips that turn a corner, as the reference art does -->
+      <path d="M612 726 L900 438 L1010 548" stroke="url(#ggGold)" stroke-width="17"/>
+      <path d="M760 90 L968 298 L868 398" stroke="url(#ggGoldDim)" stroke-width="15"/>
+      <!-- the falling strips crossing them -->
+      <path d="M690 -40 L1250 520" stroke="url(#ggGold)" stroke-width="24"/>
+      <path d="M878 -30 L1215 307" stroke="url(#ggGoldDim)" stroke-width="11"/>
+      <path d="M1010 120 L1260 370" stroke="url(#ggGold)" stroke-width="16"/>
+      <!-- struck fragments: the same bias, cut short -->
+      <path d="M1058 40 L1108 90" stroke="url(#ggGold)" stroke-width="13"/>
+      <path d="M1132 96 L1174 138" stroke="url(#ggGoldDim)" stroke-width="9"/>
+      <path d="M1146 596 L1196 646" stroke="url(#ggGold)" stroke-width="14"/>
+      <path d="M980 664 L1022 706" stroke="url(#ggGoldDim)" stroke-width="10"/>
+      <path d="M1216 622 L1252 658" stroke="url(#ggGold)" stroke-width="8"/>
+    </g>
+  </svg>
+</div>
+  <div class="atmo" aria-hidden="true">
+    <div class="atmo-layer atmo-1" data-depth=".3"></div>
+    <div class="atmo-layer atmo-2" data-depth=".55"></div>
+    <div class="atmo-layer atmo-3" data-depth=".85"></div>
+    <div class="atmo-layer atmo-4" data-depth=".7"></div>
+  </div>
+  <div class="hero-shell">
+    <div class="hero-copy">
+      <div class="hero-kicker rv">
+        <span data-pl="Warszawa · Park Skaryszewski" data-en="Warsaw · Skaryszewski Park" data-ru="Варшава · парк Скарышевского" data-uz="Varshava · Skaryszewski bog'i">Warszawa · Park Skaryszewski</span>
+        <span class="status" id="status"><span class="dot" id="statusDot"></span><span id="statusTxt">—</span></span>
+      </div>
+      <h1 class="title" data-split>GUZAR <em>Garden</em></h1>
+      <p class="sub rv" style="--d:.16s" data-pl="Restauracja uzbecka &amp; grill halal · Praga-Południe" data-en="Uzbek restaurant &amp; halal grill · Praga-Południe" data-ru="Узбекский ресторан и халяльный гриль · Прага-Полудне" data-uz="O'zbek restorani va halol mangal · Praga-Południe">Restauracja uzbecka &amp; grill halal · Praga-Południe</p>
+      <p class="lede rv" style="--d:.24s" data-pl="Plow z kazana, manty lepione ręcznie i samsa prosto z pieca tandoor — u bram Parku Skaryszewskiego." data-en="Kazan plov, hand-folded manti and samsa straight from the tandoor — at the gates of Skaryszewski Park." data-ru="Плов из казана, манты ручной лепки и самса прямо из тандыра — у ворот парка Скарышевского." data-uz="Qozonda pishirilgan palov, qo'lda tayyorlangan manti va tandirdan issiq somsa — Skaryszewski bog'i darvozasida.">Plow z kazana, manty lepione ręcznie i samsa prosto z pieca tandoor — u bram Parku Skaryszewskiego.</p>
+      <div class="hero-cta rv" style="--d:.32s">
+        <a class="btn light" href="menu.html"><span data-pl="Zobacz menu" data-en="See the menu" data-ru="Смотреть меню" data-uz="Menyuni ko'rish">Zobacz menu</span></a>
+        <a class="btn outline" href="tel:+48570088888"><span data-pl="Zadzwoń" data-en="Call us" data-ru="Позвонить" data-uz="Qo'ng'iroq qilish">Zadzwoń</span></a>
+        <a class="btn outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=Guzar+Garden+aleja+Zieleniecka+6%2F8+03-727+Warszawa" target="_blank" rel="noopener"><span data-pl="Wyznacz trasę" data-en="Get directions" data-ru="Проложить маршрут" data-uz="Yo'nalishni ko'rsatish">Wyznacz trasę</span></a>
+      </div>
+      <div class="hero-facts rv" style="--d:.4s">
+        <span><b>100%</b><small>Halal</small></span>
+        <span><b>9:00–24:00</b><small data-pl="Codziennie" data-en="Every day" data-ru="Ежедневно" data-uz="Har kuni">Codziennie</small></span>
+        <span><b>4.7</b><small data-pl="Ocena Google" data-en="Google rating" data-ru="Рейтинг Google" data-uz="Google reytingi">Ocena Google</small></span>
+      </div>
+    </div>
+    <div class="hero-visual rv" style="--d:.12s">
+      <div class="brand-stage" id="brandStage">
+        <span class="wheel-glow" aria-hidden="true"></span>
+        <span class="wheel-trace trace-one" aria-hidden="true"></span>
+        <span class="wheel-trace trace-two" aria-hidden="true"></span>
+        <span class="wheel-gold" aria-hidden="true"></span>
+        <span class="wheel-color" aria-hidden="true"><img src="assets/brand/guzar-mark-transparent.png" alt="" width="364" height="364"></span>
+        <span class="wheel-star star-one" aria-hidden="true"></span>
+        <span class="wheel-star star-two" aria-hidden="true"></span>
+        <span class="wheel-caption" data-pl="Jedwabny Szlak · Warszawa" data-en="Silk Road · Warsaw" data-ru="Шёлковый путь · Варшава" data-uz="Ipak yo'li · Varshava">Jedwabny Szlak · Warszawa</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-arch" aria-hidden="true"></div>
+</section>
+
+<!-- ===================== marquee ===================== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Plow</span><span>Manty</span><span>Samsa</span><span>Lagman</span><span>Szaszłyk</span><span>Tandoor</span><span>Kazan</span><span>Halal</span>
+    <span>Plow</span><span>Manty</span><span>Samsa</span><span>Lagman</span><span>Szaszłyk</span><span>Tandoor</span><span>Kazan</span><span>Halal</span>
+  </div>
+</div>
+
+<!-- ===================== about ===================== -->
+<section class="sec about" id="o-nas">
+  <div class="atmo" aria-hidden="true"><div class="atmo-layer atmo-static"></div></div>
+  <div class="wrap about-grid">
+    <div>
+      <p class="eyebrow rv" data-pl="Nasza historia" data-en="Our story" data-ru="Наша история" data-uz="Bizning tariximiz">Nasza historia</p>
+      <h2 class="rv" style="--d:.06s" data-pl="Uzbecka gościnność w sercu Warszawy" data-en="Uzbek hospitality in the heart of Warsaw" data-ru="Узбекское гостеприимство в сердце Варшавы" data-uz="Varshava markazidagi o'zbek mehmondo'stligi">Uzbecka gościnność w sercu Warszawy</h2>
+      <svg class="orn rv" style="--d:.12s" viewBox="0 0 120 22" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <path d="M0 11h40M80 11h40"/><path d="M60 3l6 8-6 8-6-8z"/><circle cx="48" cy="11" r="3"/><circle cx="72" cy="11" r="3"/>
+      </svg>
+      <p class="big-first rv" style="--d:.18s" data-pl="Guzar to po uzbecku miejsce spotkań — plac, na którym zbiega się cała dzielnica. Guzar Garden przenosi ten zwyczaj do Warszawy: duża sala, ogród przy Parku Skaryszewskim, kominek na chłodniejsze wieczory i stoły, przy których siada się na dłużej." data-en="In Uzbek, a guzar is a meeting place — the square where a whole neighbourhood comes together. Guzar Garden brings that habit to Warsaw: a big dining room, a garden by Skaryszewski Park, a fireplace for colder evenings, and tables you settle into for hours." data-ru="Гузар по-узбекски — место встреч, площадь, где сходится весь квартал. Guzar Garden переносит этот обычай в Варшаву: большой зал, сад у парка Скарышевского, камин для прохладных вечеров и столы, за которыми задерживаются надолго." data-uz="O'zbek tilida «guzar» — uchrashuv joyi, butun mahalla yig'iladigan maydon. Guzar Garden bu an'anani Varshavaga olib keladi: katta zal, Skaryszewski bog'i yonidagi hovli, sovuq kechalar uchun kamin va soatlab o'tirsa bo'ladigan stollar.">Guzar to po uzbecku miejsce spotkań — plac, na którym zbiega się cała dzielnica. Guzar Garden przenosi ten zwyczaj do Warszawy: duża sala, ogród przy Parku Skaryszewskim, kominek na chłodniejsze wieczory i stoły, przy których siada się na dłużej.</p>
+      <p class="rv" style="--d:.24s" data-pl="Gotujemy tak, jak w Samarkandzie i Bucharze: plow dusi się w ciężkim kazanie, samsa piecze się na ściankach tandoora, makaron do lagmanu ciągnie się ręcznie, a mięso — w całości halal — trafia prosto na węgiel. Herbatę podajemy w czajniku, bo posiłek zaczyna się i kończy przy herbacie." data-en="We cook the way Samarkand and Bukhara do: plov simmers in a heavy kazan, samsa bakes on the tandoor wall, lagman noodles are pulled by hand, and the meat — all halal — goes straight over charcoal. Tea arrives in a pot, because a meal begins and ends with tea." data-ru="Мы готовим так, как готовят в Самарканде и Бухаре: плов томится в тяжёлом казане, самса печётся на стенках тандыра, лапшу для лагмана тянут вручную, а мясо — полностью халяль — идёт прямо на угли. Чай подаём в чайнике, ведь трапеза начинается и заканчивается чаем." data-uz="Biz Samarqand va Buxoroda pishirilganidek pishiramiz: palov og'ir qozonda dimlanadi, somsa tandir devoriga yopishtirib pishiriladi, lag'mon xamiri qo'lda cho'ziladi, go'sht esa — to'liq halol — to'g'ridan-to'g'ri cho'g'ga tushadi. Choy choynakda beriladi, chunki ovqat choy bilan boshlanadi va tugaydi.">Gotujemy tak, jak w Samarkandzie i Bucharze: plow dusi się w ciężkim kazanie, samsa piecze się na ściankach tandoora, makaron do lagmanu ciągnie się ręcznie, a mięso — w całości halal — trafia prosto na węgiel. Herbatę podajemy w czajniku, bo posiłek zaczyna się i kończy przy herbacie.</p>
+    </div>
+    <div class="stats rv" style="--d:.2s">
+      <div class="stat"><b data-count="4.7">4.7</b><small data-pl="Ocena Google" data-en="Google rating" data-ru="Оценка Google" data-uz="Google reytingi">Ocena Google</small></div>
+      <div class="stat"><b data-count="2900" data-suffix="+">2900+</b><small data-pl="Opinii gości" data-en="Guest reviews" data-ru="Отзывов гостей" data-uz="Mehmon sharhlari">Opinii gości</small></div>
+      <div class="stat"><b data-count="100" data-suffix="%">100%</b><small>Halal</small></div>
+      <div class="stat"><b class="small">9:00 – 24:00</b><small data-pl="Codziennie" data-en="Every day" data-ru="Ежедневно" data-uz="Har kuni">Codziennie</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== what uzbek food is ===================== -->
+<section class="sec kitchen" id="kuchnia">
+  <div class="atmo" aria-hidden="true"><div class="atmo-layer atmo-static"></div></div>
+  <div class="wrap">
+    <div class="kitchen-head">
+      <p class="eyebrow rv" data-pl="Kuchnia uzbecka" data-en="Uzbek cuisine" data-ru="Узбекская кухня" data-uz="O'zbek oshxonasi">Kuchnia uzbecka</p>
+      <h2 class="rv" style="--d:.06s" data-pl="Czym jest kuchnia uzbecka" data-en="What Uzbek cooking is" data-ru="Что такое узбекская кухня" data-uz="O'zbek oshxonasi nima">Czym jest kuchnia uzbecka</h2>
+      <svg class="orn center rv" style="--d:.12s" viewBox="0 0 120 22" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <path d="M0 11h40M80 11h40"/><path d="M60 3l6 8-6 8-6-8z"/><circle cx="48" cy="11" r="3"/><circle cx="72" cy="11" r="3"/>
+      </svg>
+      <p class="lede rv" style="--d:.18s" data-pl="Uzbekistan leży na skrzyżowaniu Jedwabnego Szlaku — i takim samym skrzyżowaniem jest jego kuchnia. Perska cierpliwość, turecki ogień, chińskie ciągnione ciasto i step, który nauczył gotować z niewielu składników, ale długo. Je się powoli, z jednego stołu i nigdy w pojedynkę." data-en="Uzbekistan sits at the crossroads of the Silk Road, and its cooking is a crossroads too. Persian patience, Turkic fire, Chinese hand-pulled dough, and a steppe that taught people to cook with few ingredients but plenty of time. You eat slowly, from one shared table, and never alone." data-ru="Узбекистан лежит на перекрёстке Великого шёлкового пути — и его кухня такой же перекрёсток. Персидское терпение, тюркский огонь, китайское тянутое тесто и степь, научившая готовить из немногого, но долго. Едят медленно, за общим столом и никогда в одиночку." data-uz="O'zbekiston Buyuk ipak yo'lining chorrahasida joylashgan — va uning oshxonasi ham xuddi shunday chorraha. Fors sabri, turkiy olov, xitoycha cho'zma xamir va odamlarni oz mahsulotdan, lekin uzoq vaqt davomida pishirishga o'rgatgan dasht. Bu yerda sekin, bir dasturxon atrofida va hech qachon yolg'iz ovqatlanmaydilar.">Uzbekistan leży na skrzyżowaniu Jedwabnego Szlaku — i takim samym skrzyżowaniem jest jego kuchnia. Perska cierpliwość, turecki ogień, chińskie ciągnione ciasto i step, który nauczył gotować z niewielu składników, ale długo. Je się powoli, z jednego stołu i nigdy w pojedynkę.</p>
+    </div>
+
+    <div class="pillars">
+      <article class="pillar rv">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M8 20h32a16 16 0 0 1-16 16A16 16 0 0 1 8 20Z"/><path d="M4 20h40M14 36l-3 6M34 36l3 6"/><path d="M18 12c0-3 3-3 3-6M27 12c0-3 3-3 3-6"/></svg>
+        <h3 data-pl="Kazan" data-en="Kazan" data-ru="Казан" data-uz="Qozon">Kazan</h3>
+        <span class="uz" data-pl="Żeliwny kocioł" data-en="The cast-iron cauldron" data-ru="Чугунный котёл" data-uz="Cho'yan qozon">Żeliwny kocioł</span>
+        <p data-pl="Ciężki kocioł, w którym wszystko dzieje się powoli: ryż pije tłuszcz i przyprawy, mięso mięknie godzinami. Nic się tu nie śpieszy." data-en="A heavy pot where everything happens slowly: rice drinks up the fat and the spice, meat softens for hours. Nothing here is rushed." data-ru="Тяжёлый котёл, где всё происходит медленно: рис впитывает жир и специи, мясо размягчается часами. Здесь ничего не торопят." data-uz="Og'ir qozon, unda hamma narsa asta-sekin sodir bo'ladi: guruch yog' va ziravorlarni shimib oladi, go'sht soatlab yumshaydi. Bu yerda hech narsa shoshilmaydi.">Ciężki kocioł, w którym wszystko dzieje się powoli: ryż pije tłuszcz i przyprawy, mięso mięknie godzinami. Nic się tu nie śpieszy.</p>
+      </article>
+
+      <article class="pillar rv" style="--d:.08s">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M14 42V22a10 10 0 0 1 20 0v20Z"/><path d="M10 42h28M18 22h12"/><path d="M24 16c0-4-4-5-4-9M31 16c0-3-3-4-3-7"/></svg>
+        <h3 data-pl="Tandoor" data-en="Tandoor" data-ru="Тандыр" data-uz="Tandir">Tandoor</h3>
+        <span class="uz" data-pl="Gliniany piec" data-en="The clay oven" data-ru="Глиняная печь" data-uz="Loy pech">Gliniany piec</span>
+        <p data-pl="Rozgrzana glina, do której przykleja się ciasto. Chleb i samsa wychodzą z niej chrupiące z wierzchu i miękkie w środku." data-en="Searing clay walls that dough is pressed onto. Bread and samsa come out crisp outside and soft within." data-ru="Раскалённая глина, к которой приклеивают тесто. Лепёшки и самса выходят хрустящими снаружи и мягкими внутри." data-uz="Xamir yopishtiriladigan qizigan loy devor. Non va somsa tashqi tomondan qarsildoq, ichi esa yumshoq bo'lib chiqadi.">Rozgrzana glina, do której przykleja się ciasto. Chleb i samsa wychodzą z niej chrupiące z wierzchu i miękkie w środku.</p>
+      </article>
+
+      <article class="pillar rv" style="--d:.16s">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M6 16h36M6 26h36M6 36h36"/><circle cx="16" cy="16" r="2.5"/><circle cx="28" cy="16" r="2.5"/><circle cx="20" cy="26" r="2.5"/><circle cx="32" cy="26" r="2.5"/><circle cx="16" cy="36" r="2.5"/><circle cx="28" cy="36" r="2.5"/></svg>
+        <h3 data-pl="Ogień" data-en="Fire" data-ru="Огонь" data-uz="Olov">Ogień</h3>
+        <span class="uz" data-pl="Szaszłyk z węgla" data-en="Charcoal skewers" data-ru="Шашлык на углях" data-uz="Ko'mirda shashlik">Szaszłyk z węgla</span>
+        <p data-pl="Mięso marynowane w cebuli i kminie, nad samym węglem, obracane ręcznie. Prosty gest, którego nie da się przyspieszyć." data-en="Meat marinated in onion and cumin, held right over the coals and turned by hand. A simple gesture you cannot hurry." data-ru="Мясо, маринованное в луке и зире, прямо над углями, переворачивают вручную. Простой жест, который нельзя ускорить." data-uz="Piyoz va zira bilan marinadlangan go'sht, to'g'ridan-to'g'ri cho'g' ustida, qo'lda aylantiriladi. Shoshiltirib bo'lmaydigan oddiy harakat.">Mięso marynowane w cebuli i kminie, nad samym węglem, obracane ręcznie. Prosty gest, którego nie da się przyspieszyć.</p>
+      </article>
+
+      <article class="pillar rv" style="--d:.24s">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round"><circle cx="24" cy="24" r="15"/><circle cx="24" cy="24" r="7"/><path d="M24 9v6M24 33v6M9 24h6M33 24h6M13.4 13.4l4.3 4.3M30.3 30.3l4.3 4.3M34.6 13.4l-4.3 4.3M17.7 30.3l-4.3 4.3"/></svg>
+        <h3 data-pl="Dastarchan" data-en="Dastarkhan" data-ru="Дастархан" data-uz="Dasturxon">Dastarchan</h3>
+        <span class="uz" data-pl="Wspólny stół" data-en="The shared table" data-ru="Общий стол" data-uz="Umumiy dasturxon">Wspólny stół</span>
+        <p data-pl="Najpierw herbata, potem chleb łamany w dłoniach, a dania stawia się na środku — dla wszystkich naraz. Gość siada tam, skąd widać cały stół." data-en="Tea first, then bread broken by hand, and the dishes set in the middle — for everyone at once. The guest is seated where the whole table is in view." data-ru="Сначала чай, потом хлеб, разломленный руками, а блюда ставят в середину — сразу для всех. Гостя сажают там, откуда виден весь стол." data-uz="Avval choy, keyin qo'lda sindirilgan non, taomlar esa dasturxon o'rtasiga — hamma uchun bir vaqtda qo'yiladi. Mehmon butun dasturxon ko'rinadigan joyga o'tqaziladi.">Najpierw herbata, potem chleb łamany w dłoniach, a dania stawia się na środku — dla wszystkich naraz. Gość siada tam, skąd widać cały stół.</p>
+      </article>
+    </div>
+
+    <div class="quote rv">
+      <span class="q-seal" aria-hidden="true"></span>
+      <svg class="q-corner tl" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 60V14a10 10 0 0 1 10-10h46"/><path d="M18 60V26a8 8 0 0 1 8-8h34" stroke-opacity=".45"/><path d="M11 11l5-5 5 5-5 5z" fill="currentColor" stroke="none"/></svg>
+      <svg class="q-corner tr" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 60V14a10 10 0 0 1 10-10h46"/><path d="M18 60V26a8 8 0 0 1 8-8h34" stroke-opacity=".45"/><path d="M11 11l5-5 5 5-5 5z" fill="currentColor" stroke="none"/></svg>
+      <svg class="q-corner bl" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 60V14a10 10 0 0 1 10-10h46"/><path d="M18 60V26a8 8 0 0 1 8-8h34" stroke-opacity=".45"/><path d="M11 11l5-5 5 5-5 5z" fill="currentColor" stroke="none"/></svg>
+      <svg class="q-corner br" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 60V14a10 10 0 0 1 10-10h46"/><path d="M18 60V26a8 8 0 0 1 8-8h34" stroke-opacity=".45"/><path d="M11 11l5-5 5 5-5 5z" fill="currentColor" stroke="none"/></svg>
+      <p data-pl="„Gościa nie pyta się, czy jest głodny. Stawia się jedzenie na stole.”" data-en="&ldquo;You don't ask a guest whether they're hungry. You put food on the table.&rdquo;" data-ru="«Гостя не спрашивают, голоден ли он. Еду просто ставят на стол.»" data-uz="«Mehmondan och-to'qligini so'ramaydilar. Dasturxonga taom qo'yiladi.»">„Gościa nie pyta się, czy jest głodny. Stawia się jedzenie na stole.”</p>
+      <span data-pl="Uzbeckie przysłowie" data-en="Uzbek saying" data-ru="Узбекская поговорка" data-uz="O'zbek maqoli">Uzbeckie przysłowie</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== signature dishes ===================== -->
+<section class="sec sig" id="dania">
+  <div class="atmo" aria-hidden="true"><div class="atmo-layer atmo-static"></div></div>
+  <div class="wrap">
+    <div class="sig-head">
+      <div>
+        <p class="eyebrow rv" data-pl="Z naszej karty" data-en="From the menu" data-ru="Из нашего меню" data-uz="Bizning menyudan">Z naszej karty</p>
+        <h2 class="rv" style="--d:.06s" data-pl="Dania, po które się wraca" data-en="The dishes people come back for" data-ru="Блюда, ради которых возвращаются" data-uz="Odamlar qayta-qayta keladigan taomlar">Dania, po które się wraca</h2>
+      </div>
+      <a class="btn outline rv" style="--d:.12s" href="menu.html"><span data-pl="Cała karta" data-en="Full menu" data-ru="Всё меню" data-uz="To'liq menyu">Cała karta</span></a>
+    </div>
+    <div class="sig-grid" id="sigGrid"></div>
+  </div>
+</section>
+
+<!-- ===================== venue ===================== -->
+<section class="sec feat">
+  <div class="atmo" aria-hidden="true"><div class="atmo-layer atmo-static"></div></div>
+  <div class="wrap">
+    <p class="eyebrow rv" data-pl="Miejsce" data-en="The venue" data-ru="Место" data-uz="Makon">Miejsce</p>
+    <h2 class="rv" style="--d:.06s" data-pl="Sala, ogród i miejsce na wielkie stoły" data-en="A hall, a garden and room for long tables" data-ru="Зал, сад и место для больших столов" data-uz="Zal, hovli va katta stollar uchun joy">Sala, ogród i miejsce na wielkie stoły</h2>
+    <div class="feat-grid rv" style="--d:.12s">
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c4 4 7 6 7 10a7 7 0 1 1-14 0c0-4 3-6 7-10Z"/></svg><b data-pl="Ogród" data-en="Garden" data-ru="Сад" data-uz="Hovli">Ogród</b><small data-pl="Stoliki na zewnątrz przy Parku Skaryszewskim" data-en="Outdoor tables beside Skaryszewski Park" data-ru="Столики на улице у парка Скарышевского" data-uz="Skaryszewski bog'i yonida ochiq havoda stollar">Stoliki na zewnątrz przy Parku Skaryszewskim</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg><b data-pl="Kominek" data-en="Fireplace" data-ru="Камин" data-uz="Kamin">Kominek</b><small data-pl="Ciepła sala na jesienne i zimowe wieczory" data-en="A warm room for autumn and winter evenings" data-ru="Тёплый зал для осенних и зимних вечеров" data-uz="Kuz va qish kechalari uchun issiq zal">Ciepła sala na jesienne i zimowe wieczory</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg><b data-pl="Muzyka na żywo" data-en="Live music" data-ru="Живая музыка" data-uz="Jonli musiqa">Muzyka na żywo</b><small data-pl="Wieczory z muzyką w wybrane dni" data-en="Music nights on selected days" data-ru="Музыкальные вечера по отдельным дням" data-uz="Belgilangan kunlarda musiqali kechalar">Wieczory z muzyką w wybrane dni</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg><b data-pl="Imprezy i wesela" data-en="Events &amp; weddings" data-ru="Банкеты и свадьбы" data-uz="Tadbirlar va to'ylar">Imprezy i wesela</b><small data-pl="Sala na przyjęcia i duże grupy" data-en="Private room for parties and large groups" data-ru="Зал для торжеств и больших компаний" data-uz="Ziyofatlar va katta guruhlar uchun zal">Sala na przyjęcia i duże grupy</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/><path d="M2 9a15 15 0 0 1 20 0"/></svg><b>Wi-Fi</b><small data-pl="Darmowy internet dla gości" data-en="Free internet for guests" data-ru="Бесплатный интернет для гостей" data-uz="Mehmonlar uchun bepul internet">Darmowy internet dla gości</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9.5 17V7h3a3 3 0 0 1 0 6h-3"/></svg><b data-pl="Parking" data-en="Parking" data-ru="Парковка" data-uz="Avtoturargoh">Parking</b><small data-pl="Płatny parking w pobliżu restauracji" data-en="Paid parking is available near the restaurant" data-ru="Платная парковка рядом с рестораном" data-uz="Restoran yaqinida pullik avtoturargoh mavjud">Płatny parking w pobliżu restauracji</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="4" r="2"/><path d="M10 8v6h6l3 6M10 14l-3 6"/></svg><b data-pl="Dostępność" data-en="Accessible" data-ru="Доступность" data-uz="Qulay kirish">Dostępność</b><small data-pl="Wejście i toaleta bez barier" data-en="Step-free entrance and restroom" data-ru="Вход и туалет без барьеров" data-uz="To'siqsiz kirish va hojatxona">Wejście i toaleta bez barier</small></div>
+      <div class="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8h11l3 5v6H5z"/><circle cx="8.5" cy="19" r="1.8"/><circle cx="16" cy="19" r="1.8"/><path d="M9 4c0 1.5-1.5 1.5-1.5 3M13 4c0 1.5-1.5 1.5-1.5 3"/></svg><b data-pl="Na wynos" data-en="Takeaway" data-ru="На вынос" data-uz="Olib ketish">Na wynos</b><small data-pl="Samsa, plow i szaszłyki pakowane na drogę" data-en="Samsa, plov and skewers packed to go" data-ru="Самса, плов и шашлыки с собой" data-uz="Somsa, palov va shashlik yo'l uchun qadoqlanadi">Samsa, plow i szaszłyki pakowane na drogę</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== location ===================== -->
+<section class="sec loc" id="miejsce">
+  <div class="atmo" aria-hidden="true"><div class="atmo-layer atmo-static"></div></div>
+  <div class="wrap">
+  <div class="loc-panel">
+  <div class="loc-grid">
+    <div class="rv">
+      <p class="eyebrow" data-pl="Jak trafić" data-en="Find us" data-ru="Как добраться" data-uz="Bizni toping">Jak trafić</p>
+      <h2>Aleja Zieleniecka 6/8</h2>
+      <svg class="orn" viewBox="0 0 120 22" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <path d="M0 11h40M80 11h40"/><path d="M60 3l6 8-6 8-6-8z"/><circle cx="48" cy="11" r="3"/><circle cx="72" cy="11" r="3"/>
+      </svg>
+
+      <div class="info-block">
+        <h4 data-pl="Adres" data-en="Address" data-ru="Адрес" data-uz="Manzil">Adres</h4>
+        <p>al. Zieleniecka 6/8<br>03-727 Warszawa, Praga-Południe</p>
+        <small data-pl="Przy północnym narożniku Parku Skaryszewskiego, kilka minut od Ronda Waszyngtona." data-en="At the northern corner of Skaryszewski Park, a few minutes from Rondo Waszyngtona." data-ru="У северного угла парка Скарышевского, в нескольких минутах от Rondo Waszyngtona." data-uz="Skaryszewski bog'ining shimoliy burchagida, Rondo Waszyngtona'dan bir necha daqiqa.">Przy północnym narożniku Parku Skaryszewskiego, kilka minut od Ronda Waszyngtona.</small>
+      </div>
+
+      <div class="info-block">
+        <h4 data-pl="Godziny otwarcia" data-en="Opening hours" data-ru="Часы работы" data-uz="Ish vaqti">Godziny otwarcia</h4>
+        <ul class="hours" id="hours"></ul>
+        <small data-pl="Śniadania, obiady i kolacje. Kuchnia pracuje do późna." data-en="Breakfast, lunch and dinner. The kitchen runs late." data-ru="Завтраки, обеды и ужины. Кухня работает допоздна." data-uz="Nonushta, tushlik va kechki ovqat. Oshxona kech soatlargacha ishlaydi.">Śniadania, obiady i kolacje. Kuchnia pracuje do późna.</small>
+      </div>
+
+      <div class="info-block">
+        <h4 data-pl="Dojazd" data-en="Getting here" data-ru="Как доехать" data-uz="Qanday yetib borish">Dojazd</h4>
+        <p data-pl="Metro M2 Stadion Narodowy — 900 m" data-en="Metro M2 Stadion Narodowy — 900 m" data-ru="Метро M2 Stadion Narodowy — 900 м" data-uz="Metro M2 Stadion Narodowy — 900 m">Metro M2 Stadion Narodowy — 900 m</p>
+        <small data-pl="Tramwaje i autobusy: Rondo Waszyngtona." data-en="Trams and buses: Rondo Waszyngtona." data-ru="Трамваи и автобусы: Rondo Waszyngtona." data-uz="Tramvay va avtobuslar: Rondo Waszyngtona.">Tramwaje i autobusy: Rondo Waszyngtona.</small>
+      </div>
+
+      <div class="info-block">
+        <h4 data-pl="Parking" data-en="Parking" data-ru="Парковка" data-uz="Avtoturargoh">Parking</h4>
+        <p data-pl="Płatny parking w pobliżu restauracji" data-en="Paid parking is available near the restaurant" data-ru="Платная парковка рядом с рестораном" data-uz="Restoran yaqinida pullik avtoturargoh mavjud">Płatny parking w pobliżu restauracji</p>
+        <small data-pl="Miejsca parkingowe w okolicy — przyjazd samochodem jest wygodny." data-en="Parking spaces nearby — arriving by car is easy." data-ru="Парковочные места поблизости — удобно приезжать на машине." data-uz="Yaqin atrofda avtoturargoh joylari bor — mashinada kelish qulay.">Miejsca parkingowe w okolicy — przyjazd samochodem jest wygodny.</small>
+      </div>
+
+      <div class="info-block">
+        <h4 data-pl="Rezerwacje" data-en="Reservations" data-ru="Бронирование" data-uz="Bron qilish">Rezerwacje</h4>
+        <p><a href="tel:+48570088888">+48 570 088 888</a></p>
+        <small data-pl="Rezerwacje telefoniczne — także dla dużych grup." data-en="By phone — large groups welcome." data-ru="Бронирование по телефону — в том числе для больших компаний." data-uz="Telefon orqali — katta guruhlar uchun ham.">Rezerwacje telefoniczne — także dla dużych grup.</small>
+      </div>
+    </div>
+
+    <div class="rv" style="--d:.1s">
+      <div class="mapcard">
+        <div class="map-frame">
+          <div class="map-badge">
+            <b>Guzar Garden</b>
+            <small data-pl="Restauracja uzbecka &amp; grill halal" data-en="Uzbek restaurant &amp; halal grill" data-ru="Узбекский ресторан и халяльный гриль" data-uz="O'zbek restorani va halol mangal">Restauracja uzbecka &amp; grill halal</small>
+          </div>
+          <iframe
+            id="gmap"
+            title="Guzar Garden — Google Maps"
+            src="https://maps.google.com/maps?q=Guzar%20Garden%2C%20aleja%20Zieleniecka%206%2F8%2C%2003-727%20Warszawa&amp;z=16&amp;hl=pl&amp;output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+        <div class="map-bar">
+          <span class="coords">52.2441° N · 21.0497° E</span>
+          <span class="acts">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Guzar+Garden+aleja+Zieleniecka+6%2F8+03-727+Warszawa" target="_blank" rel="noopener" data-pl="Wyznacz trasę" data-en="Get directions" data-ru="Проложить маршрут" data-uz="Yo'nalishni ko'rsatish">Wyznacz trasę</a>
+            <a href="https://maps.app.goo.gl/3WL53ikiXv6bY1CJ7" target="_blank" rel="noopener" data-pl="Otwórz w Mapach Google" data-en="Open in Google Maps" data-ru="Открыть в Google Картах" data-uz="Google Xaritada ochish">Otwórz w Mapach Google</a>
+          </span>
+        </div>
+        <p class="map-hint" data-pl="Najedź na mapę, aby zobaczyć ją w pełnych kolorach." data-en="Hover the map to see it in full colour." data-ru="Наведите курсор на карту, чтобы увидеть её в полном цвете." data-uz="To'liq rangda ko'rish uchun xaritaga sichqonchani olib boring.">Najedź na mapę, aby zobaczyć ją w pełnych kolorach.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</section>
+
+<!-- ===================== footer ===================== -->
+<footer id="kontakt">
+  <div class="atmo" aria-hidden="true"><div class="atmo-layer atmo-static"></div></div>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="foot-sign" aria-label="Guzar Garden — est. 2024">
+          <span class="foot-emblem" aria-hidden="true"><img src="assets/brand/guzar-mark-transparent.png" alt="" width="364" height="364"></span>
+          <span class="foot-word"><strong>GUZAR GARDEN</strong><small>EST. 2024 · WARSAW</small></span>
+        </div>
+        <p data-pl="Restauracja uzbecka &amp; grill halal. Aleja Zieleniecka 6/8, Warszawa." data-en="Uzbek restaurant &amp; halal grill. Aleja Zieleniecka 6/8, Warsaw." data-ru="Узбекский ресторан и халяльный гриль. Aleja Zieleniecka 6/8, Варшава." data-uz="O'zbek restorani va halol mangal. Aleja Zieleniecka 6/8, Varshava.">Restauracja uzbecka &amp; grill halal. Aleja Zieleniecka 6/8, Warszawa.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/guzar_garden_restauracja/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.facebook.com/p/Guzar-Garden-Restauracja-Uzbecka-Grill-61579770369680/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.5-1.5H17V4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.6v3h2.7v8z"/></svg>
+          </a>
+          <a href="https://www.tripadvisor.com/Restaurant_Review-g274856-d34611526-Reviews-Guzar_Garden-Warsaw_Mazovia_Province_Central_Poland.html" target="_blank" rel="noopener noreferrer" aria-label="TripAdvisor">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8.2" cy="13.2" r="3.4"/><circle cx="15.8" cy="13.2" r="3.4"/><path d="M8.2 13.2a3.6 3.6 0 0 1 7.6 0M2.5 9.8h3.4M18.1 9.8h3.4M9.5 6.4c1-.9 4-.9 5 0"/></svg>
+          </a>
+          <a href="tel:+48570088888" aria-label="Telefon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L16 13l5 2v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4 5.2 2 2 0 0 1 6 3Z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h5 data-pl="Godziny" data-en="Hours" data-ru="Часы работы" data-uz="Ish vaqti">Godziny</h5>
+        <ul>
+          <li data-pl="Poniedziałek – Niedziela" data-en="Monday – Sunday" data-ru="Понедельник – Воскресенье" data-uz="Dushanba – Yakshanba">Poniedziałek – Niedziela</li>
+          <li style="color:var(--gold-hi);font-family:var(--serif);font-size:1.45rem;letter-spacing:.04em">9:00 – 24:00</li>
+          <li data-pl="Śniadania · Obiady · Kolacje" data-en="Breakfast · Lunch · Dinner" data-ru="Завтраки · Обеды · Ужины" data-uz="Nonushta · Tushlik · Kechki ovqat">Śniadania · Obiady · Kolacje</li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-pl="Kontakt" data-en="Contact" data-ru="Контакты" data-uz="Aloqa">Kontakt</h5>
+        <ul>
+          <li><a href="tel:+48570088888">+48 570 088 888</a></li>
+          <li><a href="https://maps.app.goo.gl/3WL53ikiXv6bY1CJ7" target="_blank" rel="noopener">al. Zieleniecka 6/8<br>03-727 Warszawa</a></li>
+          <li><a href="menu.html" data-pl="Karta dań" data-en="Menu" data-ru="Меню" data-uz="Menyu">Karta dań</a></li>
+          <li><a href="https://www.instagram.com/guzar_garden_restauracja/" target="_blank" rel="noopener">@guzar_garden_restauracja</a></li>
+          <li>
+            <a href="https://www.tripadvisor.com/Restaurant_Review-g274856-d34611526-Reviews-Guzar_Garden-Warsaw_Mazovia_Province_Central_Poland.html" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.4rem">
+              TripAdvisor
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              <span data-pl="— zobacz opinie" data-en="— see reviews" data-ru="— смотреть отзывы" data-uz="— sharhlarni ko'rish">— zobacz opinie</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>© <span id="yr">2026</span> Guzar Garden · <span data-pl="Wszelkie prawa zastrzeżone" data-en="All rights reserved" data-ru="Все права защищены" data-uz="Barcha huquqlar himoyalangan">Wszelkie prawa zastrzeżone</span></span>
+    </div>
+  </div>
+</footer>
+
+<script src="art.js"></script>
+<script>
+(function(){
+'use strict';
+var REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------------- language ---------------- */
+var DAYS={
+  pl:['Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota','Niedziela'],
+  en:['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+  ru:['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье'],
+  uz:['Dushanba','Seshanba','Chorshanba','Payshanba','Juma','Shanba','Yakshanba']
+};
+var STATUS={
+  pl:{open:'Otwarte teraz',closed:'Zamknięte'},
+  en:{open:'Open now',closed:'Closed'},
+  ru:{open:'Открыто сейчас',closed:'Закрыто'},
+  uz:{open:'Hozir ochiq',closed:'Yopiq'}
+};
+var OPEN=9,CLOSE=24,HOURS_TXT='9:00 – 24:00';
+var lang='pl';
+
+function renderHours(){
+  var todayIdx=(new Date().getDay()+6)%7;
+  document.getElementById('hours').innerHTML = DAYS[lang].map(function(d,i){
+    return '<li class="'+(i===todayIdx?'today':'')+'"><span>'+d+'</span><b>'+HOURS_TXT+'</b></li>';
+  }).join('');
+}
+function updateStatus(){
+  var now=new Date(), h=now.getHours()+now.getMinutes()/60, open=h>=OPEN&&h<CLOSE;
+  document.getElementById('statusTxt').textContent=STATUS[lang][open?'open':'closed'];
+  document.getElementById('statusDot').classList.toggle('open',open);
+}
+function setLang(l){
+  lang=l;
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-'+l+']').forEach(function(el){
+    el.innerHTML=el.getAttribute('data-'+l);
+  });
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.classList.toggle('on', b.dataset.lang===l);
+  });
+  var sel=document.getElementById('langSelect');
+  if(sel) sel.value=l;
+  var map=document.getElementById('gmap');
+  if(map){
+    var want = (l==='ru'||l==='en'||l==='uz')?l:'pl';
+    map.src = map.src.replace(/hl=[a-z]{2}/, 'hl='+want);
+  }
+  renderHours(); updateStatus(); buildSignature();
+  try{ localStorage.setItem('gg-lang', l); }catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(function(b){
+  b.addEventListener('click', function(){ setLang(b.dataset.lang); });
+});
+var langSelect=document.getElementById('langSelect');
+if(langSelect) langSelect.addEventListener('change', function(){ setLang(this.value); });
+
+/* ---------------- signature dishes ----------------
+   Five plates that stand for the kitchen. Prices mirror menu.html; if a
+   dish is renamed or repriced there, update it here too. */
+var SIGNATURE=[
+  {sec:'dania', pl:'Plow uzbecki',       en:'Uzbek plov',        ru:'Плов узбекский',       uz:'O\'zbek palovi',
+   cpl:'Dania', cen:'Mains', cru:'Основные блюда', cuz:'Asosiy taomlar', price:'39 zł'},
+  {sec:'grill', pl:'Szaszłyk z jagnięciny', en:'Lamb shashlik',  ru:'Шашлык из баранины',   uz:'Qo\'zi shashlik',
+   cpl:'Grill', cen:'Charcoal grill', cru:'Гриль', cuz:'Ko\'mirda mangal', price:'32 zł'},
+  {sec:'piec',  pl:'Samsa z jagnięciną', en:'Lamb samsa',        ru:'Самса с бараниной',    uz:'Qo\'zi go\'shtli somsa',
+   cpl:'Z pieca tandoor', cen:'From the tandoor', cru:'Из тандыра', cuz:'Tandirdan', price:'12 zł'},
+  {sec:'parze', pl:'Manty z mięsem',     en:'Meat manti',        ru:'Манты с мясом',        uz:'Go\'shtli manti',
+   cpl:'Na parze', cen:'Steamed', cru:'На пару', cuz:'Bug\'da pishirilgan', price:'29 zł'},
+  {sec:'zupy',  pl:'Lagman',             en:'Lagman',            ru:'Лагман',               uz:'Lag\'mon',
+   cpl:'Zupy', cen:'Soups', cru:'Супы', cuz:'Sho\'rvalar', price:'29 zł'}
+];
+function buildSignature(){
+  var grid=document.getElementById('sigGrid');
+  if(!grid) return;
+  grid.innerHTML = SIGNATURE.map(function(d,i){
+    var name=d[lang]||d.pl, cat=d['c'+lang]||d.cpl;
+    return '<a class="dish rv" style="--d:'+(i*0.07).toFixed(2)+'s" href="menu.html#'+d.sec+'">'+
+      '<span class="art">'+GGArt.dishArt(d.sec,d.pl)+'</span>'+
+      '<span class="txt"><span class="cat">'+cat+'</span>'+
+      '<h3>'+name+'</h3><span class="pr">'+d.price+'</span></span></a>';
+  }).join('');
+  grid.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+}
+
+/* ---------------- reveals ---------------- */
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+/* Safety net. IntersectionObserver does not fire while the tab is hidden, so a
+   page restored into a background tab could otherwise sit at opacity 0. This
+   reveals anything that has reached the viewport by any other means; it runs
+   off the scroll handler, a first timer, and the visibility change. */
+function revealVisible(){
+  var h=window.innerHeight;
+  document.querySelectorAll('.rv:not(.in)').forEach(function(el){
+    if(el.getBoundingClientRect().top < h*0.94){ el.classList.add('in'); io.unobserve(el); }
+  });
+}
+setTimeout(revealVisible,1200);
+document.addEventListener('visibilitychange',function(){
+  if(document.visibilityState==='visible') revealVisible();
+});
+
+/* split headings into masked words */
+document.querySelectorAll('[data-split]').forEach(function(h){
+  var walk=function(node){
+    [].slice.call(node.childNodes).forEach(function(n){
+      if(n.nodeType===3){
+        var frag=document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function(w){
+          if(!w.trim()){ frag.appendChild(document.createTextNode(w)); return; }
+          var s=document.createElement('span'); s.className='sw';
+          var i=document.createElement('i'); i.textContent=w;
+          s.appendChild(i); frag.appendChild(s);
+        });
+        n.parentNode.replaceChild(frag,n);
+      } else if(n.nodeType===1){ walk(n); }
+    });
+  };
+  walk(h);
+  var words=h.querySelectorAll('.sw');
+  words.forEach(function(w,i){ w.style.setProperty('--d',(0.28+i*0.09).toFixed(2)+'s'); });
+  var hio=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){ words.forEach(function(w){ w.classList.add('in'); }); hio.disconnect(); }
+    });
+  },{threshold:.2});
+  hio.observe(h);
+});
+
+/* counters */
+function runCounter(el){
+  var target=parseFloat(el.dataset.count), suffix=el.dataset.suffix||'';
+  var dec=(target%1!==0)?1:0, start=performance.now(), dur=1400;
+  function tick(now){
+    var p=Math.min((now-start)/dur,1);
+    var e=1-Math.pow(1-p,3);
+    el.textContent=(target*e).toFixed(dec)+suffix;
+    if(p<1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+var cio=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      if(!REDUCED) runCounter(e.target);
+      cio.unobserve(e.target);
+    }
+  });
+},{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
+
+/* ---------------- nav ---------------- */
+var nav=document.getElementById('nav'), links=document.getElementById('links');
+var burger=document.getElementById('burger');
+function setMenu(open){
+  links.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+burger.addEventListener('click',function(){ setMenu(!links.classList.contains('open')); });
+links.addEventListener('click',function(e){ if(e.target.tagName==='A') setMenu(false); });
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape' && links.classList.contains('open')){ setMenu(false); burger.focus(); }
+});
+
+/* ---------------- scroll: progress + nav shadow ---------------- */
+var progress=document.getElementById('progress');
+var ticking=false;
+
+/* ---------------- atmosphere: depth layers ----------------
+   Each ornament moves against its OWN section's position in the viewport,
+   never against raw page scroll — a layer inside the footer never sees the
+   thousands of pixels of scrollY the hero has accumulated by the time you
+   reach it. "progress" is -1..1 (section centred above/below viewport
+   centre), so displacement is hard-capped at RANGE_PX regardless of how
+   far or fast the page scrolls. Pointer parallax is capped separately and
+   only ever runs on hover-capable pointers. */
+var atmoLayers=[].slice.call(document.querySelectorAll('.atmo-layer'));
+var RANGE_PX=22, POINTER_PX=10;
+var pointerX=0,pointerY=0;
+function applyAtmo(){
+  var vh=window.innerHeight;
+  atmoLayers.forEach(function(el){
+    var depth=parseFloat(el.dataset.depth)||0;
+    if(depth===0) return;
+    var host=el.closest('section,footer')||el.parentElement;
+    var r=host.getBoundingClientRect();
+    var progress=((r.top+r.height/2)-vh/2)/(vh/2+r.height/2);
+    progress=Math.max(-1,Math.min(1,progress));
+    var sy=progress*RANGE_PX*depth;
+    var sx=pointerX*POINTER_PX*depth;
+    sy+=pointerY*POINTER_PX*depth*0.6;
+    el.style.transform='translate3d('+sx.toFixed(1)+'px,'+sy.toFixed(1)+'px,0)';
+  });
+}
+
+function applyHeroScroll(){
+  var stage=document.getElementById('brandStage');
+  var hero=document.getElementById('top');
+  if(!stage||!hero) return;
+  var r=hero.getBoundingClientRect();
+  var p=Math.max(0,Math.min(1,-r.top/Math.max(r.height,1)));
+  stage.style.setProperty('--stage-lift',(p*-24).toFixed(1)+'px');
+  stage.style.setProperty('--stage-turn',(p*1.8).toFixed(2)+'deg');
+}
+
+function onScroll(){
+  var y=window.scrollY||window.pageYOffset;
+  nav.classList.toggle('solid', y>40);
+  var max=document.documentElement.scrollHeight-window.innerHeight;
+  progress.style.width=(max>0?(y/max*100):0)+'%';
+  if(!REDUCED){ applyAtmo(); applyHeroScroll(); }
+  revealVisible();
+  ticking=false;
+}
+window.addEventListener('scroll',function(){
+  if(!ticking){ requestAnimationFrame(onScroll); ticking=true; }
+},{passive:true});
+
+if(!REDUCED && matchMedia('(hover:hover) and (pointer:fine)').matches){
+  var heroEl=document.getElementById('top'), brandStage=document.getElementById('brandStage');
+  if(heroEl){
+    heroEl.addEventListener('mousemove',function(e){
+      var r=heroEl.getBoundingClientRect();
+      pointerX=((e.clientX-r.left)/r.width-0.5)*2;
+      pointerY=((e.clientY-r.top)/r.height-0.5)*2;
+      requestAnimationFrame(applyAtmo);
+      if(brandStage){
+        brandStage.style.setProperty('--tilt-y',(pointerX*1.7).toFixed(2)+'deg');
+        brandStage.style.setProperty('--tilt-x',(pointerY*-1.45).toFixed(2)+'deg');
+      }
+    });
+    heroEl.addEventListener('mouseleave',function(){
+      pointerX=0; pointerY=0; requestAnimationFrame(applyAtmo);
+      if(brandStage){
+        brandStage.style.setProperty('--tilt-y','0deg');
+        brandStage.style.setProperty('--tilt-x','0deg');
+      }
+    });
+  }
+}
+
+/* magnetic buttons */
+if(!REDUCED && matchMedia('(hover:hover)').matches){
+  document.querySelectorAll('.btn').forEach(function(b){
+    b.addEventListener('mousemove',function(e){
+      var r=b.getBoundingClientRect();
+      var dx=(e.clientX-(r.left+r.width/2))/r.width;
+      var dy=(e.clientY-(r.top+r.height/2))/r.height;
+      b.style.transform='translate('+(dx*8).toFixed(1)+'px,'+(dy*6).toFixed(1)+'px)';
+    });
+    b.addEventListener('mouseleave',function(){ b.style.transform=''; });
+  });
+}
+
+/* ---------------- boot ---------------- */
+document.getElementById('yr').textContent=new Date().getFullYear();
+var saved=null;
+try{ saved=localStorage.getItem('gg-lang'); }catch(e){}
+setLang(saved && DAYS[saved] ? saved : 'pl');
+setInterval(updateStatus,60000);
+onScroll();
+
+var intro=document.getElementById('intro');
+function dismissIntro(){ intro.classList.add('gone'); setTimeout(function(){ intro.remove(); },600); }
+if(REDUCED){ dismissIntro(); }
+else { window.addEventListener('load',function(){ setTimeout(dismissIntro,650); });
+       setTimeout(dismissIntro,1800); }
+})();
+</script>
+</body>
+</html>

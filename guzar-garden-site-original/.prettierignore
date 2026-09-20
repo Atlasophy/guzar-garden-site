@@ -1,0 +1,7 @@
+.next/
+node_modules/
+legacy/
+public/
+coverage/
+playwright-report/
+supabase/migrations/

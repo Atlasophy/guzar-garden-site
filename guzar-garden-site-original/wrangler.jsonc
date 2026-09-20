@@ -1,0 +1,45 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "guzar-garden-platform",
+  "compatibility_date": "2026-09-11",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "./worker/index.ts",
+  "vars": {
+    "APP_BASE_URL": "https://guzargarden.pl",
+    "PUBLIC_INDEXING_ENABLED": "false",
+  },
+  "workers_dev": true,
+  "preview_urls": true,
+  "routes": [
+    {
+      "pattern": "guzargarden.pl",
+      "custom_domain": true,
+    },
+    {
+      "pattern": "www.guzargarden.pl",
+      "custom_domain": true,
+    },
+  ],
+  "assets": {
+    "directory": "dist/client",
+    "not_found_handling": "none",
+    "binding": "ASSETS",
+  },
+  "cache": {
+    "enabled": true,
+  },
+  "version_metadata": {
+    "binding": "CF_VERSION_METADATA",
+  },
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.01,
+    },
+  },
+}

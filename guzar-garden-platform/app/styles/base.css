@@ -1,0 +1,87 @@
+/*
+ * Shared ground.
+ *
+ * Everything else is scoped to a theme (`body.theme-emerald` for the landing,
+ * the reservation flow and the guest pages; `body.theme-cream` for the menu;
+ * `body.theme-staff` for the dashboard). This file holds only what is true on
+ * every page: the box model, the type stacks, and a focus ring that never
+ * disappears whatever a theme does.
+ */
+
+:root {
+  --gg-serif: 'Cormorant Garamond', Cormorant, Garamond, 'Times New Roman', serif;
+  --gg-sans:
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+/*
+ * A keyboard user must always be able to see where they are, on every theme.
+ * The themes restyle this; what they may not do is remove it.
+ */
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* Visually hidden, still read aloud. Used for live regions and skip links. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* The skip link stays hidden until it is focused, then lands over the header. */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 999;
+  padding: 0.7rem 1.1rem;
+  background: #04120c;
+  color: #f6e3b4;
+  border: 1px solid #dcb069;
+  font-family: var(--gg-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

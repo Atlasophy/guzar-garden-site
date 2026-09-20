@@ -1,0 +1,554 @@
+/*
+ * MIGRATED from the <style> block of index.html.
+ *
+ * Every declaration is the original one. The only change is scoping: each
+ * selector is prefixed with `body.theme-emerald` (and `:root` became that same
+ * selector) so the emerald landing design and the cream menu design can share
+ * one application without overwriting each other's `--green`, `.btn` and
+ * `.nav`. Asset URLs were rewritten from `assets/…` to `/assets/…`, since a
+ * stylesheet in the bundle no longer sits next to the HTML file.
+ *
+ * Edit this file, not the copy under legacy/ — that one is kept only as the
+ * reference for what shipped.
+ */
+
+body.theme-emerald{
+  /* ---- ground -------------------------------------------------------
+     Four steps of the same emerald so panels can sit on top of each other
+     and still read as separate planes of paper, the way the reference
+     artwork layers its cut shapes. */
+  --green-abyss:#04120c;
+  --green:#0a2418;
+  --green-2:#0d2e1f;
+  --green-3:#123a28;
+
+  /* ---- gold ----------------------------------------------------------
+     A ribbon of gold is lit from its top-left corner and falls away to a
+     deep brass at the far end; the gradient below is that fall. */
+  --gold-hi:#f6e3b4;
+  --gold:#dcb069;
+  --gold-ribbon:linear-gradient(135deg,#f6e3b4 0%,#e0b671 34%,#c69745 68%,#9c7130 100%);
+
+  --ivory:#f2ead8;
+  --ivory-soft:rgba(242,234,216,.74);
+  --ivory-faint:rgba(242,234,216,.46);
+
+  --rule:rgba(220,176,105,.3);
+  --rule-soft:rgba(220,176,105,.16);
+  --rule-strong:rgba(220,176,105,.55);
+
+
+  --mark:url("/assets/brand/guzar-mark-transparent.png");
+
+  --serif:'Cormorant Garamond',Cormorant,Garamond,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.68,.24,1);
+
+  /* Shadows are green-black, never neutral grey: a grey shadow on emerald
+     turns to ash. Every cut edge in the reference art throws exactly this. */
+  --cut:0 18px 34px -18px rgba(1,10,6,.85);
+  --cut-lg:0 40px 80px -34px rgba(1,10,6,.9);
+}
+body.theme-emerald *{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body.theme-emerald{
+  margin:0;color:var(--ivory);
+  background:var(--green);
+  font-family:var(--sans);font-size:16px;line-height:1.7;font-weight:300;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body.theme-emerald img{max-width:100%;display:block}
+body.theme-emerald a{color:inherit}
+body.theme-emerald ::selection{background:var(--gold);color:var(--green-abyss)}
+body.theme-emerald h1,body.theme-emerald h2,body.theme-emerald h3,body.theme-emerald h4{font-family:var(--serif);font-weight:400;line-height:1.06;margin:0}
+body.theme-emerald h2{font-size:clamp(2.05rem,4.4vw,3.5rem);letter-spacing:.005em}
+body.theme-emerald h3{font-size:1.45rem;letter-spacing:.01em}
+body.theme-emerald p{margin:0 0 1.1rem}
+body.theme-emerald :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:1px}
+
+body.theme-emerald .wrap{width:min(1220px,92vw);margin-inline:auto;position:relative;z-index:2}
+body.theme-emerald .sec{padding:clamp(5rem,10vw,9rem) 0;position:relative;overflow:hidden}
+
+/* An eyebrow here is a gold hairline that runs into the word, borrowed from
+   the ruled cartouche in the ornament reference — not a floating caps label. */
+body.theme-emerald .eyebrow{display:flex;align-items:center;gap:.85rem;font-size:.68rem;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--gold);font-weight:500;margin:0 0 1.4rem}
+body.theme-emerald .eyebrow::before{content:"";width:42px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));flex:none}
+body.theme-emerald .kitchen-head .eyebrow{justify-content:center}
+body.theme-emerald .kitchen-head .eyebrow::after{content:"";width:42px;height:1px;background:linear-gradient(270deg,transparent,var(--gold));flex:none}
+
+body.theme-emerald .lede{font-size:1.12rem;line-height:1.8;color:var(--ivory-soft);max-width:60ch}
+body.theme-emerald .big-first{font-size:1.08rem;color:var(--ivory-soft);max-width:62ch}
+
+/* the divider ornament: two hairlines meeting at a struck diamond */
+body.theme-emerald .orn{width:132px;height:22px;display:block;margin:1.5rem 0;color:var(--gold)}
+body.theme-emerald .orn.center{margin-inline:auto}
+
+/* ---------------- paper grain ---------------- */
+body.theme-emerald .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.055;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.theme-emerald>*:not(.grain){position:relative;z-index:2}
+
+/* ---------------- ambient rosette ---------------- */
+/* The emblem's own silhouette, tinted gold and held at a whisper. One per
+   section, never moving on its own — the ribbons carry the motion. */
+body.theme-emerald .atmo{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+body.theme-emerald .atmo-layer{position:absolute;aspect-ratio:1;color:var(--gold);
+  -webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat;
+  background:currentColor;transform:translate3d(0,0,0);will-change:transform}
+body.theme-emerald .atmo-static{width:40vh;opacity:.035;right:-8vh;top:8%}
+body.theme-emerald .sec:nth-of-type(even) .atmo-static{right:auto;left:-10vh;top:auto;bottom:6%}
+body.theme-emerald .atmo-1{width:52vh;left:-14vh;top:-10vh;opacity:.05}
+body.theme-emerald .atmo-2{width:22vh;right:6%;bottom:8%;opacity:.055}
+body.theme-emerald .atmo-3{width:13vh;left:34%;bottom:-4vh;opacity:.05}
+body.theme-emerald .atmo-4{width:30vh;right:34%;top:-12vh;opacity:.035}
+
+/* ---------------- buttons ---------------- */
+/* Cut square, like every shape in the reference sheet. The solid one is a
+   length of the gold ribbon itself. */
+body.theme-emerald .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.92rem 1.7rem;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:500;text-decoration:none;border:1px solid var(--rule-strong);
+  color:var(--gold-hi);background:transparent;position:relative;isolation:isolate;
+  transition:color .45s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease)}
+body.theme-emerald .btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--gold-ribbon);
+  transform:scaleX(0);transform-origin:left center;transition:transform .5s var(--ease)}
+body.theme-emerald .btn:hover{color:var(--green-abyss);border-color:var(--gold-hi);box-shadow:var(--cut)}
+body.theme-emerald .btn:hover::before{transform:scaleX(1)}
+body.theme-emerald .btn.solid,body.theme-emerald .btn.light{background:var(--gold-ribbon);border-color:transparent;color:var(--green-abyss);
+  box-shadow:0 10px 22px -12px rgba(1,10,6,.9)}
+body.theme-emerald .btn.solid::before,body.theme-emerald .btn.light::before{background:var(--gold-hi)}
+body.theme-emerald .btn.solid:hover,body.theme-emerald .btn.light:hover{color:var(--green-abyss)}
+
+/* ---------------- opening frame ---------------- */
+body.theme-emerald .intro{position:fixed;inset:0;z-index:200;display:grid;place-items:center;gap:1.2rem;
+  background:radial-gradient(circle at 50% 44%,#14442e 0,#09271a 46%,#04120c 100%);
+  transition:opacity .6s var(--ease),visibility .6s}
+body.theme-emerald .intro.gone{opacity:0;visibility:hidden}
+body.theme-emerald .intro-logo{width:min(300px,52vw);animation:introSettle 1.1s var(--ease) both}
+body.theme-emerald .intro-logo img{width:100%;height:auto}
+body.theme-emerald .intro .cap{font-size:.66rem;letter-spacing:.44em;text-transform:uppercase;color:var(--gold);
+  animation:introSettle 1.1s .16s var(--ease) both}
+@keyframes introSettle{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+
+/* ---------------- nav ---------------- */
+body.theme-emerald header.nav{position:fixed;top:0;left:0;right:0;z-index:120;display:flex;align-items:center;
+  gap:1.6rem;padding:1.05rem clamp(1rem,4vw,2.6rem);
+  transition:background .5s var(--ease),padding .5s var(--ease),box-shadow .5s var(--ease)}
+body.theme-emerald header.nav.solid{background:rgba(4,18,12,.96);padding-block:.7rem;
+  box-shadow:0 1px 0 var(--rule-soft),0 18px 34px -28px rgba(0,0,0,.9)}
+body.theme-emerald .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;margin-right:auto}
+body.theme-emerald .brand-mark{width:42px;height:42px;flex:none;position:relative;
+  filter:drop-shadow(0 6px 10px rgba(1,10,6,.6));transition:transform .8s var(--ease)}
+body.theme-emerald .brand-mark img{width:100%;height:100%;object-fit:contain}
+body.theme-emerald .brand:hover .brand-mark{transform:rotate(45deg)}
+body.theme-emerald .brand b{display:block;font-family:var(--serif);font-size:1.32rem;font-weight:500;
+  letter-spacing:.2em;color:var(--ivory);line-height:1}
+body.theme-emerald .brand i{display:block;font-style:normal;font-size:.58rem;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--gold);margin-top:.34rem}
+body.theme-emerald nav.links{display:flex;align-items:center;gap:2rem}
+body.theme-emerald nav.links a{text-decoration:none;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ivory-soft);position:relative;padding-block:.3rem;transition:color .35s var(--ease)}
+body.theme-emerald nav.links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
+body.theme-emerald nav.links a:hover{color:var(--gold-hi)}
+body.theme-emerald nav.links a:hover::after{transform:scaleX(1);transform-origin:left}
+body.theme-emerald nav.links .nav-cta-mobile{display:none}
+body.theme-emerald .nav-tools{display:flex;align-items:center;gap:.9rem}
+body.theme-emerald .lang{display:flex;border:1px solid var(--rule-soft)}
+body.theme-emerald .lang button{background:none;border:0;padding:.4rem .58rem;font:inherit;font-size:.62rem;
+  letter-spacing:.14em;color:var(--ivory-faint);cursor:pointer;transition:color .3s,background .3s}
+body.theme-emerald .lang button+button{border-left:1px solid var(--rule-soft)}
+body.theme-emerald .lang button.on{color:var(--green-abyss);background:var(--gold)}
+body.theme-emerald .lang button:hover:not(.on){color:var(--gold-hi)}
+body.theme-emerald .lang-select{display:none;background:transparent;border:1px solid var(--rule-soft);color:var(--ivory-soft);
+  font:inherit;font-size:.7rem;padding:.34rem .4rem}
+body.theme-emerald .lang-select option{color:#000}
+body.theme-emerald .nav-cta{padding:.7rem 1.15rem;font-size:.64rem}
+body.theme-emerald .burger{display:none;background:none;border:1px solid var(--rule-soft);color:var(--gold-hi);
+  font:inherit;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;padding:.5rem .8rem;cursor:pointer}
+body.theme-emerald .progress{position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold-ribbon)}
+/* ===================== hero ===================== */
+/* The whole page is built on one idea taken from the reference sheet: strips
+   of gold ribbon laid across deep emerald at 45 degrees, each one throwing a
+   shadow onto the sheet below it. The hero is where that idea is played at
+   full size; everywhere further down the page it is reduced to a hairline. */
+body.theme-emerald .hero{position:relative;min-height:100svh;display:flex;align-items:center;
+  padding:7.4rem 0 5rem;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 12% 20%,#0f3122 0,transparent 60%),
+    linear-gradient(160deg,#0c2b1d 0%,#0a2418 46%,#061a11 100%)}
+
+/* the cut planes the ribbons lie on */
+body.theme-emerald .hero-weave{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+body.theme-emerald .hero-weave svg{position:absolute;inset:0;width:100%;height:100%}
+body.theme-emerald .hero-weave .plane{position:absolute;inset:0}
+body.theme-emerald .plane-a{background:rgba(4,18,12,.55);clip-path:polygon(0 0,58% 0,0 62%)}
+body.theme-emerald .plane-b{background:rgba(4,18,12,.4);clip-path:polygon(100% 34%,100% 100%,26% 100%)}
+
+body.theme-emerald .hero-shell{width:min(1220px,92vw);margin-inline:auto;position:relative;z-index:3;
+  display:grid;grid-template-columns:minmax(0,1.02fr) minmax(320px,.8fr);
+  align-items:center;gap:3rem}
+body.theme-emerald .hero-copy{max-width:36rem}
+
+body.theme-emerald .hero-kicker{display:flex;align-items:center;gap:1rem;font-size:.66rem;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem;flex-wrap:wrap}
+body.theme-emerald .hero-kicker>span:first-child{display:flex;align-items:center;gap:.8rem}
+body.theme-emerald .hero-kicker>span:first-child::before{content:"";width:52px;height:1px;background:var(--gold);flex:none}
+body.theme-emerald .status{display:inline-flex;align-items:center;gap:.45rem;color:var(--ivory-soft)}
+body.theme-emerald .status .dot{width:6px;height:6px;background:#c05a3a;transform:rotate(45deg);flex:none;
+  transition:background .4s}
+body.theme-emerald .status .dot.open{background:#5fbd8a;box-shadow:0 0 0 3px rgba(95,189,138,.16)}
+
+/* The wordmark sets both words in one weight and one colour — the printed
+   logo does the same, and splitting them would invent a hierarchy the brand
+   does not have. The gold is lit across the letterforms like the ribbons. */
+body.theme-emerald h1.title{font-size:clamp(2.9rem,7.5vw,5.9rem);font-weight:300;letter-spacing:.075em;
+  line-height:.96;text-transform:uppercase;
+  background:linear-gradient(122deg,#f6e3b4 0%,#e2ba77 30%,#c99a48 62%,#a97e34 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 14px 26px rgba(1,10,6,.55))}
+body.theme-emerald h1.title em{display:block;font-style:normal}
+/* The wordmark is one orchestrated moment: the whole lockup rises once on
+   load. The per-word spans the script inserts stay inline on purpose —
+   an inline-block there would take the letters out of the gradient's text
+   clip and the gold would vanish. */
+body.theme-emerald .sw,body.theme-emerald .sw>i{display:inline;font-style:inherit;transform:none}
+html.js body.theme-emerald h1.title{animation:titleRise 1.1s .18s var(--ease) both}
+@keyframes titleRise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+body.theme-emerald .hero .sub{margin:1.4rem 0 1.1rem;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--ivory-faint);line-height:2;max-width:34rem}
+body.theme-emerald .hero .lede{max-width:38ch;color:var(--ivory-soft);font-size:1.06rem}
+
+body.theme-emerald .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.7rem}
+
+/* three facts, ruled apart by hairlines instead of boxed into cards */
+body.theme-emerald .hero-facts{display:flex;margin-top:2.1rem;border-top:1px solid var(--rule-soft);padding-top:1.1rem}
+body.theme-emerald .hero-facts>span{display:flex;flex-direction:column;gap:.3rem;padding-right:2.2rem;margin-right:2.2rem;
+  border-right:1px solid var(--rule-soft)}
+body.theme-emerald .hero-facts>span:last-child{border-right:0;margin-right:0;padding-right:0}
+body.theme-emerald .hero-facts b{font-family:var(--serif);font-size:1.4rem;font-weight:500;color:var(--gold-hi);line-height:1}
+body.theme-emerald .hero-facts small{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ivory-faint)}
+
+/* ---- the emblem roundel ---- */
+/* The mark is presented the way the ornament reference presents its centre
+   medallion: held inside a struck gold ring, sitting on top of the pattern. */
+body.theme-emerald .hero-visual{position:relative;display:grid;place-items:center;min-height:min(64vh,540px)}
+body.theme-emerald .brand-stage{position:relative;width:min(430px,80%);aspect-ratio:1;display:grid;place-items:center;
+  transform:translateY(var(--stage-lift,0)) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) rotate(var(--stage-turn,0deg));
+  transform-style:preserve-3d;transition:transform .5s var(--ease)}
+/* A cut emerald disc laid over the weave, so the mark is read against a
+   clean field the way a medallion is set into a pattern — not through it. */
+body.theme-emerald .wheel-glow{position:absolute;inset:-16%;border-radius:50%;
+  background:
+    radial-gradient(circle,rgba(6,26,17,.97) 0,rgba(6,26,17,.95) 41%,rgba(6,26,17,.55) 53%,transparent 66%),
+    radial-gradient(circle,rgba(220,176,105,.3) 0,rgba(220,176,105,.08) 46%,transparent 72%);
+  box-shadow:0 30px 60px -30px rgba(1,10,6,.9)}
+body.theme-emerald .wheel-trace{position:absolute;border-radius:50%;border:1px solid var(--rule-soft)}
+body.theme-emerald .trace-one{inset:-4%}
+body.theme-emerald .trace-two{inset:6%;border-style:dashed;border-color:rgba(220,176,105,.22)}
+/* the ring itself: a cut brass band, lit top-left like every other gold edge */
+body.theme-emerald .wheel-gold{position:absolute;inset:0;border-radius:50%;padding:1px;
+  background:conic-gradient(from 210deg,#8f6829,#f6e3b4 22%,#c19240 48%,#8f6829 68%,#e2c07f 88%,#8f6829);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude}
+body.theme-emerald .wheel-color{position:relative;width:64%;display:block;filter:drop-shadow(0 22px 34px rgba(1,10,6,.75))}
+body.theme-emerald .wheel-color img{width:100%;height:auto}
+body.theme-emerald .wheel-star{position:absolute;width:12px;height:12px;background:var(--gold);transform:rotate(45deg);
+  box-shadow:0 0 14px rgba(220,176,105,.6)}
+body.theme-emerald .star-one{top:-6px;left:50%;margin-left:-6px}
+body.theme-emerald .star-two{bottom:-6px;left:50%;margin-left:-6px}
+body.theme-emerald .wheel-caption{position:absolute;bottom:-2.6rem;left:50%;transform:translateX(-50%);white-space:nowrap;
+  font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ivory-faint)}
+
+/* The weave runs edge to edge, so the top of it is darkened back down to
+   keep the navigation legible where a ribbon passes behind a link. */
+body.theme-emerald .hero::after{content:"";position:absolute;left:0;right:0;top:0;height:150px;z-index:2;
+  pointer-events:none;background:linear-gradient(180deg,rgba(4,18,12,.82),rgba(4,18,12,.34) 55%,transparent)}
+
+/* the hero's lower edge: one gold hairline the sections below keep echoing */
+body.theme-emerald .hero-arch{position:absolute;left:0;right:0;bottom:0;height:1px;z-index:3;
+  background:linear-gradient(90deg,transparent,var(--rule-strong) 22%,var(--rule-strong) 78%,transparent)}
+
+/* ===================== marquee ===================== */
+body.theme-emerald .marquee{position:relative;z-index:3;overflow:hidden;background:var(--green-abyss);
+  border-bottom:1px solid var(--rule-soft);padding:.85rem 0}
+body.theme-emerald .marquee-track{display:flex;gap:3.4rem;width:max-content;animation:slide 42s linear infinite}
+body.theme-emerald .marquee span{font-family:var(--serif);font-size:1.02rem;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold);opacity:.66;display:flex;align-items:center;gap:3.4rem}
+body.theme-emerald .marquee span::after{content:"";width:5px;height:5px;background:var(--gold);transform:rotate(45deg);opacity:.7}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ===================== section rhythm ===================== */
+/* Each section boundary is the ribbon idea at its quietest: two hairlines
+   crossing the page on the same 45-degree bias, and nothing else. */
+body.theme-emerald .sec::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--rule-soft) 30%,var(--rule-soft) 70%,transparent)}
+body.theme-emerald .about{background:var(--green-2)}
+body.theme-emerald .kitchen{background:var(--green)}
+body.theme-emerald .sig{background:var(--green-2)}
+body.theme-emerald .feat{background:var(--green)}
+body.theme-emerald .loc{background:var(--green-2)}
+
+/* ===================== about ===================== */
+body.theme-emerald .about-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);
+  gap:clamp(2.5rem,6vw,5.5rem);align-items:start}
+body.theme-emerald .about h2{max-width:16ch}
+
+/* the stats read as a struck plaque, ruled not boxed */
+body.theme-emerald .stats{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule-soft);
+  background:rgba(4,18,12,.42);box-shadow:var(--cut)}
+body.theme-emerald .stat{padding:1.9rem 1.5rem;border-right:1px solid var(--rule-soft);border-bottom:1px solid var(--rule-soft)}
+body.theme-emerald .stat:nth-child(2n){border-right:0}
+body.theme-emerald .stat:nth-child(n+3){border-bottom:0}
+body.theme-emerald .stat b{display:block;font-family:var(--serif);font-size:2.5rem;font-weight:400;color:var(--gold-hi);line-height:1}
+body.theme-emerald .stat b.small{font-size:1.55rem;letter-spacing:.01em}
+body.theme-emerald .stat small{display:block;margin-top:.5rem;font-size:.56rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ivory-faint)}
+/* ===================== the cuisine ===================== */
+body.theme-emerald .kitchen-head{text-align:center;max-width:64ch;margin:0 auto clamp(3rem,6vw,4.6rem)}
+body.theme-emerald .kitchen-head .lede{margin-inline:auto}
+
+/* Four ways of cooking, not four steps — so they are ruled apart, not
+   numbered. Each panel is a cut sheet with one lit gold edge. */
+body.theme-emerald .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule-soft);
+  border:1px solid var(--rule-soft);box-shadow:var(--cut-lg)}
+body.theme-emerald .pillar{background:var(--green-2);padding:2.6rem 1.7rem 2.4rem;position:relative;overflow:hidden;
+  transition:background .5s var(--ease)}
+body.theme-emerald .pillar::before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;
+  background:var(--gold-ribbon);transform:scaleX(0);transform-origin:left;
+  transition:transform .6s var(--ease)}
+body.theme-emerald .pillar:hover{background:var(--green-3)}
+body.theme-emerald .pillar:hover::before{transform:scaleX(1)}
+body.theme-emerald .pillar svg{width:44px;height:44px;color:var(--gold);stroke-width:1.15;margin-bottom:1.4rem}
+body.theme-emerald .pillar h3{color:var(--ivory)}
+body.theme-emerald .pillar .uz{display:block;margin:.45rem 0 1rem;font-size:.58rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gold)}
+body.theme-emerald .pillar p{font-size:.94rem;color:var(--ivory-soft);margin:0}
+
+/* ---- the cartouche ---- */
+/* The one fully ornate object on the page. It is the framed panel from the
+   ornament reference, drawn once, around the line the whole kitchen is
+   really about. Nothing else on the page competes with it. */
+body.theme-emerald .quote{position:relative;margin:clamp(3.4rem,7vw,5.4rem) auto 0;max-width:60rem;
+  padding:clamp(3.2rem,7vw,5rem) clamp(2rem,6vw,4.6rem);text-align:center;
+  background:
+    radial-gradient(90% 120% at 50% 0,rgba(24,84,58,.6) 0,transparent 70%),
+    var(--green-3);
+  border:1px solid var(--rule)}
+body.theme-emerald .quote::before,body.theme-emerald .quote::after{content:"";position:absolute;pointer-events:none;
+  border:1px solid var(--rule-soft)}
+body.theme-emerald .quote::before{inset:9px}
+body.theme-emerald .quote::after{inset:16px;border-color:rgba(220,176,105,.1)}
+body.theme-emerald .q-corner{position:absolute;width:clamp(34px,5vw,54px);height:auto;color:var(--gold);opacity:.9}
+body.theme-emerald .q-corner.tl{top:5px;left:5px}
+body.theme-emerald .q-corner.tr{top:5px;right:5px;transform:scaleX(-1)}
+body.theme-emerald .q-corner.bl{bottom:5px;left:5px;transform:scaleY(-1)}
+body.theme-emerald .q-corner.br{bottom:5px;right:5px;transform:scale(-1)}
+/* The keystone of the cartouche is the restaurant's own rosette, struck in
+   gold and set into the top rule — the mark doing the ornament's job rather
+   than invented scrollwork standing in for it. */
+body.theme-emerald .q-seal{position:absolute;top:0;left:50%;width:clamp(46px,7vw,64px);aspect-ratio:1;
+  transform:translate(-50%,-52%);background:var(--green-3);color:var(--gold);
+  display:grid;place-items:center;z-index:2}
+body.theme-emerald .q-seal::before{content:"";position:absolute;inset:14%;background:currentColor;
+  -webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat}
+body.theme-emerald .q-seal::after{content:"";position:absolute;inset:0;border:1px solid var(--rule);transform:rotate(45deg)}
+body.theme-emerald .quote p{position:relative;font-family:var(--serif);font-size:clamp(1.5rem,3.4vw,2.3rem);
+  line-height:1.4;color:var(--ivory);max-width:26ch;margin:0 auto 1.4rem}
+body.theme-emerald .quote span{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+
+/* ===================== signature dishes ===================== */
+body.theme-emerald .sig-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;
+  margin-bottom:clamp(2.4rem,5vw,3.6rem);flex-wrap:wrap}
+body.theme-emerald .sig-head h2{max-width:18ch}
+body.theme-emerald .sig-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem}
+body.theme-emerald .dish{display:block;text-decoration:none;background:var(--green);border:1px solid var(--rule-soft);
+  padding:1.1rem 1.1rem 1.3rem;transition:border-color .5s var(--ease),transform .5s var(--ease),background .5s var(--ease)}
+body.theme-emerald .dish:hover{border-color:var(--rule-strong);background:var(--green-3);transform:translateY(-4px)}
+/* the plate sits in a struck aperture — the ring is the same brass band as
+   the hero roundel, at a fifth of the size */
+body.theme-emerald .dish .art{display:block;position:relative;aspect-ratio:1;border-radius:50%;overflow:hidden;
+  box-shadow:0 0 0 1px var(--rule),0 14px 26px -16px rgba(1,10,6,.9);margin-bottom:1rem}
+body.theme-emerald .dish .art svg,body.theme-emerald .dish .art img{width:100%;height:100%;display:block;object-fit:cover}
+body.theme-emerald .dish .txt{display:block;text-align:center}
+body.theme-emerald .dish .cat{display:block;font-size:.53rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+body.theme-emerald .dish h3{font-size:1.18rem;color:var(--ivory);margin-bottom:.45rem}
+body.theme-emerald .dish .pr{font-size:.8rem;letter-spacing:.1em;color:var(--ivory-faint)}
+
+/* ===================== the venue ===================== */
+body.theme-emerald .feat h2{max-width:20ch;margin-bottom:clamp(2.4rem,5vw,3.4rem)}
+body.theme-emerald .feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule-soft);
+  border:1px solid var(--rule-soft)}
+body.theme-emerald .feat .f{background:var(--green);padding:1.9rem 1.5rem;display:flex;flex-direction:column;gap:.7rem;
+  transition:background .5s var(--ease)}
+body.theme-emerald .feat .f:hover{background:var(--green-3)}
+body.theme-emerald .feat .f svg{width:26px;height:26px;color:var(--gold)}
+body.theme-emerald .feat .f b{font-family:var(--serif);font-size:1.24rem;font-weight:500;color:var(--ivory)}
+body.theme-emerald .feat .f span{font-size:.88rem;color:var(--ivory-soft);line-height:1.6}
+
+/* ===================== finding us ===================== */
+/* The location block takes the third reference directly: the rosette blown
+   up and bled off the left edge in gold, a double rule down the middle, the
+   practical information set against it. */
+body.theme-emerald .loc{position:relative}
+body.theme-emerald .loc::after{content:"";position:absolute;left:-16vw;top:50%;transform:translateY(-50%);
+  width:min(58vw,720px);aspect-ratio:1;color:var(--gold);opacity:.06;pointer-events:none;z-index:0;
+  -webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat;
+  background:currentColor}
+body.theme-emerald .loc-panel{position:relative;border:1px solid var(--rule);background:rgba(4,18,12,.66);
+  padding:clamp(1.8rem,4vw,3.4rem);box-shadow:var(--cut-lg)}
+body.theme-emerald .loc-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
+  gap:clamp(2rem,5vw,4rem);align-items:start}
+body.theme-emerald .loc h2{font-size:clamp(1.9rem,3.6vw,2.9rem)}
+body.theme-emerald .info-block{padding-top:1.3rem;margin-top:1.3rem;border-top:1px solid var(--rule-soft)}
+body.theme-emerald .info-block:first-of-type{border-top:0;margin-top:0;padding-top:0}
+body.theme-emerald .info-block h4{font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);
+  font-family:var(--sans);font-weight:500;margin-bottom:.55rem}
+body.theme-emerald .info-block p{margin:0;color:var(--ivory);font-size:.98rem}
+body.theme-emerald .info-block p a{text-decoration:none;border-bottom:1px solid var(--rule);transition:color .3s}
+body.theme-emerald .info-block p a:hover{color:var(--gold-hi)}
+body.theme-emerald .info-block small{display:block;margin-top:.4rem;font-size:.8rem;color:var(--ivory-faint);line-height:1.6}
+body.theme-emerald .hours{list-style:none;margin:0;padding:0;font-size:.95rem}
+body.theme-emerald .hours li{display:flex;justify-content:space-between;gap:1rem;padding:.32rem 0;color:var(--ivory-soft)}
+body.theme-emerald .hours li.today{color:var(--gold-hi)}
+body.theme-emerald .hours li.today b{font-weight:500}
+
+body.theme-emerald .mapcard{border:1px solid var(--rule-soft);background:var(--green-abyss);overflow:hidden}
+body.theme-emerald .map-frame{position:relative;aspect-ratio:4/3.1;min-height:300px}
+body.theme-emerald .map-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;
+  filter:grayscale(1) invert(.92) hue-rotate(115deg) saturate(.7) contrast(.88);
+  transition:filter .7s var(--ease)}
+body.theme-emerald .mapcard:hover .map-frame iframe{filter:none}
+body.theme-emerald .map-badge{position:absolute;z-index:2;left:1rem;top:1rem;background:rgba(4,18,12,.92);
+  border:1px solid var(--rule);padding:.7rem .95rem;pointer-events:none}
+body.theme-emerald .map-badge b{display:block;font-family:var(--serif);font-size:1.05rem;color:var(--gold-hi);letter-spacing:.06em}
+body.theme-emerald .map-badge small{display:block;font-size:.62rem;color:var(--ivory-faint);margin-top:.2rem}
+body.theme-emerald .map-bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  padding:.85rem 1rem;border-top:1px solid var(--rule-soft)}
+body.theme-emerald .coords{font-size:.66rem;letter-spacing:.16em;color:var(--ivory-faint)}
+body.theme-emerald .acts{display:flex;gap:1.2rem;flex-wrap:wrap}
+body.theme-emerald .acts a{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
+  text-decoration:none;border-bottom:1px solid transparent;transition:border-color .35s}
+body.theme-emerald .acts a:hover{border-color:var(--gold)}
+body.theme-emerald .map-hint{margin:.7rem 0 0;font-size:.74rem;color:var(--ivory-faint)}
+/* ===================== footer ===================== */
+body.theme-emerald footer{position:relative;background:var(--green-abyss);padding:clamp(4rem,8vw,6.5rem) 0 2.4rem;
+  overflow:hidden;border-top:1px solid var(--rule-soft)}
+body.theme-emerald .foot-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1.2fr);
+  gap:clamp(2rem,5vw,4rem)}
+body.theme-emerald .foot-sign{display:flex;align-items:center;gap:1rem;margin-bottom:1.3rem}
+body.theme-emerald .foot-emblem{width:62px;height:62px;flex:none;filter:drop-shadow(0 8px 14px rgba(0,0,0,.6))}
+body.theme-emerald .foot-emblem img{width:100%;height:100%;object-fit:contain}
+body.theme-emerald .foot-word strong{display:block;font-family:var(--serif);font-size:1.5rem;font-weight:500;
+  letter-spacing:.16em;color:var(--ivory)}
+body.theme-emerald .foot-word small{display:block;margin-top:.3rem;font-size:.55rem;letter-spacing:.3em;color:var(--gold)}
+body.theme-emerald .foot-brand p{color:var(--ivory-faint);font-size:.92rem;max-width:38ch}
+body.theme-emerald .socials{display:flex;gap:.6rem;margin-top:1.4rem}
+body.theme-emerald .socials a{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--rule-soft);
+  color:var(--gold);transition:background .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease)}
+body.theme-emerald .socials a svg{width:17px;height:17px}
+body.theme-emerald .socials a:hover{background:var(--gold);color:var(--green-abyss);border-color:var(--gold)}
+body.theme-emerald footer h5{font-family:var(--sans);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);font-weight:500;margin:0 0 1rem}
+body.theme-emerald footer ul{list-style:none;margin:0;padding:0;font-size:.92rem;color:var(--ivory-faint)}
+body.theme-emerald footer ul li{padding:.28rem 0}
+body.theme-emerald footer ul a{text-decoration:none;transition:color .3s}
+body.theme-emerald footer ul a:hover{color:var(--gold-hi)}
+body.theme-emerald .colophon{margin-top:clamp(2.6rem,5vw,4rem);padding-top:1.4rem;border-top:1px solid var(--rule-soft);
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-size:.7rem;letter-spacing:.1em;color:rgba(242,234,216,.34)}
+
+/* ===================== reveals ===================== */
+/* One reveal behaviour for the whole page: content rises a few pixels into
+   place the first time it is seen. Nothing loops, nothing floats. */
+html.js body.theme-emerald .rv{opacity:0;transform:translateY(20px);
+  transition:opacity .85s var(--ease) var(--d,0s),transform .85s var(--ease) var(--d,0s)}
+html.js body.theme-emerald .rv.in{opacity:1;transform:none}
+
+/* ===================== responsive ===================== */
+@media(max-width:1180px){
+  body.theme-emerald .hero-shell{grid-template-columns:minmax(0,1fr) minmax(300px,.72fr);gap:2rem}
+  body.theme-emerald .sig-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:1000px){
+  body.theme-emerald .pillars{grid-template-columns:repeat(2,1fr)}
+  body.theme-emerald .feat-grid{grid-template-columns:repeat(2,1fr)}
+  body.theme-emerald .about-grid,body.theme-emerald .loc-grid{grid-template-columns:1fr}
+  body.theme-emerald nav.links{position:fixed;inset:0 0 auto 0;background:var(--green-abyss);flex-direction:column;
+    padding:6rem 2rem 2.4rem;gap:1.3rem;transform:translateY(-102%);
+    transition:transform .6s var(--ease);box-shadow:0 24px 48px -24px rgba(0,0,0,.8);z-index:-1;
+    border-bottom:1px solid var(--rule-soft)}
+  body.theme-emerald nav.links.open{transform:translateY(0)}
+  body.theme-emerald nav.links a{font-size:.95rem}
+  body.theme-emerald nav.links .nav-cta-mobile{display:inline-flex;margin-top:.6rem}
+  body.theme-emerald .burger{display:block}
+  body.theme-emerald .nav-cta{display:none}
+  body.theme-emerald .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+  body.theme-emerald .hero{min-height:auto;padding:8rem 0 5rem}
+  body.theme-emerald .hero-shell{display:flex;flex-direction:column;gap:3rem}
+  body.theme-emerald .hero-copy{width:min(640px,100%);max-width:100%;text-align:center}
+  body.theme-emerald .hero-kicker,body.theme-emerald .hero-cta,body.theme-emerald .hero-facts{justify-content:center}
+  body.theme-emerald .hero-kicker>span:first-child::before{display:none}
+  body.theme-emerald .eyebrow{justify-content:center}
+  body.theme-emerald .hero .lede,body.theme-emerald .hero .sub{margin-inline:auto}
+  body.theme-emerald .hero-visual{min-height:auto;width:100%}
+  body.theme-emerald .brand-stage{width:min(340px,72vw)}
+  /* On a narrow screen the weave cannot cover the whole hero without
+     swallowing the type, so it drops to the lower half — a band the emblem
+     sits on — and is faded back into the ground where the copy begins. */
+  body.theme-emerald .hero-weave svg{top:auto;bottom:0;left:-12%;width:124%;height:34%}
+  body.theme-emerald .hero-weave::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,var(--green) 0,rgba(10,36,24,.96) 62%,rgba(10,36,24,.6) 74%,transparent 88%)}
+  body.theme-emerald .plane-a,body.theme-emerald .plane-b{display:none}
+  body.theme-emerald .loc::after{left:-40vw;width:110vw;opacity:.045}
+  body.theme-emerald .sig-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:760px){
+  body.theme-emerald .sig-grid{grid-template-columns:repeat(2,1fr)}
+  body.theme-emerald .stats{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  body.theme-emerald h1.title{font-size:clamp(2.9rem,17vw,4.4rem)}
+  body.theme-emerald .hero .sub{letter-spacing:.24em;font-size:.66rem}
+  body.theme-emerald .hero-cta .btn{width:100%}
+  /* the three facts stay one row on a phone — wrapping the last one onto a
+     line of its own left it reading as an afterthought */
+  body.theme-emerald .hero-facts>span{flex:1 1 0;align-items:center;text-align:center;
+    padding-right:.6rem;margin-right:.6rem}
+  body.theme-emerald .hero-facts b{font-size:1.02rem}
+  body.theme-emerald .hero-facts small{font-size:.5rem;letter-spacing:.14em}
+  body.theme-emerald .wheel-caption{display:none}
+  body.theme-emerald .pillars,body.theme-emerald .feat-grid,body.theme-emerald .foot-grid{grid-template-columns:1fr}
+  body.theme-emerald .sig-grid .dish:nth-child(5){display:none}
+  body.theme-emerald .quote{padding-inline:1.3rem}
+  body.theme-emerald .q-corner{width:44px}
+  body.theme-emerald .map-frame{min-height:240px}
+  body.theme-emerald .colophon{justify-content:center;text-align:center}
+}
+@media(max-width:460px){
+  body.theme-emerald header.nav{gap:.6rem;padding-inline:.85rem}
+  body.theme-emerald .brand{gap:.45rem}
+  body.theme-emerald .brand b{font-size:1.08rem;letter-spacing:.14em}
+  body.theme-emerald .brand i{display:none}
+  body.theme-emerald .brand-mark{width:34px;height:34px}
+  body.theme-emerald .nav-tools{gap:.45rem}
+  body.theme-emerald .lang{display:none}
+  body.theme-emerald .lang-select{display:block}
+  body.theme-emerald .burger{padding:.44rem .62rem}
+  body.theme-emerald .marquee span{font-size:.86rem;letter-spacing:.24em;gap:2.2rem}
+  body.theme-emerald .marquee-track{gap:2.2rem}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  body.theme-emerald *,body.theme-emerald *::before,body.theme-emerald *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important}
+  html.js body.theme-emerald .rv{opacity:1;transform:none}
+  html.js body.theme-emerald h1.title{animation:none}
+  body.theme-emerald .brand-stage{transform:none!important}
+  body.theme-emerald .marquee-track{animation:none}
+}
+
