@@ -2,8 +2,9 @@ import { requireStaff } from '@/lib/auth/staff';
 import { getAdminClient } from '@/lib/supabase/admin';
 import type { RestaurantTableRow } from '@/lib/database/types';
 import { NewReservationForm } from '@/components/staff/new-reservation-form';
+import { getServerStaffDictionary } from '@/lib/i18n/staff-server';
 export default async function NewReservationPage() {
-  const staff = await requireStaff();
+  const [staff, dictionary] = await Promise.all([requireStaff(), getServerStaffDictionary()]);
   const { data } = await getAdminClient()
     .from('restaurant_tables')
     .select('*')
@@ -14,8 +15,8 @@ export default async function NewReservationPage() {
     <>
       <header className="staff-head">
         <div>
-          <h1>Nowa rezerwacja</h1>
-          <p>Telefon, walk-in lub rezerwacja obsługi</p>
+          <h1>{dictionary.newReservation}</h1>
+          <p>{dictionary.newReservationSubtitle}</p>
         </div>
       </header>
       <NewReservationForm tables={data ?? []} />

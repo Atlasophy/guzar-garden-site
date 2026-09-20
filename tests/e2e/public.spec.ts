@@ -12,3 +12,19 @@ test('public navigation exposes menu and online reservations', async ({ page }) 
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   await expect(page.getByRole('button', { name: /^2\b/ })).toBeVisible();
 });
+
+test('homepage intro does not update an unmounted component', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('console', (message) => {
+    if (message.type() === 'error') errors.push(message.text());
+  });
+
+  await page.goto('/');
+  await page.waitForTimeout(800);
+
+  expect(errors).not.toContain(
+    expect.stringContaining(
+      "Can't perform a React state update on a component that hasn't mounted yet",
+    ),
+  );
+});

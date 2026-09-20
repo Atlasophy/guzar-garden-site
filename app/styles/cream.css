@@ -232,6 +232,9 @@ body.theme-cream nav.links a:hover {
 body.theme-cream nav.links a:hover::after {
   right: 0;
 }
+body.theme-cream nav.links .staff-login-link {
+  color: var(--saffron);
+}
 body.theme-cream .nav-tools {
   display: flex;
   align-items: center;

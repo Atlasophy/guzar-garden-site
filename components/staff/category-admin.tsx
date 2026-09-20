@@ -3,8 +3,13 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { apiFetch } from '@/lib/api/client';
 import type { MenuCategoryRow } from '@/lib/database/types';
+import { useStaffDictionary } from './use-staff-dictionary';
+import { useLocale } from '@/components/shared/locale-provider';
+import { localized, pickLocaleColumns } from '@/lib/i18n/fallback';
 export function CategoryAdmin({ categories }: { categories: MenuCategoryRow[] }) {
   const router = useRouter();
+  const { locale } = useLocale();
+  const dictionary = useStaffDictionary();
   const [error, setError] = useState('');
   const create = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -49,38 +54,44 @@ export function CategoryAdmin({ categories }: { categories: MenuCategoryRow[] })
     <>
       {error ? <div className="staff-notice error">{error}</div> : null}
       <form className="staff-card" onSubmit={(e) => void create(e)}>
-        <h2>Nowa kategoria</h2>
+        <h2>{dictionary.newCategory}</h2>
         <div className="staff-field-row">
           <label className="staff-field">
-            <span>Nazwa PL</span>
+            <span>{dictionary.namePl}</span>
             <input name="namePl" required />
           </label>
           <label className="staff-field">
-            <span>Slug</span>
+            <span>{dictionary.slug}</span>
             <input name="slug" pattern="[a-z0-9]+(-[a-z0-9]+)*" required />
           </label>
         </div>
-        <button className="staff-button">Dodaj kategorię</button>
+        <button className="staff-button">{dictionary.addCategory}</button>
       </form>
       <div className="staff-table-wrap" style={{ marginTop: '1rem' }}>
         <table className="staff-table">
           <thead>
             <tr>
-              <th>Nazwa</th>
-              <th>Slug</th>
-              <th>Status</th>
+              <th>{dictionary.name}</th>
+              <th>{dictionary.slug}</th>
+              <th>{dictionary.status}</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             {categories.map((c) => (
               <tr key={c.id}>
-                <td>{c.name_pl}</td>
+                <td>{localized(pickLocaleColumns(c, 'name'), locale)}</td>
                 <td>{c.slug}</td>
-                <td>{c.archived_at ? 'Archiwum' : c.is_published ? 'Publiczna' : 'Ukryta'}</td>
+                <td>
+                  {c.archived_at
+                    ? dictionary.archiveCategory
+                    : c.is_published
+                      ? dictionary.publicCategory
+                      : dictionary.hiddenCategory}
+                </td>
                 <td>
                   <button className="staff-button secondary" onClick={() => void toggle(c)}>
-                    {c.archived_at ? 'Przywróć' : 'Archiwizuj'}
+                    {c.archived_at ? dictionary.restore : dictionary.archive}
                   </button>
                 </td>
               </tr>

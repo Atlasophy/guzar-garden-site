@@ -5,6 +5,7 @@ import { SiteFooter } from '@/components/shared/site-footer';
 import { SiteHeader } from '@/components/shared/site-header';
 import { getReservationForGuest } from '@/lib/reservations/service';
 import { looksLikeToken } from '@/lib/security/tokens';
+import { isSmsEnabled } from '@/lib/config/env';
 
 export const metadata: Metadata = { title: 'Zarządzaj rezerwacją', robots: { index: false } };
 export const dynamic = 'force-dynamic';
@@ -24,7 +25,7 @@ export default async function ManageReservationPage({
       <SiteHeader variant="emerald" />
       <main className="book">
         <div className="wrap">
-          <ManageReservation token={token} initial={reservation} />
+          <ManageReservation token={token} initial={reservation} smsEnabled={isSmsEnabled()} />
         </div>
       </main>
       <SiteFooter variant="emerald" />
