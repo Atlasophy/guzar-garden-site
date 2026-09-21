@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Lint, types, tests, build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # package.json requires >=20.9. 22 matches Vercel's current default,
+          # so CI builds on the same major the deployment does.
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run format:check
+
+      - run: npm run lint
+
+      - run: npm run typecheck
+
+      - run: npm test
+
+      # `next build` runs lib/config/env.ts, which refuses to boot without a
+      # complete configuration, and next.config.ts reads the Supabase URL at
+      # build time. These are throwaway placeholders, not secrets: they let the
+      # build prove it compiles and prerenders. They deliberately do NOT reach a
+      # real project, so this step checks build integrity, not page content.
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: https://ci-placeholder.supabase.co
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: sb_publishable_ci_placeholder
+          SUPABASE_SERVICE_ROLE_KEY: sb_secret_ci_placeholder
+          APP_BASE_URL: https://ci.invalid
+          RESERVATION_TOKEN_SECRET: ci-placeholder-reservation-token-secret-value
+          CRON_SECRET: ci-placeholder-cron-secret-value
+          SMS_PROVIDER: disabled
