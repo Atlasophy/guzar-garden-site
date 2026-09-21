@@ -11,6 +11,7 @@ import {
 } from 'react';
 import {
   DEFAULT_LOCALE,
+  LOCALE_COOKIE_NAME,
   LOCALE_STORAGE_KEY,
   coerceLocale,
   getDictionary,
@@ -47,9 +48,11 @@ const LocaleContext = createContext<LocaleContextValue | null>(null);
 export function LocaleProvider({
   children,
   initialLocale = DEFAULT_LOCALE,
+  preferInitialLocale = false,
 }: {
   children: ReactNode;
   initialLocale?: Locale;
+  preferInitialLocale?: boolean;
 }) {
   const [locale, setLocaleState] = useState<Locale>(initialLocale);
   const [ready, setReady] = useState(false);
@@ -61,9 +64,19 @@ export function LocaleProvider({
     } catch {
       // Private mode, or storage disabled. Polish it is.
     }
-    if (stored) setLocaleState(coerceLocale(stored));
+    if (preferInitialLocale) {
+      try {
+        window.localStorage.setItem(LOCALE_STORAGE_KEY, initialLocale);
+      } catch {
+        // The server-rendered language still remains active for this page view.
+      }
+    } else if (stored) {
+      const storedLocale = coerceLocale(stored);
+      setLocaleState(storedLocale);
+      document.cookie = `${LOCALE_COOKIE_NAME}=${storedLocale}; Path=/; Max-Age=31536000; SameSite=Lax`;
+    }
     setReady(true);
-  }, []);
+  }, [initialLocale, preferInitialLocale]);
 
   useEffect(() => {
     document.documentElement.lang = locale;
@@ -71,6 +84,7 @@ export function LocaleProvider({
 
   const setLocale = useCallback((next: Locale) => {
     setLocaleState(next);
+    document.cookie = `${LOCALE_COOKIE_NAME}=${next}; Path=/; Max-Age=31536000; SameSite=Lax`;
     try {
       window.localStorage.setItem(LOCALE_STORAGE_KEY, next);
     } catch {

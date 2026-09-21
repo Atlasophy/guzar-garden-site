@@ -3,14 +3,20 @@ import { requireStaff } from '@/lib/auth/staff';
 import { getReservation, getReservationAudit } from '@/lib/staff/reservations';
 import { formatLocalDate, formatLocalTime } from '@/lib/time/warsaw';
 import { ReservationActions } from '@/components/staff/reservation-actions';
+import { getRequestLocale, getServerStaffDictionary } from '@/lib/i18n/staff-server';
+import { reservationStatusLabel } from '@/lib/i18n/staff';
 
 export default async function StaffReservationPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const staff = await requireStaff();
-  const { id } = await params;
+  const [staff, dictionary, locale, { id }] = await Promise.all([
+    requireStaff(),
+    getServerStaffDictionary(),
+    getRequestLocale(),
+    params,
+  ]);
   const reservation = await getReservation(staff.venue.id, id);
   if (!reservation) notFound();
   const audit = staff.profile.role === 'host' ? [] : await getReservationAudit(id);
@@ -24,27 +30,29 @@ export default async function StaffReservationPage({
           </h1>
           <p>{reservation.confirmationCode}</p>
         </div>
-        <span className={`badge ${reservation.status}`}>{reservation.status}</span>
+        <span className={`badge ${reservation.status}`}>
+          {reservationStatusLabel(dictionary, reservation.status)}
+        </span>
       </header>
       <div className="staff-grid">
         <section className="staff-card">
-          <h2>Rezerwacja</h2>
+          <h2>{dictionary.reservation}</h2>
           <dl>
-            <dt>Termin</dt>
+            <dt>{dictionary.dateAndTime}</dt>
             <dd>
-              {formatLocalDate(starts, 'pl')} · {formatLocalTime(starts)}
+              {formatLocalDate(starts, locale)} · {formatLocalTime(starts)}
             </dd>
-            <dt>Stolik</dt>
+            <dt>{dictionary.table}</dt>
             <dd>
               {reservation.tableCode ?? '—'} · {reservation.areaSlug ?? '—'}
             </dd>
-            <dt>Liczba osób</dt>
+            <dt>{dictionary.partySize}</dt>
             <dd>{reservation.partySize}</dd>
-            <dt>Telefon</dt>
+            <dt>{dictionary.phone}</dt>
             <dd>{reservation.guestPhone}</dd>
             <dt>E-mail</dt>
             <dd>{reservation.guestEmail ?? '—'}</dd>
-            <dt>Uwagi</dt>
+            <dt>{dictionary.notes}</dt>
             <dd>{reservation.specialRequests ?? '—'}</dd>
           </dl>
         </section>
@@ -52,10 +60,10 @@ export default async function StaffReservationPage({
       </div>
       {audit.length ? (
         <section className="staff-card" style={{ marginTop: '1rem' }}>
-          <h2>Historia</h2>
+          <h2>{dictionary.history}</h2>
           {audit.map((a) => (
             <p key={a.id}>
-              <strong>{a.action}</strong> · {new Date(a.created_at).toLocaleString('pl-PL')}
+              <strong>{a.action}</strong> · {new Date(a.created_at).toLocaleString(locale)}
             </p>
           ))}
         </section>

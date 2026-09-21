@@ -2,14 +2,13 @@ import { publicEnv } from '@/lib/config/env';
 import { getSignatureDishes } from '@/lib/menu/repository';
 import { getPublicVenueInfo, type PublicHours } from '@/lib/venue/public-info';
 import { SITE } from '@/components/shared/site-config';
+import { PUBLIC_SITE_URL } from '@/lib/config/public-site';
 import { SiteHeader } from '@/components/shared/site-header';
 import { SiteFooter } from '@/components/shared/site-footer';
 import { IntroOverlay } from '@/components/marketing/intro-overlay';
 import { PageEffects } from '@/components/marketing/page-effects';
 import { Hero } from '@/components/marketing/hero';
 import { GallerySection } from '@/components/marketing/gallery-section';
-import { GalleryHighlights } from '@/components/marketing/gallery-highlights';
-import { GoogleReviews } from '@/components/marketing/google-reviews';
 import { getGoogleReviews } from '@/lib/venue/google-review-service';
 import {
   AboutSection,
@@ -19,6 +18,7 @@ import {
   VenueSection,
 } from '@/components/marketing/sections';
 import { SignatureSection } from '@/components/marketing/signature-section';
+import { withReportedFallback } from '@/lib/observability/suppressed';
 
 /**
  * The landing page.
@@ -45,9 +45,17 @@ const FALLBACK_HOURS: PublicHours[] = Array.from({ length: 7 }, (_, weekday) => 
 }));
 
 export default async function HomePage() {
+  // Each of these is allowed to fail without taking the homepage down, but not
+  // allowed to fail quietly: the signature dishes read through the same
+  // repository as /menu, so the price bug that blanked the menu emptied this
+  // grid too, and nothing said so.
   const [signatures, venue, reviews] = await Promise.all([
-    getSignatureDishes(publicEnv.venueSlug).catch(() => []),
-    getPublicVenueInfo(publicEnv.venueSlug).catch(() => null),
+    withReportedFallback('home.signatures_unavailable', [], () =>
+      getSignatureDishes(publicEnv.venueSlug),
+    ),
+    withReportedFallback('home.venue_info_unavailable', null, () =>
+      getPublicVenueInfo(publicEnv.venueSlug),
+    ),
     getGoogleReviews(),
   ]);
 
@@ -60,9 +68,9 @@ export default async function HomePage() {
     servesCuisine: ['Uzbek', 'Halal', 'Central Asian'],
     priceRange: '$$',
     telephone: SITE.phoneE164,
-    url: process.env.APP_BASE_URL ?? 'http://localhost:3000',
-    hasMenu: `${process.env.APP_BASE_URL ?? ''}/menu`,
-    acceptsReservations: `${process.env.APP_BASE_URL ?? ''}/reserve`,
+    url: PUBLIC_SITE_URL,
+    hasMenu: `${PUBLIC_SITE_URL}/menu`,
+    acceptsReservations: `${PUBLIC_SITE_URL}/reserve`,
     address: {
       '@type': 'PostalAddress',
       streetAddress: SITE.addressLine,
@@ -107,14 +115,12 @@ export default async function HomePage() {
 
       <main>
         <Hero hours={hours} rating={reviews.rating} />
-        <GalleryHighlights />
         <Marquee />
         <AboutSection rating={reviews.rating} reviewCount={reviews.count} />
         <GallerySection />
         <KitchenSection />
         <SignatureSection items={signatures} />
         <VenueSection />
-        <GoogleReviews feed={reviews} />
         <LocationSection hours={hours} />
       </main>
 

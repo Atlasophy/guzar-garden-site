@@ -4,6 +4,7 @@ import '../styles/base.css';
 import '../styles/cream.css';
 import { DocumentHead } from '@/components/shared/document-head';
 import { LocaleProvider } from '@/components/shared/locale-provider';
+import { PUBLIC_SITE_URL } from '@/lib/config/public-site';
 
 /**
  * The cream document: the menu.
@@ -17,7 +18,7 @@ import { LocaleProvider } from '@/components/shared/locale-provider';
  */
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.APP_BASE_URL ?? 'http://localhost:3000'),
+  metadataBase: new URL(PUBLIC_SITE_URL),
   title: 'Karta dań — Guzar Garden, Restauracja Uzbecka & Grill Halal',
   description:
     'Pełna karta dań Guzar Garden — plow, samsa z tandoora, szaszłyki, manty, lagman, chleb, desery i herbaty. Restauracja uzbecka przy Parku Skaryszewskim w Warszawie.',

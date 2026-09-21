@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useLocale } from '@/components/shared/locale-provider';
 import { SITE, TEL_HREF } from '@/components/shared/site-config';
@@ -97,10 +98,22 @@ export function KitchenSection() {
   const t = dictionary.kitchen;
 
   const pillars = [
-    { key: 'kazan', icon: <KazanIcon />, copy: t.pillars.kazan, delay: '0s' },
-    { key: 'tandoor', icon: <TandoorIcon />, copy: t.pillars.tandoor, delay: '.08s' },
-    { key: 'fire', icon: <FireIcon />, copy: t.pillars.fire, delay: '.16s' },
-    { key: 'table', icon: <DastarkhanIcon />, copy: t.pillars.table, delay: '.24s' },
+    { key: 'kazan', icon: <KazanIcon />, copy: t.pillars.kazan, delay: '0s', photo: 'kazan' },
+    {
+      key: 'tandoor',
+      icon: <TandoorIcon />,
+      copy: t.pillars.tandoor,
+      delay: '.08s',
+      photo: 'tandoor',
+    },
+    { key: 'fire', icon: <FireIcon />, copy: t.pillars.fire, delay: '.16s', photo: 'fire' },
+    {
+      key: 'table',
+      icon: <DastarkhanIcon />,
+      copy: t.pillars.table,
+      delay: '.24s',
+      photo: 'dastarkhan',
+    },
   ];
 
   return (
@@ -127,6 +140,18 @@ export function KitchenSection() {
               className="pillar rv"
               style={{ '--d': pillar.delay } as React.CSSProperties}
             >
+              {/* Hidden until the card is scrolled into view, then slides up
+                  from the bottom of its frame (see .pillar-photo in emerald.css).
+                  Decorative: the heading and copy below say what it shows. */}
+              <div className="pillar-photo" aria-hidden="true">
+                <Image
+                  src={`/assets/kitchen/${pillar.photo}.webp`}
+                  alt=""
+                  width={960}
+                  height={720}
+                  sizes="(max-width: 560px) 92vw, (max-width: 1000px) 46vw, 300px"
+                />
+              </div>
               {pillar.icon}
               <h3>{pillar.copy.title}</h3>
               <span className="uz">{pillar.copy.sub}</span>

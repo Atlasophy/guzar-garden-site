@@ -184,6 +184,11 @@ body.theme-emerald > *:not(.grain) {
   position: relative;
   z-index: 2;
 }
+/* The rule above would make the skip link relative too, and an off-screen
+   relative link still leaves an invisible gap above every page. */
+body.theme-emerald > .skip-link {
+  position: absolute;
+}
 
 /* ---------------- ambient rosette ---------------- */
 /* The emblem's own silhouette, tinted gold and held at a whisper. One per
@@ -442,6 +447,9 @@ body.theme-emerald nav.links a:hover {
 body.theme-emerald nav.links a:hover::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+body.theme-emerald nav.links .staff-login-link {
+  color: var(--gold-hi);
 }
 body.theme-emerald nav.links .nav-cta-mobile {
   display: none;
@@ -1044,6 +1052,16 @@ body.theme-emerald .gallery-grid {
   gap: 0.85rem;
   margin-top: 3.5rem;
 }
+/* The grid reaches past the text column on both sides: up to 200px each
+   way, never closer than 4vw to the screen edge. Rows grow with it so
+   the photos keep their proportions. */
+@media (min-width: 1001px) {
+  body.theme-emerald .gallery-grid {
+    --gallery-reach: min(200px, max(0px, (100vw - 100%) / 2 - 4vw));
+    margin-inline: calc(-1 * var(--gallery-reach));
+    grid-auto-rows: clamp(150px, 16.5vw, 300px);
+  }
+}
 body.theme-emerald .gallery-photo {
   position: relative;
   min-width: 0;
@@ -1123,6 +1141,218 @@ body.theme-emerald .hero-arch {
   );
 }
 
+/* ---- the stacked hero ----
+   Location and status, then the neon sign on the garden wall, cropped to a
+   wide band around the sign, then the description, the three actions and the
+   three facts. Type, buttons and gaps scale with the
+   viewport between a phone floor and a large-monitor ceiling. Selectors carry
+   `.hero.hero-stack` so they outrank the wide-screen hero rules further down
+   this file.
+
+   The photograph is masked rather than overlaid, so the green shows through
+   at its top and bottom. */
+body.theme-emerald .hero.hero-stack {
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  padding: clamp(4.4rem, 7svh, 5.2rem) 0 clamp(3rem, 7svh, 5.6rem);
+}
+body.theme-emerald .hero-stack .hero-stack-inner {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(92vw, 1700px);
+  margin-inline: auto;
+  text-align: center;
+}
+body.theme-emerald .hero.hero-stack .hero-kicker {
+  justify-content: center;
+  margin-bottom: clamp(0.2rem, 1svh, 0.8rem);
+  font-size: clamp(0.66rem, 0.3rem + 0.45vw, 0.95rem);
+}
+/* Edge to edge. On wide screens the band is much wider than it is tall, so
+   the crop takes the brick above and below the sign and keeps the sign. */
+body.theme-emerald .hero-stack .hero-sign {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  margin: 0;
+  line-height: 0;
+}
+body.theme-emerald .hero-stack .hero-sign img {
+  display: block;
+  width: 100%;
+  /* The sign fills about 21-69% of the photo's height, so the crop is
+     centred there; the height never drops below what the sign needs. */
+  height: clamp(280px, 31vw, 840px);
+  object-fit: cover;
+  object-position: 51% 44%;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.55) 4%,
+    #000 10%,
+    #000 90%,
+    rgba(0, 0, 0, 0.55) 96%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.55) 4%,
+    #000 10%,
+    #000 90%,
+    rgba(0, 0, 0, 0.55) 96%,
+    transparent 100%
+  );
+}
+body.theme-emerald .hero-stack .hero-stack-body {
+  margin-top: clamp(0.4rem, 1.4svh, 1.2rem);
+}
+body.theme-emerald .hero.hero-stack .lede {
+  max-width: 46ch;
+  margin: 0 auto;
+  font-size: clamp(1.02rem, 0.4rem + min(0.75vw, 1.35svh), 1.75rem);
+  line-height: 1.6;
+}
+/* The buttons and the facts below them share one width and one gap, so each
+   fact sits centred under its button and the facts' dividers fall exactly in
+   the gaps between the buttons. */
+body.theme-emerald .hero.hero-stack {
+  --hero-row-width: min(100%, clamp(600px, 42vw, 880px));
+  --hero-row-gap: clamp(0.8rem, 0.9vw, 1.4rem);
+}
+body.theme-emerald .hero.hero-stack .hero-cta {
+  justify-content: center;
+  gap: var(--hero-row-gap);
+  width: var(--hero-row-width);
+  margin-top: clamp(1rem, 2.4svh, 2.4rem);
+}
+body.theme-emerald .hero.hero-stack .hero-cta .btn {
+  flex: 1 1 0;
+  justify-content: center;
+  padding: clamp(0.75rem, 0.25rem + 0.9svh, 1.2rem) 1rem;
+  font-size: clamp(0.7rem, 0.35rem + 0.4vw, 0.92rem);
+  white-space: nowrap;
+}
+/* All three actions share one treatment: the solid "book a table" button, in
+   beige rather than gold — a length of beige ribbon, lit from its top-left
+   end, with dark text. Hover runs the same left-to-right sweep, in a lighter
+   beige. Written for every viewport, so a phone shows the same beige. */
+body.theme-emerald .hero.hero-stack .hero-cta .btn {
+  --beige-ribbon: linear-gradient(135deg, #f7eedd 0%, #eadbbd 45%, #dcc59c 100%);
+  --beige-sweep: linear-gradient(135deg, #fffaf0 0%, #f3e7cf 55%, #e8d6b3 100%);
+  background: var(--beige-ribbon);
+  border-color: transparent;
+  color: var(--green-abyss);
+  box-shadow: 0 10px 22px -12px rgba(1, 10, 6, 0.9);
+}
+body.theme-emerald .hero.hero-stack .hero-cta .btn::before {
+  background: var(--beige-sweep);
+}
+body.theme-emerald .hero.hero-stack .hero-cta .btn:hover,
+body.theme-emerald .hero.hero-stack .hero-cta .btn:focus-visible {
+  color: var(--green-abyss);
+  border-color: transparent;
+}
+body.theme-emerald .hero.hero-stack .hero-cta .btn:focus-visible::before {
+  transform: scaleX(1);
+}
+body.theme-emerald .hero.hero-stack .hero-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--hero-row-gap);
+  width: var(--hero-row-width);
+  margin-top: clamp(1.2rem, 3.2svh, 2.8rem);
+  padding-top: clamp(1.1rem, 2.4svh, 1.8rem);
+}
+body.theme-emerald .hero.hero-stack .hero-facts > span {
+  position: relative;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+/* the hairline divider, centred in the gap to the left of each fact */
+body.theme-emerald .hero.hero-stack .hero-facts > span + span::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--hero-row-gap) / -2);
+  width: 1px;
+  background: var(--rule-soft);
+}
+body.theme-emerald .hero.hero-stack .hero-facts b {
+  font-size: clamp(1.4rem, 0.6rem + 1.3vw, 2.6rem);
+  white-space: nowrap;
+}
+body.theme-emerald .hero.hero-stack .hero-facts small {
+  font-size: clamp(0.56rem, 0.3rem + 0.35vw, 0.82rem);
+}
+/* Phones and tablets: the photograph comes first, straight under the fixed
+   header, and fills the top of the screen. It is cropped from the sides
+   around the sign: the sign spans about 47% of the photo's width, so the
+   height is capped at the screen width to keep all of it in view. The
+   location line and everything else follow below. */
+@media (max-width: 900px) {
+  body.theme-emerald .hero.hero-stack {
+    min-height: 100svh;
+    justify-content: flex-start;
+    padding: 0 0 2.6rem;
+  }
+  body.theme-emerald .hero-stack .hero-sign {
+    order: -1;
+    width: 100%;
+    /* the fixed header is 69-77px tall */
+    margin-top: 70px;
+  }
+  body.theme-emerald .hero-stack .hero-sign img {
+    height: min(100vw, 52svh);
+    object-position: 51% 44%;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 80%,
+      rgba(0, 0, 0, 0.5) 91%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 80%,
+      rgba(0, 0, 0, 0.5) 91%,
+      transparent 100%
+    );
+  }
+  body.theme-emerald .hero.hero-stack .hero-kicker {
+    margin: 0.6rem 0 0;
+  }
+  body.theme-emerald .hero-stack .hero-stack-body {
+    flex: 1;
+    justify-content: space-evenly;
+    margin-top: 0.4rem;
+  }
+}
+/* Phones only: "book a table" keeps the full width on its own row, and the
+   menu and call buttons share the row below it, half each. Desktop keeps its
+   single row of three. */
+@media (max-width: 640px) {
+  body.theme-emerald .hero.hero-stack .hero-cta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  body.theme-emerald .hero.hero-stack .hero-cta .btn:first-child {
+    grid-column: 1 / -1;
+  }
+  body.theme-emerald .hero.hero-stack .hero-cta .btn {
+    width: auto;
+    padding-inline: 0.6rem;
+  }
+}
+
 /* ===================== marquee ===================== */
 body.theme-emerald .marquee {
   position: relative;
@@ -1181,14 +1411,30 @@ body.theme-emerald .sec::before {
     transparent
   );
 }
-body.theme-emerald .about {
-  background: var(--green-2);
+/* "Our story" and the signature dishes sit on ivory paper instead of green.
+   Their colour tokens are re-pointed here so every child — heading, copy,
+   ornament, stat plaque, dish card, button — reads dark on light without its
+   own override: the ivory becomes the deep green, and the gold deepens to a
+   brass that holds contrast on paper. */
+body.theme-emerald .about,
+body.theme-emerald .sig {
+  --ivory: #0a2418;
+  --ivory-soft: rgba(10, 36, 24, 0.78);
+  --ivory-faint: rgba(10, 36, 24, 0.58);
+  --gold: #8a6423;
+  --gold-hi: #6e4e17;
+  --rule: rgba(138, 100, 35, 0.34);
+  --rule-soft: rgba(138, 100, 35, 0.24);
+  --rule-strong: rgba(138, 100, 35, 0.55);
+  background: #f2ead8;
+  color: var(--ivory);
+}
+body.theme-emerald .about .stats {
+  background: rgba(255, 253, 247, 0.55);
+  box-shadow: 0 18px 34px -24px rgba(10, 36, 24, 0.35);
 }
 body.theme-emerald .kitchen {
   background: var(--green);
-}
-body.theme-emerald .sig {
-  background: var(--green-2);
 }
 body.theme-emerald .feat {
   background: var(--green);
@@ -1298,6 +1544,42 @@ body.theme-emerald .pillar svg {
   color: var(--gold);
   stroke-width: 1.15;
   margin-bottom: 1.4rem;
+}
+
+/* Each pillar opens with its photograph, bled to the card's edges. The frame
+   keeps its space from the start, but the picture sits below it, clipped, and
+   slides up into place when the card is scrolled into view — the page's
+   reveal controller adds `.in` to the card. A short extra delay lets the card
+   settle first, and the four cards follow one another left to right via
+   their own `--d`.
+
+   Only with JS (`html.js`), so without script the photos simply show; and
+   never under reduced motion. */
+body.theme-emerald .pillar-photo {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  margin: -2.6rem -1.7rem 1.9rem;
+  overflow: hidden;
+  background: var(--green-abyss);
+}
+body.theme-emerald .pillar-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+html.js body.theme-emerald .pillar.rv .pillar-photo img {
+  transform: translateY(101%);
+  transition: transform 1.05s var(--ease) calc(var(--d, 0s) + 0.35s);
+}
+html.js body.theme-emerald .pillar.rv.in .pillar-photo img {
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.js body.theme-emerald .pillar.rv .pillar-photo img {
+    transform: none;
+    transition: none;
+  }
 }
 body.theme-emerald .pillar h3 {
   color: var(--ivory);
@@ -1449,6 +1731,18 @@ body.theme-emerald .dish:hover {
   border-color: var(--rule-strong);
   background: var(--green-3);
   transform: translateY(-4px);
+}
+/* on the ivory section the cards are a lighter sheet of the same paper */
+body.theme-emerald .sig .dish {
+  background: rgba(255, 253, 247, 0.6);
+}
+body.theme-emerald .sig .dish:hover {
+  background: #fffdf7;
+}
+body.theme-emerald .sig .dish .art {
+  box-shadow:
+    0 0 0 1px var(--rule),
+    0 14px 26px -16px rgba(10, 36, 24, 0.45);
 }
 /* the plate sits in a struck aperture — the ring is the same brass band as
    the hero roundel, at a fifth of the size */

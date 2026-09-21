@@ -741,3 +741,54 @@ body.theme-emerald .book .btn:disabled::before {
     min-width: 33.333%;
   }
 }
+
+/*
+ * The step heading receives focus when the wizard advances, so a keyboard user
+ * lands at the new step instead of at <body>, and a screen reader reads which
+ * step opened. It is focused programmatically rather than tabbed to, so the
+ * standard :focus-visible ring never fires — this gives it a quieter marker of
+ * its own, enough to see where focus went without looking like an error.
+ */
+body.theme-emerald .panel h2[tabindex='-1']:focus {
+  outline: none;
+}
+body.theme-emerald .panel h2[tabindex='-1']:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+
+/*
+ * "Keep this link".
+ *
+ * Without SMS this page is the only copy of the management link a guest ever
+ * receives, so the block that offers to copy it is given the weight of a real
+ * section rather than a footnote.
+ */
+body.theme-emerald .save-link {
+  margin: 1.4rem 0 0;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--rule-soft);
+  background: rgba(255, 255, 255, 0.02);
+}
+body.theme-emerald .save-link h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+}
+body.theme-emerald .save-link .note {
+  margin: 0 0 0.8rem;
+}
+body.theme-emerald .save-link .field-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+body.theme-emerald .save-link input {
+  width: 100%;
+  min-width: 0;
+  font-size: 0.85rem;
+}
+body.theme-emerald .save-link .btn {
+  white-space: nowrap;
+}

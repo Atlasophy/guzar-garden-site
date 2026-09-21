@@ -12,9 +12,10 @@ import type {
 } from '@/lib/database/types';
 import { OperationsAdmin } from '@/components/staff/operations-admin';
 import { SettingsAdmin } from '@/components/staff/settings-admin';
+import { getServerStaffDictionary } from '@/lib/i18n/staff-server';
 
 export default async function StaffSettingsPage() {
-  const staff = await requireStaff();
+  const [staff, dictionary] = await Promise.all([requireStaff(), getServerStaffDictionary()]);
   const db = getAdminClient();
   const [
     { data: settings },
@@ -64,7 +65,7 @@ export default async function StaffSettingsPage() {
       .order('starts_at')
       .returns<ServiceExceptionRow[]>(),
   ]);
-  if (!settings) return <div className="staff-notice error">Brak konfiguracji rezerwacji.</div>;
+  if (!settings) return <div className="staff-notice error">{dictionary.noReservationConfig}</div>;
   const policy = can(staff.profile.role, 'settings.policy');
   const hoursPermission = can(staff.profile.role, 'settings.hours');
   const tablePermission = can(staff.profile.role, 'settings.tables');
@@ -72,8 +73,8 @@ export default async function StaffSettingsPage() {
     <>
       <header className="staff-head">
         <div>
-          <h1>Ustawienia</h1>
-          <p>Rezerwacje, godziny, blokady i plan stolików</p>
+          <h1>{dictionary.settings}</h1>
+          <p>{dictionary.settingsSubtitle}</p>
         </div>
       </header>
       <SettingsAdmin

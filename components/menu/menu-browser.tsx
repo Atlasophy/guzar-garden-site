@@ -170,7 +170,7 @@ export function MenuBrowser({ menu }: { menu: PublicMenu }) {
               alt="Guzar Garden — est. 2024"
               width={1280}
               height={1280}
-              priority
+              loading="eager"
             />
           </div>
           <h1>{t.heading}</h1>

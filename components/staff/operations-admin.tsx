@@ -9,6 +9,9 @@ import type {
   ServiceExceptionRow,
   TableAllocationRow,
 } from '@/lib/database/types';
+import { useLocale } from '@/components/shared/locale-provider';
+import { localized, pickLocaleColumns } from '@/lib/i18n/fallback';
+import { useStaffDictionary } from './use-staff-dictionary';
 
 interface Props {
   tables: RestaurantTableRow[];
@@ -30,6 +33,8 @@ export function OperationsAdmin({
   canHours,
 }: Props) {
   const router = useRouter();
+  const { locale } = useLocale();
+  const dictionary = useStaffDictionary();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
 
@@ -39,7 +44,7 @@ export function OperationsAdmin({
     const result = await action();
     setBusy(false);
     if (!result.ok) {
-      setError(result.message ?? 'Nie udało się zapisać zmiany.');
+      setError(result.message ?? dictionary.saveFailed);
       return;
     }
     router.refresh();
@@ -86,20 +91,32 @@ export function OperationsAdmin({
 
   const tableCode = (id: string) => tables.find((table) => table.id === id)?.code ?? '—';
   const areaName = (id: string | null) =>
-    areas.find((area) => area.id === id)?.name_pl ?? 'Cały lokal';
+    (() => {
+      const area = areas.find((candidate) => candidate.id === id);
+      return area ? localized(pickLocaleColumns(area, 'name'), locale) : dictionary.wholeVenue;
+    })();
+  const kindName = (kind: string) => {
+    const names: Record<string, string> = {
+      closure: dictionary.venueClosed,
+      modified_hours: dictionary.modifiedHours,
+      private_event: dictionary.privateEvent,
+      area_closed: dictionary.areaClosed,
+    };
+    return names[kind] ?? kind;
+  };
 
   return (
     <>
       {error ? <div className="staff-notice error">{error}</div> : null}
 
       <section className="staff-card" style={{ marginTop: '1rem' }}>
-        <h2>Blokady stolików</h2>
-        <p>Wyłącz stolik z rezerwacji na czas naprawy, przygotowania sali lub wydarzenia.</p>
+        <h2>{dictionary.tableBlocks}</h2>
+        <p>{dictionary.tableBlocksHelp}</p>
         {canBlocks ? (
           <form onSubmit={(event) => void createBlock(event)}>
             <div className="staff-field-row">
               <label className="staff-field">
-                <span>Stolik</span>
+                <span>{dictionary.table}</span>
                 <select name="tableId" required>
                   {tables
                     .filter((table) => table.is_active)
@@ -111,27 +128,27 @@ export function OperationsAdmin({
                 </select>
               </label>
               <label className="staff-field">
-                <span>Data</span>
+                <span>{dictionary.date}</span>
                 <input name="date" type="date" defaultValue={today} required />
               </label>
               <label className="staff-field">
-                <span>Od</span>
+                <span>{dictionary.from}</span>
                 <input name="startTime" type="time" defaultValue="09:00" required />
               </label>
               <label className="staff-field">
-                <span>Do</span>
+                <span>{dictionary.to}</span>
                 <input name="endTime" type="time" defaultValue="10:00" required />
               </label>
             </div>
             <label className="staff-check">
-              <input name="endsNextDay" type="checkbox" /> Kończy się następnego dnia
+              <input name="endsNextDay" type="checkbox" /> {dictionary.endsNextDay}
             </label>
             <label className="staff-field">
-              <span>Powód</span>
+              <span>{dictionary.reason}</span>
               <input name="reason" required minLength={2} />
             </label>
             <button className="staff-button" disabled={busy}>
-              Dodaj blokadę
+              {dictionary.addBlock}
             </button>
           </form>
         ) : null}
@@ -139,10 +156,10 @@ export function OperationsAdmin({
           <table className="staff-table">
             <thead>
               <tr>
-                <th>Stolik</th>
-                <th>Od</th>
-                <th>Do</th>
-                <th>Powód</th>
+                <th>{dictionary.table}</th>
+                <th>{dictionary.from}</th>
+                <th>{dictionary.to}</th>
+                <th>{dictionary.reason}</th>
                 <th />
               </tr>
             </thead>
@@ -150,8 +167,8 @@ export function OperationsAdmin({
               {blocks.map((block) => (
                 <tr key={block.id}>
                   <td>{tableCode(block.table_id)}</td>
-                  <td>{new Date(block.starts_at).toLocaleString('pl-PL')}</td>
-                  <td>{new Date(block.ends_at).toLocaleString('pl-PL')}</td>
+                  <td>{new Date(block.starts_at).toLocaleString(locale)}</td>
+                  <td>{new Date(block.ends_at).toLocaleString(locale)}</td>
                   <td>{block.block_reason}</td>
                   <td>
                     {canBlocks ? (
@@ -161,7 +178,7 @@ export function OperationsAdmin({
                         disabled={busy}
                         onClick={() => void run(() => apiDelete(`/api/staff/blocks/${block.id}`))}
                       >
-                        Usuń
+                        {dictionary.delete}
                       </button>
                     ) : null}
                   </td>
@@ -173,69 +190,68 @@ export function OperationsAdmin({
       </section>
 
       <section className="staff-card" style={{ marginTop: '1rem' }}>
-        <h2>Wyjątki i zamknięcia</h2>
+        <h2>{dictionary.exceptions}</h2>
         {canHours ? (
           <form onSubmit={(event) => void createException(event)}>
             <div className="staff-field-row">
               <label className="staff-field">
-                <span>Rodzaj</span>
+                <span>{dictionary.kind}</span>
                 <select name="kind">
-                  <option value="closure">Lokal zamknięty</option>
-                  <option value="modified_hours">Zmienione godziny</option>
-                  <option value="private_event">Wydarzenie prywatne</option>
-                  <option value="area_closed">Obszar zamknięty</option>
+                  <option value="closure">{dictionary.venueClosed}</option>
+                  <option value="modified_hours">{dictionary.modifiedHours}</option>
+                  <option value="private_event">{dictionary.privateEvent}</option>
+                  <option value="area_closed">{dictionary.areaClosed}</option>
                 </select>
               </label>
               <label className="staff-field">
-                <span>Obszar (opcjonalnie)</span>
+                <span>{dictionary.optionalArea}</span>
                 <select name="diningAreaId">
-                  <option value="">Cały lokal</option>
+                  <option value="">{dictionary.wholeVenue}</option>
                   {areas.map((area) => (
                     <option key={area.id} value={area.id}>
-                      {area.name_pl}
+                      {localized(pickLocaleColumns(area, 'name'), locale)}
                     </option>
                   ))}
                 </select>
               </label>
               <label className="staff-field">
-                <span>Data od</span>
+                <span>{dictionary.startDate}</span>
                 <input name="startDate" type="date" defaultValue={today} required />
               </label>
               <label className="staff-field">
-                <span>Godzina od</span>
+                <span>{dictionary.startTime}</span>
                 <input name="startTime" type="time" defaultValue="00:00" required />
               </label>
               <label className="staff-field">
-                <span>Data do</span>
+                <span>{dictionary.endDate}</span>
                 <input name="endDate" type="date" defaultValue={today} required />
               </label>
               <label className="staff-field">
-                <span>Godzina do</span>
+                <span>{dictionary.endTime}</span>
                 <input name="endTime" type="time" defaultValue="00:00" required />
               </label>
               <label className="staff-field">
-                <span>Otwarcie zastępcze</span>
+                <span>{dictionary.replacementOpening}</span>
                 <input name="replacementOpensAt" type="time" defaultValue="12:00" />
               </label>
               <label className="staff-field">
-                <span>Zamknięcie zastępcze</span>
+                <span>{dictionary.replacementClosing}</span>
                 <input name="replacementClosesAt" type="time" defaultValue="22:00" />
               </label>
             </div>
             <label className="staff-check">
-              <input name="replacementClosesNextDay" type="checkbox" /> Zamknięcie zastępcze
-              następnego dnia
+              <input name="replacementClosesNextDay" type="checkbox" />{' '}
+              {dictionary.replacementClosesNextDay}
             </label>
             <label className="staff-field">
-              <span>Powód</span>
+              <span>{dictionary.reason}</span>
               <input name="reason" required minLength={2} />
             </label>
             <label className="staff-check">
-              <input name="isPublic" type="checkbox" defaultChecked /> Powód może być pokazany
-              gościom
+              <input name="isPublic" type="checkbox" defaultChecked /> {dictionary.publicReason}
             </label>
             <button className="staff-button" disabled={busy}>
-              Dodaj wyjątek
+              {dictionary.addException}
             </button>
           </form>
         ) : null}
@@ -243,20 +259,20 @@ export function OperationsAdmin({
           <table className="staff-table">
             <thead>
               <tr>
-                <th>Rodzaj</th>
-                <th>Zakres</th>
-                <th>Obszar</th>
-                <th>Powód</th>
+                <th>{dictionary.kind}</th>
+                <th>{dictionary.range}</th>
+                <th>{dictionary.area}</th>
+                <th>{dictionary.reason}</th>
                 <th />
               </tr>
             </thead>
             <tbody>
               {exceptions.map((entry) => (
                 <tr key={entry.id}>
-                  <td>{entry.kind}</td>
+                  <td>{kindName(entry.kind)}</td>
                   <td>
-                    {new Date(entry.starts_at).toLocaleString('pl-PL')} –{' '}
-                    {new Date(entry.ends_at).toLocaleString('pl-PL')}
+                    {new Date(entry.starts_at).toLocaleString(locale)} –{' '}
+                    {new Date(entry.ends_at).toLocaleString(locale)}
                   </td>
                   <td>{areaName(entry.dining_area_id)}</td>
                   <td>{entry.reason}</td>
@@ -272,7 +288,7 @@ export function OperationsAdmin({
                           )
                         }
                       >
-                        Usuń
+                        {dictionary.delete}
                       </button>
                     ) : null}
                   </td>
