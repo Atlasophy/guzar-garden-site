@@ -45,6 +45,8 @@ The approved design includes gallery highlights, an updated floor illustration, 
 
 Requirements: Node.js 20.9+, a Supabase project (local or hosted), and optionally a Twilio account.
 
+On a Mac, [`docs/LOCAL-SETUP-MACOS.md`](docs/LOCAL-SETUP-MACOS.md) covers the whole thing end to end: the Supabase CLI stack in Docker, the configuration values, and a staff account. The steps below are for a hosted Supabase project.
+
 1. Install dependencies:
 
    ```bash

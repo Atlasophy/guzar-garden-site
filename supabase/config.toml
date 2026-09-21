@@ -1,0 +1,55 @@
+# Local Supabase stack for development on one machine.
+#
+# `supabase start` reads this, brings up PostgreSQL, PostgREST, GoTrue (Auth),
+# Storage and Studio in Docker, applies every file in ./migrations in order, and
+# then runs the seed files listed under [db.seed].
+#
+# Kept deliberately close to what `supabase init` generates. Every key below is
+# either a port, or something this project actually needs — the CLI's own
+# defaults cover the rest. Non-default keys are the ones that drift between CLI
+# versions, so the fewer of them there are, the more versions this starts on.
+#
+# Because the CLI owns the schema here, do NOT also run `npm run db:migrate` or
+# `npm run db:seed` against this database. Those scripts keep their own ledger
+# (public.schema_migrations) and would try to apply the same migrations a second
+# time, which fails: the migrations use plain `create table`, not `create table
+# if not exists`. Use `supabase db reset`. See docs/LOCAL-SETUP-MACOS.md.
+#
+# The hosted project is unaffected by anything in this file.
+
+project_id = "guzar-garden"
+
+[api]
+enabled = true
+port = 54321
+
+[db]
+port = 54322
+
+[db.seed]
+enabled = true
+# Order matters: seed_menu.sql looks the venue up by slug, so the venue has to
+# exist first. Same order as scripts/db-seed.mjs uses.
+sql_paths = ["./seed.sql", "./seed_menu.sql"]
+
+[studio]
+enabled = true
+port = 54323
+
+# Migration 0009 creates the public `menu-images` bucket, so Storage has to be
+# up or menu image upload fails.
+[storage]
+enabled = true
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+# Staff accounts are created by an admin with scripts/create-admin.mjs, never by
+# self-service signup — the same posture as the hosted project.
+enable_signup = false
+
+[auth.email]
+enable_signup = false
+# Local only: no real mailbox is involved, so a staff account created by the
+# script is usable immediately instead of waiting on a confirmation link.
+enable_confirmations = false
