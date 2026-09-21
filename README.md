@@ -141,4 +141,3 @@ Integration tests never use `DATABASE_URL`; they use an isolated embedded Postgr
 ## Known business confirmations
 
 The floor geometry was inferred from supplied venue photographs and is deliberately editable under `/staff/settings`. The seeded hours and booking policy are operational defaults, not final business decisions. Menu translation gaps and price differences inherited from the old pages are documented in `docs/menu-migration-report.md`.
-
