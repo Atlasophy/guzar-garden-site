@@ -34,34 +34,19 @@ Expect roughly 3 GB of disk for the Docker images the first time.
 
 ## Setup
 
-### 1. Get access to the repository
+### 1. Get the code and its dependencies
 
-**The repository is private.** Cloning it without access fails with a
-misleading `repository not found`, because GitHub returns 404 rather than 403
-for a private repository — it looks like a typo, not a permission problem.
-
-Someone with admin on the repository adds the new person first, under
-**Settings ▸ Collaborators and teams ▸ Add people**. Read access is enough to
-clone and run it; write access is only needed to push branches.
-
-The new person then authenticates their Mac once, either way:
-
-```bash
-brew install gh && gh auth login     # HTTPS, browser sign-in
-# or, with an SSH key already on the GitHub account:
-ssh -T git@github.com                # should greet you by username
-```
-
-### 2. Get the code and its dependencies
+The repository is public, so this needs no GitHub account and no access
+request. (Pushing branches back still requires being added as a collaborator;
+running it does not.)
 
 ```bash
 git clone https://github.com/Atlasophy/guzar-garden-site.git
-# or, over SSH: git clone git@github.com:Atlasophy/guzar-garden-site.git
 cd guzar-garden-site
 npm ci
 ```
 
-### 3. Start the local Supabase stack
+### 2. Start the local Supabase stack
 
 ```bash
 supabase start
@@ -81,7 +66,7 @@ needs it. To print it again at any time:
 supabase status
 ```
 
-### 4. Create the configuration file
+### 3. Create the configuration file
 
 ```bash
 cp .env.example .env.local
@@ -108,7 +93,7 @@ node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"  # C
 Leave `SMS_PROVIDER=console` and every `TWILIO_*` value empty. No text message
 is sent; the console adapter prints a redacted preview instead.
 
-### 5. Create a staff account
+### 4. Create a staff account
 
 ```bash
 npm run staff:create-admin -- \
@@ -119,7 +104,7 @@ npm run staff:create-admin -- \
 
 The password must be at least 12 characters.
 
-### 6. Run it
+### 5. Run it
 
 ```bash
 npm run dev
@@ -149,7 +134,7 @@ contents survive until the next `supabase db reset`.
 
 `npm run db:migrate`, `npm run db:seed` and `npm run db:reset` are for a **hosted
 Supabase project**. The CLI already applied the migrations and the seed in
-step 3, using its own ledger.
+step 2, using its own ledger.
 
 Running `db:migrate` against the local stack makes it try to apply every
 migration a second time, and it fails — the migrations use plain `create table`,
@@ -178,7 +163,7 @@ and `SUPABASE_SERVICE_ROLE_KEY` in `.env.local` match what it prints. Restart
 `npm run dev` after editing `.env.local` — it reads the file only at startup.
 
 **Staff login rejects a correct password.** The account belongs to one database.
-If `supabase db reset` ran since, it was wiped — create it again with step 5.
+If `supabase db reset` ran since, it was wiped — create it again with step 4.
 
 **`npm ci` fails building `sharp` or `three`.** Run `xcode-select --install`,
 then delete `node_modules` and retry.
