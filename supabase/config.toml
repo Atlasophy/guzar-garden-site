@@ -4,11 +4,16 @@
 # Storage and Studio in Docker, applies every file in ./migrations in order, and
 # then runs the seed files listed under [db.seed].
 #
+# Kept deliberately close to what `supabase init` generates. Every key below is
+# either a port, or something this project actually needs — the CLI's own
+# defaults cover the rest. Non-default keys are the ones that drift between CLI
+# versions, so the fewer of them there are, the more versions this starts on.
+#
 # Because the CLI owns the schema here, do NOT also run `npm run db:migrate` or
 # `npm run db:seed` against this database. Those scripts keep their own ledger
 # (public.schema_migrations) and would try to apply the same migrations a second
 # time, which fails: the migrations use plain `create table`, not `create table
-# if not exists`. See docs/LOCAL-SETUP-MACOS.md.
+# if not exists`. Use `supabase db reset`. See docs/LOCAL-SETUP-MACOS.md.
 #
 # The hosted project is unaffected by anything in this file.
 
@@ -17,14 +22,9 @@ project_id = "guzar-garden"
 [api]
 enabled = true
 port = 54321
-schemas = ["public", "storage", "graphql_public"]
-extra_search_path = ["public", "extensions"]
-max_rows = 1000
 
 [db]
 port = 54322
-shadow_port = 54320
-major_version = 17
 
 [db.seed]
 enabled = true
@@ -35,20 +35,15 @@ sql_paths = ["./seed.sql", "./seed_menu.sql"]
 [studio]
 enabled = true
 port = 54323
-api_url = "http://127.0.0.1:54321"
 
+# Migration 0009 creates the public `menu-images` bucket, so Storage has to be
+# up or menu image upload fails.
 [storage]
 enabled = true
-# Matches MAX_MENU_IMAGE_BYTES (8 MiB) with room for the multipart envelope.
-file_size_limit = "50MiB"
 
 [auth]
 enabled = true
 site_url = "http://localhost:3000"
-additional_redirect_urls = ["http://localhost:3000"]
-jwt_expiry = 3600
-enable_refresh_token_rotation = true
-refresh_token_reuse_interval = 10
 # Staff accounts are created by an admin with scripts/create-admin.mjs, never by
 # self-service signup — the same posture as the hosted project.
 enable_signup = false
@@ -58,7 +53,3 @@ enable_signup = false
 # Local only: no real mailbox is involved, so a staff account created by the
 # script is usable immediately instead of waiting on a confirmation link.
 enable_confirmations = false
-
-[inbucket]
-enabled = true
-port = 54324
