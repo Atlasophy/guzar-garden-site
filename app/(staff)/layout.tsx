@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import '../styles/staff.css';
 import { LocaleProvider } from '@/components/shared/locale-provider';
 import { getRequestLocale } from '@/lib/i18n/staff-server';
@@ -17,6 +18,7 @@ export default async function StaffRootLayout({ children }: { children: ReactNod
         <LocaleProvider initialLocale={locale} preferInitialLocale>
           {children}
         </LocaleProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
