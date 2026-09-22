@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import '../styles/base.css';
 import '../styles/emerald.css';
 import '../styles/reserve.css';
@@ -60,6 +61,7 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
       </head>
       <body className="theme-emerald">
         <LocaleProvider>{children}</LocaleProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
