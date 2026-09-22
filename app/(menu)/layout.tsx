@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import '../styles/base.css';
 import '../styles/cream.css';
 import { DocumentHead } from '@/components/shared/document-head';
@@ -47,6 +48,7 @@ export default function MenuLayout({ children }: { children: ReactNode }) {
       </head>
       <body className="theme-cream">
         <LocaleProvider>{children}</LocaleProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
