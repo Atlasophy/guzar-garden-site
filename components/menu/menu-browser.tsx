@@ -120,7 +120,11 @@ export function MenuBrowser({ menu }: { menu: PublicMenu }) {
       ? menu.categories[categoryIndex + 1]
       : undefined;
 
-  const renderCard = (item: MenuItemView, itemCategory: MenuCategoryView, showCategory: boolean) => (
+  const renderCard = (
+    item: MenuItemView,
+    itemCategory: MenuCategoryView,
+    showCategory: boolean,
+  ) => (
     <button
       key={item.id}
       type="button"
