@@ -106,9 +106,18 @@ Run these authenticated endpoints on a scheduler:
 
 Send `Authorization: Bearer $CRON_SECRET`. The same calls can be tested against a running app with `npm run jobs:expire-holds` and `npm run jobs:process-outbox`.
 
-## Email
+## Email (Resend)
 
-No real email provider is wired up yet — `EMAIL_PROVIDER=disabled` is the production-safe default, same contract as `SMS_PROVIDER=disabled`: the booking form does not promise a confirmation email, and every queued message is recorded as `undelivered` rather than sent. The outbox, templates (four languages, HTML + plain text) and staff-panel status/resend UI are already built and shared with SMS; turning email on is a new provider adapter in `lib/notifications/email/` (mirroring `lib/notifications/twilio-provider.ts`) plus the real provider's API key — no schema or application-flow changes.
+`EMAIL_PROVIDER=disabled` is the production-safe default, same contract as `SMS_PROVIDER=disabled`: while it's set, the booking form does not promise a confirmation email, and every queued message is recorded as `undelivered` rather than sent.
+
+To turn it on:
+
+1. Add and verify the sending domain in the [Resend dashboard](https://resend.com/domains) — usually the same domain the site runs on, or a subdomain of it (e.g. `mail.guzargarden.pl`). Resend gives you the DNS records to add.
+2. Create an API key at [resend.com/api-keys](https://resend.com/api-keys).
+3. Set `EMAIL_PROVIDER=resend`, `RESEND_API_KEY`, and `EMAIL_FROM_ADDRESS` (an address on the verified domain, e.g. `"Guzar Garden <rezerwacje@guzargarden.pl>"`) in the environment.
+4. Redeploy. No schema or code change is needed — the outbox, four-language HTML/text templates, and staff-panel status/resend UI already exist and are shared with SMS.
+
+Once live, `process-outbox` is sending real email the same way it sends real SMS, so it needs the same per-minute scheduler — see "Twilio and scheduled jobs" above.
 
 ## Staff permissions
 
@@ -137,6 +146,7 @@ Integration tests never use `DATABASE_URL`; they use an isolated embedded Postgr
 - Run migrations and seed only the baseline content required for the venue.
 - Create staff users individually and apply least-privilege roles.
 - Enable Twilio, verify the sender, callback signature, and test messages to real international numbers.
+- Enable Resend: verify the sending domain, set `EMAIL_FROM_ADDRESS`, and test a confirmation email lands in a real inbox (not spam).
 - Configure the three scheduled jobs and alert on failed runs/outbox failures.
 - Replace the in-process rate-limit store with a shared Redis/KV store if the deployment uses multiple server instances or receives material abuse traffic.
 - Confirm backup/PITR settings and perform a restore drill before launch.

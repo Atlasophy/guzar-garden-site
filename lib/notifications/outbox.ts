@@ -12,6 +12,7 @@ import { TwilioSmsProvider } from './twilio-provider';
 import type { EmailProvider } from './email/provider';
 import { ConsoleEmailProvider } from './email/console-provider';
 import { DisabledEmailProvider } from './email/disabled-provider';
+import { ResendEmailProvider } from './email/resend-provider';
 
 /**
  * The transactional outbox.
@@ -55,7 +56,11 @@ export function getEmailProvider(): EmailProvider {
   if (cachedEmailProvider) return cachedEmailProvider;
   const provider = getServerEnv().EMAIL_PROVIDER;
   cachedEmailProvider =
-    provider === 'disabled' ? new DisabledEmailProvider() : new ConsoleEmailProvider();
+    provider === 'resend'
+      ? new ResendEmailProvider()
+      : provider === 'disabled'
+        ? new DisabledEmailProvider()
+        : new ConsoleEmailProvider();
   return cachedEmailProvider;
 }
 

@@ -11,12 +11,12 @@ The website and its data are separate:
 - Squarespace remains the domain registrar and DNS manager.
 - Twilio sends reservation SMS messages — **not configured yet**. The site
   launched with `SMS_PROVIDER=disabled` and does not promise guests a text.
-- Reservation confirmation emails — **not configured yet either**. The site
-  launched with `EMAIL_PROVIDER=disabled`, same contract as SMS: no provider
-  chosen yet, so the booking form does not promise an email. The outbox,
-  templates and staff-panel status/resend UI are already built; turning it on
-  needs a chosen provider (Resend, Postmark, SES, …), its API key in Vercel,
-  and one new adapter file — no other code change.
+- Resend sends reservation confirmation emails — **not configured yet**. The
+  site launched with `EMAIL_PROVIDER=disabled`, same contract as SMS: the
+  booking form does not promise an email until it is turned on. The adapter,
+  outbox, templates and staff-panel status/resend UI are already built; going
+  live needs a verified sending domain and an API key in Vercel — see
+  "First online deployment" step 7 below.
 
 Restarting or redeploying Vercel does not erase Supabase data. Do not delete the
 Supabase project, and never run `npm run db:reset` against the live database.
@@ -71,7 +71,13 @@ Stop either server with `Ctrl+C`.
    as `undelivered` rather than sent. Switching to `twilio` later needs only the
    environment values and a redeploy — no code change, and no backlog of stale
    confirmations goes out, because `undelivered` rows are terminal.
-7. Generate new production-only values for `RESERVATION_TOKEN_SECRET` and
+7. Same story for email, one provider over: production accepts
+   `EMAIL_PROVIDER=resend` (with `RESEND_API_KEY` and `EMAIL_FROM_ADDRESS`) or
+   `EMAIL_PROVIDER=disabled`, and rejects `console`. To switch to `resend`,
+   verify a sending domain at [resend.com/domains](https://resend.com/domains)
+   first — an unverified `EMAIL_FROM_ADDRESS` fails every send. `disabled` is
+   the honest launch setting here too.
+8. Generate new production-only values for `RESERVATION_TOKEN_SECRET` and
    `CRON_SECRET`. Do not reuse an account password. In PowerShell:
 
    ```powershell
@@ -80,7 +86,7 @@ Stop either server with `Ctrl+C`.
 
    Run it twice and use a different output for each secret.
 
-8. Deploy. Vercel will provide a temporary `*.vercel.app` address, which works
+9. Deploy. Vercel will provide a temporary `*.vercel.app` address, which works
    before Squarespace DNS is ready.
 
 The current Supabase database has already been migrated and seeded. For future code
@@ -149,16 +155,18 @@ neither per-minute job is load-bearing in this configuration:
   any hold whose `hold_expires_at` has passed. An abandoned hold therefore never
   blocks a table and never collides with the overlap constraint, even if the job
   has not run for a day.
-- `process-outbox` has nothing to send while `SMS_PROVIDER=disabled`.
+- `process-outbox` has nothing to send while `SMS_PROVIDER=disabled` and
+  `EMAIL_PROVIDER=disabled`.
 - `cleanup-images` is daily anyway, which Hobby supports.
 
-This changes the moment Twilio is enabled: `process-outbox` then becomes the thing
-standing between a confirmed booking and the guest's phone, and it needs a
-per-minute scheduler. At that point move to Vercel Pro or another trusted scheduler
-that can call these HTTPS routes with the Bearer header. A ready-to-copy Vercel Pro
-configuration is included at `docs/vercel-cron.pro.example.json`; copy it to the
-project root as `vercel.json` and redeploy only after the project supports
-per-minute schedules.
+This changes the moment Twilio or Resend is enabled: `process-outbox` then
+becomes the thing standing between a confirmed booking and the guest's phone
+or inbox, and it needs a per-minute scheduler. At that point move to Vercel
+Pro or another trusted scheduler that can call these HTTPS routes with the
+Bearer header. A ready-to-copy Vercel Pro configuration is included at
+`docs/vercel-cron.pro.example.json`; copy it to the project root as
+`vercel.json` and redeploy only after the project supports per-minute
+schedules.
 
 ## How to put it back online later
 
@@ -192,7 +200,9 @@ Then verify on the Vercel production address:
 
 1. Public homepage and menu in all four languages.
 2. Reservation availability, table selection, confirmation, reschedule, and cancel.
-3. SMS delivery to a real Polish and international phone number.
+3. SMS delivery to a real Polish and international phone number, and — once
+   Resend is configured — confirmation email delivery to a real inbox
+   (check spam placement too).
 4. Staff login, calendar, live floor, and reservation status changes.
 5. Menu image upload, edit, publish/unpublish, and price change.
 6. Opening hours, exception dates, table capacities, booking duration, and notice
