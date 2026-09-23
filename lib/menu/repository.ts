@@ -124,8 +124,9 @@ function toItemView(row: PublicMenuItemRow): MenuItemView {
   };
 }
 
-/** How many signature dishes the homepage grid shows. */
-export const SIGNATURE_COUNT = 5;
+/** How many signature dishes the homepage and menu strip show. Kept even so
+ * the grid never ends on a lone dangling card at any column count. */
+export const SIGNATURE_COUNT = 4;
 
 async function fetchPublicMenu(venueSlug: string): Promise<PublicMenu> {
   const supabase = getAdminClient();
