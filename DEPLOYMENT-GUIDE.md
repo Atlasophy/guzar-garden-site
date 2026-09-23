@@ -11,6 +11,12 @@ The website and its data are separate:
 - Squarespace remains the domain registrar and DNS manager.
 - Twilio sends reservation SMS messages — **not configured yet**. The site
   launched with `SMS_PROVIDER=disabled` and does not promise guests a text.
+- Reservation confirmation emails — **not configured yet either**. The site
+  launched with `EMAIL_PROVIDER=disabled`, same contract as SMS: no provider
+  chosen yet, so the booking form does not promise an email. The outbox,
+  templates and staff-panel status/resend UI are already built; turning it on
+  needs a chosen provider (Resend, Postmark, SES, …), its API key in Vercel,
+  and one new adapter file — no other code change.
 
 Restarting or redeploying Vercel does not erase Supabase data. Do not delete the
 Supabase project, and never run `npm run db:reset` against the live database.

@@ -269,6 +269,9 @@ export const pl = {
     firstName: 'Imię',
     lastName: 'Nazwisko',
     email: 'E-mail',
+    // Shown only when the venue has a working email channel — see
+    // isEmailEnabled(). The field stays optional either way.
+    emailHint: 'Wyślemy potwierdzenie e-mailem.',
     phone: 'Telefon',
     phoneHint: 'Wyślemy SMS z potwierdzeniem.',
     // Used when the venue has no SMS channel — see isSmsEnabled(). Promises

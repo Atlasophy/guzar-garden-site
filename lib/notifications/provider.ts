@@ -21,6 +21,8 @@ export interface ConfirmationMessage {
   tableCode?: string;
   venueName: string;
   venuePhone: string;
+  /** Street address only — email has room for it, SMS templates ignore it. */
+  venueAddress?: string;
   manageUrl?: string;
 }
 

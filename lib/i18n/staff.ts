@@ -161,6 +161,13 @@ const pl = {
     'Tryb testowy ({provider}) — nic nie zostało wysłane na telefon. Status „{status}” pochodzi z testu.',
   smsDelivered: 'SMS wysłany na telefon gościa ({status}).',
   smsNotDelivered: 'SMS nie dotarł ({status}{error}).',
+  emailDisabled:
+    'E-mail jest wyłączony — gość nie dostał wiadomości e-mail. Potwierdzenie zobaczył na ekranie.',
+  testMessageEmail:
+    'Tryb testowy ({provider}) — nic nie zostało wysłane e-mailem. Status „{status}” pochodzi z testu.',
+  emailDelivered: 'E-mail wysłany do gościa ({status}).',
+  emailNotDelivered: 'E-mail nie dotarł ({status}{error}).',
+  resendEmail: 'Wyślij e-mail ponownie',
   seatGuests: 'Posadź gości',
   completeVisit: 'Zakończ wizytę',
   noShow: 'Nieobecność',
@@ -400,6 +407,13 @@ const en: StaffDictionary = {
     'Test mode ({provider}) — nothing was sent to the phone. Status “{status}” comes from a test.',
   smsDelivered: 'SMS sent to the guest’s phone ({status}).',
   smsNotDelivered: 'SMS was not delivered ({status}{error}).',
+  emailDisabled:
+    'Email is disabled — the guest did not receive an email. The confirmation was shown on screen.',
+  testMessageEmail:
+    'Test mode ({provider}) — nothing was sent by email. Status “{status}” comes from a test.',
+  emailDelivered: 'Email sent to the guest ({status}).',
+  emailNotDelivered: 'Email was not delivered ({status}{error}).',
+  resendEmail: 'Resend email',
   seatGuests: 'Seat guests',
   completeVisit: 'Complete visit',
   noShow: 'No-show',
@@ -633,6 +647,12 @@ const ru: StaffDictionary = {
     'Тестовый режим ({provider}) — на телефон ничего не отправлено. Статус «{status}» получен из теста.',
   smsDelivered: 'SMS отправлено на телефон гостя ({status}).',
   smsNotDelivered: 'SMS не доставлено ({status}{error}).',
+  emailDisabled: 'Email отключён — гость не получил письмо. Подтверждение было показано на экране.',
+  testMessageEmail:
+    'Тестовый режим ({provider}) — по email ничего не отправлено. Статус «{status}» получен из теста.',
+  emailDelivered: 'Email отправлен гостю ({status}).',
+  emailNotDelivered: 'Email не доставлен ({status}{error}).',
+  resendEmail: 'Отправить email снова',
   seatGuests: 'Посадить гостей',
   completeVisit: 'Завершить визит',
   noShow: 'Неявка',
@@ -867,6 +887,12 @@ const uz: StaffDictionary = {
     'Sinov rejimi ({provider}) — telefonga hech narsa yuborilmadi. “{status}” holati sinovdan olingan.',
   smsDelivered: 'SMS mehmon telefoniga yuborildi ({status}).',
   smsNotDelivered: 'SMS yetkazilmadi ({status}{error}).',
+  emailDisabled: 'Email o‘chirilgan — mehmon xabar olmadi. Tasdiq ekranda ko‘rsatildi.',
+  testMessageEmail:
+    'Sinov rejimi ({provider}) — email orqali hech narsa yuborilmadi. “{status}” holati sinovdan olingan.',
+  emailDelivered: 'Email mehmonga yuborildi ({status}).',
+  emailNotDelivered: 'Email yetkazilmadi ({status}{error}).',
+  resendEmail: 'Emailni qayta yuborish',
   seatGuests: 'Mehmonlarni joylashtirish',
   completeVisit: 'Tashrifni yakunlash',
   noShow: 'Kelmadi',

@@ -3,38 +3,52 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { apiPatch } from '@/lib/api/client';
-import type { StaffReservationView } from '@/lib/staff/reservations';
+import type { StaffNotificationView, StaffReservationView } from '@/lib/staff/reservations';
 import { formatStaffMessage } from '@/lib/i18n/staff';
 import type { StaffDictionary } from '@/lib/i18n/staff';
 import { useStaffDictionary } from './use-staff-dictionary';
 
 /**
- * What actually happened to the guest's confirmation message.
+ * What actually happened to one of the guest's confirmation messages.
  *
  * `status` alone is not the answer, and reading it as one is a trap the host
  * stand would fall into daily: the console adapter records `sent` for a message
  * it only printed to a server log, and the disabled adapter records
- * `undelivered` for a venue that never intended to text anybody. Both look like
- * ordinary delivery outcomes in the database.
+ * `undelivered` for a venue that never intended to send anything on that
+ * channel. Both look like ordinary delivery outcomes in the database.
  *
- * So the provider decides the wording, and only Twilio is ever described as
- * having reached a phone.
+ * So the provider decides the wording, and only a real provider (Twilio for
+ * SMS; anything but console/disabled for email) is ever described as having
+ * reached the guest. One of these renders per channel that has a row.
  */
 function NotificationStatus({
   notification,
   dictionary,
 }: {
-  notification: NonNullable<StaffReservationView['notification']>;
+  notification: StaffNotificationView;
   dictionary: StaffDictionary;
 }) {
-  if (notification.provider === 'disabled' || notification.lastError === 'sms_disabled') {
-    return <div className="staff-notice">{dictionary.smsDisabled}</div>;
+  const isEmail = notification.channel === 'email';
+  const disabledKey = isEmail ? 'emailDisabled' : 'smsDisabled';
+  const disabledErrorCode = isEmail ? 'email_disabled' : 'sms_disabled';
+  const testMessageKey = isEmail ? 'testMessageEmail' : 'testMessage';
+  const deliveredKey = isEmail ? 'emailDelivered' : 'smsDelivered';
+  const notDeliveredKey = isEmail ? 'emailNotDelivered' : 'smsNotDelivered';
+
+  if (notification.provider === 'disabled' || notification.lastError === disabledErrorCode) {
+    return <div className="staff-notice">{dictionary[disabledKey]}</div>;
   }
 
-  if (notification.provider && notification.provider !== 'twilio') {
+  const isRealProvider = isEmail
+    ? notification.provider !== null &&
+      notification.provider !== 'console' &&
+      notification.provider !== 'disabled'
+    : notification.provider === 'twilio';
+
+  if (notification.provider && !isRealProvider) {
     return (
       <div className="staff-notice warn">
-        {formatStaffMessage(dictionary.testMessage, {
+        {formatStaffMessage(dictionary[testMessageKey], {
           provider: notification.provider,
           status: notification.status,
         })}
@@ -42,17 +56,17 @@ function NotificationStatus({
     );
   }
 
-  if (notification.deliveredToPhone) {
+  if (notification.delivered) {
     return (
       <div className="staff-notice">
-        {formatStaffMessage(dictionary.smsDelivered, { status: notification.status })}
+        {formatStaffMessage(dictionary[deliveredKey], { status: notification.status })}
       </div>
     );
   }
 
   return (
     <div className="staff-notice warn">
-      {formatStaffMessage(dictionary.smsNotDelivered, {
+      {formatStaffMessage(dictionary[notDeliveredKey], {
         status: notification.status,
         error: notification.lastError ? ` — ${notification.lastError}` : '',
       })}
@@ -80,9 +94,13 @@ export function ReservationActions({ reservation }: { reservation: StaffReservat
     <section className="staff-card">
       <h2>{dictionary.reservationHandling}</h2>
       {error ? <div className="staff-notice error">{error}</div> : null}
-      {reservation.notification ? (
-        <NotificationStatus notification={reservation.notification} dictionary={dictionary} />
-      ) : null}
+      {reservation.notifications.map((notification) => (
+        <NotificationStatus
+          key={notification.id}
+          notification={notification}
+          dictionary={dictionary}
+        />
+      ))}
       <div className="staff-actions">
         {reservation.status === 'confirmed' ? (
           <button
@@ -127,25 +145,34 @@ export function ReservationActions({ reservation }: { reservation: StaffReservat
           </button>
         ) : null}
         {/*
-          Resending is only offered when a resend could actually reach a phone.
-          With SMS_PROVIDER=disabled every confirmation is recorded as
-          `undelivered`, so without this check the host stand would show a
-          "Wyślij SMS ponownie" button on every single booking, and pressing it
-          would fail every single time.
+          Resending is only offered per channel when a resend could actually
+          reach the guest. With a channel disabled, every message on it is
+          recorded as `undelivered`, so without this check the host stand
+          would show a resend button for every single booking, on a channel
+          that would fail every single time.
         */}
-        {reservation.notification &&
-        reservation.notification.provider === 'twilio' &&
-        ['failed', 'undelivered'].includes(reservation.notification.status) ? (
-          <button
-            className="staff-button secondary"
-            disabled={busy}
-            onClick={() =>
-              void act({ action: 'resend_sms', notificationId: reservation.notification?.id })
-            }
-          >
-            {dictionary.resendSms}
-          </button>
-        ) : null}
+        {reservation.notifications
+          .filter((notification) => {
+            const reachesGuest =
+              notification.channel === 'sms'
+                ? notification.provider === 'twilio'
+                : notification.provider !== null &&
+                  notification.provider !== 'console' &&
+                  notification.provider !== 'disabled';
+            return reachesGuest && ['failed', 'undelivered'].includes(notification.status);
+          })
+          .map((notification) => (
+            <button
+              key={notification.id}
+              className="staff-button secondary"
+              disabled={busy}
+              onClick={() =>
+                void act({ action: 'resend_notification', notificationId: notification.id })
+              }
+            >
+              {notification.channel === 'email' ? dictionary.resendEmail : dictionary.resendSms}
+            </button>
+          ))}
       </div>
     </section>
   );

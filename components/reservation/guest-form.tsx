@@ -25,6 +25,12 @@ interface GuestFormProps {
    * that has to stop promising it. Defaults to true so the prop is additive.
    */
   smsEnabled?: boolean;
+  /**
+   * False when the venue has no email channel. Unlike the phone field, email
+   * is optional, so there is nothing dishonest about staying silent when it is
+   * off — the hint only ever appears to promise something that will happen.
+   */
+  emailEnabled?: boolean;
 }
 
 const EMPTY_VALUES: GuestFormValues = {
@@ -37,7 +43,13 @@ const EMPTY_VALUES: GuestFormValues = {
   marketingConsent: false,
 };
 
-export function GuestForm({ defaultValues, onBack, onSubmit, smsEnabled = true }: GuestFormProps) {
+export function GuestForm({
+  defaultValues,
+  onBack,
+  onSubmit,
+  smsEnabled = true,
+  emailEnabled = false,
+}: GuestFormProps) {
   const { dictionary } = useLocale();
   const t = dictionary.reserve;
   const {
@@ -98,6 +110,7 @@ export function GuestForm({ defaultValues, onBack, onSubmit, smsEnabled = true }
             inputMode="email"
             autoComplete="email"
             aria-invalid={Boolean(errors.email)}
+            aria-describedby={emailEnabled ? 'guest-email-hint' : undefined}
             {...register('email', {
               maxLength: { value: 254, message: dictionary.errors.validation },
               pattern: {
@@ -106,6 +119,11 @@ export function GuestForm({ defaultValues, onBack, onSubmit, smsEnabled = true }
               },
             })}
           />
+          {emailEnabled ? (
+            <small className="note" id="guest-email-hint">
+              {t.emailHint}
+            </small>
+          ) : null}
           {errors.email ? <small className="error">{errors.email.message}</small> : null}
         </label>
 

@@ -136,7 +136,7 @@ export const PATCH = route(
         return apiSuccess({ cancelled: true });
       }
 
-      case 'resend_sms': {
+      case 'resend_notification': {
         const context = await authorize('reservations.resend_notification');
         if (!input.notificationId) return ApiErrors.badRequest('notification_required');
         const result = await resendNotification(input.notificationId, context.userId);

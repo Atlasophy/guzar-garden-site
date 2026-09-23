@@ -33,6 +33,13 @@ const serverSchema = z.object({
   // queued as sendable, and the booking UI stops promising the guest a text.
   SMS_PROVIDER: z.enum(['console', 'twilio', 'disabled']).default('console'),
 
+  // Same contract as SMS_PROVIDER, one channel over. No real sender exists yet
+  // — 'disabled' is the honest launch setting, same as SMS was before Twilio.
+  EMAIL_PROVIDER: z.enum(['console', 'disabled']).default('disabled'),
+  // Used as the From: address once a real provider is added. Not required
+  // while EMAIL_PROVIDER=disabled, since nothing is ever sent.
+  EMAIL_FROM_ADDRESS: z.string().optional(),
+
   MENU_IMAGE_BUCKET: nonEmpty.default('menu-images'),
   MAX_MENU_IMAGE_BYTES: z.coerce
     .number()
@@ -102,6 +109,15 @@ export function getServerEnv(): ServerEnv {
           'the console adapter never sends a message',
       );
     }
+    if (env.EMAIL_PROVIDER !== 'disabled') {
+      // Mirrors the SMS rule above. There is no real email adapter wired up
+      // yet, so 'disabled' is currently the only production-safe value; a
+      // real provider gains its own branch here the same way Twilio did.
+      missing.push(
+        'EMAIL_PROVIDER must be "disabled" in production until a real provider is configured — ' +
+          'the console adapter never sends a message',
+      );
+    }
     if (env.RESERVATION_TOKEN_SECRET.startsWith('replace-me'))
       missing.push('RESERVATION_TOKEN_SECRET is still the placeholder from .env.example');
     if (env.CRON_SECRET.startsWith('replace-me'))
@@ -124,6 +140,17 @@ export function getServerEnv(): ServerEnv {
  */
 export function isSmsEnabled(): boolean {
   return getServerEnv().SMS_PROVIDER !== 'disabled';
+}
+
+/**
+ * Whether this deployment has a real email channel.
+ *
+ * False means no confirmation email is promised or sent, and the outbox
+ * records queued email messages as undelivered rather than sending them —
+ * same contract as `isSmsEnabled()`, one channel over.
+ */
+export function isEmailEnabled(): boolean {
+  return getServerEnv().EMAIL_PROVIDER !== 'disabled';
 }
 
 /** Local-only adapter used when hosted Supabase is unreachable during visual review. */

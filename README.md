@@ -9,6 +9,7 @@ Production-oriented Next.js application for the restaurant website, online table
 - Guided booking flow: party size → date → time → table list with a rendered floor illustration → contact details → confirmation.
 - Five-minute table holds, server-owned expiry, idempotent confirmation, and database-enforced collision protection.
 - SMS confirmation/update/cancellation outbox with Twilio delivery callbacks and retry jobs.
+- Email confirmation/update/cancellation alongside SMS, from the same outbox — ships disabled until a provider is configured (see below).
 - Guest self-service links for viewing, rescheduling, and cancelling a reservation.
 - Authenticated staff dashboard with today view, calendar, live floor state, phone/walk-in reservations, status changes, table moves, blocking, and closure/exception management.
 - Menu administration for categories and meals, including names/descriptions in four languages, exact prices, availability/publishing, homepage highlights, allergens, images, archive/restore, and deletion controls.
@@ -77,7 +78,7 @@ On a Mac, [`docs/LOCAL-SETUP-MACOS.md`](docs/LOCAL-SETUP-MACOS.md) covers the wh
 Public site: `http://localhost:3000`  
 Staff login: `http://localhost:3000/staff/login`
 
-Development defaults to `SMS_PROVIDER=console`. It records the outbox workflow and prints only a redacted preview; it does not send a real message.
+Development defaults to `SMS_PROVIDER=console` and `EMAIL_PROVIDER=disabled`. Console records the outbox workflow and prints only a redacted preview; it does not send a real message. Set `EMAIL_PROVIDER=console` locally to preview confirmation emails the same way.
 
 ## Supabase setup
 
@@ -104,6 +105,10 @@ Run these authenticated endpoints on a scheduler:
 | Daily        | `POST /api/jobs/cleanup-images` | Removes orphaned menu uploads after a grace period |
 
 Send `Authorization: Bearer $CRON_SECRET`. The same calls can be tested against a running app with `npm run jobs:expire-holds` and `npm run jobs:process-outbox`.
+
+## Email
+
+No real email provider is wired up yet — `EMAIL_PROVIDER=disabled` is the production-safe default, same contract as `SMS_PROVIDER=disabled`: the booking form does not promise a confirmation email, and every queued message is recorded as `undelivered` rather than sent. The outbox, templates (four languages, HTML + plain text) and staff-panel status/resend UI are already built and shared with SMS; turning email on is a new provider adapter in `lib/notifications/email/` (mirroring `lib/notifications/twilio-provider.ts`) plus the real provider's API key — no schema or application-flow changes.
 
 ## Staff permissions
 

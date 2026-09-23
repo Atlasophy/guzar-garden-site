@@ -43,20 +43,29 @@ export interface StaffReservationView {
   areaSlug: string | null;
   createdAt: string;
   seatedAt: string | null;
-  notification: {
-    id: string;
-    status: NotificationOutboxRow['status'];
-    type: NotificationOutboxRow['type'];
-    lastError: string | null;
-    /**
-     * Which adapter produced this row. 'twilio' is the only one that reaches a
-     * phone; 'console' reports success for a message it only printed, and
-     * 'disabled' refuses on purpose. Staff must be able to tell those apart,
-     * because 'sent' means three different things depending on this field.
-     */
-    provider: string | null;
-    deliveredToPhone: boolean;
-  } | null;
+  /**
+   * The most recent outbox row per channel — at most one SMS and one email.
+   * Both can be present, one, or neither, depending on what the guest gave
+   * and which channels the venue has switched on.
+   */
+  notifications: StaffNotificationView[];
+}
+
+export interface StaffNotificationView {
+  id: string;
+  channel: NotificationOutboxRow['channel'];
+  status: NotificationOutboxRow['status'];
+  type: NotificationOutboxRow['type'];
+  lastError: string | null;
+  /**
+   * Which adapter produced this row. For SMS, 'twilio' is the only one that
+   * reaches a phone; for email, any provider other than 'console'/'disabled'
+   * does. 'console' reports success for a message it only printed, and
+   * 'disabled' refuses on purpose. Staff must be able to tell those apart,
+   * because 'sent' means different things depending on this field.
+   */
+  provider: string | null;
+  delivered: boolean;
 }
 
 export interface ListFilters {
@@ -160,12 +169,35 @@ export async function listReservations(
     }
   }
 
-  const notificationByReservation = new Map<string, NotificationOutboxRow>();
+  // Rows arrive newest-first, so the first one seen per (reservation, channel)
+  // pair is the current one for that channel.
+  const notificationsByReservation = new Map<
+    string,
+    Partial<Record<NotificationOutboxRow['channel'], NotificationOutboxRow>>
+  >();
   for (const notification of notifications ?? []) {
     if (!notification.reservation_id) continue;
-    if (!notificationByReservation.has(notification.reservation_id)) {
-      notificationByReservation.set(notification.reservation_id, notification);
+    const bucket = notificationsByReservation.get(notification.reservation_id) ?? {};
+    if (!bucket[notification.channel]) {
+      bucket[notification.channel] = notification;
+      notificationsByReservation.set(notification.reservation_id, bucket);
     }
+  }
+
+  function toNotificationView(n: NotificationOutboxRow): StaffNotificationView {
+    const reachesGuest =
+      n.channel === 'sms'
+        ? n.provider === 'twilio'
+        : n.provider !== null && n.provider !== 'console' && n.provider !== 'disabled';
+    return {
+      id: n.id,
+      channel: n.channel,
+      status: n.status,
+      type: n.type,
+      lastError: n.last_error,
+      provider: n.provider ?? null,
+      delivered: reachesGuest && ['sent', 'delivered'].includes(n.status),
+    };
   }
 
   const filtered = rows.filter((row) => {
@@ -184,7 +216,11 @@ export async function listReservations(
     const allocation = allocationByReservation.get(row.id);
     const table = allocation ? tableById.get(allocation.table_id) : undefined;
     const area = table ? areaById.get(table.dining_area_id) : undefined;
-    const notification = notificationByReservation.get(row.id);
+    const notificationBucket = notificationsByReservation.get(row.id);
+    const notifications = (['sms', 'email'] as const)
+      .map((channel) => notificationBucket?.[channel])
+      .filter((n): n is NotificationOutboxRow => n !== undefined)
+      .map(toNotificationView);
 
     return {
       id: row.id,
@@ -206,18 +242,7 @@ export async function listReservations(
       areaSlug: area?.slug ?? null,
       createdAt: row.created_at,
       seatedAt: row.seated_at,
-      notification: notification
-        ? {
-            id: notification.id,
-            status: notification.status,
-            type: notification.type,
-            lastError: notification.last_error,
-            provider: notification.provider ?? null,
-            deliveredToPhone:
-              notification.provider === 'twilio' &&
-              ['sent', 'delivered'].includes(notification.status),
-          }
-        : null,
+      notifications,
     };
   });
 }

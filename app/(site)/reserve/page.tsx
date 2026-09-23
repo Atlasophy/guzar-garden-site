@@ -3,7 +3,7 @@ import { BookingFlow } from '@/components/reservation/booking-flow';
 import { SiteFooter } from '@/components/shared/site-footer';
 import { SiteHeader } from '@/components/shared/site-header';
 import { SITE, TEL_HREF } from '@/components/shared/site-config';
-import { isSmsEnabled, publicEnv } from '@/lib/config/env';
+import { isEmailEnabled, isSmsEnabled, publicEnv } from '@/lib/config/env';
 import { reportSuppressed } from '@/lib/observability/suppressed';
 import { toLocalDateString } from '@/lib/time/warsaw';
 import { getPublicVenueInfo } from '@/lib/venue/public-info';
@@ -19,9 +19,11 @@ export const dynamic = 'force-dynamic';
 export default async function ReservePage() {
   let reservationsReady = true;
   let smsEnabled = false;
+  let emailEnabled = false;
 
   try {
     smsEnabled = isSmsEnabled();
+    emailEnabled = isEmailEnabled();
   } catch (error) {
     reservationsReady = false;
     reportSuppressed('reservations.configuration_unavailable', error);
@@ -48,6 +50,7 @@ export default async function ReservePage() {
               maxPartySize={venue?.policy.maxOnlinePartySize ?? 12}
               bookingHorizonDays={venue?.policy.bookingHorizonDays ?? 90}
               smsEnabled={smsEnabled}
+              emailEnabled={emailEnabled}
             />
           ) : (
             <section className="panel" aria-labelledby="reservations-coming-soon">
