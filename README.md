@@ -9,6 +9,7 @@ Production-oriented Next.js application for the restaurant website, online table
 - Guided booking flow: party size → date → time → table list with a rendered floor illustration → contact details → confirmation.
 - Five-minute table holds, server-owned expiry, idempotent confirmation, and database-enforced collision protection.
 - SMS confirmation/update/cancellation outbox with Twilio delivery callbacks and retry jobs.
+- Email confirmation/update/cancellation alongside SMS, from the same outbox — ships disabled until a provider is configured (see below).
 - Guest self-service links for viewing, rescheduling, and cancelling a reservation.
 - Authenticated staff dashboard with today view, calendar, live floor state, phone/walk-in reservations, status changes, table moves, blocking, and closure/exception management.
 - Menu administration for categories and meals, including names/descriptions in four languages, exact prices, availability/publishing, homepage highlights, allergens, images, archive/restore, and deletion controls.
@@ -77,7 +78,7 @@ On a Mac, [`docs/LOCAL-SETUP-MACOS.md`](docs/LOCAL-SETUP-MACOS.md) covers the wh
 Public site: `http://localhost:3000`  
 Staff login: `http://localhost:3000/staff/login`
 
-Development defaults to `SMS_PROVIDER=console`. It records the outbox workflow and prints only a redacted preview; it does not send a real message.
+Development defaults to `SMS_PROVIDER=console` and `EMAIL_PROVIDER=disabled`. Console records the outbox workflow and prints only a redacted preview; it does not send a real message. Set `EMAIL_PROVIDER=console` locally to preview confirmation emails the same way.
 
 ## Supabase setup
 
@@ -104,6 +105,19 @@ Run these authenticated endpoints on a scheduler:
 | Daily        | `POST /api/jobs/cleanup-images` | Removes orphaned menu uploads after a grace period |
 
 Send `Authorization: Bearer $CRON_SECRET`. The same calls can be tested against a running app with `npm run jobs:expire-holds` and `npm run jobs:process-outbox`.
+
+## Email (Resend)
+
+`EMAIL_PROVIDER=disabled` is the production-safe default, same contract as `SMS_PROVIDER=disabled`: while it's set, the booking form does not promise a confirmation email, and every queued message is recorded as `undelivered` rather than sent.
+
+To turn it on:
+
+1. Add and verify the sending domain in the [Resend dashboard](https://resend.com/domains) — usually the same domain the site runs on, or a subdomain of it (e.g. `mail.guzargarden.pl`). Resend gives you the DNS records to add.
+2. Create an API key at [resend.com/api-keys](https://resend.com/api-keys).
+3. Set `EMAIL_PROVIDER=resend`, `RESEND_API_KEY`, and `EMAIL_FROM_ADDRESS` (an address on the verified domain, e.g. `"Guzar Garden <rezerwacje@guzargarden.pl>"`) in the environment.
+4. Redeploy. No schema or code change is needed — the outbox, four-language HTML/text templates, and staff-panel status/resend UI already exist and are shared with SMS.
+
+Once live, `process-outbox` is sending real email the same way it sends real SMS, so it needs the same per-minute scheduler — see "Twilio and scheduled jobs" above.
 
 ## Staff permissions
 
@@ -132,6 +146,7 @@ Integration tests never use `DATABASE_URL`; they use an isolated embedded Postgr
 - Run migrations and seed only the baseline content required for the venue.
 - Create staff users individually and apply least-privilege roles.
 - Enable Twilio, verify the sender, callback signature, and test messages to real international numbers.
+- Enable Resend: verify the sending domain, set `EMAIL_FROM_ADDRESS`, and test a confirmation email lands in a real inbox (not spam).
 - Configure the three scheduled jobs and alert on failed runs/outbox failures.
 - Replace the in-process rate-limit store with a shared Redis/KV store if the deployment uses multiple server instances or receives material abuse traffic.
 - Confirm backup/PITR settings and perform a restore drill before launch.

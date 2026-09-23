@@ -33,6 +33,14 @@ const serverSchema = z.object({
   // queued as sendable, and the booking UI stops promising the guest a text.
   SMS_PROVIDER: z.enum(['console', 'twilio', 'disabled']).default('console'),
 
+  // Same contract as SMS_PROVIDER, one channel over. 'disabled' is the honest
+  // launch setting, same as SMS was before Twilio.
+  EMAIL_PROVIDER: z.enum(['console', 'resend', 'disabled']).default('disabled'),
+  // The From: address once a real provider is added. Required when
+  // EMAIL_PROVIDER=resend; irrelevant while disabled, since nothing is sent.
+  EMAIL_FROM_ADDRESS: z.string().optional(),
+  RESEND_API_KEY: z.string().optional(),
+
   MENU_IMAGE_BUCKET: nonEmpty.default('menu-images'),
   MAX_MENU_IMAGE_BYTES: z.coerce
     .number()
@@ -46,6 +54,10 @@ const serverSchema = z.object({
     .optional()
     .transform((v) => v === '1' || v === 'true'),
   SMS_DEBUG: z
+    .string()
+    .optional()
+    .transform((v) => v === '1' || v === 'true'),
+  EMAIL_DEBUG: z
     .string()
     .optional()
     .transform((v) => v === '1' || v === 'true'),
@@ -102,6 +114,20 @@ export function getServerEnv(): ServerEnv {
           'the console adapter never sends a message',
       );
     }
+    if (env.EMAIL_PROVIDER === 'resend') {
+      if (!env.RESEND_API_KEY)
+        missing.push('RESEND_API_KEY is required when EMAIL_PROVIDER=resend');
+      if (!env.EMAIL_FROM_ADDRESS)
+        missing.push('EMAIL_FROM_ADDRESS is required when EMAIL_PROVIDER=resend');
+    } else if (env.EMAIL_PROVIDER !== 'disabled') {
+      // Mirrors the SMS rule above: 'console' logs a preview and returns
+      // success, which is exactly the "quietly pretending to work" this file
+      // exists to prevent.
+      missing.push(
+        'EMAIL_PROVIDER must be "resend" or "disabled" in production — ' +
+          'the console adapter never sends a message',
+      );
+    }
     if (env.RESERVATION_TOKEN_SECRET.startsWith('replace-me'))
       missing.push('RESERVATION_TOKEN_SECRET is still the placeholder from .env.example');
     if (env.CRON_SECRET.startsWith('replace-me'))
@@ -124,6 +150,17 @@ export function getServerEnv(): ServerEnv {
  */
 export function isSmsEnabled(): boolean {
   return getServerEnv().SMS_PROVIDER !== 'disabled';
+}
+
+/**
+ * Whether this deployment has a real email channel.
+ *
+ * False means no confirmation email is promised or sent, and the outbox
+ * records queued email messages as undelivered rather than sending them —
+ * same contract as `isSmsEnabled()`, one channel over.
+ */
+export function isEmailEnabled(): boolean {
+  return getServerEnv().EMAIL_PROVIDER !== 'disabled';
 }
 
 /** Local-only adapter used when hosted Supabase is unreachable during visual review. */

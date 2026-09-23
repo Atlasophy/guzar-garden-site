@@ -255,6 +255,7 @@ export const en: Dictionary = {
     firstName: 'First name',
     lastName: 'Last name',
     email: 'Email',
+    emailHint: 'We will email you a confirmation.',
     phone: 'Mobile',
     phoneHint: 'We will text you a confirmation.',
     phoneHintNoSms: 'Your confirmation appears on screen. Save the link to manage your booking.',

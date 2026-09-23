@@ -1,7 +1,7 @@
 import 'server-only';
 import { getServerEnv } from '@/lib/config/env';
 import { getAdminClient, callFunction } from '@/lib/supabase/admin';
-import { logEvent, redactPhone } from '@/lib/security/redact';
+import { logEvent, redactEmail, redactPhone } from '@/lib/security/redact';
 import { formatLocalDate, formatLocalTime } from '@/lib/time/warsaw';
 import { coerceLocale } from '@/lib/i18n/locales';
 import type { NotificationOutboxRow, ReservationRow, VenueRow } from '@/lib/database/types';
@@ -9,38 +9,64 @@ import type { SmsProvider } from './provider';
 import { ConsoleSmsProvider } from './console-provider';
 import { DisabledSmsProvider } from './disabled-provider';
 import { TwilioSmsProvider } from './twilio-provider';
+import type { EmailProvider } from './email/provider';
+import { ConsoleEmailProvider } from './email/console-provider';
+import { DisabledEmailProvider } from './email/disabled-provider';
+import { ResendEmailProvider } from './email/resend-provider';
 
 /**
  * The transactional outbox.
  *
- * A reservation commits together with a row that says "an SMS is owed". Sending
- * happens afterwards, in a separate transaction, driven by this worker. That
- * separation is the whole point: Twilio being down, slow or rate-limited can
- * never roll back — or delay — a booking the guest has already been shown as
- * confirmed. The worst case is a confirmed reservation whose text arrives a
- * minute late, and the dashboard shows exactly which ones those are.
+ * A reservation commits together with a row that says "an SMS (or email) is
+ * owed". Sending happens afterwards, in a separate transaction, driven by
+ * this worker. That separation is the whole point: a provider being down,
+ * slow or rate-limited can never roll back — or delay — a booking the guest
+ * has already been shown as confirmed. The worst case is a confirmed
+ * reservation whose message arrives a minute late, and the dashboard shows
+ * exactly which ones those are.
  *
  * Claiming is `for update skip locked` inside the database, so two overlapping
- * cron ticks cannot send the same message twice.
+ * cron ticks cannot send the same message twice. One worker drains both
+ * channels: `gg_claim_due_notifications` is channel-agnostic, and each row
+ * carries which provider it needs.
  */
 
-let cachedProvider: SmsProvider | null = null;
+let cachedSmsProvider: SmsProvider | null = null;
 
 export function getSmsProvider(): SmsProvider {
-  if (cachedProvider) return cachedProvider;
+  if (cachedSmsProvider) return cachedSmsProvider;
   const provider = getServerEnv().SMS_PROVIDER;
-  cachedProvider =
+  cachedSmsProvider =
     provider === 'twilio'
       ? new TwilioSmsProvider()
       : provider === 'disabled'
         ? new DisabledSmsProvider()
         : new ConsoleSmsProvider();
-  return cachedProvider;
+  return cachedSmsProvider;
 }
 
 /** Test seam. */
 export function setSmsProvider(provider: SmsProvider | null): void {
-  cachedProvider = provider;
+  cachedSmsProvider = provider;
+}
+
+let cachedEmailProvider: EmailProvider | null = null;
+
+export function getEmailProvider(): EmailProvider {
+  if (cachedEmailProvider) return cachedEmailProvider;
+  const provider = getServerEnv().EMAIL_PROVIDER;
+  cachedEmailProvider =
+    provider === 'resend'
+      ? new ResendEmailProvider()
+      : provider === 'disabled'
+        ? new DisabledEmailProvider()
+        : new ConsoleEmailProvider();
+  return cachedEmailProvider;
+}
+
+/** Test seam. */
+export function setEmailProvider(provider: EmailProvider | null): void {
+  cachedEmailProvider = provider;
 }
 
 export interface ProcessResult {
@@ -66,7 +92,8 @@ interface TemplateData {
  */
 export async function processOutbox(limit = 20): Promise<ProcessResult> {
   const supabase = getAdminClient();
-  const provider = getSmsProvider();
+  const smsProvider = getSmsProvider();
+  const emailProvider = getEmailProvider();
   const env = getServerEnv();
 
   const { data: claimed, error } = await supabase.rpc('gg_claim_due_notifications', {
@@ -100,6 +127,9 @@ export async function processOutbox(limit = 20): Promise<ProcessResult> {
   const reservationById = new Map((reservations ?? []).map((r) => [r.id, r]));
 
   for (const row of rows) {
+    const provider = row.channel === 'email' ? emailProvider : smsProvider;
+    const redactRecipient = row.channel === 'email' ? redactEmail : redactPhone;
+
     const venue = venueById.get(row.venue_id);
     if (!venue) {
       await recordResult(row.id, 'failed', provider.name, null, null, 'venue_missing');
@@ -127,6 +157,7 @@ export async function processOutbox(limit = 20): Promise<ProcessResult> {
       tableCode: data.table_code,
       venueName: venue.name,
       venuePhone: formatPhoneForHumans(venue.phone_e164),
+      venueAddress: `${venue.address_line}, ${venue.postal_code} ${venue.city}`,
       manageUrl: data.management_url,
     };
 
@@ -164,7 +195,7 @@ export async function processOutbox(limit = 20): Promise<ProcessResult> {
     } catch (error) {
       logEvent('error', 'outbox.send_threw', {
         notification_id: row.id,
-        recipient: redactPhone(row.recipient),
+        recipient: redactRecipient(row.recipient),
         message: (error as Error).message,
       });
       await recordResult(row.id, 'failed', provider.name, null, null, 'unexpected_error');
@@ -206,11 +237,14 @@ export function formatPhoneForHumans(e164: string): string {
 }
 
 /**
- * Attach the guest's management URL to a pending confirmation.
+ * Attach the guest's management URL to every pending confirmation.
  *
  * The URL contains the raw token, which exists exactly once — right after the
- * reservation commits. It is written into the outbox row (not into the
- * reservation) so it lives only as long as the message does.
+ * reservation commits. It is written into the outbox rows (not into the
+ * reservation) so it lives only as long as the messages do. A confirmation can
+ * be up to two rows now — SMS and email, inserted in the same transaction and
+ * so sharing a `created_at` — which is why every pending row is updated rather
+ * than just the most recently created one.
  */
 export async function attachManagementUrl(reservationId: string, manageUrl: string): Promise<void> {
   const supabase = getAdminClient();
@@ -220,15 +254,16 @@ export async function attachManagementUrl(reservationId: string, manageUrl: stri
     .eq('reservation_id', reservationId)
     .eq('type', 'reservation_confirmation')
     .eq('status', 'pending')
-    .order('created_at', { ascending: false })
-    .limit(1)
     .returns<Pick<NotificationOutboxRow, 'id' | 'template_data'>[]>();
 
-  const row = data?.[0];
-  if (!row) return;
+  if (!data?.length) return;
 
-  await supabase
-    .from('notification_outbox')
-    .update({ template_data: { ...row.template_data, management_url: manageUrl } })
-    .eq('id', row.id);
+  await Promise.all(
+    data.map((row) =>
+      supabase
+        .from('notification_outbox')
+        .update({ template_data: { ...row.template_data, management_url: manageUrl } })
+        .eq('id', row.id),
+    ),
+  );
 }

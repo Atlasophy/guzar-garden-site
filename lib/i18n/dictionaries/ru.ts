@@ -254,6 +254,7 @@ export const ru: Dictionary = {
     firstName: 'Имя',
     lastName: 'Фамилия',
     email: 'E-mail',
+    emailHint: 'Пришлём подтверждение на e-mail.',
     phone: 'Телефон',
     phoneHint: 'Пришлём SMS с подтверждением.',
     phoneHintNoSms: 'Подтверждение появится на экране. Сохраните ссылку для управления бронью.',

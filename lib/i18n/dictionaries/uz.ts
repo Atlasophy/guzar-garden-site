@@ -256,6 +256,7 @@ export const uz: Dictionary = {
     firstName: 'Ism',
     lastName: 'Familiya',
     email: 'E-pochta',
+    emailHint: 'Tasdiqni e-pochtaga yuboramiz.',
     phone: 'Telefon',
     phoneHint: 'Tasdiqlash uchun SMS yuboramiz.',
     phoneHintNoSms: 'Tasdiq ekranda ko‘rinadi. Bronni boshqarish havolasini saqlang.',

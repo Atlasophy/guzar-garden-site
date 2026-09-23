@@ -103,6 +103,8 @@ databaseDescribe('atomic reservation operations', () => {
         (select count(*)::int from reservations) as reservations,
         (select count(*)::int from notification_outbox) as notifications`,
     );
-    expect(counts.rows[0]).toEqual({ reservations: 1, notifications: 1 });
+    // One SMS row and one email row: the guest supplied both a phone and an
+    // email, and the idempotent retry inserts nothing further.
+    expect(counts.rows[0]).toEqual({ reservations: 1, notifications: 2 });
   });
 });
