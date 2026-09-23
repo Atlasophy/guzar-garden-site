@@ -120,17 +120,11 @@ export function MenuBrowser({ menu }: { menu: PublicMenu }) {
       ? menu.categories[categoryIndex + 1]
       : undefined;
 
-  const renderCard = (
-    item: MenuItemView,
-    itemCategory: MenuCategoryView,
-    index: number,
-    showCategory: boolean,
-  ) => (
+  const renderCard = (item: MenuItemView, itemCategory: MenuCategoryView, showCategory: boolean) => (
     <button
       key={item.id}
       type="button"
       className="dish"
-      style={{ '--d': `${(Math.min(index, 14) * 0.045).toFixed(3)}s` } as React.CSSProperties}
       onClick={() => setOpenDish({ item, category: itemCategory })}
     >
       <span className="art">
@@ -217,9 +211,9 @@ export function MenuBrowser({ menu }: { menu: PublicMenu }) {
                 <span>{t.mostOrdered}</span>
               </div>
               <div className="strip-grid" id="stripGrid">
-                {menu.signatures.map((item, index) => {
+                {menu.signatures.map((item) => {
                   const owner = categoryBySlug.get(item.categorySlug);
-                  return owner ? renderCard(item, owner, index, true) : null;
+                  return owner ? renderCard(item, owner, true) : null;
                 })}
               </div>
             </div>
@@ -292,7 +286,7 @@ export function MenuBrowser({ menu }: { menu: PublicMenu }) {
             </div>
           </div>
           <div className="dish-grid" id="dishGrid">
-            {category?.items.map((item, index) => renderCard(item, category, index, false))}
+            {category?.items.map((item) => renderCard(item, category, false))}
           </div>
           <div className="catnav">
             <button
@@ -327,7 +321,7 @@ export function MenuBrowser({ menu }: { menu: PublicMenu }) {
             </div>
           </div>
           <div className="dish-grid" id="resGrid">
-            {results.map((entry, index) => renderCard(entry.item, entry.category, index, true))}
+            {results.map((entry) => renderCard(entry.item, entry.category, true))}
           </div>
           {results.length === 0 ? (
             <div className="empty" id="empty">

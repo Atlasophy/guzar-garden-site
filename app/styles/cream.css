@@ -586,14 +586,12 @@ body.theme-cream .cat .art {
   overflow: hidden;
   background: var(--cream-2);
 }
-body.theme-cream .cat .art svg {
+body.theme-cream .cat .art svg,
+body.theme-cream .cat .art img {
   width: 100%;
   height: 100%;
   display: block;
-  transition: transform 1.1s var(--ease);
-}
-body.theme-cream .cat:hover .art svg {
-  transform: scale(1.1) rotate(-3deg);
+  object-fit: cover;
 }
 body.theme-cream .cat .txt {
   padding: 1rem 1.15rem 1.2rem;
@@ -713,23 +711,10 @@ body.theme-cream .dish {
   padding: 0;
   display: flex;
   flex-direction: column;
-  opacity: 0;
-  transform: translateY(22px);
-  animation: cardIn 0.7s var(--ease) forwards;
-  animation-delay: var(--d, 0s);
-  transition:
-    transform 0.5s var(--ease),
-    box-shadow 0.5s var(--ease);
-}
-@keyframes cardIn {
-  to {
-    opacity: 1;
-    transform: none;
-  }
+  transition: border-color 0.2s var(--ease);
 }
 body.theme-cream .dish:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
+  border-color: var(--line-2);
 }
 body.theme-cream .dish .art {
   aspect-ratio: 4/3;
@@ -743,11 +728,6 @@ body.theme-cream .dish .art img {
   height: 100%;
   display: block;
   object-fit: cover;
-  transition: transform 1.1s var(--ease);
-}
-body.theme-cream .dish:hover .art svg,
-body.theme-cream .dish:hover .art img {
-  transform: scale(1.08);
 }
 body.theme-cream .dish .txt {
   padding: 1rem 1.15rem 1.25rem;
@@ -1120,10 +1100,6 @@ body.theme-cream .colophon a {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
-  }
-  body.theme-cream .dish {
-    opacity: 1;
-    transform: none;
   }
 }
 
