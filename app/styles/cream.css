@@ -993,7 +993,9 @@ body.theme-cream .menu-foot-logo img {
   height: auto;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  /* Same fix as .mast-logo img: center on the artwork's own measured
+     midpoint, not the square canvas's, or the crop clips the leading "G". */
+  transform: translate(-47.5%, -50%);
   filter: brightness(1.22) saturate(1.08);
 }
 body.theme-cream .foot-in p {
