@@ -408,7 +408,11 @@ body.theme-cream .mast-logo img {
   height: auto;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  /* The source PNG's visible mark (rosette + wordmark) sits centered
+     vertically but not horizontally within its square canvas — a plain
+     -50% crop centers on the canvas instead of the artwork, clipping the
+     leading "G". -47.5% centers on the artwork's own measured midpoint. */
+  transform: translate(-47.5%, -50%);
 }
 body.theme-cream .mast h1 {
   font-size: clamp(2.6rem, 7vw, 4.8rem);
@@ -529,7 +533,7 @@ body.theme-cream .strip-head span {
 }
 body.theme-cream .strip-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
 
@@ -554,16 +558,21 @@ body.theme-cream .cats-head span {
   text-transform: uppercase;
   color: var(--ink-soft);
 }
+/* Flex, not grid: with 14 categories a fixed column count always leaves a
+   short last row. Flex-wrap + justify-content: center lets that row sit
+   centered instead of stuck to the left with dangling empty columns. */
 body.theme-cream .cat-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.1rem;
 }
 body.theme-cream .cat {
+  flex: 0 0 calc((100% - 3 * 1.1rem) / 4);
   aspect-ratio: 5/4;
   border-radius: 18px;
   overflow: hidden;
-  background: var(--cream-2);
+  background: var(--cream-3);
   cursor: pointer;
   text-align: left;
   font: inherit;
@@ -725,7 +734,7 @@ body.theme-cream .dish:hover {
 body.theme-cream .dish .art {
   aspect-ratio: 4/3;
   overflow: hidden;
-  background: var(--cream-2);
+  background: var(--cream-3);
   flex: none;
 }
 body.theme-cream .dish .art svg,
@@ -891,7 +900,7 @@ body.theme-cream .sheet .card {
   }
 }
 body.theme-cream .sheet .art {
-  background: var(--cream-2);
+  background: var(--cream-3);
 }
 body.theme-cream .sheet .art svg,
 body.theme-cream .sheet .art img {
@@ -1015,11 +1024,11 @@ body.theme-cream .colophon a {
 
 /* ---------- responsive ---------- */
 @media (max-width: 1000px) {
-  body.theme-cream .cat-grid {
-    grid-template-columns: repeat(3, 1fr);
+  body.theme-cream .cat {
+    flex-basis: calc((100% - 2 * 1.1rem) / 3);
   }
   body.theme-cream .strip-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
   body.theme-cream .dish-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1088,9 +1097,8 @@ body.theme-cream .colophon a {
   }
 }
 @media (max-width: 640px) {
-  body.theme-cream .cat-grid,
-  body.theme-cream .strip-grid {
-    grid-template-columns: repeat(2, 1fr);
+  body.theme-cream .cat {
+    flex-basis: calc((100% - 1.1rem) / 2);
   }
   body.theme-cream .dish-grid {
     grid-template-columns: 1fr;

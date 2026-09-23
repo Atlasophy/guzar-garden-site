@@ -1713,7 +1713,7 @@ body.theme-emerald .sig-head h2 {
 }
 body.theme-emerald .sig-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.2rem;
 }
 body.theme-emerald .dish {
@@ -2221,7 +2221,7 @@ html.js body.theme-emerald .rv.in {
     gap: 2rem;
   }
   body.theme-emerald .sig-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
   body.theme-emerald nav.links {
     gap: 1rem;
@@ -2355,9 +2355,6 @@ html.js body.theme-emerald .rv.in {
   }
 }
 @media (max-width: 760px) {
-  body.theme-emerald .sig-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
   body.theme-emerald .stats {
     grid-template-columns: 1fr 1fr;
   }
@@ -2424,9 +2421,6 @@ html.js body.theme-emerald .rv.in {
   body.theme-emerald .feat-grid,
   body.theme-emerald .foot-grid {
     grid-template-columns: 1fr;
-  }
-  body.theme-emerald .sig-grid .dish:nth-child(5) {
-    display: none;
   }
   body.theme-emerald .quote {
     padding-inline: 1.3rem;
