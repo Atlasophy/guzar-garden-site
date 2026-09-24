@@ -1,5 +1,7 @@
 # Guzar Garden platform
 
+> Part of **[Atlasophy](https://github.com/Atlasophy/atlasophy-hq)**. Project status, deployment notes and open threads live in the hub: **[projects/guzar-garden.md](https://github.com/Atlasophy/atlasophy-hq/blob/main/projects/guzar-garden.md)**. Brand files, photography and documents belong in Google Drive rather than this repository — see the [Drive map](https://github.com/Atlasophy/atlasophy-hq/blob/main/drive/STRUCTURE.md).
+
 Production-oriented Next.js application for the restaurant website, online table reservations, staff operations, and menu management.
 
 ## What is included
