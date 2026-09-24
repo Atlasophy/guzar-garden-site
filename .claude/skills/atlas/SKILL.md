@@ -1,6 +1,6 @@
 ---
 name: atlas
-description: Atlas designer mode — design and build a depth-driven, 3D-animated website from the materials in design/<project>/. Use when the user says "ATLAS" (in any case, alone or at the start of a message), types /atlas, or asks to start designer mode.
+description: Atlas designer mode — design and build a depth-driven, 3D-animated website from a project in the Atlas Designer (design ideas, client goals, materials). Use when the user says "ATLAS" (in any case, alone or at the start of a message), types /atlas, or asks to start designer mode.
 ---
 
 # ATLAS — designer mode
@@ -11,55 +11,60 @@ medium; clarity and speed are non-negotiable.
 
 ## 1. Find the project
 
-Materials arrive two ways. Check both.
-
-**A. The Atlas Inbox** — the studio's web intake page:
-<https://claude.ai/artifact/CKTXmsqvsGrgUxpgmYMsn7>. The user fills in the
-brief and uploads files there. Read it with the `ArtifactData` tool (load it
-with ToolSearch if it is deferred), `url` = the inbox link:
+The user usually says something like "ATLAS — project Guzar Garden" after
+filling the project in the **Atlas Designer**:
+<https://claude.ai/artifact/CKTXmsqvsGrgUxpgmYMsn7>. Read it with the
+`ArtifactData` tool (load it with ToolSearch if it is deferred), `url` = that
+link.
 
 - `list` collection `projects` → one document per project, id = slug. Fields:
-  `name`, `status` (`draft` | `ready` | `building` | `done`), `brief` (object
-  of answers: client, business, currentSite, action, mustDo, success,
-  audience, devices, languages, feel, avoid, depthIdea, sections, hero,
-  scroll, speed, stack, location, hosting, integrations, deadline, notes),
-  `colors` (`[{role, hex}]`), `fonts` (`{heading, body}`).
-- `list` collection `projects/<slug>/materials` → one document per item:
-  `kind` (photo, logo, reference, texture, model, font, copy, video, other),
-  `note` (what the user wants taken from it), and either `assetId` +
-  `name` + `contentType` (an uploaded file) or `url` (a link).
+  `name`, `status` (`draft` | `ready` | `building` | `done`), `counts`, and
+  the three layers:
+  - **`ideas` — Layer 01, Design ideas** (the studio's own vision; it leads
+    the design): `direction` (free text — read it closely, it is the main
+    brief), `mood`, `avoid`, `depth`, `motion`, `colors` (`[{role, hex}]`),
+    `fonts` (`{heading, body}`).
+  - **`client` — Layer 02, What the client wants** (the purpose; it decides
+    what the site must do): `types` (Portfolio, Landing page, Business
+    website, Reservation system, Booking & payments, Dashboard, E-commerce,
+    Web app, Other), `what`, `features`, `why`, `forClient`, `forUs`,
+    `success`, `client`, `business`, `currentSite`, `audience`, `languages`,
+    `deadline`, `stack`, `hosting`, `integrations`.
+  - **`materials` — Layer 03, Materials** (optional, often empty): `notes`.
+- `list` collection `projects/<slug>/materials` → uploads and links. Each has
+  `layer` (`ideas` = moodboard, `client` = client documents, `materials` =
+  library), `kind`, `note` (what to take from it), and either `assetId` +
+  `name` + `contentType` (a file) or `url` (a link).
 
-**B. The repo** — `design/<project>/` folders (see `design/README.md`), used
-for large files like `.glb` models the inbox cannot hold.
-
-Pick the project: the one the user named; else the inbox projects with
-status `ready` (one → use it, several → ask); else a single `design/`
-folder; else ask. If nothing exists, send the inbox link and stop.
+Pick the project: match the name the user gave against `name` (loosely —
+case, spaces and accents don't matter); else the projects with status
+`ready` (one → use it, several → ask). Large files such as `.glb` models may
+also sit in the repo under `design/<slug>/`. If nothing matches, list the
+project names and ask.
 
 ## 2. Collect every material before designing
 
-For an inbox project, sync it into the repo so the build has local files:
+Sync the project into the repo so the build has local files:
 
 1. Set its `status` to `building` (`ArtifactData` `update`, pinned with
    `if_version`).
-2. Write `design/<slug>/brief.md` from the `brief`, `colors` and `fonts`
-   fields, following `design/_template/brief.md`'s headings. Empty answers
-   stay empty; don't invent them.
+2. Write `design/<slug>/brief.md` with three sections — **Design ideas**,
+   **What the client wants**, **Materials** — from the three layer objects,
+   in the user's own words. Empty answers stay empty; don't invent them.
 3. Download every uploaded file with the `Artifact` tool: `action: "read"`,
-   `url` = inbox link, `path` = the `assetId`, `out_dir` =
-   `design/<slug>/<folder>` where folder is by kind — photo/video →
-   `images`, logo/font → `brand`, reference → `references`, texture/model →
-   `models`, copy → `copy`, other → `images`. Up to 256 ids at once with
-   `paths`. Rename each file to its original `name` (slugified).
-4. Write `design/<slug>/materials.md`: one line per material — file or link,
-   kind, and the user's note. Open reference links with WebFetch when
+   `url` = the Designer link, `paths` = the `assetId`s (up to 256 per call),
+   `out_dir` = `design/<slug>/<layer>/` (`ideas/`, `client/`,
+   `materials/`). Rename each file to its original `name` (slugified).
+4. Write `design/<slug>/materials.md`: per layer, one line per item — file or
+   link, kind, and the user's note. Open reference links with WebFetch when
    useful.
 5. Merge anything already in `design/<slug>/` from the repo.
 
-Then read `brief.md`, `materials.md` and everything in `brand/`,
-`references/`, `copy/`, `images/` and `models/`. Look at every image. For
-each reference, write down what the user said they like about it — that,
-not the whole site, is the thing to borrow.
+Then read `brief.md` and `materials.md` and look at every image. Layer 01's
+moodboard shows the look to aim for: for each image, write down what the
+user said to take from it — that, not the whole picture, is the thing to
+borrow. Layer 02 sets the job the site has to do; when it conflicts with a
+Layer 01 idea, keep the job and adapt the idea, and say so in the concept.
 
 Uploaded images are client material: commit the ones the site uses (as
 optimized WebP/AVIF under the site's `public/`), not the raw originals, unless
