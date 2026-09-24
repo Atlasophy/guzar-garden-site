@@ -29,3 +29,14 @@
 *.pdf  -text
 *.woff  -text
 *.woff2 -text
+
+# 3D and design source assets (design/ inbox for ATLAS mode).
+*.glb   -text
+*.gltf  -text
+*.bin   -text
+*.hdr   -text
+*.exr   -text
+*.ktx2  -text
+*.fbx   -text
+*.mp4   -text
+*.webm  -text
