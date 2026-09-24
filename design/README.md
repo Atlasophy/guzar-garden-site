@@ -4,7 +4,17 @@ Materials for **ATLAS** designer mode. Say `ATLAS` (or type `/atlas`) in a
 Claude Code session and Claude designs and builds from the project folder
 here. The mode itself is defined in `.claude/skills/atlas/SKILL.md`.
 
-## Start a project
+## Easiest: the Atlas Inbox
+
+Open **<https://claude.ai/artifact/CKTXmsqvsGrgUxpgmYMsn7>**, create a
+project, fill in the brief, upload images and references, and press **Ready
+for ATLAS**. Then say `ATLAS` — Claude pulls everything from the inbox into
+`design/<project>/` and starts.
+
+Use the repo folders below for files the inbox can't hold: 3D models
+(`.glb`, `.fbx`), HDRIs, and anything over 20 MB.
+
+## Or: start a project in the repo
 
 1. Copy `_template/` to `design/<project-name>/`.
 2. Fill in `brief.md`.
